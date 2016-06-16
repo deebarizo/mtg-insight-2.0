@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     
     return [
     
@@ -23,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Set::class, function ($faker) {
+$factory->define(App\Models\Set::class, function ($faker) {
     
     return [
         
@@ -36,7 +36,7 @@ $factory->define(App\Set::class, function ($faker) {
     ];
 });
 
-$factory->define(App\Card::class, function ($faker) {
+$factory->define(App\Models\Card::class, function ($faker) {
     
     return [
         

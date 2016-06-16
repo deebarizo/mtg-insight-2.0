@@ -2,9 +2,9 @@
 
 ini_set('max_execution_time', 10800); // 10800 seconds = 3 hours
 
-use App\Set;
-use App\Card;
-use App\SetCard;
+use App\Models\Set;
+use App\Models\Card;
+use App\Models\SetCard;
 
 use Illuminate\Support\Facades\Input;
 
@@ -17,9 +17,9 @@ class MtgJsonParser {
 		$jsonString = file_get_contents($jsonFile);
 		$set = json_decode($jsonString, true);
 
-		$set['id'] = Set::where('code', $set['code'])->pluck('id'); 
+		$eSet = Set::where('code', $set['code'])->first(); 
 
-		if (count($set['id']) === 0) { // this variable is an array
+		if (!$eSet) { 
 
 			$this->message = 'The set "'.$set['code'].'" is missing from the database. Please add it manually to the database.';		
 
@@ -50,7 +50,7 @@ class MtgJsonParser {
 				continue;
 			}
 
-			$this->storeCard($card, $set['id']);
+			$this->storeCard($card, $eSet->id);
 		}
 
 		return $this;
@@ -132,33 +132,16 @@ class MtgJsonParser {
 		$eCard->layout = $card['layout'];
 
 		$eCard->save();
+
+		$setCard = new SetCard;
+
+		$setCard->set_id = $setId;
+		$setCard->card_id = $eCard->id;
+		$setCard->rarity = $card['rarity'];
+		$setCard->multiverseid = $card['multiverseid'];
+
+		$setCard->save();
 	}
-
-/*
-
-color varchar(255) 
-mana_cost varchar(255) 
-cmc int(11) 
-type varchar(255) 
-rules_text text 
-power varchar(255) 
-toughness varchar(255) 
-loyalty varchar(255) 
-f_cost varchar(255) 
-note text 
-
-Array
-(
-    [cmc] => 6
-    [manaCost] => {6}
-    [multiverseid] => 394681
-    [power] => 4
-    [rarity] => Uncommon
-    [text] => Flying
-    [toughness] => 4
-    [type] => Creature — Dragon Spirit
-)
-*/
 
 	private function checkIfCardIsBasicLand($card) {
 

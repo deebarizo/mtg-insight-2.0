@@ -8,9 +8,9 @@ use org\bovigo\vfs\vfsStream; // http://blog.mauriziobonani.com/phpunit-test-fil
 
 use App\UseCases\MtgJsonParser;
 
-use App\Set;
-use App\Card;
-use App\SetCard;
+use App\Models\Set;
+use App\Models\Card;
+use App\Models\SetCard;
 
 class MtgJsonParserTest extends TestCase {
 
@@ -91,7 +91,7 @@ class MtgJsonParserTest extends TestCase {
     }
 
     /** @test */
-    public function stores_new_card_in_cards_table() {    
+    public function stores_new_card() {    
 
         $root = $root = $this->setUpFile($this->files['valid']['containsExistingCard']);
 
@@ -109,6 +109,11 @@ class MtgJsonParserTest extends TestCase {
         $this->assertContains((string)$card->toughness, '4');
         $this->assertContains((string)$card->f_cost, '5');
         $this->assertContains($card->layout, 'normal');
+
+        $setCard = SetCard::where('set_id', 3)->where('card_id', $card->id)->first();
+
+        $this->assertContains($setCard->rarity, 'Mythic Rare');
+        $this->assertContains((string)$setCard->multiverseid, '394549');
     }
 
 }
