@@ -24,7 +24,9 @@ class MtgJsonParser {
 			$this->message = 'The set "'.$set['code'].'" is missing from the database. Please add it manually to the database.';		
 
 			return $this;
-		}		
+		}	
+
+		$this->basicLandCount = 0; // this is for testing	
 
 		foreach ($set['cards'] as $card) {
 
@@ -32,11 +34,15 @@ class MtgJsonParser {
 
 			if ($cardIsBasicLand) {
 
+				$this->basicLandCount++;
+
 				continue;
 			}
 
-			$this->storeCard($card, $set['id']);
+			// $this->storeCard($card, $set['id']);
 		}
+
+		return $this;
 	}
 
 	private function storeCard($card, $setId) {
@@ -45,7 +51,9 @@ class MtgJsonParser {
 
 		$eCard->name = $card['name'];
 
-		if (isset($card['color']))
+		if (isset($card['color'])) {
+
+		}
 	}
 
 /*
