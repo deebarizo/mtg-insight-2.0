@@ -43,8 +43,36 @@ class MtgJsonParser {
 
 		$eCard = new Card;
 
-		
+		$eCard->name = $card['name'];
+
+		if (isset($card['color']))
 	}
+
+/*
+
+color varchar(255) 
+mana_cost varchar(255) 
+cmc int(11) 
+type varchar(255) 
+rules_text text 
+power varchar(255) 
+toughness varchar(255) 
+loyalty varchar(255) 
+f_cost varchar(255) 
+note text 
+
+Array
+(
+    [cmc] => 6
+    [manaCost] => {6}
+    [multiverseid] => 394681
+    [power] => 4
+    [rarity] => Uncommon
+    [text] => Flying
+    [toughness] => 4
+    [type] => Creature — Dragon Spirit
+)
+*/
 
 	private function checkIfCardIsBasicLand($card) {
 

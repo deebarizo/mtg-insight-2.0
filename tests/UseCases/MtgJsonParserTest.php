@@ -16,14 +16,6 @@ class MtgJsonParserTest extends TestCase {
 
     use DatabaseTransactions;
 
-    private function setUpSets() {
-
-        factory(Set::class)->create([
-        
-        	'code' => 'DTK'
-        ]);   
-    }
-
     private $files = [
 
 	    'invalid' => [
@@ -54,8 +46,6 @@ class MtgJsonParserTest extends TestCase {
 
     /** @test */
     public function validates_missing_set() {
-
-    	$this->setUpSets();
 
         $root = $root = $this->setUpFile($this->files['invalid']['missingSet']);
 

@@ -3,6 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use Illuminate\Support\Facades\DB;
+
 class CreateSetsCardsTable extends Migration
 {
     /**
@@ -24,6 +26,8 @@ class CreateSetsCardsTable extends Migration
             $table->date('created_at');
             $table->date('updated_at');
         }); 
+
+        DB::insert("INSERT INTO `sets_cards` VALUES (1,1,1,'Basic Land',410055,'2016-06-16','2016-06-16'),(2,1,2,'Basic Land',410058,'2016-06-16','2016-06-16'),(3,1,3,'Basic Land',410061,'2016-06-16','2016-06-16'),(4,1,4,'Basic Land',410064,'2016-06-16','2016-06-16'),(5,1,5,'Basic Land',410052,'2016-06-16','2016-06-16');");
     }
 
     /**
