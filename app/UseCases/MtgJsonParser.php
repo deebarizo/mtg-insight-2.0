@@ -10,6 +10,7 @@ use App\Models\CardColor;
 use App\Models\CardName;
 use App\Models\CardSubtype;
 use App\Models\CardSupertype;
+use App\Models\CardType;
 
 use Illuminate\Support\Facades\Input;
 
@@ -172,6 +173,24 @@ class MtgJsonParser {
 		if (isset($card['supertypes'])) {
 
 			$this->storeSupertypes($eCard->id, $card['supertypes']);
+		}
+
+		if (isset($card['types'])) {
+
+			$this->storeTypes($eCard->id, $card['types']);
+		}
+	}
+
+	private function storeTypes($cardId, $types) {
+
+		foreach ($types as $key => $type) {
+			
+			$cardType = new CardType;
+
+			$cardType->card_id = $cardId;
+			$cardType->type = $type;
+
+			$cardType->save();
 		}
 	}
 
