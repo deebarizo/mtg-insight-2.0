@@ -10,8 +10,19 @@
 
 			<div class="col-lg-2"> 
 				<div class="form-group">
-					{!! Form::label('csv', 'CSV:') !!}
-					{!! Form::file('csv', '', ['class' => 'form-control']) !!}
+					<label for="set-id">Set:</label>
+					<select name="set-id" class="form-control">
+						@foreach ($sets as $set)
+							<option value="{{ $set->id }}">{{ $set->code }}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+
+			<div class="col-lg-2"> 
+				<div class="form-group">
+					{!! Form::label('xml', 'XML:') !!}
+					{!! Form::file('xml', '', ['class' => 'form-control']) !!}
 				</div>
 			</div>
 

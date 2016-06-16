@@ -1,5 +1,7 @@
 <?php
 
+use App\Set;
+
 /****************************************************************************************
 HOME
 ****************************************************************************************/
@@ -28,5 +30,7 @@ Route::get('/admin/parsers/cockatrice_xml', function() {
 	$titleTag = 'Parsers - Cockatrice XML';
     $h2Tag = 'Parsers - Cockatrice XML';	
 
-	return View::make('admin/parsers/cockatrice_xml', compact('titleTag', 'h2Tag'));
+    $sets = Set::orderBy('id', 'desc')->get();
+
+	return View::make('admin/parsers/cockatrice_xml', compact('titleTag', 'h2Tag', 'sets'));
 });
