@@ -10,6 +10,7 @@
 			<h4>Parsers</h4>
 
 			<ul>
+				<li><a href="/admin/parsers/mtg_json">MTG JSON</a></li>
 				<li><a href="/admin/parsers/cockatrice_xml">Cockatrice XML</a></li>
 			</ul>
 		</div>
