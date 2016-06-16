@@ -12,6 +12,7 @@ use App\Models\Set;
 use App\Models\Card;
 use App\Models\SetCard;
 use App\Models\CardColorIdentity;
+use App\Models\CardColor;
 
 class MtgJsonParserTest extends TestCase {
 
@@ -130,6 +131,23 @@ class MtgJsonParserTest extends TestCase {
             if ($key === 1) {
 
                 $this->assertContains($cardColorIdentity->color_identity, 'Blue');
+            }
+        }
+
+        $cardColors = CardColor::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardColors);
+
+        foreach ($cardColors as $key => $cardColor) {
+            
+            if ($key === 0) {
+
+                $this->assertContains($cardColor->color, 'White');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardColor->color, 'Blue');
             }
         }
     }
