@@ -7,6 +7,7 @@ use App\Models\Card;
 use App\Models\SetCard;
 use App\Models\CardColorIdentity;
 use App\Models\CardColor;
+use App\Models\CardName;
 
 use Illuminate\Support\Facades\Input;
 
@@ -154,6 +155,24 @@ class MtgJsonParser {
 		if (isset($card['colors'])) {
 
 			$this->storeColors($eCard->id, $card['colors']);
+		}
+
+		if (isset($card['names'])) {
+
+			$this->storeNames($eCard->id, $card['names']);
+		}
+	}
+
+	private function storeNames($cardId, $names) {
+
+		foreach ($names as $key => $name) {
+			
+			$cardName = new CardName;
+
+			$cardName->card_id = $cardId;
+			$cardName->name = $name;
+
+			$cardName->save();
 		}
 	}
 
