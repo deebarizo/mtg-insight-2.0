@@ -11,6 +11,7 @@ use App\UseCases\MtgJsonParser;
 use App\Models\Set;
 use App\Models\Card;
 use App\Models\SetCard;
+use App\Models\CardColorIdentity;
 
 class MtgJsonParserTest extends TestCase {
 
@@ -114,6 +115,23 @@ class MtgJsonParserTest extends TestCase {
 
         $this->assertContains($setCard->rarity, 'Mythic Rare');
         $this->assertContains((string)$setCard->multiverseid, '394549');
+
+        $cardColorIdentities = CardColorIdentity::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardColorIdentities);
+
+        foreach ($cardColorIdentities as $key => $cardColorIdentity) {
+            
+            if ($key === 0) {
+
+                $this->assertContains($cardColorIdentity->color_identity, 'White');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardColorIdentity->color_identity, 'Blue');
+            }
+        }
     }
 
 }

@@ -5,6 +5,7 @@ ini_set('max_execution_time', 10800); // 10800 seconds = 3 hours
 use App\Models\Set;
 use App\Models\Card;
 use App\Models\SetCard;
+use App\Models\CardColorIdentity;
 
 use Illuminate\Support\Facades\Input;
 
@@ -141,6 +142,51 @@ class MtgJsonParser {
 		$setCard->multiverseid = $card['multiverseid'];
 
 		$setCard->save();
+
+		if (isset($card['colorIdentity'])) {
+
+			$colorIdentities = $card['colorIdentity'];
+
+			$this->storeColorIdentities($eCard->id, $colorIdentities);
+		}
+	}
+
+	private function storeColorIdentities($cardId, $colorIdentities) {
+
+		foreach ($colorIdentities as $key => $colorIdentity) {
+			
+			$cardColorIdentity = new CardColorIdentity;
+
+			$cardColorIdentity->card_id = $cardId;
+			$cardColorIdentity->color_identity = $this->changeLetterToColor($colorIdentity);
+
+			$cardColorIdentity->save();
+		}
+	}
+
+	private function changeLetterToColor($colorIdentity) {
+
+		switch ($colorIdentity) {
+			
+			case 'W':
+				return 'White';
+
+			case 'U':
+				return 'Blue';
+
+			case 'B':
+				return 'Black';
+
+			case 'R':
+				return 'Red';
+
+			case 'G':
+				return 'Green';
+			
+			default:
+				return $colorIdentity;
+		}
+
 	}
 
 	private function checkIfCardIsBasicLand($card) {
