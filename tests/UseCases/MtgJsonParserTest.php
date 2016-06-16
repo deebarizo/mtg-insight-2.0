@@ -14,6 +14,7 @@ use App\Models\SetCard;
 use App\Models\CardColorIdentity;
 use App\Models\CardColor;
 use App\Models\CardName;
+use App\Models\CardSubtype;
 
 class MtgJsonParserTest extends TestCase {
 
@@ -173,6 +174,23 @@ class MtgJsonParserTest extends TestCase {
 
                 $this->assertContains($cardName->name, 'Avacyn, the Purifier');
             }            
+        }
+
+        $cardSubtypes = CardSubtype::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardSubtypes);
+
+        foreach ($cardSubtypes as $key => $cardSubtype) {
+
+            if ($key === 0) {
+
+                $this->assertContains($cardSubtype->subtype, 'Elder');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardSubtype->subtype, 'Dragon');
+            }   
         }
     }
 

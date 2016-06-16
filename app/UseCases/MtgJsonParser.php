@@ -8,6 +8,7 @@ use App\Models\SetCard;
 use App\Models\CardColorIdentity;
 use App\Models\CardColor;
 use App\Models\CardName;
+use App\Models\CardSubtype;
 
 use Illuminate\Support\Facades\Input;
 
@@ -160,6 +161,24 @@ class MtgJsonParser {
 		if (isset($card['names'])) {
 
 			$this->storeNames($eCard->id, $card['names']);
+		}
+
+		if (isset($card['subtypes'])) {
+
+			$this->storeSubtypes($eCard->id, $card['subtypes']);
+		}
+	}
+
+	private function storeSubtypes($cardId, $subtypes) {
+
+		foreach ($subtypes as $key => $subtype) {
+
+			$cardSubtype = new CardSubtype;
+
+			$cardSubtype->card_id = $cardId;
+			$cardSubtype->subtype = $subtype;
+
+			$cardSubtype->save();
 		}
 	}
 
