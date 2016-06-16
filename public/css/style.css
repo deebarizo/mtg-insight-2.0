@@ -1,35 +1,4 @@
-/****************************************************************************************
-PLAYER POOLS
-****************************************************************************************/
+hr {
 
-div.wide {
-
-	width: 1600px;
-	margin-left: -200px;
-}
-
-
-/****************************************************************************************
-LINEUPS
-****************************************************************************************/
-
-div.circle-plus-icon {
-    
-    color: green;
-    display: inline;
-}
-
-div.circle-plus-icon.second-position {
-
-	margin-left: 10px;
-}
-
-div.circle-minus-icon {
-
-	color: red;
-}
-
-tr.strikethrough {
-
-	text-decoration: line-through;
+	border-top: 1px solid #ddd;
 }

@@ -15,8 +15,6 @@ class ParsersController extends Controller {
 
 		$jsonFile = $fileUploader->uploadMtgJson($request);
 
-		ddAll('success');
-
 		$mtgJsonParser = new MtgJsonParser;
 
         $results = $mtgJsonParser->parseJson($jsonFile);
