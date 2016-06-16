@@ -26,7 +26,8 @@ class MtgJsonParser {
 			return $this;
 		}	
 
-		$this->basicLandCount = 0; // this is for testing	
+		$this->basicLandCount = 0; // this is for testing
+		$this->cardExistsCount = 0; // this is for testing	
 
 		foreach ($set['cards'] as $card) {
 
@@ -39,7 +40,17 @@ class MtgJsonParser {
 				continue;
 			}
 
-			// $this->storeCard($card, $set['id']);
+
+			$cardExists = Card::where('name', $card['name'])->first();
+
+			if ($cardExists) {
+
+				$this->cardExistsCount++;
+
+				continue;
+			}
+
+			$this->storeCard($card, $set['id']);
 		}
 
 		return $this;
@@ -51,9 +62,76 @@ class MtgJsonParser {
 
 		$eCard->name = $card['name'];
 
-		if (isset($card['color'])) {
+		if (isset($card['manaCost'])) {
 
+			$eCard->mana_cost = $card['manaCost'];
+		
+		} else {
+
+			$eCard->mana_cost = null;
 		}
+
+		if (isset($card['cmc'])) {
+
+			$eCard->cmc = $card['cmc'];
+		
+		} else {
+
+			$eCard->cmc = null;
+		}
+
+		$eCard->middle_text = $card['type'];
+
+		if (isset($card['text'])) {
+
+			$eCard->rules_text = $card['text'];
+		
+		} else {
+
+			$eCard->rules_text = null;
+		}
+
+		if (isset($card['power'])) {
+
+			$eCard->power = $card['power'];
+		
+		} else {
+
+			$eCard->power = null;
+		}
+
+		if (isset($card['toughness'])) {
+
+			$eCard->toughness = $card['toughness'];
+		
+		} else {
+
+			$eCard->toughness = null;
+		}
+
+		if (isset($card['loyalty'])) {
+
+			$eCard->loyalty = $card['loyalty'];
+		
+		} else {
+
+			$eCard->loyalty = null;
+		}
+
+		if (isset($card['cmc'])) {
+
+			$eCard->f_cost = $card['cmc'];
+		
+		} else {
+
+			$eCard->f_cost = null;
+		}
+
+		$eCard->note = null;
+
+		$eCard->layout = $card['layout'];
+
+		$eCard->save();
 	}
 
 /*

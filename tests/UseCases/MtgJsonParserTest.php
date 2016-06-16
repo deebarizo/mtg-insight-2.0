@@ -30,8 +30,13 @@ class MtgJsonParserTest extends TestCase {
 
         	'containsBasicLand' => [
 
-        		'test.json' => '{"name":"Dragons of Tarkir","code":"DTK","magicCardsInfoCode":"dtk","releaseDate":"2015-03-27","border":"black","type":"expansion","block":"Khans of Tarkir","cards":[{"artist": "Sam Burley","colorIdentity": ["W"],"id": "2c9386d2979ada162160c9217c8e62a52c0320de","imageName": "plains1","layout": "normal","multiverseid": 394649,"name": "Plains","number": "250","rarity": "Basic Land","subtypes": ["Plains"],"supertypes": ["Basic"],"type": "Basic Land — Plains","types": ["Land"],"variations": [394650,394651]},{"artist": "Sam Burley","colorIdentity": ["W"],"id": "2c9386d2979ada162160c9217c8e62a52c0320de","imageName": "plains1","layout": "normal","multiverseid": 394649,"name": "Hangarback Walker","number": "250","rarity": "Basic Land","subtypes": ["Plains"],"supertypes": ["Basic"],"type": "Basic Land — Plains","types": ["Land"],"variations": [394650,394651]}]}'
-			]
+        		'test.json' => '{"name":"Dragons of Tarkir","code":"DTK","magicCardsInfoCode":"dtk","releaseDate":"2015-03-27","border":"black","type":"expansion","block":"Khans of Tarkir","cards":[{"artist": "Sam Burley","colorIdentity": ["W"],"id": "2c9386d2979ada162160c9217c8e62a52c0320de","imageName": "plains1","layout": "normal","multiverseid": 394649,"name": "Plains","number": "250","rarity": "Basic Land","subtypes": ["Plains"],"supertypes": ["Basic"],"type": "Basic Land — Plains","types": ["Land"],"variations": [394650,394651]},{"artist": "Chase Stone","cmc": 5,"colorIdentity": ["W","U"],"colors": ["White","Blue"],"id": "7d1d4b62cba6d5805bbfaa3a1f97341274a1abb8","imageName": "dragonlord ojutai","layout": "normal","manaCost": "{3}{W}{U}","mciNumber": "219","multiverseid": 394549,"name": "Dragonlord Ojutai","number": "219","power": "5","rarity": "Mythic Rare","subtypes": ["Elder","Dragon"],"supertypes": ["Legendary"],"text": "Flying\nDragonlord Ojutai has hexproof as long as it\'s untapped.\nWhenever Dragonlord Ojutai deals combat damage to a player, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.","toughness": "4","type": "Legendary Creature — Elder Dragon","types": ["Creature"],"watermark": "Ojutai"}]}'
+			],
+
+            'containsExistingCard' => [
+
+                'test.json' => '{"name":"Dragons of Tarkir","code":"DTK","magicCardsInfoCode":"dtk","releaseDate":"2015-03-27","border":"black","type":"expansion","block":"Khans of Tarkir","cards":[{"artist": "Sam Burley","colorIdentity": ["W"],"id": "2c9386d2979ada162160c9217c8e62a52c0320de","imageName": "plains1","layout": "normal","multiverseid": 394649,"name": "Plains","number": "250","rarity": "Basic Land","subtypes": ["Plains"],"supertypes": ["Basic"],"type": "Basic Land — Plains","types": ["Land"],"variations": [394650,394651]},{"artist": "Chase Stone","cmc": 5,"colorIdentity": ["W","U"],"colors": ["White","Blue"],"id": "7d1d4b62cba6d5805bbfaa3a1f97341274a1abb8","imageName": "dragonlord ojutai","layout": "normal","manaCost": "{3}{W}{U}","mciNumber": "219","multiverseid": 394549,"name": "Dragonlord Ojutai","number": "219","power": "5","rarity": "Mythic Rare","subtypes": ["Elder","Dragon"],"supertypes": ["Legendary"],"text": "Flying\nDragonlord Ojutai has hexproof as long as it\'s untapped.\nWhenever Dragonlord Ojutai deals combat damage to a player, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.","toughness": "4","type": "Legendary Creature — Elder Dragon","types": ["Creature"],"watermark": "Ojutai"}]}'
+            ]            
         ]
     ];
 
@@ -66,6 +71,44 @@ class MtgJsonParserTest extends TestCase {
         $results = $mtgJsonParser->parseJson($root->url().'/test.json');
         
         $this->assertContains((string)$results->basicLandCount, '1');
+    }
+
+    /** @test */
+    public function checks_for_existing_card() {
+
+        factory(Card::class)->create([
+
+            'name' => 'Dragonlord Ojutai'
+        ]);
+
+        $root = $root = $this->setUpFile($this->files['valid']['containsExistingCard']);
+
+        $mtgJsonParser = new MtgJsonParser; 
+
+        $results = $mtgJsonParser->parseJson($root->url().'/test.json');
+        
+        $this->assertContains((string)$results->cardExistsCount, '1');
+    }
+
+    /** @test */
+    public function stores_new_card_in_cards_table() {    
+
+        $root = $root = $this->setUpFile($this->files['valid']['containsExistingCard']);
+
+        $mtgJsonParser = new MtgJsonParser; 
+
+        $results = $mtgJsonParser->parseJson($root->url().'/test.json');
+
+        $card = Card::where('name', 'Dragonlord Ojutai')->first();
+
+        $this->assertContains($card->mana_cost, '{3}{W}{U}');
+        $this->assertContains((string)$card->cmc, '5');
+        $this->assertContains($card->middle_text, 'Legendary Creature — Elder Dragon');
+        $this->assertContains($card->rules_text, "Flying\nDragonlord Ojutai has hexproof as long as it's untapped.\nWhenever Dragonlord Ojutai deals combat damage to a player, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.");
+        $this->assertContains((string)$card->power, '5');
+        $this->assertContains((string)$card->toughness, '4');
+        $this->assertContains((string)$card->f_cost, '5');
+        $this->assertContains($card->layout, 'normal');
     }
 
 }

@@ -27,10 +27,31 @@ $factory->define(App\Set::class, function ($faker) {
     
     return [
         
-        'id' => rand(1, 100),
+        'id' => rand(50, 100),
         'name' => 'fake name',
         'code' => 'FAKE',
         'release_date' => '2015-03-13',
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
+
+$factory->define(App\Card::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'name' => 'fake name',
+        'mana_cost' => null,
+        'cmc' => null,
+        'middle_text' => 'fake',
+        'rules_text' => null,
+        'power' => null,
+        'toughness' => null,
+        'loyalty' => null,
+        'f_cost' => null,
+        'note' => null,
+        'layout' => 'normal',
         'created_at' => '2015-03-13',
         'updated_at' => '2015-03-13'
     ];
