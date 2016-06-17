@@ -244,79 +244,91 @@ class MtgJsonParserTest extends TestCase {
             'power' => 4,
             'toughness' => 3,
             'loyalty' => 5,
-            'f_cost' => 5, // this should not be updated
+            'f_cost' => 10, // this should not be updated
             'note' => 'awesome', // this should not be updated
             'layout' => 'double-faced'
         ]);
 
         factory(CardColorIdentity::class)->create([
 
+            'id' => 1, 
             'card_id' => 77,
             'color_identity' => 'Red'
         ]);
 
         factory(CardColorIdentity::class)->create([
 
+            'id' => 2, 
             'card_id' => 77,
             'color_identity' => 'Green'
         ]);
 
         factory(CardColor::class)->create([
 
+            'id' => 1, 
             'card_id' => 77,
             'color' => 'Red'
         ]);
 
         factory(CardColor::class)->create([
 
+            'id' => 2,
             'card_id' => 77,
             'color' => 'Green'
         ]);
 
         factory(CardName::class)->create([
 
+            'id' => 1,
             'card_id' => 77,
             'name' => 'Bob!'
         ]);
 
         factory(CardName::class)->create([
 
+            'id' => 2,
             'card_id' => 77,
             'name' => 'Bob strikes again!'
         ]); 
 
         factory(CardSubtype::class)->create([
 
+            'id' => 1,
             'card_id' => 77,
             'subtype' => 'Human'
         ]);
 
         factory(CardSubtype::class)->create([
 
+            'id' => 2,
             'card_id' => 77,
             'subtype' => 'Cleric'
         ]); 
 
         factory(CardSupertype::class)->create([
 
+            'id' => 1,
             'card_id' => 77,
             'supertype' => 'Ongoing'
         ]); 
 
         factory(CardSupertype::class)->create([
 
+            'id' => 2,
             'card_id' => 77,
             'supertype' => 'World'
         ]); 
 
         factory(CardType::class)->create([
 
+            'id' => 1,
             'card_id' => 77,
             'type' => 'Instant'
         ]);
 
         factory(CardType::class)->create([
 
+            'id' => 2,
             'card_id' => 77,
             'type' => 'Sorcery'
         ]);
@@ -336,7 +348,7 @@ class MtgJsonParserTest extends TestCase {
         $this->assertContains((string)$card->power, '5');
         $this->assertContains((string)$card->toughness, '4');
         $this->assertContains((string)$card->loyalty, '6');
-        $this->assertContains((string)$card->f_cost, '5');
+        $this->assertContains((string)$card->f_cost, '10');
         $this->assertContains((string)$card->note, 'awesome');
         $this->assertContains($card->layout, 'normal');
 

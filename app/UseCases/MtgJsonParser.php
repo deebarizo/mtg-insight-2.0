@@ -46,7 +46,6 @@ class MtgJsonParser {
 				continue;
 			}
 
-
 			$cardExists = Card::where('name', $card['name'])->first();
 
 			if ($cardExists) {
@@ -68,65 +67,7 @@ class MtgJsonParser {
 
 		$eCard = Card::where('name', $card['name'])->first();
 
-		if (isset($card['manaCost'])) {
-
-			$eCard->mana_cost = $card['manaCost'];
-		}
-
-		if (isset($card['cmc'])) {
-
-			$eCard->cmc = $card['cmc'];
-		} 
-
-		$eCard->middle_text = $card['type'];
-
-		if (isset($card['text'])) {
-
-			$eCard->rules_text = $card['text'];
-		}
-
-		if (isset($card['power'])) {
-
-			$eCard->power = $card['power'];
-		}
-
-		if (isset($card['toughness'])) {
-
-			$eCard->toughness = $card['toughness'];
-		}
-
-		if (isset($card['loyalty'])) {
-
-			$eCard->loyalty = $card['loyalty'];
-		} 
-
-		$eCard->layout = $card['layout'];
-
-		$eCard->save();		
-
-		$setCard = SetCard::where('set_id', $setId)->where('card_id', $eCard->id)->first();
-
-		if (!$setCard) {
-
-			$setCard = new SetCard;
-
-			$setCard->set_id = $setId;
-			$setCard->card_id = $eCard->id;
-			$setCard->rarity = $card['rarity'];
-			$setCard->multiverseid = $card['multiverseid'];
-
-			$setCard->save();
-		}
-
-		if ($setCard) {
-
-			$setCard->set_id = $setId;
-			$setCard->card_id = $eCard->id;
-			$setCard->rarity = $card['rarity'];
-			$setCard->multiverseid = $card['multiverseid'];
-
-			$setCard->save();	
-		}
+		$this->storeOrUpdateCard($eCard, $card, $setId);
 
 		$this->storeInOtherTables($eCard, $card);
 	}
@@ -136,6 +77,13 @@ class MtgJsonParser {
 		$eCard = new Card;
 
 		$eCard->name = $card['name'];
+
+		$this->storeOrUpdateCard($eCard, $card, $setId);
+
+		$this->storeInOtherTables($eCard, $card);
+	}
+
+	private function storeOrUpdateCard($eCard, $card, $setId) {
 
 		if (isset($card['manaCost'])) {
 
@@ -193,31 +141,47 @@ class MtgJsonParser {
 			$eCard->loyalty = null;
 		}
 
-		if (isset($card['cmc'])) {
+		if (isset($card['cmc']) && !isset($eCard->f_cost)) {
 
 			$eCard->f_cost = $card['cmc'];
 		
-		} else {
+		} elseif (!isset($card['cmc']) && !isset($eCard->f_cost)) {
 
 			$eCard->f_cost = null;
 		}
 
-		$eCard->note = null;
+		if (!isset($eCard->note)) {
+
+			$eCard->note = null;
+		}
 
 		$eCard->layout = $card['layout'];
 
 		$eCard->save();
 
-		$setCard = new SetCard;
+		$setCard = SetCard::where('set_id', $setId)->where('card_id', $eCard->id)->first();
 
-		$setCard->set_id = $setId;
-		$setCard->card_id = $eCard->id;
-		$setCard->rarity = $card['rarity'];
-		$setCard->multiverseid = $card['multiverseid'];
+		if (!$setCard) {
 
-		$setCard->save();
+			$setCard = new SetCard;
 
-		$this->storeInOtherTables($eCard, $card);
+			$setCard->set_id = $setId;
+			$setCard->card_id = $eCard->id;
+			$setCard->rarity = $card['rarity'];
+			$setCard->multiverseid = $card['multiverseid'];
+
+			$setCard->save();
+		}
+
+		if ($setCard) {
+
+			$setCard->set_id = $setId;
+			$setCard->card_id = $eCard->id;
+			$setCard->rarity = $card['rarity'];
+			$setCard->multiverseid = $card['multiverseid'];
+
+			$setCard->save();	
+		}
 	}
 
 	private function storeInOtherTables($eCard, $card) {
