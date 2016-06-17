@@ -60,6 +60,8 @@ class MtgJsonParser {
 			$this->storeNewCard($card, $eSet->id);
 		}
 
+		$this->message = 'Success!';
+
 		return $this;
 	}
 
