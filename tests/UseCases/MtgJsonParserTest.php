@@ -235,6 +235,7 @@ class MtgJsonParserTest extends TestCase {
 
         factory(Card::class)->create([
 
+            'id' => 77,
             'name' => 'Dragonlord Ojutai',
             'mana_cost' => '{2}{W}{U}',
             'cmc' => 4,
@@ -246,6 +247,78 @@ class MtgJsonParserTest extends TestCase {
             'f_cost' => 5, // this should not be updated
             'note' => 'awesome', // this should not be updated
             'layout' => 'double-faced'
+        ]);
+
+        factory(CardColorIdentity::class)->create([
+
+            'card_id' => 77,
+            'color_identity' => 'Red'
+        ]);
+
+        factory(CardColorIdentity::class)->create([
+
+            'card_id' => 77,
+            'color_identity' => 'Green'
+        ]);
+
+        factory(CardColor::class)->create([
+
+            'card_id' => 77,
+            'color' => 'Red'
+        ]);
+
+        factory(CardColor::class)->create([
+
+            'card_id' => 77,
+            'color' => 'Green'
+        ]);
+
+        factory(CardName::class)->create([
+
+            'card_id' => 77,
+            'name' => 'Bob!'
+        ]);
+
+        factory(CardName::class)->create([
+
+            'card_id' => 77,
+            'name' => 'Bob strikes again!'
+        ]); 
+
+        factory(CardSubtype::class)->create([
+
+            'card_id' => 77,
+            'subtype' => 'Human'
+        ]);
+
+        factory(CardSubtype::class)->create([
+
+            'card_id' => 77,
+            'subtype' => 'Cleric'
+        ]); 
+
+        factory(CardSupertype::class)->create([
+
+            'card_id' => 77,
+            'supertype' => 'Ongoing'
+        ]); 
+
+        factory(CardSupertype::class)->create([
+
+            'card_id' => 77,
+            'supertype' => 'World'
+        ]); 
+
+        factory(CardType::class)->create([
+
+            'card_id' => 77,
+            'type' => 'Instant'
+        ]);
+
+        factory(CardType::class)->create([
+
+            'card_id' => 77,
+            'type' => 'Sorcery'
         ]);
 
         $root = $root = $this->setUpFile($this->files['valid']['containsExistingCard']);
@@ -271,6 +344,108 @@ class MtgJsonParserTest extends TestCase {
 
         $this->assertContains($setCard->rarity, 'Mythic Rare');
         $this->assertContains((string)$setCard->multiverseid, '394549');
+
+        $cardColorIdentities = CardColorIdentity::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardColorIdentities);
+
+        foreach ($cardColorIdentities as $key => $cardColorIdentity) {
+            
+            if ($key === 0) {
+
+                $this->assertContains($cardColorIdentity->color_identity, 'White');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardColorIdentity->color_identity, 'Blue');
+            }
+        }
+
+        $cardColors = CardColor::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardColors);
+
+        foreach ($cardColors as $key => $cardColor) {
+            
+            if ($key === 0) {
+
+                $this->assertContains($cardColor->color, 'White');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardColor->color, 'Blue');
+            }
+        }
+
+        $cardNames = CardName::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardNames);
+
+        foreach ($cardNames as $key => $cardName) {
+            
+            if ($key === 0) {
+
+                $this->assertContains($cardName->name, 'Archangel Avacyn');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardName->name, 'Avacyn, the Purifier');
+            }            
+        }
+
+        $cardSubtypes = CardSubtype::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardSubtypes);
+
+        foreach ($cardSubtypes as $key => $cardSubtype) {
+
+            if ($key === 0) {
+
+                $this->assertContains($cardSubtype->subtype, 'Elder');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardSubtype->subtype, 'Dragon');
+            }   
+        }
+
+        $cardSupertypes = CardSupertype::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardSupertypes);
+
+        foreach ($cardSupertypes as $key => $cardSupertype) {
+
+            if ($key === 0) {
+
+                $this->assertContains($cardSupertype->supertype, 'Legendary');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardSupertype->supertype, 'Basic');
+            }
+        }
+
+        $cardTypes = CardType::where('card_id', $card->id)->get();
+
+        $this->assertCount(2, $cardTypes);
+
+        foreach ($cardTypes as $key => $cardType) {
+            
+            if ($key === 0) {
+
+                $this->assertContains($cardType->type, 'Artifact');
+            }
+
+            if ($key === 1) {
+
+                $this->assertContains($cardType->type, 'Creature');
+            }
+        }
     }
 
     /** @test */

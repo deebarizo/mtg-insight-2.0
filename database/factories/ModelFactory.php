@@ -68,3 +68,64 @@ $factory->define(App\Models\SetCard::class, function ($faker) {
         'updated_at' => '2015-03-13'
     ];
 });
+
+$factory->define(App\Models\CardColorIdentity::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
+
+
+$factory->define(App\Models\CardColor::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
+
+$factory->define(App\Models\CardName::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
+
+$factory->define(App\Models\CardSubtype::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
+
+$factory->define(App\Models\CardSupertype::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
+
+$factory->define(App\Models\CardType::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});

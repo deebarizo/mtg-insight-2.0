@@ -116,8 +116,6 @@ class MtgJsonParser {
 			$setCard->multiverseid = $card['multiverseid'];
 
 			$setCard->save();
-
-			return;
 		}
 
 		if ($setCard) {
@@ -129,6 +127,8 @@ class MtgJsonParser {
 
 			$setCard->save();	
 		}
+
+		$this->storeInOtherTables($eCard, $card);
 	}
 
 	private function storeNewCard($card, $setId) {
@@ -217,34 +217,51 @@ class MtgJsonParser {
 
 		$setCard->save();
 
+		$this->storeInOtherTables($eCard, $card);
+	}
+
+	private function storeInOtherTables($eCard, $card) {
+
 		if (isset($card['colorIdentity'])) {
 
 			$colorIdentities = $card['colorIdentity'];
+
+			CardColorIdentity::where('card_id', $eCard->id)->delete();
 
 			$this->storeColorIdentities($eCard->id, $colorIdentities);
 		}
 
 		if (isset($card['colors'])) {
 
+			CardColor::where('card_id', $eCard->id)->delete();
+
 			$this->storeColors($eCard->id, $card['colors']);
 		}
 
 		if (isset($card['names'])) {
+
+			CardName::where('card_id', $eCard->id)->delete();
 
 			$this->storeNames($eCard->id, $card['names']);
 		}
 
 		if (isset($card['subtypes'])) {
 
+			CardSubtype::where('card_id', $eCard->id)->delete();
+
 			$this->storeSubtypes($eCard->id, $card['subtypes']);
 		}
 
 		if (isset($card['supertypes'])) {
 
+			CardSupertype::where('card_id', $eCard->id)->delete();
+
 			$this->storeSupertypes($eCard->id, $card['supertypes']);
 		}
 
 		if (isset($card['types'])) {
+
+			CardType::where('card_id', $eCard->id)->delete();
 
 			$this->storeTypes($eCard->id, $card['types']);
 		}
