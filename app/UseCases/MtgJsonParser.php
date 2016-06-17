@@ -53,16 +53,59 @@ class MtgJsonParser {
 
 				$this->cardExistsCount++;
 
+				$this->updateExistingCard($card, $eSet->id);
+
 				continue;
 			}
 
-			$this->storeCard($card, $eSet->id);
+			$this->storeNewCard($card, $eSet->id);
 		}
 
 		return $this;
 	}
 
-	private function storeCard($card, $setId) {
+	private function updateExistingCard($card, $setId) {
+
+		$eCard = Card::where('name', $card['name'])->first();
+
+		if (isset($card['manaCost'])) {
+
+			$eCard->mana_cost = $card['manaCost'];
+		}
+
+		if (isset($card['cmc'])) {
+
+			$eCard->cmc = $card['cmc'];
+		} 
+
+		$eCard->middle_text = $card['type'];
+
+		if (isset($card['text'])) {
+
+			$eCard->rules_text = $card['text'];
+		}
+
+		if (isset($card['power'])) {
+
+			$eCard->power = $card['power'];
+		}
+
+		if (isset($card['toughness'])) {
+
+			$eCard->toughness = $card['toughness'];
+		}
+
+		if (isset($card['loyalty'])) {
+
+			$eCard->loyalty = $card['loyalty'];
+		} 
+
+		$eCard->layout = $card['layout'];
+
+		$eCard->save();		
+	}
+
+	private function storeNewCard($card, $setId) {
 
 		$eCard = new Card;
 
