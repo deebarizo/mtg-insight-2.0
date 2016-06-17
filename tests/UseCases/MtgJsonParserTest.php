@@ -231,7 +231,7 @@ class MtgJsonParserTest extends TestCase {
     }
 
     /** @test */
-    public function updates_existing_card() {    
+    public function updates_existing_card_without_existing_SetCard() {    
 
         factory(Card::class)->create([
 
@@ -266,6 +266,42 @@ class MtgJsonParserTest extends TestCase {
         $this->assertContains((string)$card->f_cost, '5');
         $this->assertContains((string)$card->note, 'awesome');
         $this->assertContains($card->layout, 'normal');
+
+        $setCard = SetCard::where('set_id', 3)->where('card_id', $card->id)->first();
+
+        $this->assertContains($setCard->rarity, 'Mythic Rare');
+        $this->assertContains((string)$setCard->multiverseid, '394549');
+    }
+
+    /** @test */
+    public function updates_existing_card_with_existing_SetCard() {   
+
+        factory(Card::class)->create([
+
+            'id' => 77,
+            'name' => 'Dragonlord Ojutai'
+        ]);
+
+        factory(SetCard::class)->create([
+
+            'set_id' => 3,
+            'card_id' => 77,
+            'rarity' => 'Rare',
+            'multiverseid' => 1
+        ]);
+
+        $root = $root = $this->setUpFile($this->files['valid']['containsExistingCard']);
+
+        $mtgJsonParser = new MtgJsonParser; 
+
+        $results = $mtgJsonParser->parseJson($root->url().'/test.json');
+
+        $card = Card::where('name', 'Dragonlord Ojutai')->first();
+
+        $setCard = SetCard::where('set_id', 3)->where('card_id', $card->id)->first();
+
+        $this->assertContains($setCard->rarity, 'Mythic Rare');
+        $this->assertContains((string)$setCard->multiverseid, '394549');
     }
 
 }

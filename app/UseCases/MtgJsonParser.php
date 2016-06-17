@@ -103,6 +103,32 @@ class MtgJsonParser {
 		$eCard->layout = $card['layout'];
 
 		$eCard->save();		
+
+		$setCard = SetCard::where('set_id', $setId)->where('card_id', $eCard->id)->first();
+
+		if (!$setCard) {
+
+			$setCard = new SetCard;
+
+			$setCard->set_id = $setId;
+			$setCard->card_id = $eCard->id;
+			$setCard->rarity = $card['rarity'];
+			$setCard->multiverseid = $card['multiverseid'];
+
+			$setCard->save();
+
+			return;
+		}
+
+		if ($setCard) {
+
+			$setCard->set_id = $setId;
+			$setCard->card_id = $eCard->id;
+			$setCard->rarity = $card['rarity'];
+			$setCard->multiverseid = $card['multiverseid'];
+
+			$setCard->save();	
+		}
 	}
 
 	private function storeNewCard($card, $setId) {

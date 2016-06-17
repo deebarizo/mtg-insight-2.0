@@ -56,3 +56,15 @@ $factory->define(App\Models\Card::class, function ($faker) {
         'updated_at' => '2015-03-13'
     ];
 });
+
+$factory->define(App\Models\SetCard::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'rarity' => 'Rare',
+        'multiverseid' => 1,
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
