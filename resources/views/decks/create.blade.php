@@ -36,7 +36,7 @@
 			<div class="col-lg-12"> 
 				<div class="form-group">
 					<label for="decklist">Decklist:</label>
-					<textarea name="decklist" class="form-control" style="width: 50%" rows="25"></textarea>
+					<textarea name="decklist" class="form-control" style="width: 50%" rows="25">{{ old('decklist') }}</textarea>
 				</div>
 			</div>
 

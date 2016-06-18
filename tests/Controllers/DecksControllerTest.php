@@ -58,7 +58,26 @@ class DecksControllerTest extends TestCase {
         $this->see('Grand Prix - Minneapolis - 2016-05-28');
     }    
 
+    /** @test */
+    public function validates_invalid_card() {
 
+        $this->setUpEvent();
+
+        $this->call('POST', '/decks', [
+
+            'player' => 'Bob Jones',
+            'finish' => 1,
+            'event-id' => 2,
+            'decklist' => '4 Bob\'s Awesome Bolt'
+        ]);
+
+        $this->assertRedirectedTo('/decks/create');
+
+        $this->followRedirects();
+
+        $this->see('The card, Bob\'s Awesome Bolt, does not exist in the database.');
+
+    }
 
 
 }

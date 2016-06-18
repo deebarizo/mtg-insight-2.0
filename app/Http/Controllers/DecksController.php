@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Models\Event;
 use App\Models\EventDeck;
 
+use App\Models\Card;
+
 class DecksController extends Controller
 {
     /**
@@ -58,6 +60,7 @@ class DecksController extends Controller
         $player = trim($request->input('player'));
         $finish = trim($request->input('finish'));
         $eventId = trim($request->input('event-id'));
+        $decklist = trim($request->input('decklist'));
 
         $deck = EventDeck::where('player', $player)
                          ->where('finish', $finish)
@@ -72,6 +75,46 @@ class DecksController extends Controller
 
             return redirect()->route('decks.create')->with('message', $message);
         }
+
+        $decklistLines = explode(PHP_EOL, $decklist);
+
+        $copies = [];
+
+        $role = 'md';
+
+        foreach ($decklistLines as $key => $decklistLine) {
+
+            if (!is_numeric(substr($decklistLine, 0, 1))) {
+
+                $role = 'sb';
+
+                continue;
+            }
+            
+            $copy = [
+
+                'quantity' => trim(preg_replace("/(\d+)(.+)/", "$1", $decklistLine)),
+                'card_name' => trim(preg_replace("/(\d+)(\s+)(.+)/", "$3", $decklistLine)),
+                'role' => $role
+            ];
+
+            $card = Card::where('name', $copy['card_name'])->first();
+
+            if (!$card) {
+
+                $message = 'The card, '.$copy['card_name'].', does not exist in the database.';
+
+                $request->flash();
+
+                return redirect()->route('decks.create')->with('message', $message);                
+            }
+
+            $copy['card_id'] = $card->id;
+
+            $copies[] = $copy;
+        }
+
+        ddAll($copies);
 
         $message = 'Success!';
 
