@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Models\Event;
 use App\Models\EventDeck;
+use App\Models\EventDeckCopy;
 
 use App\Models\Card;
 
@@ -82,6 +83,8 @@ class DecksController extends Controller
 
         $role = 'md';
 
+        # ddAll($decklistLines);
+
         foreach ($decklistLines as $key => $decklistLine) {
 
             if (!is_numeric(substr($decklistLine, 0, 1))) {
@@ -114,7 +117,25 @@ class DecksController extends Controller
             $copies[] = $copy;
         }
 
-        ddAll($copies);
+        $eventDeck = new EventDeck;
+
+        $eventDeck->player = $player;
+        $eventDeck->finish = $finish;
+        $eventDeck->event_id = $eventId;
+
+        $eventDeck->save();
+
+        foreach ($copies as $key => $copy) {
+
+            $eventDeckCopy = new EventDeckCopy;
+
+            $eventDeckCopy->event_deck_id = $eventDeck->id;
+            $eventDeckCopy->quantity = $copy['quantity'];
+            $eventDeckCopy->card_id = $copy['card_id'];
+            $eventDeckCopy->role = $copy['role'];
+
+            $eventDeckCopy->save();
+        }
 
         $message = 'Success!';
 

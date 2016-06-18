@@ -6,6 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 use App\Models\Event;
 use App\Models\EventDeck;
+use App\Models\EventDeckCopy;
+
+use App\Models\Card;
 
 class DecksControllerTest extends TestCase {
 
@@ -58,7 +61,7 @@ class DecksControllerTest extends TestCase {
         $this->see('Grand Prix - Minneapolis - 2016-05-28');
     }    
 
-    /** @test */
+    /** @test */ 
     public function validates_invalid_card() {
 
         $this->setUpEvent();
@@ -76,8 +79,59 @@ class DecksControllerTest extends TestCase {
         $this->followRedirects();
 
         $this->see('The card, Bob\'s Awesome Bolt, does not exist in the database.');
+    } 
 
+    /** @test */
+    public function stores_valid_deck() {
+
+        $this->setUpEvent();
+
+        factory(Card::class)->create([
+
+            'id' => 120, 
+            'name' => 'Den Protector'
+        ]);
+
+        factory(Card::class)->create([
+
+            'id' => 121, 
+            'name' => 'Hangarback Walker'
+        ]);
+
+        $this->call('POST', '/decks', [
+
+            'player' => 'Bob Jones',
+            'finish' => 1,
+            'event-id' => 2,
+            'decklist' => "3 Den Protector\n\n\n2 Hangarback Walker"
+        ]);
+
+        $this->assertRedirectedTo('/decks');
+
+        $this->followRedirects();
+
+        $this->see('Success!');
+
+        $deck = EventDeck::where('player', 'Bob Jones')
+                          ->where('finish', 1)
+                          ->where('event_id', 2)
+                          ->get();
+
+        $this->assertCount(1, $deck);
+
+        $copy = EventDeckCopy::where('card_id', 120)
+                                ->where('quantity', 3)
+                                ->where('role', 'md')
+                                ->get();
+
+        $this->assertCount(1, $copy);
+
+        $copy = EventDeckCopy::where('card_id', 121)
+                                ->where('quantity', 2)
+                                ->where('role', 'sb')
+                                ->get();
+
+        $this->assertCount(1, $copy);
     }
-
 
 }

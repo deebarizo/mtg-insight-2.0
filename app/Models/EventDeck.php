@@ -10,4 +10,9 @@ class EventDeck extends Model {
 
     	return $this->belongsTo(Event::class);
     }
+
+    public function event_deck_copies() {
+
+    	return $this->hasMany(EventDeckCopy::class);
+    }
 }
