@@ -47,4 +47,30 @@ class EventsControllerTest extends TestCase {
     }
 
 
+    /** @test */
+    public function stores_valid_event() {
+
+        $this->call('POST', '/events', [
+
+            'name' => 'SCG Standard Open',
+            'location' => 'Baltimore',
+            'date' => '2016-04-09',
+            'url' => 'http://sales.starcitygames.com/deckdatabase/deckshow.php?event_ID=19&t[event]=1&start_date=2016-04-09&end_date=2016-04-10&city=&order_1=finish&limit=8&t_num=1&action=Show+Decks'
+        ]);
+
+        $this->assertRedirectedTo('/events');
+
+        $this->followRedirects();
+
+        $this->see('Success!');
+
+        $event = Event::where('name', 'SCG Standard Open')
+                      ->where('location', 'Baltimore')
+                      ->where('date', '2016-04-09')
+                      ->get();
+
+        $this->assertCount(1, $event);
+    }
+
+
 }

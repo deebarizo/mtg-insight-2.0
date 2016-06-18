@@ -54,9 +54,14 @@ class EventsController extends Controller
             'url' => 'required'
         ]);
 
-        $event = Event::where('name', $request->input('name'))
-                      ->where('location', $request->input('location'))
-                      ->where('date', $request->input('date'))
+        $name = trim($request->input('name'));
+        $location = trim($request->input('location'));
+        $date = trim($request->input('date'));
+        $url = trim($request->input('url'));
+
+        $event = Event::where('name', $name)
+                      ->where('location', $location)
+                      ->where('date', $date)
                       ->first();
 
         if ($event) {
@@ -67,6 +72,15 @@ class EventsController extends Controller
 
             return redirect()->route('events.create')->with('message', $message);
         }
+
+        $event = new Event;
+
+        $event->name = $name;
+        $event->location = $location;
+        $event->date = $date;
+        $event->url = $url;
+
+        $event->save();
 
         $message = 'Success!';
 
