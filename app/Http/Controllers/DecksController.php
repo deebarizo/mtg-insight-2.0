@@ -47,7 +47,35 @@ class DecksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            
+            'player' => 'required',
+            'finish' => 'required',
+            'event-id' => 'required', 
+            'decklist' => 'required'
+        ]);
+
+        $player = trim($request->input('player'));
+        $finish = trim($request->input('finish'));
+        $eventId = trim($request->input('event-id'));
+
+        $deck = EventDeck::where('player', $player)
+                         ->where('finish', $finish)
+                         ->where('event_id', $eventId)
+                         ->first();
+
+        if ($deck) {
+
+            $message = 'This deck already exists in the database.';
+
+            $request->flash();
+
+            return redirect()->route('decks.create')->with('message', $message);
+        }
+
+        $message = 'Success!';
+
+        return redirect()->route('decks.index')->with('message', $message);
     }
 
     /**

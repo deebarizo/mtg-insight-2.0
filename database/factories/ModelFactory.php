@@ -143,3 +143,15 @@ $factory->define(App\Models\Event::class, function ($faker) {
         'updated_at' => '2015-03-13'
     ];
 });
+
+$factory->define(App\Models\EventDeck::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'player' => 'Bob',
+        'finish' => 1,
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});

@@ -6,7 +6,7 @@
 
 	<div class="row">
 
-		{!! Form::open(array('url' => 'decks'	)) !!}
+		{!! Form::open(array('url' => 'decks')) !!}
 
 			<div class="col-lg-3"> 
 				<div class="form-group">
