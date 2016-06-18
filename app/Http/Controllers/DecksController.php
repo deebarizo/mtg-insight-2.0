@@ -12,6 +12,8 @@ use App\Models\EventDeckCopy;
 
 use App\Models\Card;
 
+use DB;
+
 class DecksController extends Controller
 {
     /**
@@ -24,7 +26,21 @@ class DecksController extends Controller
         $titleTag = 'Decks | ';
         $h2Tag = 'Decks';
 
-        return view('decks.index', compact('titleTag', 'h2Tag'));
+        $decks = DB::table('event_decks')
+                    ->select(DB::raw('event_decks.id,
+                                      event_decks.player,
+                                      event_decks.finish,
+                                      event_decks.event_id,
+                                      events.name as event_name,
+                                      events.location as event_location,
+                                      events.date as event_date'))
+                    ->join('events', 'events.id', '=', 'event_decks.event_id')
+                    ->orderBy('date', 'desc')
+                    ->orderBy('event_id', 'desc')
+                    ->orderBy('finish', 'asc')
+                    ->get();
+
+        return view('decks.index', compact('titleTag', 'h2Tag', 'decks'));
     }
 
     /**
@@ -37,7 +53,7 @@ class DecksController extends Controller
         $titleTag = 'Create Deck | ';
         $h2Tag = 'Create Deck';
 
-        $events = Event::take(7)->orderBy('date', 'desc')->get();
+        $events = Event::take(7)->orderBy('date', 'desc')->orderBy('id', 'desc')->get();
 
         return view('decks.create', compact('titleTag', 'h2Tag', 'events'));
     }

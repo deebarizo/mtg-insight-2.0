@@ -97,7 +97,12 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::find($id);
+
+        $titleTag = $event->name.' - '.$event->location.' - '.$event->date.' | ';
+        $h2Tag = $event->name.' - '.$event->location. ' - '.$event->date;
+
+        return view('events.show', compact('titleTag', 'h2Tag', 'event'));        
     }
 
     /**
