@@ -129,3 +129,17 @@ $factory->define(App\Models\CardType::class, function ($faker) {
         'updated_at' => '2015-03-13'
     ];
 });
+
+$factory->define(App\Models\Event::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'name' => 'Bob event',
+        'location' => 'Bob location',
+        'date' => '2015-03-13',
+        'url' => 'Bob url', 
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});

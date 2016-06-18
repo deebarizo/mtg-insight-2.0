@@ -156,7 +156,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Collective\Html\HtmlServiceProvider::class // https://laravelcollective.com/docs/5.2/html
+        Collective\Html\HtmlServiceProvider::class, // https://laravelcollective.com/docs/5.2/html
+
+        Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class // https://github.com/felixkiss/uniquewith-validator
     ],
 
     /*

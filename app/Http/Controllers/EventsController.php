@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Validator;
+
+use App\Models\Event;
+
 class EventsController extends Controller
 {
     /**
@@ -49,6 +53,20 @@ class EventsController extends Controller
             'date' => 'required|date',
             'url' => 'required'
         ]);
+
+        $event = Event::where('name', $request->input('name'))
+                      ->where('location', $request->input('location'))
+                      ->where('date', $request->input('date'))
+                      ->first();
+
+        if ($event) {
+
+            $message = 'This event already exists in the database.';
+
+            $request->flash();
+
+            return redirect()->route('events.create')->with('message', $message);
+        }
 
         $message = 'Success!';
 
