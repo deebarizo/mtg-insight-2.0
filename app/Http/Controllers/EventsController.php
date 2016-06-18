@@ -22,7 +22,9 @@ class EventsController extends Controller
         $titleTag = 'Events | ';
         $h2Tag = 'Events';
 
-        return view('events.index', compact('titleTag', 'h2Tag'));
+        $events = Event::orderBy('date', 'desc')->get();
+
+        return view('events.index', compact('titleTag', 'h2Tag', 'events'));
     }
 
     /**
