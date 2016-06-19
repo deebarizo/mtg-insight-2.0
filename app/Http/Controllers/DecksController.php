@@ -198,7 +198,30 @@ class DecksController extends Controller
      */
     public function show($id)
     {
-        //
+        $deck = EventDeck::with('event')->where('id', $id)->first();
+
+        $roles = ['md', 'sb'];
+
+        $copies = [
+
+            'md' => [],
+            'sb' => []
+        ];
+
+        foreach ($roles as $key => $role) {
+
+            $copies[$role] = DB::table('event_deck_copies')
+                                ->select('*')
+                                ->join('cards', 'cards.id', '=', 'event_deck_copies.card_id')
+                                ->where('event_deck_id', $id)
+                                ->where('role', $role)
+                                ->get();
+        }
+
+        $titleTag = 'Deck '.$id.' by '.$deck->player.' | '.$deck->event->name.' '.$deck->event->location.' | ';
+        $h2Tag = 'Deck '.$id.' by '.$deck->player;
+
+        return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles'));
     }
 
     /**
