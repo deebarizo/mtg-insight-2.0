@@ -23,11 +23,11 @@ Route::get('/bob', function() {
 
 	$totalMetagamePoints = EventDeck::where('event_id', $eventId)->sum('finish');	
 
-	$finishMultipliers = [];
+	$multipliers = [];
 
-	for ($i = 1; $i <= $numOfDecks; $i++) { 
+	for ($finishIndex = 1; $finishIndex <= $numOfDecks; $finishIndex++) { 
 		
-		$finishMultipliers[$i] = ($numOfDecks - $i + 1) / $totalMetagamePoints;
+		$multipliers[$finishIndex] = ($numOfDecks - $finishIndex + 1) / $totalMetagamePoints;
 	}
 
 	foreach ($event->event_decks as $deck) {
@@ -47,7 +47,7 @@ Route::get('/bob', function() {
 			$temp1CardMetagame->event_deck_id = $deck->id;
 			$temp1CardMetagame->card_id = $copy->card_id;
 			$temp1CardMetagame->quantity = $copy->quantity;
-			$temp1CardMetagame->percentage = numFormat($copy->quantity / $max[$copy->role] * 100 * $finishMultipliers[$deck->finish], 2);
+			$temp1CardMetagame->percentage = numFormat($copy->quantity / $max[$copy->role] * 100 * $multipliers[$deck->finish], 2);
 			$temp1CardMetagame->role = $copy->role;
 
 			$temp1CardMetagame->save();
