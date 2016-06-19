@@ -2,6 +2,7 @@
 
 use App\Models\Set;
 
+use App\Models\Event;
 use App\Models\EventDeck;
 use App\Models\EventDeckCopy;
 use App\Models\Card;
@@ -10,29 +11,49 @@ use App\Models\Temp1CardMetagame;
 
 Route::get('/bob', function() {
 
-	$deckId = 24;
+	Temp1CardMetagame::getQuery()->delete();
 
-	$deck = EventDeck::find($deckId);
+	$eventId = 4;
 
-	$max = [
+	$event = Event::with('event_decks')->find($eventId);
 
-		'md' => $deck->md_count / 15,
-		'sb' => 4
-	];
+	$numOfDecks = count($event->event_decks);
 
-	$copies = EventDeckCopy::with('event_deck')->with('card')->where('event_deck_id', $deckId)->get();
+	$totalMaxSb = 0;
 
-	foreach ($copies as $copy) {
+	$totalMetagamePoints = EventDeck::where('event_id', $eventId)->sum('finish');	
+
+	$finishMultipliers = [];
+
+	for ($i = 1; $i <= $numOfDecks; $i++) { 
 		
-		$temp1CardMetagame = new Temp1CardMetagame;
+		$finishMultipliers[$i] = ($numOfDecks - $i + 1) / $totalMetagamePoints;
+	}
 
-		$temp1CardMetagame->event_deck_id = $deckId;
-		$temp1CardMetagame->card_id = $copy->card_id;
-		$temp1CardMetagame->quantity = $copy->quantity;
-		$temp1CardMetagame->percentage = numFormat($copy->quantity / $max[$copy->role] * 100, 2);
-		$temp1CardMetagame->role = $copy->role;
+	foreach ($event->event_decks as $deck) {
 
-		$temp1CardMetagame->save();
+		$max = [
+
+			'md' => $deck->md_count / 15,
+			'sb' => 4
+		];
+
+		$copies = EventDeckCopy::with('event_deck')->with('card')->where('event_deck_id', $deck->id)->get();
+
+		foreach ($copies as $copy) {
+			
+			$temp1CardMetagame = new Temp1CardMetagame;
+
+			$temp1CardMetagame->event_deck_id = $deck->id;
+			$temp1CardMetagame->card_id = $copy->card_id;
+			$temp1CardMetagame->quantity = $copy->quantity;
+			$temp1CardMetagame->percentage = numFormat($copy->quantity / $max[$copy->role] * 100 * $finishMultipliers[$deck->finish], 2);
+			$temp1CardMetagame->role = $copy->role;
+
+			$temp1CardMetagame->save();
+		}
+
+		$totalMaxSb += $deck->sb_count / 4 * 100;
 	}
 
 	$totalMdPercentage = Temp1CardMetagame::where('role', 'md')->sum('percentage');
@@ -40,11 +61,12 @@ Route::get('/bob', function() {
 	$totalSbPercentage = Temp1CardMetagame::where('role', 'sb')->sum('percentage');
 
 	prf('Total MD%: '.$totalMdPercentage); // ($totalMdPercentage > 1499.50 && $totalMdPercentage < 1500.50)
+	prf(' ');
 
 	prf('Total SB%: '.$totalSbPercentage); // $totalSbPercentage == $max['sb'] / 4 * 100
+	prf('Total Max SB%: '.$totalMaxSb / $numOfDecks);
 
-	Temp1CardMetagame::getQuery()->delete();
-
+	prf(' ');
 	ddAll('Success!');
 });
 
