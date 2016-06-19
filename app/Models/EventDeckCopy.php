@@ -12,4 +12,9 @@ class EventDeckCopy extends Model {
 
     	return $this->belongsTo(EventDeck::class);
     }
+
+    public function card() {
+
+    	return $this->belongsTo(Card::class);
+    }
 }

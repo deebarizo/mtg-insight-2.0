@@ -10,4 +10,9 @@ class Card extends Model {
 
     	return $this->hasMany(SetCard::class);
     }    
+
+    public function event_deck_copies() {
+
+    	return $this->hasMany(EventDeckCopy::class);
+    }
 }

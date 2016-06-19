@@ -3,6 +3,19 @@
 use App\Models\Set;
 
 
+use App\Models\Card;
+use App\Models\EventDeckCopy;
+
+Route::get('/bob', function() {
+
+	$copy = EventDeckCopy::with('event_deck')->with('card')->where('event_deck_id', 24)->get();
+
+	ddAll($copy);
+});
+
+
+
+
 /****************************************************************************************
 HOME
 ****************************************************************************************/
