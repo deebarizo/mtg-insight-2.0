@@ -15,4 +15,9 @@ class Card extends Model {
 
     	return $this->hasMany(EventDeckCopy::class);
     }
+
+    public function temp1_card_metagames() {
+
+    	return $this->hasMany(Temp1CardMetagame::class);
+    }
 }
