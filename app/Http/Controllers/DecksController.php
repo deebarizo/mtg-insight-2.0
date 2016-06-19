@@ -99,7 +99,11 @@ class DecksController extends Controller
 
         $role = 'md';
 
-        # ddAll($decklistLines);
+        $roleCount = [
+
+            'md' => 0,
+            'sb' => 0
+        ];
 
         foreach ($decklistLines as $key => $decklistLine) {
 
@@ -131,6 +135,34 @@ class DecksController extends Controller
             $copy['card_id'] = $card->id;
 
             $copies[] = $copy;
+
+            if ($role === 'md') {
+
+                $roleCount['md'] += $copy['quantity'];
+            }
+
+            if ($role === 'sb') {
+
+                $roleCount['sb'] += $copy['quantity'];
+            }
+        }
+
+        if ($roleCount['md'] < 60) {
+
+            $message = 'This deck only has '.$roleCount['md'].' main deck cards.';
+
+            $request->flash();
+
+            return redirect()->route('decks.create')->with('message', $message);                
+        }
+
+        if ($roleCount['sb'] > 15) {
+
+            $message = 'This deck has '.$roleCount['sb'].' sideboard cards.';
+
+            $request->flash();
+
+            return redirect()->route('decks.create')->with('message', $message);                
         }
 
         $eventDeck = new EventDeck;
@@ -202,4 +234,5 @@ class DecksController extends Controller
     {
         //
     }
+    
 }

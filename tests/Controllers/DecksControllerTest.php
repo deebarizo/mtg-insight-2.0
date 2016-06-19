@@ -37,6 +37,21 @@ class DecksControllerTest extends TestCase {
     	]);
     }
 
+    private function setUpCards() {
+
+        factory(Card::class)->create([
+
+            'id' => 120, 
+            'name' => 'Den Protector'
+        ]);
+
+        factory(Card::class)->create([
+
+            'id' => 121, 
+            'name' => 'Hangarback Walker'
+        ]);
+    }
+
     /** @test */
     public function validates_duplicate_deck() {
 
@@ -81,29 +96,63 @@ class DecksControllerTest extends TestCase {
         $this->see('The card, Bob\'s Awesome Bolt, does not exist in the database.');
     } 
 
-    /** @test */
-    public function stores_valid_deck() {
+    /** @test */ 
+    public function validates_md_count_less_than_60() {
 
         $this->setUpEvent();
 
-        factory(Card::class)->create([
-
-            'id' => 120, 
-            'name' => 'Den Protector'
-        ]);
-
-        factory(Card::class)->create([
-
-            'id' => 121, 
-            'name' => 'Hangarback Walker'
-        ]);
+        $this->setUpCards();
 
         $this->call('POST', '/decks', [
 
             'player' => 'Bob Jones',
             'finish' => 1,
             'event-id' => 2,
-            'decklist' => "3 Den Protector\n\n\n2 Hangarback Walker"
+            'decklist' => "4 Den Protector\n55 Forest\n\n\n2 Hangarback Walker"
+        ]);
+
+        $this->assertRedirectedTo('/decks/create');
+
+        $this->followRedirects();
+
+        $this->see('This deck only has 59 main deck cards.');
+    }
+
+    /** @test */ 
+    public function validates_sb_count_more_than_15() {
+
+        $this->setUpEvent();
+
+        $this->setUpCards();
+
+        $this->call('POST', '/decks', [
+
+            'player' => 'Bob Jones',
+            'finish' => 1,
+            'event-id' => 2,
+            'decklist' => "4 Den Protector\n56 Forest\n\n\n16 Plains"
+        ]);
+
+        $this->assertRedirectedTo('/decks/create');
+
+        $this->followRedirects();
+
+        $this->see('This deck has 16 sideboard cards.');
+    }
+
+    /** @test */
+    public function stores_valid_deck() {
+
+        $this->setUpEvent();
+
+        $this->setUpCards();
+
+        $this->call('POST', '/decks', [
+
+            'player' => 'Bob Jones',
+            'finish' => 1,
+            'event-id' => 2,
+            'decklist' => "61 Den Protector\n\n\n2 Hangarback Walker"
         ]);
 
         $this->assertRedirectedTo('/decks');
@@ -120,7 +169,7 @@ class DecksControllerTest extends TestCase {
         $this->assertCount(1, $deck);
 
         $copy = EventDeckCopy::where('card_id', 120)
-                                ->where('quantity', 3)
+                                ->where('quantity', 61)
                                 ->where('role', 'md')
                                 ->get();
 
