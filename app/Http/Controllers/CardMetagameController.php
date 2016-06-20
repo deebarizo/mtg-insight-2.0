@@ -46,7 +46,7 @@ class CardMetagameController extends Controller
     {
         $this->validate($request, [
             
-            'date' => 'required|date',
+            'date' => 'required|date|unique:card_metagames'
         ]);
 
         $cardMetagameCreator = new CardMetagameCreator;

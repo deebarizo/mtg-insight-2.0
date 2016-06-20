@@ -155,3 +155,19 @@ $factory->define(App\Models\EventDeck::class, function ($faker) {
         'updated_at' => '2015-03-13'
     ];
 });
+
+$factory->define(App\Models\CardMetagame::class, function ($faker) {
+    
+    return [
+        
+        'id' => rand(50, 100),
+        'date' => '2015-03-13',
+        'card_id' => 1,
+        'md_percentage' => 50.00,
+        'sb_percentage' => 50.00,
+        'total_percentage' => 100.00,
+        'created_at' => '2015-03-13',
+        'updated_at' => '2015-03-13'
+    ];
+});
+
