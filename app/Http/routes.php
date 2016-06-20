@@ -2,16 +2,6 @@
 
 use App\Models\Set;
 
-/*
-
-	SELECT name, sum(percentage), role FROM mtginsight.temp1_card_metagames
-	join cards
-	on cards.id = temp1_card_metagames.card_id
-	where role = 'md'
-	group by card_id
-	order by sum(percentage) desc;
-
-*/
 
 /****************************************************************************************
 HOME

@@ -9,6 +9,10 @@ use App\Models\Temp1CardMetagame;
 
 use App\Models\MetagameTimePeriod;
 
+use App\Models\CardMetagame;
+
+use DB;
+
 class CardMetagameCreator {
 
 	public function create($date) {
@@ -164,9 +168,138 @@ class CardMetagameCreator {
 			return $this;
 		}
 
+		$tempCardMetagame = [
+
+			'md' => [],
+			'sb' => []
+		];
+
+		$roles = ['md', 'sb'];
+
+		foreach ($roles as $role) {
+			
+			$tempCardMetagame[$role] = Temp1CardMetagame::select(DB::raw('card_id, sum(percentage) as percentage'))
+													->with('card')
+													->where('role', $role)
+													->groupBy('card_id')
+													->orderBy('percentage', 'desc')
+													->get();
+		}
+
+		$cardMetagame1 = [];
+		$cardMetagame2 = [];
+
+		foreach ($tempCardMetagame['md'] as $tempCard) {
+			
+			$cardMetagame1[] = [
+
+				'card_id' => $tempCard->card_id,
+				'md_percentage' => $tempCard->percentage	
+			];
+		}
+
+		unset($tempCard);
+
+		foreach ($tempCardMetagame['sb'] as $tempCard) {
+
+			$isMdCard = false;
+			
+			foreach ($cardMetagame1 as &$card) {
+
+				if ($tempCard->card_id === $card['card_id']) {
+
+					$card['sb_percentage'] = $tempCard->percentage;
+
+					$isMdCard = true;
+
+					unset($card);
+
+					break;
+				}
+			}
+
+			unset($card);
+
+			if ($isMdCard) {
+
+				continue;	
+			}
+
+			$cardMetagame2[] = [
+
+				'card_id' => $tempCard->card_id,
+				'sb_percentage' => $tempCard->percentage	
+			];
+		}
+
+		$cardMetagame = array_merge($cardMetagame1, $cardMetagame2);
+
+		foreach ($cardMetagame as &$card) {
+			
+			if (!isset($card['md_percentage'])) {
+
+				$card['md_percentage'] = 0;
+			}
+
+			if (!isset($card['sb_percentage'])) {
+
+				$card['sb_percentage'] = 0;
+			}
+
+			$card['total_percentage'] = numFormat($card['md_percentage'] + $card['sb_percentage'], 2);
+		}
+
+		unset($card);
+
+		foreach ($cardMetagame as $card) {
+			
+			$cardMetagame = new CardMetagame;
+
+			$cardMetagame->date = $date;
+			$cardMetagame->card_id = $card['card_id'];
+			$cardMetagame->md_percentage = $card['md_percentage'];
+			$cardMetagame->sb_percentage = $card['sb_percentage'];
+			$cardMetagame->total_percentage = $card['total_percentage'];
+
+			$cardMetagame->save(); 
+		}
+
+		$totalMdPercentage = CardMetagame::where('date', $date)->sum('md_percentage');
+
+		if ($totalMdPercentage <= 1499.50 || $totalMdPercentage >= 1500.50) {
+
+			$this->message = 'Total main deck percentage is '.$totalMdPercentage.'. It should be 1500.00.';
+
+			return $this;
+		}
+
+		$totalSbPercentage = CardMetagame::where('date', $date)->sum('sb_percentage'); // $totalSbPercentage == $max['sb'] / 4 * 100
+
+		$targetSbPercentage = $totalMaxSb / $numOfDecks;
+
+		$difference = abs($totalSbPercentage - $targetSbPercentage);
+
+		if ($difference > 1) {
+
+			$this->message = 'Total sideboard percentage is '.$totalSbPercentage.'. It should be '.$targetSbPercentage.'.';
+
+			return $this;
+		} 
+
 		$this->message = 'Success!';
 
 		return $this;
 	}
 
 }
+
+/*
+
+	SELECT name, sum(percentage), role FROM mtginsight.temp1_card_metagames
+	join cards
+	on cards.id = temp1_card_metagames.card_id
+	where role = 'md'
+	group by card_id
+	order by sum(percentage) desc;
+
+*/
