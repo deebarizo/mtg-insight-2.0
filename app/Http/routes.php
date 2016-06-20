@@ -137,9 +137,7 @@ Route::get('/bob', function() {
 
 				foreach ($copies as $copy) {
 
-					prf($max[$copy->role]);
-					
-				/*	$temp1CardMetagame = new Temp1CardMetagame;
+					$temp1CardMetagame = new Temp1CardMetagame;
 
 					$temp1CardMetagame->event_deck_id = $deck->id;
 					$temp1CardMetagame->card_id = $copy->card_id;
@@ -147,7 +145,7 @@ Route::get('/bob', function() {
 					$temp1CardMetagame->percentage = numFormat($copy->quantity / $max[$copy->role] * 100 * $multipliers[$deck->finish], 2);
 					$temp1CardMetagame->role = $copy->role;
 
-					$temp1CardMetagame->save(); */
+					$temp1CardMetagame->save(); 
 				}
 
 				$totalMaxSb += $deck->sb_count / 4 * 100;
