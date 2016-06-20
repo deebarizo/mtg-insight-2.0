@@ -164,6 +164,8 @@ class DecksControllerTest extends TestCase {
         $deck = EventDeck::where('player', 'Bob Jones')
                           ->where('finish', 1)
                           ->where('event_id', 2)
+                          ->where('md_count', 61)
+                          ->where('sb_count', 2)
                           ->get();
 
         $this->assertCount(1, $deck);

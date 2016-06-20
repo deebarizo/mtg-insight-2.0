@@ -169,6 +169,8 @@ class DecksController extends Controller
 
         $eventDeck->player = $player;
         $eventDeck->finish = $finish;
+        $eventDeck->md_count = $roleCount['md'];
+        $eventDeck->sb_count = $roleCount['sb'];
         $eventDeck->event_id = $eventId;
 
         $eventDeck->save();
