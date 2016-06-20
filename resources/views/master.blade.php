@@ -31,6 +31,7 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li class="{!! setActive('card_metagame*') !!}"><a href="/card_metagame">Card Metagame</a></li>
 						<li class="{!! setActive('events*') !!}"><a href="/events">Events</a></li>
 						<li class="{!! setActive('decks*') !!}"><a href="/decks">Decks</a></li>
 						<li class="{!! setActive('your_decks*') !!}"><a href="/your_decks">Your Decks</a></li>
