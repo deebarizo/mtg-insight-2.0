@@ -20,4 +20,9 @@ class Card extends Model {
 
     	return $this->hasMany(Temp1CardMetagame::class);
     }
+
+    public function card_metagames() {
+
+    	return $this->hasMany(CardMetagame::class);
+    }
 }
