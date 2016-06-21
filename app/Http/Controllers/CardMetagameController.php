@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Models\CardMetagame;
+
 use App\UseCases\CardMetagameCreator;
 
 class CardMetagameController extends Controller
@@ -20,7 +22,11 @@ class CardMetagameController extends Controller
         $titleTag = 'Card Metagame | ';
         $h2Tag = 'Card Metagame';
 
-        return view('card_metagame.index', compact('titleTag', 'h2Tag'));
+        $latestDate = CardMetagame::orderBy('date', 'desc')->take(1)->pluck('date')[0];
+
+        $cardMetagame = CardMetagame::with('card')->where('date', $latestDate)->orderBy('md_percentage', 'desc')->get();
+
+        return view('card_metagame.index', compact('titleTag', 'h2Tag', 'cardMetagame'));
     }
 
     /**
