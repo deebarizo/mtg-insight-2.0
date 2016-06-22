@@ -7,6 +7,7 @@
 
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/css/mtg-font-master/css/magic-font.css" /> <!-- Mana Symbols -->
 		<link rel="stylesheet" href="/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" href="/css/jquery.qtip.min.css">
 		<link rel="stylesheet" href="/css/style.css">

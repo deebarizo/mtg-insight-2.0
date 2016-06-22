@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-lg-12">
 
-			<p><a href="/card_metagame/create">Create Card Metagame</a> | Last Updated: {{ $cardMetagame[0]->date }}</p>
+			<p><a href="/card_metagame/create">Create Card Metagame</a> | Last Updated: {{ $latestDate }}</p>
 
 			<table id="card-metagame" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
@@ -20,10 +20,19 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($cardMetagame as $key => $card)
+					@foreach ($cards as $key => $card)
 						<tr>
+							<?php 
+								$cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); 
+							?>
+
 							<td>{{ $key + 1 }}</td>
-							<td>{{ $card->card->name }}</td>
+							<td>
+								<a class="card-name" target="_blank" href="/cards/{{ $card->id }}">{{ $card->name }}</a>
+								<div style="display: none" class="tool-tip-card-image">
+									<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
+								</div>
+							</td>
 							<td>{{ $card->md_percentage }}%</td>
 							<td>{{ $card->sb_percentage }}%</td>
 							<td>{{ $card->total_percentage }}%</td>
@@ -67,5 +76,7 @@
 	    }).draw();
 
 	</script>
+
+	<script src="/js/cards/tooltips.js"></script>
 
 @stop

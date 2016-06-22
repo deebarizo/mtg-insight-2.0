@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Models\Card;
+use App\Models\SetCard;
+
 use App\Models\CardMetagame;
+
+use DB;
 
 use App\UseCases\CardMetagameCreator;
 
@@ -24,9 +29,25 @@ class CardMetagameController extends Controller
 
         $latestDate = CardMetagame::orderBy('date', 'desc')->take(1)->pluck('date')[0];
 
-        $cardMetagame = CardMetagame::with('card')->where('date', $latestDate)->orderBy('md_percentage', 'desc')->get();
+        $cards = DB::table('cards')
+                    ->select('cards.id',
+                                'cards.name',
+                                'sets_cards.multiverseid',
+                                'sets.code',
+                                'cards.f_cost',
+                                'cards.note',
+                                'cards.mana_cost',
+                                'card_metagames.md_percentage',
+                                'card_metagames.sb_percentage',
+                                'card_metagames.total_percentage')
+                    ->join('sets_cards', 'sets_cards.card_id', '=', 'cards.id')
+                    ->join('sets', 'sets.id', '=', 'sets_cards.set_id')
+                    ->join('card_metagames', 'card_metagames.card_id', '=', 'cards.id')
+                    ->orderBy('cards.f_cost')
+                    ->groupBy('cards.name')
+                    ->get();
 
-        return view('card_metagame.index', compact('titleTag', 'h2Tag', 'cardMetagame'));
+        return view('card_metagame.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards'));
     }
 
     /**

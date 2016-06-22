@@ -7,9 +7,9 @@
 	<div class="row">
 		<div class="col-lg-12">
 
-			<p>Last updated: {{ $latestDate }}.</p>
+			<p>Last updated: {{ $latestDate }}</p>
 
-			<table id="card-metagame" class="table table-striped table-bordered table-hover table-condensed">
+			<table id="cards" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -25,7 +25,26 @@
 				<tbody>
 					@foreach ($cards as $card)
 						<tr>
-							<?php $cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); ?>
+							<?php 
+								$cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); 
+
+								if ($card->md_percentage === null) {
+
+									$card->md_percentage = NumFormat(0, 2);
+								}
+
+								if ($card->sb_percentage === null) {
+
+									$card->sb_percentage = NumFormat(0, 2);
+								}
+
+								if ($card->total_percentage === null) {
+
+									$card->total_percentage = NumFormat(0, 2);
+								}
+
+								$card->mana_cost = getManaSymbols($card->mana_cost);
+							?>
 
 							<td>
 								<a class="card-name" target="_blank" href="/cards/{{ $card->id }}">{{ $card->name }}</a>
@@ -53,6 +72,44 @@
 			</table>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		
+		var cards = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
+			
+			"bLengthChange": false,
+			"pageLength": 30,
+			"order": [[2, "asc"]],
+	        "columnDefs": [ 
+	        	{
+	            	"searchable": false,
+	            	"orderable": false,
+	            	"targets": 1
+	        	},
+	        	{
+	            	"searchable": false,
+	            	"orderable": false,
+	            	"targets": 3
+	        	},
+	        	{
+	            	"searchable": false,
+	            	"orderable": false,
+	            	"targets": 4
+	        	}
+	        ],
+	        "aoColumns": [
+	            null,
+	            null,
+	            null,
+	            null,
+	            null,
+	            { "orderSequence": [ "desc", "asc" ] },
+	            { "orderSequence": [ "desc", "asc" ] },
+	            { "orderSequence": [ "desc", "asc" ] }
+	        ]
+		});
+
+	</script>
 
 	<script src="/js/cards/tooltips.js"></script>
 

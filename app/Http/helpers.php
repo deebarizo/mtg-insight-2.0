@@ -41,4 +41,19 @@ function numFormat($number, $decimalPlaces = 2) {
 
 	return $number;
 }
+
+
+/****************************************************************************************
+GET MANA SYMBOLS
+****************************************************************************************/
+
+function getManaSymbols($manaCost) {
+
+	$manaCost = preg_replace("/{(\d+)}/", '<i class="mi mi-mana mi-shadow mi-$1"></i>', $manaCost);
+
+	$manaCost = preg_replace("/{(\D)}/", '<i class="mi mi-mana mi-shadow mi-$1"></i>', $manaCost);
+	$manaCost = strtolower($manaCost);
+
+	return $manaCost;
+}
 	
