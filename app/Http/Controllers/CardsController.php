@@ -28,23 +28,17 @@ class CardsController extends Controller
 
         $latestDate = CardMetagame::orderBy('date', 'desc')->take(1)->pluck('date')[0];
 
-        $cards = DB::table('cards')
-                    ->select('cards.id',
-                                'cards.name',
-                                'sets_cards.multiverseid',
-                                'sets.code',
-                                'cards.f_cost',
-                                'cards.note',
-                                'cards.mana_cost',
-                                'card_metagames.md_percentage',
-                                'card_metagames.sb_percentage',
-                                'card_metagames.total_percentage')
-                    ->join('sets_cards', 'sets_cards.card_id', '=', 'cards.id')
-                    ->join('sets', 'sets.id', '=', 'sets_cards.set_id')
-                    ->leftJoin('card_metagames', 'card_metagames.card_id', '=', 'cards.id')
-                    ->orderBy('cards.f_cost')
-                    ->groupBy('cards.name')
-                    ->get();
+        $cards = Card::select('cards.id', 
+                              'cards.name', 
+                              'cards.f_cost', 
+                              'cards.mana_cost')
+                     ->with('sets_cards.set', 'card_metagames', 'card_tags')
+                     ->groupBy('cards.name')
+                     ->join('card_metagames', 'card_metagames.card_id', '=', 'cards.id')
+                     ->where('card_metagames.date', $latestDate)
+                     ->get();
+
+        # ddAll($cards);
 
         return view('cards.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards'));
     }

@@ -19,6 +19,7 @@
 						<th>MD%</th>
 						<th>SB%</th>
 						<th>Total%</th>
+						<th>Tags</th> <!-- hidden-->
 					</tr>
 				</thead>
 				<tbody>
@@ -27,19 +28,40 @@
 							<?php 
 								$cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); 
 
-								if ($card->md_percentage === null) {
+								if ($card->card_metagames->isEmpty()) {
 
-									$card->md_percentage = NumFormat(0, 2);
-								}
+									$mdPercentage = NumFormat(0, 2);
+									$sbPercentage = NumFormat(0, 2);
+									$totalPercentage = NumFormat(0, 2);
+									
+								} else {
 
-								if ($card->sb_percentage === null) {
+									if (!isset($card->card_metagames[0]->md_percentage)) {
 
-									$card->sb_percentage = NumFormat(0, 2);
-								}
+										$mdPercentage = NumFormat(0, 2);
+									
+									} else {
 
-								if ($card->total_percentage === null) {
+										$mdPercentage = $card->card_metagames[0]->md_percentage;
+									}
 
-									$card->total_percentage = NumFormat(0, 2);
+									if (!isset($card->card_metagames[0]->sb_percentage)) {
+
+										$sbPercentage = NumFormat(0, 2);
+									
+									} else {
+
+										$sbPercentage = $card->card_metagames[0]->sb_percentage;
+									}
+
+									if (!isset($card->card_metagames[0]->total_percentage)) {
+
+										$totalPercentage = NumFormat(0, 2);
+									
+									} else {
+
+										$totalPercentage = $card->card_metagames[0]->total_percentage;
+									}
 								}
 
 								$card->mana_cost = getManaSymbols($card->mana_cost);
@@ -48,22 +70,21 @@
 							<td>
 								<a class="card-name" target="_blank" href="/cards/{{ $card->id }}">{{ $card->name }}</a>
 								<div style="display: none" class="tool-tip-card-image">
-									<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
+									<img width="223" height="311" src="/files/card_images/{{ $card->sets_cards[0]->set->code }}/{{ $cardNameNoApostrophe }}.png">
 								</div>
 							</td>
 							<td>
-								<a class="card-edit" href="/cards/{{ $card->id }}/edit">
-									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-								</a>
+								<a class="card-edit" href="/cards/{{ $card->id }}/edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 								<div style="display: none" class="tool-tip-card-image">
-									<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
+									<img width="223" height="311" src="/files/card_images/{{ $card->sets_cards[0]->set->code }}/{{ $cardNameNoApostrophe }}.png">
 								</div>
 							</td>
 							<td>{{ $card->f_cost }}</td>
 							<td>{!! $card->mana_cost !!}</td>
-							<td>{{ $card->md_percentage }}%</td>
-							<td>{{ $card->sb_percentage }}%</td>
-							<td>{{ $card->total_percentage }}%</td>
+							<td>{{ $mdPercentage }}%</td>
+							<td>{{ $sbPercentage }}%</td>
+							<td>{{ $totalPercentage }}%</td>
+							<td></td> <!-- hidden-->
 						</tr>
 					@endforeach
 				</tbody>
@@ -77,12 +98,16 @@
 			
 			"bLengthChange": false,
 			"pageLength": 30,
-			"order": [[4, "desc"]],
+			"order": [[2, "asc"]],
 	        "columnDefs": [ 
 	        	{
 	            	"searchable": false,
 	            	"orderable": false,
 	            	"targets": 1
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": 7
 	        	}
 	        ],
 	        "aoColumns": [
@@ -92,9 +117,14 @@
 	            null,
 	            { "orderSequence": [ "desc", "asc" ] },
 	            { "orderSequence": [ "desc", "asc" ] },
-	            { "orderSequence": [ "desc", "asc" ] }
+	            { "orderSequence": [ "desc", "asc" ] },
+	            null
 	        ]
 		});
+
+		cardsTable.column(7).search('^(?!.*non-spell-land)', true, false, false); 
+
+		cardsTable.draw();
 
 	</script>
 

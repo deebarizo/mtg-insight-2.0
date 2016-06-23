@@ -25,4 +25,9 @@ class Card extends Model {
 
     	return $this->hasMany(CardMetagame::class);
     }
+
+    public function card_tags() {
+
+        return $this->hasMany(CardTag::class);
+    }
 }
