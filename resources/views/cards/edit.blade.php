@@ -12,13 +12,18 @@
 				<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
 			</div>
 
-			<div class="col-lg-2">
+			<div class="col-lg-9">
 
 				{!! Form::open(array('action' => ['CardsController@update', $card->id],'method' => 'PUT')) !!}
 			
 					<div class="form-group">
 						{!! Form::label('f-cost', 'Functional Cost:') !!}
-							{!! Form::text('f-cost', $card->f_cost, ['class' => 'form-control']) !!}
+							{!! Form::text('f-cost', $card->f_cost, ['class' => 'form-control', 'style' => 'width: 25%']) !!}
+					</div>
+
+					<div class="form-group">
+						{!! Form::label('tags', 'Tags:') !!}
+							{!! Form::text('tags', $tags, ['class' => 'form-control', 'style' => 'width: 50%']) !!}
 					</div>
 
 					{!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}

@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Models\Card;
 use App\Models\SetCard;
+use App\Models\CardTag;
 
 use App\Models\CardMetagame;
 
@@ -101,7 +102,11 @@ class CardsController extends Controller
         $titleTag = 'Edit Card | '.$card->name.' | ';
         $h2Tag = 'Edit Card | '.$card->name;
 
-        return view('cards.edit', compact('titleTag', 'h2Tag', 'card'));
+        $cardTags = CardTag::where('card_id', $id)->get();
+
+        $tags = $this->createTagsString($cardTags);
+
+        return view('cards.edit', compact('titleTag', 'h2Tag', 'card', 'tags'));
     }
 
     /**
@@ -123,7 +128,7 @@ class CardsController extends Controller
 
                 $request->flash();
 
-                return redirect()->route('cards.index', $id)->with('message', $message);
+                return redirect()->route('cards.edit', $id)->with('message', $message);
             }
 
             $fCost = (int)$fCost;
@@ -137,7 +142,7 @@ class CardsController extends Controller
 
                 $request->flash();
 
-                return redirect()->route('cards.index', $id)->with('message', $message);                
+                return redirect()->route('cards.edit', $id)->with('message', $message);                
             }            
         }
 
@@ -151,6 +156,29 @@ class CardsController extends Controller
         $card->f_cost = $fCost;
 
         $card->save();
+
+        $cardTags = CardTag::where('card_id', $id)->get();
+
+        $tags = $this->createTagsString($cardTags);
+
+        if ($tags !== $request->input('tags')) {
+
+            CardTag::where('card_id', $id)->delete();
+
+            $newTags = trim($request->input('tags'));
+
+            $cardTags = explode(' ', $newTags);
+
+            foreach ($cardTags as $cardTag) {
+                
+                $eCardTag = new CardTag;
+
+                $eCardTag->card_id = $id;
+                $eCardTag->tag = $cardTag;
+
+                $eCardTag->save();
+            }
+        }
 
         $message = 'Success!';
 
@@ -166,5 +194,19 @@ class CardsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function createTagsString($cardTags) {
+
+        $tags = '';
+
+        foreach ($cardTags as $key => $cardTag) {
+            
+            $tags .= $cardTag->tag.' ';
+        }
+
+        $tags = trim($tags);
+
+        return $tags;
     }
 }
