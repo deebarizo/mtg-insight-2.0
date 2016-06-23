@@ -7,7 +7,9 @@
 	<div class="row">
 
 			<div class="col-lg-3">
-				<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $card->name }}.png">
+				<?php $cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); ?>
+
+				<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
 			</div>
 
 			<div class="col-lg-2">

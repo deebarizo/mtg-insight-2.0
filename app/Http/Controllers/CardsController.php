@@ -150,11 +150,6 @@ class CardsController extends Controller
 
         $card->f_cost = $fCost;
 
-        if (strpos($card->note, 'FC done') === false) {
-            
-            $card->note .= 'FC done';
-        }
-
         $card->save();
 
         $message = 'Success!';
