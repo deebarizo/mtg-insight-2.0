@@ -45,7 +45,7 @@
 
 	<script type="text/javascript">
 		
-		var cardMetagameTable = $('#card-metagame').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
+		var cardsTable = $('#card-metagame').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
 			
 			"bLengthChange": false,
 			"pageLength": 30,
@@ -66,9 +66,9 @@
 	        ]
 		});
 
-	    cardMetagameTable.on( 'order.dt search.dt', function () { // https://datatables.net/examples/api/counter_columns.html#
+	    cardsTable.on( 'order.dt search.dt', function () { // https://datatables.net/examples/api/counter_columns.html#
 
-	        cardMetagameTable.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	        cardsTable.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
 	            
 	            cell.innerHTML = i+1;
 	        });

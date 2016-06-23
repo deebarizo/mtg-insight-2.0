@@ -75,7 +75,7 @@
 
 	<script type="text/javascript">
 		
-		var cards = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
+		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
 			
 			"bLengthChange": false,
 			"pageLength": 30,

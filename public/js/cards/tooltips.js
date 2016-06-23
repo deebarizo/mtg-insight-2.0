@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 	for (var i = 0; i < anchorTextPhrases.length; i++) {
 		
-		$('a.card-'+anchorTextPhrases[i]).each(function() {
+		cardsTable.on('mouseenter', 'a.card-'+anchorTextPhrases[i], function(event) {
 
 	        $(this).qtip({
 	        
@@ -22,7 +22,12 @@ $(document).ready(function() {
 					my: 'left center',
 					at: 'center right',
 					target: $(this)
-				}
+				},
+				overwrite: false,
+	            show: {
+	                event: event.type,
+	                ready: true
+	            }
 	        });
 		});
 	}
