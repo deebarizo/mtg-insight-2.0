@@ -15,7 +15,6 @@
 						<th>Name</th>
 						<th>Edit</th>
 						<th>FC</th>
-						<th>Note</th>
 						<th>MC</th>
 						<th>MD%</th>
 						<th>SB%</th>
@@ -61,7 +60,6 @@
 								</div>
 							</td>
 							<td>{{ $card->f_cost }}</td>
-							<td>{{ $card->note }}</td>
 							<td>{!! $card->mana_cost !!}</td>
 							<td>{{ $card->md_percentage }}%</td>
 							<td>{{ $card->sb_percentage }}%</td>
@@ -79,21 +77,15 @@
 			
 			"bLengthChange": false,
 			"pageLength": 30,
-			"order": [[3, "asc"]],
+			"order": [[4, "desc"]],
 	        "columnDefs": [ 
 	        	{
 	            	"searchable": false,
 	            	"orderable": false,
 	            	"targets": 1
-	        	},
-	        	{
-	            	"searchable": false,
-	            	"orderable": false,
-	            	"targets": 4
 	        	}
 	        ],
 	        "aoColumns": [
-	            null,
 	            null,
 	            null,
 	            null,
