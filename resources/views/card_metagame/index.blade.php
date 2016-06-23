@@ -5,7 +5,7 @@
 	@include('_form_heading')
 
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-12" style="margin-bottom: 150px">
 
 			<p><a href="/card_metagame/create">Create Card Metagame</a> | Last Updated: {{ $latestDate }}</p>
 

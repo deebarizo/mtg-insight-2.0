@@ -5,7 +5,7 @@
 	@include('_form_heading')
 
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-12" style="margin-bottom: 150px">
 
 			<p>Last updated: {{ $latestDate }}</p>
 
@@ -53,7 +53,7 @@
 								</div>
 							</td>
 							<td>
-								<a class="card-edit" target="_blank" href="/cards/{{ $card->id }}/edit">
+								<a class="card-edit" href="/cards/{{ $card->id }}/edit">
 									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 								</a>
 								<div style="display: none" class="tool-tip-card-image">
@@ -79,17 +79,12 @@
 			
 			"bLengthChange": false,
 			"pageLength": 30,
-			"order": [[2, "asc"]],
+			"order": [[3, "asc"]],
 	        "columnDefs": [ 
 	        	{
 	            	"searchable": false,
 	            	"orderable": false,
 	            	"targets": 1
-	        	},
-	        	{
-	            	"searchable": false,
-	            	"orderable": false,
-	            	"targets": 3
 	        	},
 	        	{
 	            	"searchable": false,

@@ -88,7 +88,20 @@ class CardsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $card = DB::table('cards')
+                    ->select('cards.id',
+                             'cards.name',
+                             'cards.f_cost',
+                             'sets.code')
+                    ->join('sets_cards', 'sets_cards.card_id', '=', 'cards.id')
+                    ->join('sets', 'sets.id', '=', 'sets_cards.set_id')
+                    ->where('cards.id', $id)
+                    ->first();
+
+        $titleTag = 'Edit Card | '.$card->name.' | ';
+        $h2Tag = 'Edit Card | '.$card->name;
+
+        return view('cards.edit', compact('titleTag', 'h2Tag', 'card'));
     }
 
     /**
@@ -100,7 +113,53 @@ class CardsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fCost = $request->input('f-cost');
+
+        if (is_numeric($fCost) && $fCost !== '') {
+
+            if ($fCost < 0) {
+
+                $message = 'Functional cost must be greater than -1 or "variable" or blank.';
+
+                $request->flash();
+
+                return redirect()->route('cards.index', $id)->with('message', $message);
+            }
+
+            $fCost = (int)$fCost;
+        }
+
+        if ($fCost !== 'variable' && $fCost !== '') {
+
+            if (!is_int($fCost)) {
+
+                $message = 'Functional cost must be an integer greater than -1 or "variable" or blank.';
+
+                $request->flash();
+
+                return redirect()->route('cards.index', $id)->with('message', $message);                
+            }            
+        }
+
+        if ($fCost === '') {
+
+            $fCost = null;
+        }
+
+        $card = Card::find($id);
+
+        $card->f_cost = $fCost;
+
+        if (strpos($card->note, 'FC done') === false) {
+            
+            $card->note .= 'FC done';
+        }
+
+        $card->save();
+
+        $message = 'Success!';
+
+        return redirect()->route('cards.index')->with('message', $message);
     }
 
     /**

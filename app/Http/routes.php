@@ -73,3 +73,13 @@ Route::get('/admin/parsers/mtg_json', ['as' => 'admin.parsers.mtg_json', functio
 }]);
 
 Route::post('/admin/parsers/mtg_json', 'ParsersController@parseMtgJson');
+
+
+/****************************************************************************************
+TEST
+****************************************************************************************/
+
+Route::get('/test', function() {
+
+	ddAll('Success!');
+});
