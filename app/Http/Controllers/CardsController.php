@@ -32,13 +32,13 @@ class CardsController extends Controller
                               'cards.name', 
                               'cards.f_cost', 
                               'cards.mana_cost')
-                     ->with('sets_cards.set', 'card_metagames', 'card_tags')
-                     ->groupBy('cards.name')
-                     ->join('card_metagames', 'card_metagames.card_id', '=', 'cards.id')
-                     ->where('card_metagames.date', $latestDate)
-                     ->get();
+                        ->with('sets_cards.set')
+                        ->with('card_tags')
+                        ->with(['card_metagames' => function ($query) use ($latestDate) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads
 
-        # ddAll($cards);
+                            $query->where('date', $latestDate);
+                        }])
+                        ->get();
 
         return view('cards.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards'));
     }

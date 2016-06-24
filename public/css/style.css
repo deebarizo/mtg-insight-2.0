@@ -2,3 +2,8 @@ hr {
 
 	border-top: 1px solid #ddd;
 }
+
+.table-hover > tbody > tr:hover { /* http://stackoverflow.com/a/30416071/1946525 */
+
+	background-color: #ddd;
+}
