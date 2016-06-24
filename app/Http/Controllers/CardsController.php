@@ -161,16 +161,19 @@ class CardsController extends Controller
 
             $newTags = trim($request->input('tags'));
 
-            $cardTags = explode(' ', $newTags);
-
-            foreach ($cardTags as $cardTag) {
+            if ($newTags != '') {
                 
-                $eCardTag = new CardTag;
+                $cardTags = explode(' ', $newTags);
 
-                $eCardTag->card_id = $id;
-                $eCardTag->tag = $cardTag;
+                foreach ($cardTags as $cardTag) {
+                    
+                    $eCardTag = new CardTag;
 
-                $eCardTag->save();
+                    $eCardTag->card_id = $id;
+                    $eCardTag->tag = $cardTag;
+
+                    $eCardTag->save();
+                }
             }
         }
 

@@ -79,7 +79,22 @@ Route::post('/admin/parsers/mtg_json', 'ParsersController@parseMtgJson');
 TEST
 ****************************************************************************************/
 
-Route::get('/test', function() {
+use App\Models\Card;
+use App\Models\CardTag;
+
+Route::get('/one_time_process', function() {
+
+	$lands = Card::where('middle_text', 'LIKE', '%Land%')->get();
+
+	foreach ($lands as $key => $land) {
+		
+		$cardTag = new CardTag;
+
+		$cardTag->card_id = $land->id;
+		$cardTag->tag = 'non-spell-land';
+
+		$cardTag->save();
+	}
 
 	ddAll('Success!');
 });
