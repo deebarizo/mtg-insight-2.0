@@ -98,7 +98,7 @@ class CardsController extends Controller
 
         $cardTags = CardTag::where('card_id', $id)->get();
 
-        $tags = $this->createTagsString($cardTags);
+        $tags = createTagsString($cardTags);
 
         return view('cards.edit', compact('titleTag', 'h2Tag', 'card', 'tags'));
     }
@@ -153,7 +153,7 @@ class CardsController extends Controller
 
         $cardTags = CardTag::where('card_id', $id)->get();
 
-        $tags = $this->createTagsString($cardTags);
+        $tags = createTagsString($cardTags);
 
         if ($tags !== $request->input('tags')) {
 
@@ -193,17 +193,4 @@ class CardsController extends Controller
         //
     }
 
-    private function createTagsString($cardTags) {
-
-        $tags = '';
-
-        foreach ($cardTags as $key => $cardTag) {
-            
-            $tags .= $cardTag->tag.' ';
-        }
-
-        $tags = trim($tags);
-
-        return $tags;
-    }
 }

@@ -65,6 +65,8 @@
 								}
 
 								$card->mana_cost = getManaSymbols($card->mana_cost);
+
+								$tags = createTagsString($card->card_tags);
 							?>
 
 							<td>
@@ -84,7 +86,7 @@
 							<td>{{ $mdPercentage }}%</td>
 							<td>{{ $sbPercentage }}%</td>
 							<td>{{ $totalPercentage }}%</td>
-							<td></td> <!-- hidden-->
+							<td>{{ $tags }}</td> <!-- hidden-->
 						</tr>
 					@endforeach
 				</tbody>
@@ -98,7 +100,7 @@
 			
 			"bLengthChange": false,
 			"pageLength": 30,
-			"order": [[2, "asc"]],
+			"order": [[4, "desc"]],
 	        "columnDefs": [ 
 	        	{
 	            	"searchable": false,

@@ -56,4 +56,23 @@ function getManaSymbols($manaCost) {
 
 	return $manaCost;
 }
+
+
+/****************************************************************************************
+CREATE TAGS STRING
+****************************************************************************************/
+
+function createTagsString($cardTags) {
+
+    $tags = '';
+
+    foreach ($cardTags as $key => $cardTag) {
+        
+        $tags .= $cardTag->tag.' ';
+    }
+
+    $tags = trim($tags);
+
+    return $tags;
+}
 	
