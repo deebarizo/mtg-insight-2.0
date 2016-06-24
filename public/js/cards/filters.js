@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 		if (this.type === 'Functional Cost') {
 
-			cardsTable.column(this.columnIndex).search(this.value, true, false, false); 
+			cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
 		}
 
 		cardsTable.draw();
