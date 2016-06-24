@@ -59,6 +59,28 @@ function getManaSymbols($manaCost) {
 
 
 /****************************************************************************************
+GET COLOR ABBREVIATIONS
+****************************************************************************************/
+
+function getColorAbbrs($manaCost) {
+
+	$colorAbbrString = '';
+
+	$colorAbbrs = ['W', 'U', 'B', 'R', 'G', 'C'];
+
+	foreach ($colorAbbrs as $key => $colorAbbr) {
+
+		if (strpos($manaCost, $colorAbbr) !== false) {
+
+			$colorAbbrString .= $colorAbbr;
+		}
+	}
+
+	return $colorAbbrString;
+} 
+
+
+/****************************************************************************************
 CREATE TAGS STRING
 ****************************************************************************************/
 

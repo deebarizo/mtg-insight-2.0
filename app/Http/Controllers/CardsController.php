@@ -57,7 +57,35 @@ class CardsController extends Controller
             $fCosts[0] = 'Land';
         }
 
-        return view('cards.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards', 'fCosts'));
+        $colors = [
+
+            [
+                'abbr' => 'w',
+                'name' => 'white'
+            ],
+            [
+                'abbr' => 'u',
+                'name' => 'blue'
+            ],
+            [
+                'abbr' => 'b',
+                'name' => 'black'
+            ],
+            [
+                'abbr' => 'r',
+                'name' => 'red'
+            ],
+            [
+                'abbr' => 'g',
+                'name' => 'green'
+            ],
+            [
+                'abbr' => 'c',
+                'name' => 'colorless'
+            ]            
+        ];
+
+        return view('cards.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards', 'fCosts', 'colors'));
     }
 
     /**
