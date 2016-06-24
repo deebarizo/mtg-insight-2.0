@@ -30,4 +30,9 @@ class Card extends Model {
 
         return $this->hasMany(CardTag::class);
     }
+
+    public function card_types() {
+
+        return $this->hasMany(CardType::class);
+    }
 }
