@@ -147,9 +147,13 @@ class MtgJsonParser {
 
 			$eCard->f_cost = $card['cmc'];
 		
-		} elseif (!isset($card['cmc']) && !isset($eCard->f_cost)) {
+		} elseif (!isset($card['cmc']) && !isset($eCard->f_cost) && strpos($eCard->middle_text, 'Land') === false) {
 
 			$eCard->f_cost = null;
+		
+		} elseif (!isset($card['cmc']) && !isset($eCard->f_cost) && strpos($eCard->middle_text, 'Land') !== false) {
+
+			$eCard->f_cost = 'Land';
 		}
 
 		if (!isset($eCard->note)) {

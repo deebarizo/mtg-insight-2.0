@@ -40,7 +40,24 @@ class CardsController extends Controller
                         }])
                         ->get();
 
-        return view('cards.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards'));
+        $fCosts = Card::select('cards.f_cost')
+                        ->with(['card_metagames' => function ($query) use ($latestDate) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads
+
+                            $query->where('date', $latestDate);
+                        }])
+                        ->groupBy('cards.f_cost')
+                        ->orderBy('cards.f_cost', 'asc')
+                        ->pluck('cards.f_cost')
+                        ->toArray();
+
+        sort($fCosts);
+
+        if ($fCosts[0] == '') {
+
+            $fCosts[0] = 'Land';
+        }
+
+        return view('cards.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards', 'fCosts'));
     }
 
     /**
@@ -118,7 +135,7 @@ class CardsController extends Controller
 
             if ($fCost < 0) {
 
-                $message = 'Functional cost must be greater than -1 or "variable" or blank.';
+                $message = 'Functional cost must be greater than -1 or "Variable" or "Land" or blank.';
 
                 $request->flash();
 
@@ -128,11 +145,11 @@ class CardsController extends Controller
             $fCost = (int)$fCost;
         }
 
-        if ($fCost !== 'variable' && $fCost !== '') {
+        if ($fCost !== 'Variable' && $fCost !== 'Land' && $fCost !== '') {
 
             if (!is_int($fCost)) {
 
-                $message = 'Functional cost must be an integer greater than -1 or "variable" or blank.';
+                $message = 'Functional cost must be an integer greater than -1 or "Variable" or "Land" or blank.';
 
                 $request->flash();
 

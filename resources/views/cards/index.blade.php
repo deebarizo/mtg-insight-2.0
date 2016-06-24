@@ -9,6 +9,18 @@
 
 			<p>Last updated: {{ $latestDate }}</p>
 
+			<form class="form-inline" style="margin: 0 0 0 0">
+
+				<label>FCs</label>
+				<select class="form-control f-cost-filter" style="width: 10%; margin-right: 20px">
+					<option value="All">All</option>
+				  	@foreach ($fCosts as $fCost)
+					  	<option value="{{ $fCost }}">{{ $fCost }}</option>
+				  	@endforeach
+				</select>	
+
+			</form>
+
 			<table id="cards" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
 					<tr>
@@ -131,5 +143,7 @@
 	</script>
 
 	<script src="/js/cards/tooltips.js"></script>
+
+	<script src="/js/cards/filters.js"></script>
 
 @stop
