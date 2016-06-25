@@ -34,28 +34,39 @@ class CardsController extends Controller
                               'cards.mana_cost')
                         ->with('sets_cards.set')
                         ->with('card_tags')
-                        ->with(['card_metagames' => function ($query) use ($latestDate) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads
+                        ->with(['card_metagames' => function($query) use($latestDate) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads
 
                             $query->where('date', $latestDate);
                         }])
+                        ->leftJoin('card_tags', function($join) {
+      
+                            $join->on('card_tags.card_id', '=', 'cards.id');
+                        })
+                        ->where(function($query) {
+
+                            return $query->where('card_tags.tag', '!=', 'unplayable')
+                                            ->where('card_tags.tag', '!=', 'non-spell-land')
+                                            ->orWhereNull('card_tags.tag');
+                        })
                         ->get();
 
-        $fCosts = Card::select('cards.f_cost')
-                        ->with(['card_metagames' => function ($query) use ($latestDate) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads
+        # ddAll($cards);
 
-                            $query->where('date', $latestDate);
-                        }])
+        $fCosts = Card::select('cards.f_cost')
+                        ->leftJoin('card_tags', function($join) {
+      
+                            $join->on('card_tags.card_id', '=', 'cards.id');
+                        })
+                        ->where(function($query) {
+
+                            return $query->where('card_tags.tag', '!=', 'unplayable')
+                                            ->where('card_tags.tag', '!=', 'non-spell-land')
+                                            ->orWhereNull('card_tags.tag');
+                        })
                         ->groupBy('cards.f_cost')
-                        ->orderBy('cards.f_cost', 'asc')
+                        ->orderBy(DB::raw('FIELD(cards.f_cost, "Land", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Variable")'))
                         ->pluck('cards.f_cost')
                         ->toArray();
-
-        sort($fCosts);
-
-        if ($fCosts[0] == '') {
-
-            $fCosts[0] = 'Land';
-        }
 
         $colors = [
 

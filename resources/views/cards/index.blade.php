@@ -159,8 +159,6 @@
 	        ]
 		});
 
-		cardsTable.column(7).search('^(?!.*non-spell-land)', true, false, false); 
-
 		cardsTable.draw();
 
 		$('.btn').on('mouseup', function() { // http://stackoverflow.com/a/30119360/1946525
