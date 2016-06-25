@@ -44,7 +44,7 @@ class CardsController extends Controller
                         })
                         ->where(function($query) {
 
-                            return $query->where('card_tags.tag', '!=', 'unplayable')
+                            return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
                                             ->where('card_tags.tag', '!=', 'non-spell-land')
                                             ->orWhereNull('card_tags.tag');
                         })
@@ -59,7 +59,7 @@ class CardsController extends Controller
                         })
                         ->where(function($query) {
 
-                            return $query->where('card_tags.tag', '!=', 'unplayable')
+                            return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
                                             ->where('card_tags.tag', '!=', 'non-spell-land')
                                             ->orWhereNull('card_tags.tag');
                         })
@@ -235,7 +235,7 @@ class CardsController extends Controller
 
         $message = 'Success!';
 
-        return redirect()->route('cards.index')->with('message', $message);
+        return redirect()->route('cards.edit', $id)->with('message', $message);
     }
 
     /**
