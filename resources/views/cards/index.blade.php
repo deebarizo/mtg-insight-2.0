@@ -126,57 +126,57 @@
 
 	<script type="text/javascript">
 
+		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
+			
+			"bLengthChange": false,
+			"pageLength": 30,
+			"order": [[4, "desc"]],
+	        "columnDefs": [ 
+	        	{
+	            	"searchable": false,
+	            	"orderable": false,
+	            	"targets": 1
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": 7
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": 8
+	        	},	        	
+	        ],
+	        "aoColumns": [
+	            null,
+	            null,
+	            null,
+	            null,
+	            { "orderSequence": [ "desc", "asc" ] },
+	            { "orderSequence": [ "desc", "asc" ] },
+	            { "orderSequence": [ "desc", "asc" ] },
+	            null,
+	            null
+	        ]
+		});
+
+		cardsTable.column(7).search('^(?!.*non-spell-land)', true, false, false); 
+
+		cardsTable.draw();
+
+		$('.btn').on('mouseup', function() { // http://stackoverflow.com/a/30119360/1946525
+
+			$(this).blur();
+		});	 
+
+		$('select.f-cost-filter').on('change', function() {
+
+			$(this).blur();
+		});
+
 		$(document).ready(function() {
 
 			$("#spinner-container").hide();
 
-			var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
-				
-				"bLengthChange": false,
-				"pageLength": 30,
-				"order": [[4, "desc"]],
-		        "columnDefs": [ 
-		        	{
-		            	"searchable": false,
-		            	"orderable": false,
-		            	"targets": 1
-		        	},
-		        	{
-		            	"visible": false,
-		            	"targets": 7
-		        	},
-		        	{
-		            	"visible": false,
-		            	"targets": 8
-		        	},	        	
-		        ],
-		        "aoColumns": [
-		            null,
-		            null,
-		            null,
-		            null,
-		            { "orderSequence": [ "desc", "asc" ] },
-		            { "orderSequence": [ "desc", "asc" ] },
-		            { "orderSequence": [ "desc", "asc" ] },
-		            null,
-		            null
-		        ]
-			});
-
-			cardsTable.column(7).search('^(?!.*non-spell-land)', true, false, false); 
-
-			cardsTable.draw();
-
-			$('.btn').on('mouseup', function() { // http://stackoverflow.com/a/30119360/1946525
-
-				$(this).blur();
-			});	 
-
-			$('select.f-cost-filter').on('change', function() {
-
-				$(this).blur();
-			});
-		
 			$("#content-container").css('visibility', 'visible');
 		});
 
