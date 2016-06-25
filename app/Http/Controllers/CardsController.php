@@ -143,7 +143,8 @@ class CardsController extends Controller
                     ->select('cards.id',
                              'cards.name',
                              'cards.f_cost',
-                             'sets.code')
+                             'sets.code',
+                             'cards.rating')
                     ->join('sets_cards', 'sets_cards.card_id', '=', 'cards.id')
                     ->join('sets', 'sets.id', '=', 'sets_cards.set_id')
                     ->where('cards.id', $id)
@@ -168,6 +169,12 @@ class CardsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            
+            'rating' => 'required|integer|min:0',
+            'tags' => 'string'
+        ]);
+
         $fCost = $request->input('f-cost');
 
         if (is_numeric($fCost) && $fCost !== '') {
@@ -204,6 +211,7 @@ class CardsController extends Controller
         $card = Card::find($id);
 
         $card->f_cost = $fCost;
+        $card->rating = $request->input('rating');
 
         $card->save();
 

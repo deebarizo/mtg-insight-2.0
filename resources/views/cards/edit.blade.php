@@ -26,6 +26,11 @@
 							{!! Form::text('tags', $tags, ['class' => 'form-control', 'style' => 'width: 50%']) !!}
 					</div>
 
+					<div class="form-group">
+						{!! Form::label('rating', 'Rating:') !!}
+							{!! Form::text('rating', $card->rating, ['class' => 'form-control', 'style' => 'width: 10%']) !!}
+					</div>
+
 					{!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 
 				{!! Form::close() !!}
