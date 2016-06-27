@@ -145,7 +145,8 @@ class CardsController extends Controller
                              'cards.name',
                              'cards.f_cost',
                              'sets.code',
-                             'cards.rating')
+                             'cards.rating',
+                             'cards.mana_sources')
                     ->join('sets_cards', 'sets_cards.card_id', '=', 'cards.id')
                     ->join('sets', 'sets.id', '=', 'sets_cards.set_id')
                     ->where('cards.id', $id)
@@ -173,10 +174,11 @@ class CardsController extends Controller
         $this->validate($request, [
             
             'rating' => 'required|integer|min:0',
-            'tags' => 'string'
+            'tags' => 'string',
+            'mana-sources' => 'string'
         ]);
 
-        $fCost = $request->input('f-cost');
+        $fCost = trim($request->input('f-cost'));
 
         if (is_numeric($fCost) && $fCost !== '') {
 
@@ -212,7 +214,8 @@ class CardsController extends Controller
         $card = Card::find($id);
 
         $card->f_cost = $fCost;
-        $card->rating = $request->input('rating');
+        $card->rating = trim($request->input('rating'));
+        $card->mana_sources = trim($request->input('mana-sources'));
 
         $card->save();
 

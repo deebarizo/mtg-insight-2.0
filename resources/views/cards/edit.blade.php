@@ -31,6 +31,11 @@
 							{!! Form::text('rating', $card->rating, ['class' => 'form-control', 'style' => 'width: 10%']) !!}
 					</div>
 
+					<div class="form-group">
+						{!! Form::label('mana-sources', 'Mana Sources:') !!}
+							{!! Form::text('mana-sources', $card->mana_sources, ['class' => 'form-control', 'style' => 'width: 15%']) !!}
+					</div>
+
 					{!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 
 				{!! Form::close() !!}
