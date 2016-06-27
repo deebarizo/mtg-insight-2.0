@@ -31,7 +31,8 @@ class CardsController extends Controller
         $cards = Card::select('cards.id', 
                               'cards.name', 
                               'cards.f_cost', 
-                              'cards.mana_cost')
+                              'cards.mana_cost',
+                              'cards.rating')
                         ->with('sets_cards.set')
                         ->with('card_tags')
                         ->with(['card_metagames' => function($query) use($latestDate) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads

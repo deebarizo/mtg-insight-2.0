@@ -20,8 +20,15 @@
 					<tbody>
 						@foreach ($copies[$role] as $copy)
 							<tr>
+								<?php $cardNameNoApostrophe = preg_replace('/\'/', '', $copy->card->name); ?>
+
 								<td>{{ $copy->quantity }}</a></td>
-								<td>{{ $copy->name }}</td>
+								<td>
+									<a class="card-name" target="_blank" href="/cards/{{ $copy->card_id }}">{{ $copy->card->name }}</a>
+									<div style="display: none" class="tool-tip-card-image">
+										<img width="223" height="311" src="/files/card_images/{{ $copy->card->sets_cards[0]->set->code }}/{{ $cardNameNoApostrophe }}.png">
+									</div>
+								</td>
 							</tr>
 						@endforeach
 					</tbody>
@@ -29,5 +36,7 @@
 			@endforeach
 		</div>
 	</div>
+
+	<script src="/js/decks/tooltips.js"></script>
 
 @stop

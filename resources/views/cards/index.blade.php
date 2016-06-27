@@ -47,6 +47,7 @@
 						<th>Total%</th>
 						<th>Tags</th> <!-- hidden-->
 						<th>Color Abbrs</th> <!-- hidden-->
+						<th>Rating</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -117,6 +118,7 @@
 							<td>{{ $totalPercentage }}%</td>
 							<td>{{ $tags }}</td> <!-- hidden-->
 							<td>{{ $colorAbbrs }}</td> <!-- hidden-->
+							<td>{{ $card->rating }}</td>
 						</tr>
 					@endforeach
 				</tbody>
@@ -155,7 +157,8 @@
 	            { "orderSequence": [ "desc", "asc" ] },
 	            { "orderSequence": [ "desc", "asc" ] },
 	            null,
-	            null
+	            null,
+	            { "orderSequence": [ "desc", "asc" ] }
 	        ]
 		});
 

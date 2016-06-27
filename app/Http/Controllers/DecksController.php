@@ -215,13 +215,13 @@ class DecksController extends Controller
 
         foreach ($roles as $key => $role) {
 
-            $copies[$role] = DB::table('event_deck_copies')
-                                ->select('*')
-                                ->join('cards', 'cards.id', '=', 'event_deck_copies.card_id')
-                                ->where('event_deck_id', $id)
-                                ->where('role', $role)
-                                ->get();
+            $copies[$role] = EventDeckCopy::with('card.sets_cards.set')
+                                            ->where('event_deck_id', $id)
+                                            ->where('role', $role)
+                                            ->get();
         }
+
+        # ddAll($copies);
 
         $titleTag = 'Deck '.$id.' by '.$deck->player.' | '.$deck->event->name.' '.$deck->event->location.' | ';
         $h2Tag = 'Deck '.$id.' by '.$deck->player;
