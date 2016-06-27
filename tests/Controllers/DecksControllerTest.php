@@ -155,7 +155,7 @@ class DecksControllerTest extends TestCase {
             'decklist' => "61 Den Protector\n\n\n2 Hangarback Walker"
         ]);
 
-        $this->assertRedirectedTo('/decks');
+        $this->assertRedirectedTo('/decks/create');
 
         $this->followRedirects();
 

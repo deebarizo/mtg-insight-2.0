@@ -85,15 +85,6 @@ class CardMetagameCreator {
 					$totalEventPoints += $eventPoints;
 				}
 
-				if ($event->name === 'SCG Classic') {
-
-					$eventPoints = 4;
-
-					$event->points = $eventPoints;
-
-					$totalEventPoints += $eventPoints;
-				}
-
 				$event->save();
 			}
 

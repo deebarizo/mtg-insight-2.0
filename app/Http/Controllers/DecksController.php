@@ -75,6 +75,9 @@ class DecksController extends Controller
         ]);
 
         $player = trim($request->input('player'));
+        $player = strtolower($player);
+        $player = ucwords($player);
+
         $finish = trim($request->input('finish'));
         $eventId = trim($request->input('event-id'));
         $decklist = trim($request->input('decklist'));
@@ -189,7 +192,7 @@ class DecksController extends Controller
 
         $message = 'Success!';
 
-        return redirect()->route('decks.index')->with('message', $message);
+        return redirect()->route('decks.create')->with('message', $message);
     }
 
     /**
