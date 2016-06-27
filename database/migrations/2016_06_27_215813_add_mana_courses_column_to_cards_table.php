@@ -14,7 +14,7 @@ class AddManaCoursesColumnToCardsTable extends Migration
     {
         Schema::table('cards', function ($table) {
             
-            $table->string('mana_sources')->after('mana_cost');
+            $table->string('mana_sources')->after('mana_cost')->nullable();
         });
     }
 
