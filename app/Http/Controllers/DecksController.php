@@ -16,251 +16,322 @@ use DB;
 
 class DecksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $titleTag = 'Decks | ';
-        $h2Tag = 'Decks';
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		$titleTag = 'Decks | ';
+		$h2Tag = 'Decks';
 
-        $decks = DB::table('event_decks')
-                    ->select(DB::raw('event_decks.id,
-                                      event_decks.player,
-                                      event_decks.finish,
-                                      event_decks.event_id,
-                                      events.name as event_name,
-                                      events.location as event_location,
-                                      events.date as event_date'))
-                    ->join('events', 'events.id', '=', 'event_decks.event_id')
-                    ->orderBy('date', 'desc')
-                    ->orderBy('event_id', 'desc')
-                    ->orderBy('finish', 'asc')
-                    ->get();
+		$decks = DB::table('event_decks')
+					->select(DB::raw('event_decks.id,
+									  event_decks.player,
+									  event_decks.finish,
+									  event_decks.event_id,
+									  events.name as event_name,
+									  events.location as event_location,
+									  events.date as event_date'))
+					->join('events', 'events.id', '=', 'event_decks.event_id')
+					->orderBy('date', 'desc')
+					->orderBy('event_id', 'desc')
+					->orderBy('finish', 'asc')
+					->get();
 
-        return view('decks.index', compact('titleTag', 'h2Tag', 'decks'));
-    }
+		return view('decks.index', compact('titleTag', 'h2Tag', 'decks'));
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $titleTag = 'Create Deck | ';
-        $h2Tag = 'Create Deck';
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		$titleTag = 'Create Deck | ';
+		$h2Tag = 'Create Deck';
 
-        $events = Event::take(7)->orderBy('date', 'desc')->orderBy('id', 'desc')->get();
+		$events = Event::take(7)->orderBy('date', 'desc')->orderBy('id', 'desc')->get();
 
-        return view('decks.create', compact('titleTag', 'h2Tag', 'events'));
-    }
+		return view('decks.create', compact('titleTag', 'h2Tag', 'events'));
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            
-            'player' => 'required',
-            'finish' => 'required',
-            'event-id' => 'required', 
-            'decklist' => 'required'
-        ]);
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		$this->validate($request, [
+			
+			'player' => 'required',
+			'finish' => 'required',
+			'event-id' => 'required', 
+			'decklist' => 'required'
+		]);
 
-        $player = trim($request->input('player'));
-        $player = strtolower($player);
-        $player = ucwords($player);
+		$player = trim($request->input('player'));
+		$player = strtolower($player);
+		$player = ucwords($player);
 
-        $finish = trim($request->input('finish'));
-        $eventId = trim($request->input('event-id'));
-        $decklist = trim($request->input('decklist'));
+		$finish = trim($request->input('finish'));
+		$eventId = trim($request->input('event-id'));
+		$decklist = trim($request->input('decklist'));
 
-        $deck = EventDeck::where('player', $player)
-                         ->where('finish', $finish)
-                         ->where('event_id', $eventId)
-                         ->first();
+		$deck = EventDeck::where('player', $player)
+						 ->where('finish', $finish)
+						 ->where('event_id', $eventId)
+						 ->first();
 
-        if ($deck) {
+		if ($deck) {
 
-            $message = 'This deck already exists in the database.';
+			$message = 'This deck already exists in the database.';
 
-            $request->flash();
+			$request->flash();
 
-            return redirect()->route('decks.create')->with('message', $message);
-        }
+			return redirect()->route('decks.create')->with('message', $message);
+		}
 
-        $decklistLines = explode(PHP_EOL, $decklist);
+		$decklistLines = explode(PHP_EOL, $decklist);
 
-        $copies = [];
+		$copies = [];
 
-        $role = 'md';
+		$role = 'md';
 
-        $roleCount = [
+		$roleCount = [
 
-            'md' => 0,
-            'sb' => 0
-        ];
+			'md' => 0,
+			'sb' => 0
+		];
 
-        foreach ($decklistLines as $key => $decklistLine) {
+		foreach ($decklistLines as $key => $decklistLine) {
 
-            if (!is_numeric(substr($decklistLine, 0, 1))) {
+			if (!is_numeric(substr($decklistLine, 0, 1))) {
 
-                $role = 'sb';
+				$role = 'sb';
 
-                continue;
-            }
-            
-            $copy = [
+				continue;
+			}
+			
+			$copy = [
 
-                'quantity' => trim(preg_replace("/(\d+)(.+)/", "$1", $decklistLine)),
-                'card_name' => trim(preg_replace("/(\d+)(\s+)(.+)/", "$3", $decklistLine)),
-                'role' => $role
-            ];
+				'quantity' => trim(preg_replace("/(\d+)(.+)/", "$1", $decklistLine)),
+				'card_name' => trim(preg_replace("/(\d+)(\s+)(.+)/", "$3", $decklistLine)),
+				'role' => $role
+			];
 
-            $card = Card::where('name', $copy['card_name'])->first();
+			$card = Card::where('name', $copy['card_name'])->first();
 
-            if (!$card) {
+			if (!$card) {
 
-                $message = 'The card, '.$copy['card_name'].', does not exist in the database.';
+				$message = 'The card, '.$copy['card_name'].', does not exist in the database.';
 
-                $request->flash();
+				$request->flash();
 
-                return redirect()->route('decks.create')->with('message', $message);                
-            }
+				return redirect()->route('decks.create')->with('message', $message);                
+			}
 
-            $copy['card_id'] = $card->id;
+			$copy['card_id'] = $card->id;
 
-            $copies[] = $copy;
+			$copies[] = $copy;
 
-            if ($role === 'md') {
+			if ($role === 'md') {
 
-                $roleCount['md'] += $copy['quantity'];
-            }
+				$roleCount['md'] += $copy['quantity'];
+			}
 
-            if ($role === 'sb') {
+			if ($role === 'sb') {
 
-                $roleCount['sb'] += $copy['quantity'];
-            }
-        }
+				$roleCount['sb'] += $copy['quantity'];
+			}
+		}
 
-        if ($roleCount['md'] < 60) {
+		if ($roleCount['md'] < 60) {
 
-            $message = 'This deck only has '.$roleCount['md'].' main deck cards.';
+			$message = 'This deck only has '.$roleCount['md'].' main deck cards.';
 
-            $request->flash();
+			$request->flash();
 
-            return redirect()->route('decks.create')->with('message', $message);                
-        }
+			return redirect()->route('decks.create')->with('message', $message);                
+		}
 
-        if ($roleCount['sb'] > 15) {
+		if ($roleCount['sb'] > 15) {
 
-            $message = 'This deck has '.$roleCount['sb'].' sideboard cards.';
+			$message = 'This deck has '.$roleCount['sb'].' sideboard cards.';
 
-            $request->flash();
+			$request->flash();
 
-            return redirect()->route('decks.create')->with('message', $message);                
-        }
+			return redirect()->route('decks.create')->with('message', $message);                
+		}
 
-        $eventDeck = new EventDeck;
+		$eventDeck = new EventDeck;
 
-        $eventDeck->player = $player;
-        $eventDeck->finish = $finish;
-        $eventDeck->md_count = $roleCount['md'];
-        $eventDeck->sb_count = $roleCount['sb'];
-        $eventDeck->event_id = $eventId;
+		$eventDeck->player = $player;
+		$eventDeck->finish = $finish;
+		$eventDeck->md_count = $roleCount['md'];
+		$eventDeck->sb_count = $roleCount['sb'];
+		$eventDeck->event_id = $eventId;
 
-        $eventDeck->save();
+		$eventDeck->save();
 
-        foreach ($copies as $key => $copy) {
+		foreach ($copies as $key => $copy) {
 
-            $eventDeckCopy = new EventDeckCopy;
+			$eventDeckCopy = new EventDeckCopy;
 
-            $eventDeckCopy->event_deck_id = $eventDeck->id;
-            $eventDeckCopy->quantity = $copy['quantity'];
-            $eventDeckCopy->card_id = $copy['card_id'];
-            $eventDeckCopy->role = $copy['role'];
+			$eventDeckCopy->event_deck_id = $eventDeck->id;
+			$eventDeckCopy->quantity = $copy['quantity'];
+			$eventDeckCopy->card_id = $copy['card_id'];
+			$eventDeckCopy->role = $copy['role'];
 
-            $eventDeckCopy->save();
-        }
+			$eventDeckCopy->save();
+		}
 
-        $message = 'Success!';
+		$message = 'Success!';
 
-        return redirect()->route('decks.create')->with('message', $message);
-    }
+		return redirect()->route('decks.create')->with('message', $message);
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $deck = EventDeck::with('event')->where('id', $id)->first();
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
+	{
+		$deck = EventDeck::with('event')->where('id', $id)->first();
 
-        $roles = ['md', 'sb'];
+		$roles = ['md', 'sb'];
 
-        $copies = [
+		$copies = [
 
-            'md' => [],
-            'sb' => []
-        ];
+			'md' => [],
+			'sb' => []
+		];
 
-        foreach ($roles as $key => $role) {
+		foreach ($roles as $key => $role) {
 
-            $copies[$role] = EventDeckCopy::with('card.sets_cards.set')
-                                            ->where('event_deck_id', $id)
-                                            ->where('role', $role)
-                                            ->get();
-        }
+			$copies[$role] = EventDeckCopy::with('card.sets_cards.set')
+											->where('event_deck_id', $id)
+											->where('role', $role)
+											->join('cards', function($join) {
+						  
+												$join->on('cards.id', '=', 'event_deck_copies.card_id');
+											})
+											->orderBy(DB::raw('FIELD(cards.f_cost, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Variable", "Land")'))
+											->orderBy('quantity', 'desc')
+											->get();
+		}
 
-        # ddAll($copies);
+		$metadata = [];
 
-        $titleTag = 'Deck '.$id.' by '.$deck->player.' | '.$deck->event->name.' '.$deck->event->location.' | ';
-        $h2Tag = 'Deck '.$id.' by '.$deck->player;
+		$metadata['numMdCards'] = EventDeckCopy::where('event_deck_id', $id)
+												->where('role', 'md')
+												->sum('quantity');
 
-        return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles'));
-    }
+		$metadata['numNonlandCards'] = EventDeckCopy::join('cards', function($join) {
+						  
+														$join->on('cards.id', '=', 'event_deck_copies.card_id');
+													})	
+													->where('event_deck_id', $id)
+													->where('role', 'md')
+													->where('cards.f_cost', '!=', 'Land')
+													->sum('quantity');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+		$metadata['numLandCards'] = EventDeckCopy::join('cards', function($join) {
+						  
+														$join->on('cards.id', '=', 'event_deck_copies.card_id');
+													})	
+													->where('event_deck_id', $id)
+													->where('role', 'md')
+													->where('cards.f_cost', 'Land')
+													->sum('quantity');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+		$metadata['numSbCards'] = EventDeckCopy::where('event_deck_id', $id)
+												->where('role', 'sb')
+												->sum('quantity');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-    
+		$manaCurveDrops = [1, 2, 3, 4, 5, 6, 7, "Variable"];
+
+		$manaCurve = [];
+
+		foreach ($manaCurveDrops as $key => $drop) {
+
+			if ($drop !== 7) {
+
+				$manaCurve[] = (int)EventDeckCopy::join('cards', function($join) {
+				  
+												$join->on('cards.id', '=', 'event_deck_copies.card_id');
+											})	
+											->where('event_deck_id', $id)
+											->where('role', 'md')
+											->where('cards.f_cost', $drop)
+											->sum('quantity');
+
+			} elseif ($drop === 7) {
+				
+				$manaCurve[] = (int)EventDeckCopy::join('cards', function($join) {
+				  
+												$join->on('cards.id', '=', 'event_deck_copies.card_id');
+											})	
+											->where('event_deck_id', $id)
+											->where('role', 'md')
+											->where('cards.f_cost', '>=', $drop)
+											->where('cards.f_cost', '!=', 'Variable')
+											->where('cards.f_cost', '!=', 'Land')
+											->sum('quantity');
+			}
+
+			if ($manaCurve[$key] == 0) {
+
+				$manaCurve[$key] = null;
+			}
+		}
+
+		$manaCurve = json_encode($manaCurve);
+
+		$titleTag = 'Deck '.$id.' by '.$deck->player.' | '.$deck->event->name.' '.$deck->event->location.' | ';
+		$h2Tag = 'Deck '.$id.' by '.$deck->player;
+
+		return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles', 'metadata', 'manaCurve'));
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit($id)
+	{
+		//
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, $id)
+	{
+		//
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
+	
 }
