@@ -6,7 +6,7 @@
 
 	<div class="row">
 
-		<div class="col-lg-4">
+		<div class="col-lg-6">
 
 			<h4>Finish: {{ $deck->finish }} | <a href="/events/{{ $deck->event->id }}">{{ $deck->event->name }} {{ $deck->event->location }}</a> | {{ $deck->event->date }}</h4>
 
@@ -23,7 +23,8 @@
 				<table class="table table-striped table-bordered table-hover table-condensed">
 					<thead>
 						<tr>
-							<th>Quantity</th>
+							<th>Q</th>
+							<th>MC</th>
 							<th>Card</th>
 							<th>FC</th>
 						</tr>
@@ -31,9 +32,15 @@
 					<tbody>
 						@foreach ($copies[$role] as $copy)
 							<tr>
-								<?php $cardNameNoApostrophe = preg_replace('/\'/', '', $copy->card->name); ?>
+								<?php 
+
+									$cardNameNoApostrophe = preg_replace('/\'/', '', $copy->card->name); 
+
+									$manaCost = getManaSymbols($copy->card->mana_cost);
+								?>
 
 								<td>{{ $copy->quantity }}</a></td>
+								<td>{!! $manaCost !!}</td>
 								<td>
 									<a class="card-name" target="_blank" href="/cards/{{ $copy->card_id }}">{{ $copy->card->name }}</a>
 									<div style="display: none" class="tool-tip-card-image">
@@ -48,23 +55,31 @@
 			@endforeach
 		</div>
 
-		<div class="col-lg-5 charts">
+		<div class="col-lg-6 charts">
 
 			<h4>Mana Curve</h4>
 
 			<div id="mana-curve" style="height: 200px; margin: 0 auto;"></div>
+
+			<h4>Color Breakdown</h4>
+
+			<div id="color-breakdown" style="height: 400px; margin: 0 auto;"></div>
 
 		</div>
 	</div>
 
 	<script type="text/javascript">
 		
-		 var manaCurve = <?php echo $manaCurve; ?>;
+		var manaCurve = <?php echo $manaCurve; ?>;
+
+		var numManaSymbols = <?php echo $numManaSymbols; ?>;
 
 	</script>
 
 	<script src="/js/decks/tooltips.js"></script>
 
 	<script src="/js/decks/charts/mana_curve.js"></script>
+
+	<script src="/js/decks/charts/color_breakdown.js"></script>
 
 @stop

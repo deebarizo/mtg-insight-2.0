@@ -1,7 +1,3 @@
-/****************************************************************************************
-CREATE MANA CURVE CHART
-****************************************************************************************/
-
 var manaCurveChart;
 
 manaCurveChart = new Highcharts.Chart({
@@ -33,7 +29,7 @@ manaCurveChart = new Highcharts.Chart({
     yAxis: {
         min: 0,
         title: {
-            text: 'Number of Cards'
+            text: null
         }
     },
     tooltip: {

@@ -294,10 +294,31 @@ class DecksController extends Controller
 
 		$manaCurve = json_encode($manaCurve);
 
+		$numManaSymbols = [0, 0, 0, 0, 0, 0];
+
+		foreach ($copies['md'] as $copy) {
+			
+			$numManaSymbols = $this->getManaSymbols($copy->quantity, $copy->mana_cost, $numManaSymbols);
+		}
+
+		foreach ($numManaSymbols as $key => &$symbol) {
+			
+			if ($symbol == 0) {
+
+				$symbol = null;
+			}
+		}
+
+		unset($symbol);
+
+		$numManaSymbols = json_encode($numManaSymbols);
+
+		# ddAll($numManaSymbols);
+
 		$titleTag = 'Deck '.$id.' by '.$deck->player.' | '.$deck->event->name.' '.$deck->event->location.' | ';
 		$h2Tag = 'Deck '.$id.' by '.$deck->player;
 
-		return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles', 'metadata', 'manaCurve'));
+		return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles', 'metadata', 'manaCurve', 'numManaSymbols'));
 	}
 
 	/**
@@ -332,6 +353,18 @@ class DecksController extends Controller
 	public function destroy($id)
 	{
 		//
+	}
+
+	private function getManaSymbols($quantity, $manaCost, $numManaSymbols) {
+
+		$manaSymbols = ['{W}', '{U}', '{B}', '{R}', '{G}', '{C}'];
+
+		foreach ($manaSymbols as $key => $manaSymbol) {
+			
+			$numManaSymbols[$key] += $quantity * substr_count($manaCost, $manaSymbol);
+		}
+
+		return $numManaSymbols;
 	}
 	
 }

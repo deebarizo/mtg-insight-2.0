@@ -29,3 +29,8 @@ h4 {
 	margin-top: 0; 
 	margin-bottom: 20px;
 }
+
+div#color-breakdown i.mi {
+
+	margin-left: -9px;
+}
