@@ -64,10 +64,10 @@ colorBreakdownChart = new Highcharts.Chart({
     },
     series: [{
         name: 'Mana Symbols',
-        data: numManaSymbols
+        data: colorStats.symbols
     }, {
         name: 'Mana Sources',
-        data: [17, null, null, 12, 17, null]
+        data: colorStats.sources
     }],
     credits: false
 });

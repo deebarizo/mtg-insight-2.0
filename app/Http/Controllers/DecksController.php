@@ -294,31 +294,49 @@ class DecksController extends Controller
 
 		$manaCurve = json_encode($manaCurve);
 
-		$numManaSymbols = [0, 0, 0, 0, 0, 0];
+		$colorStats = [
 
-		foreach ($copies['md'] as $copy) {
+			'symbols' => [0, 0, 0, 0, 0, 0],
+			'sources' => [0, 0, 0, 0, 0, 0]
+		];
+
+		foreach ($colorStats as $key => &$colorStat) {
+
+			foreach ($copies['md'] as $copy) {
 			
-			$numManaSymbols = $this->getManaSymbols($copy->quantity, $copy->mana_cost, $numManaSymbols);
-		}
+				switch ($key) {
 
-		foreach ($numManaSymbols as $key => &$symbol) {
-			
-			if ($symbol == 0) {
-
-				$symbol = null;
+					case 'symbols':
+						$colorStat = $this->getManaSymbols($copy->quantity, $copy->mana_cost, $colorStat);
+						break;
+					
+					case 'sources':
+						$colorStat = $this->getManaSources($copy->quantity, $copy->mana_sources, $colorStat, $copy->name, $id);
+						break;
+				}
 			}
+
+			foreach ($colorStat as &$value) {
+				
+				if ($value == 0) {
+
+					$value = null;
+				}
+			}
+
+			unset($value);
+
+			$colorStat = json_encode($colorStat);
 		}
 
-		unset($symbol);
+		unset($colorStat);
 
-		$numManaSymbols = json_encode($numManaSymbols);
-
-		# ddAll($numManaSymbols);
+		# ddAll($colorStats);
 
 		$titleTag = 'Deck '.$id.' by '.$deck->player.' | '.$deck->event->name.' '.$deck->event->location.' | ';
 		$h2Tag = 'Deck '.$id.' by '.$deck->player;
 
-		return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles', 'metadata', 'manaCurve', 'numManaSymbols'));
+		return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles', 'metadata', 'manaCurve', 'colorStats'));
 	}
 
 	/**
@@ -365,6 +383,67 @@ class DecksController extends Controller
 		}
 
 		return $numManaSymbols;
+	}
+
+	private function getManaSources($quantity, $manaSources, $numManaSources, $cardName, $eventDeckId) {
+
+		if ($cardName === 'Evolving Wilds') {
+
+			$lands = EventDeckCopy::join('cards', function($join) {
+		  
+										$join->on('cards.id', '=', 'event_deck_copies.card_id');
+									})	
+									->where('event_deck_id', $eventDeckId)
+									->where('role', 'md')
+									->where('cards.f_cost', 'Land')
+									->get();
+
+			$manaSources = $this->getEvolvingWildsManaSources($lands);
+		}
+
+		$numManaSources = $this->getManaSymbols($quantity, $manaSources, $numManaSources);
+
+		return $numManaSources;
+	}
+
+	private function getEvolvingWildsManaSources($lands) {
+
+		$manaSources = '';
+
+		foreach ($lands as $land) {
+			
+			switch ($land->name) {
+				
+				case 'Plains':
+					$manaSources .= '{W}';
+					break;
+
+				case 'Island':
+					$manaSources .= '{U}';
+					break;
+
+				case 'Swamp':
+					$manaSources .= '{B}';
+					break;
+
+				case 'Mountain':
+					$manaSources .= '{R}';
+					break;
+
+				case 'Forest':
+					$manaSources .= '{G}';
+					break;
+
+				case 'Wastes':
+					$manaSources .= '{C}';
+					break;
+				
+				default:
+					break;
+			}
+		}
+
+		return $manaSources;
 	}
 	
 }

@@ -72,7 +72,11 @@
 		
 		var manaCurve = <?php echo $manaCurve; ?>;
 
-		var numManaSymbols = <?php echo $numManaSymbols; ?>;
+		var colorStats = {
+
+			symbols: <?php echo $colorStats['symbols']; ?>,
+			sources: <?php echo $colorStats['sources']; ?>
+		};
 
 	</script>
 
