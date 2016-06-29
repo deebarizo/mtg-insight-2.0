@@ -34,3 +34,34 @@ div#color-breakdown i.mi {
 
 	margin-left: -9px;
 }
+
+
+/****************************************************************************************
+YOUR DECKS (CREATE)
+****************************************************************************************/
+
+a.add-card, a.add-card:hover, a.add-card:active, a.add-card:visited {
+    text-decoration:none;
+}
+
+.icon {
+
+    text-align:center;
+    margin: 0 auto;
+    display: inline;
+}
+
+.icon.plus.md {
+
+    color: green;
+}
+
+.icon.plus.sb {
+
+    color: lightgreen;
+}
+
+.icon.minus {
+
+    color: red;
+}
