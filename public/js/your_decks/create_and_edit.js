@@ -62,7 +62,26 @@ $(document).ready(function() {
 
 		var copy = new Copy(1, role, card); // 1 is quantity
 
-		$('table#'+role+' tbody').append(copy.html);
+		var insertSpot = getInsertSpotForCopyRow(card, role);
+
+		var copyTable = $('table#'+role+' tbody');
+
+		if (insertSpot.howToInsert === 'append') {
+
+			copyTable.append(copy.html);
+		}
+
+		if (insertSpot.howToInsert === 'before') {
+
+			insertSpot.spot.before(copy.html);
+		}
+
+		if (insertSpot.howToInsert === 'after') {
+
+			insertSpot.spot.after(copy.html);
+		}	
+
+		
 
 
 		/****************************************************************************************
