@@ -25,7 +25,7 @@ $(document).ready(function() {
 		this.role = role;
 		this.card = card;
 
-		this.html = '<tr class="copy-row '+role+'" data-copy-quantity="'+this.quantity+'" data-copy-card-id="'+this.card.id+'" data-copy-mana-cost="'+this.card.manaCost+' "data-copy-role="'+this.role+'"><td class="quantity">'+this.quantity+'<td class="copy-mana-cost-html">'+card.manaCostHtml+'</td><td class="card-name"><a class="card-name" target="_blank" href="/cards/'+this.card.id+'">'+this.card.name+'</a><div style="display: none" class="tool-tip-card-image"><img width="223" height="311" src="'+this.card.imgSource+'"></td><td class="copy-f-cost">'+card.fCost+'</td><td><a class="remove-card '+this.role+'" href=""><div class="icon minus"><span class="glyphicon glyphicon-minus"></span></div></a></td></tr>';
+		this.html = '<tr class="copy-row '+role+'" data-copy-quantity="'+this.quantity+'" data-copy-card-id="'+this.card.id+'" data-copy-mana-cost="'+this.card.manaCost+' "data-copy-role="'+this.role+'"><td class="quantity">'+this.quantity+'<td class="copy-mana-cost-html">'+card.manaCostHtml+'</td><td class="card-name"><a class="card-name" target="_blank" href="/cards/'+this.card.id+'">'+this.card.name+'</a><div style="display: none" class="tool-tip-card-image"><img width="223" height="311" src="'+this.card.imgSource+'"></td><td class="copy-f-cost">'+card.fCost+'</td><td><a class="add-card md" href="" style="margin-right: 5px"><div class="icon plus '+this.role+'"><span class="glyphicon glyphicon-plus"></span></div></a><a class="remove-card '+this.role+'" href=""><div class="icon minus"><span class="glyphicon glyphicon-minus"></span></div></a></td></tr>';
 	}
 
 	/****************************************************************************************
@@ -47,11 +47,15 @@ $(document).ready(function() {
 
 		var role = getRole($(this));
 
-		var copyRow = $('tr.copy-row[data-card-id="'+card['id']+'"]');
+		var copyRow = $('tr.copy-row[data-copy-card-id="'+card.id+'"].'+role);
 
-		card.numCopyRows = copyRow.length; // 0 = not yet in decklist, 1 = in maindeck OR sideboard but not BOTH, 2 = in maindeck AND sideboard
+		if (copyRow.length > 0) {
 
-		if (card.numCopyRows > 0) {
+			var quantity = Number(copyRow.find('td.quantity').text());
+			quantity++;
+			copyRow.find('td.quantity').text(quantity);
+
+			copyRow.attr('data-copy-quantity', quantity);
 
 			return;
 		} 
