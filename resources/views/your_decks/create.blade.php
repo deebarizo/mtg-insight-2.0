@@ -160,6 +160,8 @@
 
 	<script src="/js/your_decks/classes.js"></script>
 
+	<script src="/js/your_decks/function_lib_single_cards.js"></script>
+
 	<script src="/js/your_decks/function_lib.js"></script>
 
 	<script src="/js/your_decks/create_and_edit.js"></script>
