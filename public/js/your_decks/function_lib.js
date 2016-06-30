@@ -12,6 +12,14 @@ var updateDecklist = function() {
 	$('span.total-nonlands').text(decklist.totals.nonlands);
 	$('span.total-lands').text(decklist.totals.lands);
 	$('span.total-sb-cards').text(decklist.totals.sb);
+
+	for (var i = 0; i < decklist.totals.drops.length; i++) {
+		
+        manaCurveChart.series[0].data[i].update({
+            
+            y: decklist.totals.drops[i]
+        }); 
+	}
 }
 
 
@@ -102,6 +110,27 @@ var getDecklistTotals = function() {
 				} else {
 
 					decklistTotals.nonlands += quantity;
+
+					if (fCost === 'Variable') {
+
+						decklistTotals.drops[7] += quantity;
+					}
+
+					if (isNaN(fCost) === false) {
+
+						fCost = Number(fCost);
+
+						if (fCost >= 7) {
+
+							var index = 6;
+						
+						} else {
+
+							var index = fCost - 1;
+						}
+
+						decklistTotals.drops[index] += quantity;
+					}
 				}
 			}
 
