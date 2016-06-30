@@ -50,7 +50,7 @@
 									</div>
 								</a>
 							</td>
-						</tr>
+						</tr>	
 					@endforeach
 				</tbody>
 			</table>
@@ -60,6 +60,16 @@
 		<div class="col-lg-5 decklist">
 
 			<h4>Decklist</h4>
+
+			<form class="form-inline" role="form" style="margin-bottom: 20px">
+
+				<div class="form-group">
+					<label for="deck-name">Name:</label>
+					<input class="form-control inline"  style="width: 75%" name="deck-name" type="text" value="" id="deck-name">
+				</div>
+
+				<input class="form-control inline btn btn-primary" type="submit" value="Submit">	
+			</form>					
 
 			<p>Maindeck Cards: 0 | Nonlands: 0 | Lands: 0</p>
 
