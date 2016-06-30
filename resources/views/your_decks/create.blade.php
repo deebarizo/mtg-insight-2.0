@@ -71,7 +71,7 @@
 				<input class="form-control inline btn btn-primary" type="submit" value="Submit">	
 			</form>					
 
-			<p>Maindeck Cards: 0 | Nonlands: 0 | Lands: 0</p>
+			<p>Maindeck Cards: <span class="total-md-cards">0</span> | Nonlands: <span class="total-nonlands">0</span> | Lands: <span class="total-lands">0</span></p>
 
 			<table id="md" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
@@ -88,7 +88,7 @@
 				</tbody>
 			</table>
 
-			<p>Sideboard Cards: 0</p>
+			<p>Sideboard Cards: <span class="total-sb-cards">0</span></p>
 
 			<table id="sb" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>

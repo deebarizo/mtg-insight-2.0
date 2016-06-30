@@ -6,8 +6,12 @@ var updateDecklist = function() {
 
 	decklist = new Decklist();
 
-	console.log(decklist.totals.md);
-	console.log(decklist.totals.sb);
+	console.log(decklist.totals);
+
+	$('span.total-md-cards').text(decklist.totals.md);
+	$('span.total-nonlands').text(decklist.totals.nonlands);
+	$('span.total-lands').text(decklist.totals.lands);
+	$('span.total-sb-cards').text(decklist.totals.sb);
 }
 
 
@@ -21,7 +25,7 @@ var getDecklistTotals = function() {
 
 		md: 0,
 
-		nonLands: 0,
+		nonlands: 0,
 
 		lands: 0,
 		
@@ -86,6 +90,22 @@ var getDecklistTotals = function() {
 			var quantity = Number(copyRow.attr('data-copy-quantity'));
 
 			decklistTotals[roles[i]] += quantity;
+
+			var fCost = copyRow.attr('data-card-f-cost');
+
+			if (roles[i] === 'md') {
+
+				if (fCost === 'Land') {
+
+					decklistTotals.lands += quantity;
+				
+				} else {
+
+					decklistTotals.nonlands += quantity;
+				}
+			}
+
+	
 		});	
 	};
 
