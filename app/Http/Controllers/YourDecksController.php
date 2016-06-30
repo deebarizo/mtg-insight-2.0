@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Models\Event;
-use App\Models\EventDeck;
-use App\Models\EventDeckCopy;
-
 use App\Models\Card;
+use App\Models\CardTag;
+
+use App\Models\Set;
+use App\Models\SetCard;
 
 use DB;
 
@@ -39,7 +39,24 @@ class YourDecksController extends Controller
         $titleTag = 'Create Deck | ';
         $h2Tag = 'Create Deck';
 
-        $cards = Card::with('sets_cards.set')->get();
+        $cards = Card::select('cards.id', 
+                              'cards.name', 
+                              'cards.f_cost', 
+                              'cards.mana_cost')
+                        ->with('sets_cards.set')
+                        ->with('card_tags')
+                        ->leftJoin('card_tags', function($join) {
+      
+                            $join->on('card_tags.card_id', '=', 'cards.id');
+                        })
+                        ->where(function($query) {
+
+                            return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
+                                            ->orWhereNull('card_tags.tag');
+                        })
+                        ->get();
+
+        # ddAll($cards);
 
         return view('your_decks.create', compact('titleTag', 'h2Tag', 'cards'));
     }

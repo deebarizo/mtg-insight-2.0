@@ -57,7 +57,7 @@
 
 		</div>
 
-		<div class="col-lg-5">
+		<div class="col-lg-5 decklist">
 
 			<h4>Decklist</h4>
 

@@ -29,10 +29,10 @@ $(document).ready(function() {
 	}
 
 	/****************************************************************************************
-	ADD CARD
+	ADD CARD FROM CARD ROW
 	****************************************************************************************/
 
-	$('a.add-card').on('click', function(e) {
+	$('tr.card-row').on('click', 'a.add-card', function(e) {
 		
 		e.preventDefault();
 
@@ -80,7 +80,6 @@ $(document).ready(function() {
 
 			insertSpot.spot.before(copy.html);
 		}	
-		
 
 
 		/****************************************************************************************
@@ -114,4 +113,47 @@ $(document).ready(function() {
 	    });
 	});
 
+
+	/****************************************************************************************
+	ADD CARD FROM COPY ROW
+	****************************************************************************************/
+
+	$('div.decklist').on('click', 'a.add-card', function(e) {
+
+		e.preventDefault();
+
+		var copyRow = $(this).closest('tr.copy-row');
+
+		var quantity = Number(copyRow.find('td.quantity').text());
+		quantity++;
+		copyRow.find('td.quantity').text(quantity);
+
+		copyRow.attr('data-copy-quantity', quantity);
+	});
+
+
+	/****************************************************************************************
+	REMOVE CARD FROM COPY ROW
+	****************************************************************************************/
+
+	$('div.decklist').on('click', 'a.remove-card', function(e) {
+
+		e.preventDefault();
+
+		var copyRow = $(this).closest('tr.copy-row');
+
+		var quantity = Number(copyRow.find('td.quantity').text());
+		quantity--;
+
+		if (quantity > 0) {
+
+			copyRow.find('td.quantity').text(quantity);
+
+			copyRow.attr('data-copy-quantity', quantity);
+
+			return false;			
+		}
+
+		copyRow.remove();
+	});
 });
