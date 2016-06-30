@@ -1,4 +1,99 @@
 /****************************************************************************************
+UPDATE DECKLIST
+****************************************************************************************/
+
+var updateDecklist = function() {
+
+	decklist = new Decklist();
+
+	console.log(decklist.totals.md);
+	console.log(decklist.totals.sb);
+}
+
+
+/****************************************************************************************
+GET DECKLIST TOTALS
+****************************************************************************************/
+
+var getDecklistTotals = function() {
+
+	var decklistTotals = {
+
+		md: 0,
+
+		nonLands: 0,
+
+		lands: 0,
+		
+		sb: 0,
+
+		mana: {					
+
+			white: {
+
+				symbols: 0,
+
+				sources: 0
+			},
+
+			blue: {
+
+				symbols: 0,
+
+				sources: 0
+			},
+
+			black: {
+
+				symbols: 0,
+
+				sources: 0
+			},
+
+			red: {
+
+				symbols: 0,
+
+				sources: 0
+			},
+
+			green: {
+
+				symbols: 0,
+
+				sources: 0
+			}, 
+
+			colorless: {
+
+				symbols: 0,
+
+				sources: 0
+			}
+		},
+
+		drops: [null, null, null, null, null, null, null, null] // for mana curve chart
+	};
+
+	var roles = ['md', 'sb'];
+
+	for (var i = 0; i < roles.length; i++) {
+		
+		$('table#'+roles[i]+' tr.copy-row').each(function(index) {
+
+			var copyRow = $(this);
+
+			var quantity = Number(copyRow.attr('data-copy-quantity'));
+
+			decklistTotals[roles[i]] += quantity;
+		});	
+	};
+
+	return decklistTotals;	
+}
+
+
+/****************************************************************************************
 GET INSERT SPOT FOR COPY ROW
 ****************************************************************************************/
 

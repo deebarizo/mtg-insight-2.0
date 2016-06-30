@@ -157,6 +157,8 @@
 
 	<script src="/js/decks/tooltips.js"></script>
 
+	<script src="/js/your_decks/classes.js"></script>
+
 	<script src="/js/your_decks/function_lib.js"></script>
 
 	<script src="/js/your_decks/create_and_edit.js"></script>
