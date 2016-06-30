@@ -23,10 +23,15 @@ var updateDecklist = function() {
 
 	for (var i = 0; i < decklist.totals.mana.length; i++) {
 
+        colorBreakdownChart.series[0].data[i].update({ // series[0] is symbols
+            
+            y: decklist.totals.mana[i].symbols
+        }); 
+
         colorBreakdownChart.series[1].data[i].update({ // series[1] is sources
             
             y: decklist.totals.mana[i].sources
-        }); 		
+        }); 	
 	}
 }
 
@@ -50,34 +55,34 @@ var getDecklistTotals = function() {
 		mana: [
 
 			{
-				symbols: 0,
+				symbols: null,
 
-				sources: 0
+				sources: null
 			},
 			{
-				symbols: 0,
+				symbols: null,
 
-				sources: 0
+				sources: null
 			},
 			{
-				symbols: 0,
+				symbols: null,
 
-				sources: 0
+				sources: null
 			},
 			{
-				symbols: 0,
+				symbols: null,
 
-				sources: 0
+				sources: null
 			},
 			{
-				symbols: 0,
+				symbols: null,
 
-				sources: 0
+				sources: null
 			},
 			{
-				symbols: 0,
+				symbols: null,
 
-				sources: 0
+				sources: null
 			}
 		],
 
@@ -85,6 +90,8 @@ var getDecklistTotals = function() {
 	};
 
 	var roles = ['md', 'sb'];
+
+	var colors = ['W', 'U', 'B', 'R', 'G', 'C'];
 
 	for (var i = 0; i < roles.length; i++) {
 		
@@ -106,13 +113,11 @@ var getDecklistTotals = function() {
 
 					var manaSources = copyRow.attr('data-copy-mana-sources');
 
-					var colors = ['W', 'U', 'B', 'R', 'G', 'C'];
-
 					for (var n = 0; n < colors.length; n++) {
 
-						var numOfSources = Number(occurrences(manaSources, colors[n])) * quantity;
+						var numSources = Number(occurrences(manaSources, colors[n])) * quantity;
 
-						decklistTotals.mana[n].sources += numOfSources;
+						decklistTotals.mana[n].sources += numSources;
 					}
 				
 				} else {
@@ -138,6 +143,15 @@ var getDecklistTotals = function() {
 						}
 
 						decklistTotals.drops[index] += quantity;
+					}
+
+					var manaSymbols = copyRow.attr('data-copy-mana-cost');
+
+					for (var n = 0; n < colors.length; n++) {
+
+						var numSymbols = Number(occurrences(manaSymbols, colors[n])) * quantity;
+
+						decklistTotals.mana[n].symbols += numSymbols;
 					}
 				}
 			}
