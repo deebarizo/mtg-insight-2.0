@@ -76,6 +76,10 @@ $(document).ready(function() {
 			insertSpot.spot.after(copy.html);
 		}	
 
+		if (insertSpot.howToInsert === 'before') {
+
+			insertSpot.spot.before(copy.html);
+		}	
 		
 
 
