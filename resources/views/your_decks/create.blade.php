@@ -170,4 +170,6 @@
 
 	<script src="/js/decks/charts/color_breakdown.js"></script>
 
+	<script src="/js/clipboardjs/dist/clipboard.min.js"></script>
+
 @stop

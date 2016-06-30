@@ -8,7 +8,7 @@
 
 		<div class="col-lg-6">
 
-			<h4>Finish: {{ $deck->finish }} | <a href="/events/{{ $deck->event->id }}">{{ $deck->event->name }} {{ $deck->event->location }}</a> | {{ $deck->event->date }}</h4>
+			<h4>Finish: {{ $deck->finish }} | <a href="/events/{{ $deck->event->id }}">{{ $deck->event->name }} {{ $deck->event->location }}</a> | {{ $deck->event->date }} <button class="btn btn-clipboard" data-clipboard-action="copy" data-clipboard-target="#decklist-for-clipboard">Copy to Clipboard</button></h4>
 
 			@foreach ($roles as $role)
 
@@ -68,6 +68,8 @@
 		</div>
 	</div>
 
+	<textarea id="decklist-for-clipboard">{{ $decklistForClipboard }}</textarea>
+
 	<script type="text/javascript">
 		
 		var manaCurve = <?php echo $manaCurve; ?>;
@@ -85,5 +87,13 @@
 	<script src="/js/decks/charts/mana_curve.js"></script>
 
 	<script src="/js/decks/charts/color_breakdown.js"></script>
+
+	<script src="/js/clipboardjs/dist/clipboard.min.js"></script>
+
+	<script type="text/javascript">
+
+		new Clipboard('.btn-clipboard');
+
+	</script>
 
 @stop

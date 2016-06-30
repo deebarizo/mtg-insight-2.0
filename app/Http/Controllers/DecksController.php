@@ -331,12 +331,27 @@ class DecksController extends Controller
 
 		unset($colorStat);
 
-		# ddAll($colorStats);
+		$decklistForClipboard = '';
+
+		foreach ($roles as $role) {
+
+			foreach ($copies[$role] as $copy) {
+				
+				$decklistForClipboard .= $copy->quantity.' '.$copy->name."\n";
+			}
+
+			if ($role === 'md') {
+
+				$decklistForClipboard .= "\nSideboard\n";
+			}
+		}
+
+		# ddAll($copies);
 
 		$titleTag = 'Deck '.$id.' by '.$deck->player.' | '.$deck->event->name.' '.$deck->event->location.' | ';
 		$h2Tag = 'Deck '.$id.' by '.$deck->player;
 
-		return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles', 'metadata', 'manaCurve', 'colorStats'));
+		return view('decks.show', compact('titleTag', 'h2Tag', 'deck', 'copies', 'roles', 'metadata', 'manaCurve', 'colorStats', 'decklistForClipboard'));
 	}
 
 	/**
