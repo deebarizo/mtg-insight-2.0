@@ -42,7 +42,8 @@ class YourDecksController extends Controller
         $cards = Card::select('cards.id', 
                               'cards.name', 
                               'cards.f_cost', 
-                              'cards.mana_cost')
+                              'cards.mana_cost',
+                              'cards.mana_sources')
                         ->with('sets_cards.set')
                         ->with('card_tags')
                         ->leftJoin('card_tags', function($join) {

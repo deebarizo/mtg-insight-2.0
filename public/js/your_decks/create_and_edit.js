@@ -14,6 +14,7 @@ $(document).ready(function() {
 							cardRow.data('card-name'),
 							cardRow.data('card-mana-cost'),
 							cardRow.data('card-mana-cost-html'),
+							cardRow.data('card-mana-sources'),
 							cardRow.data('card-f-cost'),
 							cardRow.data('card-img-source'));
 

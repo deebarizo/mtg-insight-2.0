@@ -6,7 +6,7 @@ var updateDecklist = function() {
 
 	decklist = new Decklist();
 
-	console.log(decklist.totals);
+	console.log(decklist.totals.mana);
 
 	$('span.total-md-cards').text(decklist.totals.md);
 	$('span.total-nonlands').text(decklist.totals.nonlands);
@@ -19,6 +19,14 @@ var updateDecklist = function() {
             
             y: decklist.totals.drops[i]
         }); 
+	}
+
+	for (var i = 0; i < decklist.totals.mana.length; i++) {
+
+        colorBreakdownChart.series[1].data[i].update({ // series[1] is sources
+            
+            y: decklist.totals.mana[i].sources
+        }); 		
 	}
 }
 
@@ -39,50 +47,39 @@ var getDecklistTotals = function() {
 		
 		sb: 0,
 
-		mana: {					
+		mana: [
 
-			white: {
-
+			{
 				symbols: 0,
 
 				sources: 0
 			},
-
-			blue: {
-
+			{
 				symbols: 0,
 
 				sources: 0
 			},
-
-			black: {
-
+			{
 				symbols: 0,
 
 				sources: 0
 			},
-
-			red: {
-
+			{
 				symbols: 0,
 
 				sources: 0
 			},
-
-			green: {
-
+			{
 				symbols: 0,
 
 				sources: 0
-			}, 
-
-			colorless: {
-
+			},
+			{
 				symbols: 0,
 
 				sources: 0
 			}
-		},
+		],
 
 		drops: [null, null, null, null, null, null, null, null] // for mana curve chart
 	};
@@ -99,13 +96,24 @@ var getDecklistTotals = function() {
 
 			decklistTotals[roles[i]] += quantity;
 
-			var fCost = copyRow.attr('data-card-f-cost');
+			var fCost = copyRow.attr('data-copy-f-cost');
 
 			if (roles[i] === 'md') {
 
 				if (fCost === 'Land') {
 
 					decklistTotals.lands += quantity;
+
+					var manaSources = copyRow.attr('data-copy-mana-sources');
+
+					var colors = ['W', 'U', 'B', 'R', 'G', 'C'];
+
+					for (var n = 0; n < colors.length; n++) {
+
+						var numOfSources = Number(occurrences(manaSources, colors[n])) * quantity;
+
+						decklistTotals.mana[n].sources += numOfSources;
+					}
 				
 				} else {
 
@@ -133,8 +141,6 @@ var getDecklistTotals = function() {
 					}
 				}
 			}
-
-	
 		});	
 	};
 
@@ -174,7 +180,7 @@ var getInsertSpotForCopyRow = function(card, role) {
 
 	copyRows.each(function(index) {
 
-		var fCost = $(this).attr('data-card-f-cost');
+		var fCost = $(this).attr('data-copy-f-cost');
 
 		if (card.fCost > fCost) {
 
@@ -198,7 +204,7 @@ var getInsertSpotForCopyRow = function(card, role) {
 			return false;
 		}
 
-		if (card.fCost === 'Variable' && fCost === 'Land') {
+		if (fCost === 'Land') {
 
 			insertSpot.howToInsert = 'before';
 			insertSpot.spot = $(this);		
@@ -231,4 +237,35 @@ var getRole = function(anchorTag) {
 
 		return 'sb';
 	}
+}
+
+
+/****************************************************************************************
+COUNT OCCURRENCES OF STRING
+****************************************************************************************/
+
+/** Function count the occurrences of substring in a string;
+ * @param {String} string   Required. The string;
+ * @param {String} subString    Required. The string to search for;
+ * @param {Boolean} allowOverlapping    Optional. Default: false;
+ * @author Vitim.us http://stackoverflow.com/questions/4009756/how-to-count-string-occurrence-in-string/7924240#7924240
+ */
+function occurrences(string, subString, allowOverlapping) {
+
+    string += "";
+    subString += "";
+    if (subString.length <= 0) return (string.length + 1);
+
+    var n = 0,
+        pos = 0,
+        step = allowOverlapping ? 1 : subString.length;
+
+    while (true) {
+        pos = string.indexOf(subString, pos);
+        if (pos >= 0) {
+            ++n;
+            pos += step;
+        } else break;
+    }
+    return n;
 }
