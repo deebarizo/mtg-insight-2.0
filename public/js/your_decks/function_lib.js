@@ -118,6 +118,11 @@ var getDecklistTotals = function() {
 						var numSources = Number(occurrences(manaSources, colors[n])) * quantity;
 
 						decklistTotals.mana[n].sources += numSources;
+
+						if (decklistTotals.mana[n].sources === 0) {
+
+							decklistTotals.mana[n].sources = null;
+						}
 					}
 				
 				} else {
@@ -152,6 +157,11 @@ var getDecklistTotals = function() {
 						var numSymbols = Number(occurrences(manaSymbols, colors[n])) * quantity;
 
 						decklistTotals.mana[n].symbols += numSymbols;
+
+						if (decklistTotals.mana[n].symbols === 0) {
+
+							decklistTotals.mana[n].symbols = null;
+						}
 					}
 				}
 			}
