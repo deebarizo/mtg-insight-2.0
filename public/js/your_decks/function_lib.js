@@ -11,11 +11,9 @@ var getInsertSpotForCopyRow = function(card, role) {
 		howToInsert: null
 	};
 
-	var copyTable = $('table#'+role+' tbody');
+	var copyRows = $('table#'+role+' tbody').find('tr.copy-row');
 
-	var hasAtLeastOneCopyRow = copyTable.find('tr.copy-row').length;
-
-	if (!hasAtLeastOneCopyRow) {
+	if (copyRows.length == 0) {
 
 		insertSpot.howToInsert = 'append';
 
@@ -24,13 +22,48 @@ var getInsertSpotForCopyRow = function(card, role) {
 
 	if (card.fCost === 'Land') {
 
-		insertSpot.spot = copyTable.find('tr.copy-row').last();
 		insertSpot.howToInsert = 'after';
-
+		insertSpot.spot = copyRows.last();
+		
 		return insertSpot;
 	}
 
-	
+	copyRows.each(function(index) {
+
+		var fCost = $(this).attr('data-card-f-cost');
+
+		if (fCost == card.fCost) {
+
+			insertSpot.howToInsert = 'after';
+			insertSpot.spot = $(this);		
+
+			return false;	
+		}
+	});
+
+	return insertSpot;
+/*
+	var fCosts = copyRows.map(function(){
+
+		var fCost = $(this).attr('data-card-f-cost');
+
+		if (fCost === 'Land' || fCost === 'Variable') {
+
+			return fCost;
+		}
+               
+        return Number(fCost);
+    
+    }).get();
+
+    var matchingIndex = fCosts.indexOf(card.fCost);
+
+	if (matchingIndex > -1) {
+
+		insertSpot.spot = copyRows.find('td.copy-f-cost')
+	}
+
+	return insertSpot; */
 }
 
 

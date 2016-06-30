@@ -25,7 +25,7 @@ $(document).ready(function() {
 		this.role = role;
 		this.card = card;
 
-		this.html = '<tr class="copy-row '+role+'" data-copy-quantity="'+this.quantity+'" data-copy-card-id="'+this.card.id+'" data-copy-mana-cost="'+this.card.manaCost+' "data-copy-role="'+this.role+'"><td class="quantity">'+this.quantity+'<td class="copy-mana-cost-html">'+card.manaCostHtml+'</td><td class="card-name"><a class="card-name" target="_blank" href="/cards/'+this.card.id+'">'+this.card.name+'</a><div style="display: none" class="tool-tip-card-image"><img width="223" height="311" src="'+this.card.imgSource+'"></td><td class="copy-f-cost">'+card.fCost+'</td><td><a class="add-card md" href="" style="margin-right: 5px"><div class="icon plus '+this.role+'"><span class="glyphicon glyphicon-plus"></span></div></a><a class="remove-card '+this.role+'" href=""><div class="icon minus"><span class="glyphicon glyphicon-minus"></span></div></a></td></tr>';
+		this.html = '<tr class="copy-row '+role+'" data-copy-quantity="'+this.quantity+'" data-copy-card-id="'+this.card.id+'" data-copy-mana-cost="'+this.card.manaCost+' data-copy-role="'+this.role+'" data-card-f-cost="'+this.card.fCost+'"><td class="quantity">'+this.quantity+'<td class="copy-mana-cost-html">'+card.manaCostHtml+'</td><td class="copy-card-name"><a class="card-name" target="_blank" href="/cards/'+this.card.id+'">'+this.card.name+'</a><div style="display: none" class="tool-tip-card-image"><img width="223" height="311" src="'+this.card.imgSource+'"></td><td class="copy-f-cost">'+card.fCost+'</td><td><a class="add-card md" href="" style="margin-right: 5px"><div class="icon plus '+this.role+'"><span class="glyphicon glyphicon-plus"></span></div></a><a class="remove-card '+this.role+'" href=""><div class="icon minus"><span class="glyphicon glyphicon-minus"></span></div></a></td></tr>';
 	}
 
 	/****************************************************************************************
@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 			copyRow.attr('data-copy-quantity', quantity);
 
-			return;
+			return false;
 		} 
 
 		var copy = new Copy(1, role, card); // 1 is quantity
@@ -69,11 +69,6 @@ $(document).ready(function() {
 		if (insertSpot.howToInsert === 'append') {
 
 			copyTable.append(copy.html);
-		}
-
-		if (insertSpot.howToInsert === 'before') {
-
-			insertSpot.spot.before(copy.html);
 		}
 
 		if (insertSpot.howToInsert === 'after') {
