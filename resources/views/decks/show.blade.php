@@ -8,7 +8,7 @@
 
 		<div class="col-lg-6">
 
-			<h4>Finish: {{ $deck->finish }} | <a href="/events/{{ $deck->event->id }}">{{ $deck->event->name }} {{ $deck->event->location }}</a> | {{ $deck->event->date }} <button class="btn btn-clipboard" data-clipboard-action="copy" data-clipboard-target="#decklist-for-clipboard">Copy to Clipboard</button></h4>
+			<h4>Finish: {{ $deck->finish }} | <a href="/events/{{ $deck->event->id }}">{{ $deck->event->name }} {{ $deck->event->location }}</a> | {{ $deck->event->date }} <button class="btn btn-clipboard pull-right" data-clipboard-action="copy" data-clipboard-text="{{ $decklistForClipboard }}">Copy to Clipboard</button></h4>
 
 			@foreach ($roles as $role)
 
@@ -68,8 +68,6 @@
 		</div>
 	</div>
 
-	<textarea id="decklist-for-clipboard">{{ $decklistForClipboard }}</textarea>
-
 	<script type="text/javascript">
 		
 		var manaCurve = <?php echo $manaCurve; ?>;
@@ -92,7 +90,18 @@
 
 	<script type="text/javascript">
 
-		new Clipboard('.btn-clipboard');
+		var clipboard = new Clipboard('.btn-clipboard');
+
+		$('.btn-clipboard').qtip({
+    	
+    		content: 'Copied',
+    		show: 'click',
+			position: {
+
+				my: 'bottom center',
+				at: 'top center'
+			}
+		});
 
 	</script>
 
