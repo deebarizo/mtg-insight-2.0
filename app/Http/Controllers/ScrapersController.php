@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+ini_set('max_execution_time', 10800); // 10800 seconds = 3 hours
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;

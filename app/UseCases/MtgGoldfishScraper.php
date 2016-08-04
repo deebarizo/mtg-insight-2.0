@@ -56,14 +56,27 @@ class MtgGoldfishScraper {
         $client = new Client();
 
         foreach ($cards as $card) {
+
+        	if (strpos($card->name, "'") !== false) {
+
+        		$card->name = preg_replace("/'/", '', $card->name);
+        	}
+
+        	if (strpos($card->name, ",") !== false) {
+
+        		$card->name = preg_replace("/,/", '', $card->name);
+        	}
         	
         	$crawler = $client->request('GET', 'https://www.mtggoldfish.com/price/'.$card->set_name.'/'.$card->name.'#online');
 
         	$price = $crawler->filter('div.price-box.online > div.price-box-price')->eq(0)->text();
 
-        	prf($card->name);
-        	ddAll($price);
+        	prf($card->name.' '.$price);
         }
+
+		$this->message = 'Success';		
+
+		return $this;
 	}
 
 }
