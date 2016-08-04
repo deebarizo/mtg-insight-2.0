@@ -19,7 +19,7 @@ class CardMetagameCreator {
 
 		Temp1CardMetagame::getQuery()->delete();
 
-		$setId = 7;
+		$setId = 8;
 
 		$metagameTimePeriods = MetagameTimePeriod::take(4)->where('set_id', $setId)->orderBy('id', 'desc')->get();
 

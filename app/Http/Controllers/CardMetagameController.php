@@ -44,6 +44,7 @@ class CardMetagameController extends Controller
                     ->join('sets', 'sets.id', '=', 'sets_cards.set_id')
                     ->join('card_metagames', 'card_metagames.card_id', '=', 'cards.id')
                     ->orderBy('cards.f_cost')
+                    ->where('card_metagames.date', $latestDate)
                     ->groupBy('cards.name')
                     ->get();
 
