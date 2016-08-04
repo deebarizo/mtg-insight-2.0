@@ -81,6 +81,8 @@ Route::get('/admin/parsers/mtg_json', ['as' => 'admin.parsers.mtg_json', functio
 
 Route::post('/admin/parsers/mtg_json', 'ParsersController@parseMtgJson');
 
+Route::get('/admin/scrapers/mtg_goldfish', 'ScrapersController@scrapeMtgGoldfish');
+
 
 /****************************************************************************************
 TEST
