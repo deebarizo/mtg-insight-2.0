@@ -33,6 +33,7 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li class="{!! setActive('cards*') !!}"><a href="/cards">Cards</a></li>
+						<li class="{!! setActive('cards*') !!}"><a href="/cards2">Cards2</a></li>
 						<li class="{!! setActive('events*') !!}"><a href="/events">Events</a></li>
 						<li class="{!! setActive('decks*') !!}"><a href="/decks">Decks</a></li>
 						<li class="{!! setActive('your_decks*') !!}"><a href="/your_decks">Your Decks</a></li>

@@ -28,6 +28,8 @@ CARDS
 
 Route::resource('cards', 'CardsController');
 
+Route::get('/cards2', 'CardsController@cards2');
+
 
 /****************************************************************************************
 EVENTS

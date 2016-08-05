@@ -14,6 +14,8 @@ use App\Models\CardPrice;
 
 use App\Models\CardMetagame;
 
+use App\UseCases\CardsTableCreator;
+
 use DB;
 
 class CardsController extends Controller
@@ -27,10 +29,6 @@ class CardsController extends Controller
 	{
 		$titleTag = 'Cards | ';
 		$h2Tag = 'Cards';
-
-		$latestDateForCardMetagame = CardMetagame::orderBy('date', 'desc')->take(1)->pluck('date')[0];
-
-		$latestDateForCardPrices = CardPrice::orderBy('created_at', 'desc')->take(1)->pluck('created_at')[0];
 
 		$firstSet = [
 
@@ -46,102 +44,35 @@ class CardsController extends Controller
 
 		$lastSet['id'] = Set::where('code', $lastSet['code'])->pluck('id')[0];
 
-		$cards = Card::select('cards.id', 
-							  'cards.name', 
-							  'cards.f_cost', 
-							  'cards.mana_cost',
-							  'cards.rating',
-							  'card_prices.price',
-							  'card_metagames.md_percentage',
-							  'card_metagames.sb_percentage',
-							  'card_metagames.total_percentage',
-							  'sets.id')
-						->with('card_tags')
-						->join('sets_cards', function($join) {
-	  
-							$join->on('sets_cards.card_id', '=', 'cards.id');
-						})
-						->join('sets', function($join) {
-	  
-							$join->on('sets.id', '=', 'sets_cards.set_id');
-						})
-						->leftJoin('card_tags', function($join) {
-	  
-							$join->on('card_tags.card_id', '=', 'cards.id');
-						})
-						->leftJoin('card_prices', function($join) {
-	  
-							$join->on('card_prices.card_id', '=', 'cards.id');
-						})
-						->leftJoin('card_metagames', function($join) {
-	  
-							$join->on('card_metagames.card_id', '=', 'cards.id');
-						})
-						->where(function($query) {
+		$cardsTableCreator = new CardsTableCreator;
 
-							return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
-											->orWhereNull('card_tags.tag');
-						})
-						->where(function($query) use($latestDateForCardMetagame) {
+		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
 
-							return $query->where('card_metagames.date', $latestDateForCardMetagame)
-											->orWhereNull('card_metagames.date');
-						})
-						->where(function($query) use($latestDateForCardPrices) {
+		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'colors'));
+	}
 
-							return $query->where('card_prices.created_at', $latestDateForCardPrices)
-											->orWhereNull('card_prices.created_at');
-						})
-						->groupBy('cards.id')
-						->having('sets.id', '>=', $firstSet['id'])
-						->having('sets.id', '<=', $lastSet['id'])
-						->get();
+	public function cards2()
+	{
+		$titleTag = 'Cards2 | ';
+		$h2Tag = 'Cards2';
 
-		# ddAll($cards);
+		$firstSet = [
 
-		$fCosts = Card::select('cards.f_cost')
-						->leftJoin('card_tags', function($join) {
-	  
-							$join->on('card_tags.card_id', '=', 'cards.id');
-						})
-						->where(function($query) {
-
-							return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
-											->where('card_tags.tag', '!=', 'non-spell-land')
-											->orWhereNull('card_tags.tag');
-						})
-						->groupBy('cards.f_cost')
-						->orderBy(DB::raw('FIELD(cards.f_cost, "Land", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Variable")'))
-						->pluck('cards.f_cost')
-						->toArray();
-
-		$colors = [
-
-			[
-				'abbr' => 'w',
-				'name' => 'white'
-			],
-			[
-				'abbr' => 'u',
-				'name' => 'blue'
-			],
-			[
-				'abbr' => 'b',
-				'name' => 'black'
-			],
-			[
-				'abbr' => 'r',
-				'name' => 'red'
-			],
-			[
-				'abbr' => 'g',
-				'name' => 'green'
-			],
-			[
-				'abbr' => 'c',
-				'name' => 'colorless'
-			]            
+			'code' => 'BFZ'
 		];
+
+		$firstSet['id'] = Set::where('code', $firstSet['code'])->pluck('id')[0];
+
+		$lastSet = [
+
+			'code' => 'EMN'
+		];
+
+		$lastSet['id'] = Set::where('code', $lastSet['code'])->pluck('id')[0];
+
+		$cardsTableCreator = new CardsTableCreator;
+
+		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
 
 		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'colors'));
 	}

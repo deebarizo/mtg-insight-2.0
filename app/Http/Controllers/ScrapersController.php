@@ -15,13 +15,13 @@ class ScrapersController extends Controller {
 
 	public function scrapeMtgGoldfish(Request $request) {
 
-		$mtgGoldfishScraper = new MtgGoldfishScraper;
-
 		$setCodes = [
 
 			'first' => 'BFZ',
 			'last' => 'EMN'
 		];
+
+		$mtgGoldfishScraper = new MtgGoldfishScraper;
 
         $results = $mtgGoldfishScraper->scrapePrices($setCodes['first'], $setCodes['last']);
 
