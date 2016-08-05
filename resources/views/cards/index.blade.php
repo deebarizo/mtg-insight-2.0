@@ -9,7 +9,7 @@
 
 		<div id="content-container" class="col-lg-12" style="margin-bottom: 150px">
 
-			<p>Last updated: {{ $latestDate }}</p>
+			<p>Latest Card Metagame Date: {{ $latestDateForCardMetagame }} | Latest Card Prices Date: {{ $latestDateForCardPrices }}</p>
 
 			<form class="form-inline" style="margin: 0 0 0 0">
 
@@ -48,6 +48,7 @@
 						<th>Tags</th> <!-- hidden-->
 						<th>Color Abbrs</th> <!-- hidden-->
 						<th>Rating</th>
+						<th>Price</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -119,6 +120,7 @@
 							<td>{{ $tags }}</td> <!-- hidden-->
 							<td>{{ $colorAbbrs }}</td> <!-- hidden-->
 							<td>{{ $card->rating }}</td>
+							<td>{{ $card->price }}</td>
 						</tr>
 					@endforeach
 				</tbody>
@@ -158,6 +160,7 @@
 	            { "orderSequence": [ "desc", "asc" ] },
 	            null,
 	            null,
+	            { "orderSequence": [ "desc", "asc" ] },
 	            { "orderSequence": [ "desc", "asc" ] }
 	        ]
 		});

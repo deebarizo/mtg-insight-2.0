@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Models\Card;
 use App\Models\SetCard;
 use App\Models\CardTag;
+use App\Models\CardPrice;
 
 use App\Models\CardMetagame;
 
@@ -26,22 +27,29 @@ class CardsController extends Controller
         $titleTag = 'Cards | ';
         $h2Tag = 'Cards';
 
-        $latestDate = CardMetagame::orderBy('date', 'desc')->take(1)->pluck('date')[0];
+        $latestDateForCardMetagame = CardMetagame::orderBy('date', 'desc')->take(1)->pluck('date')[0];
+
+        $latestDateForCardPrices = CardPrice::orderBy('created_at', 'desc')->take(1)->pluck('created_at')[0];
 
         $cards = Card::select('cards.id', 
                               'cards.name', 
                               'cards.f_cost', 
                               'cards.mana_cost',
-                              'cards.rating')
+                              'cards.rating',
+                              'card_prices.price')
                         ->with('sets_cards.set')
                         ->with('card_tags')
-                        ->with(['card_metagames' => function($query) use($latestDate) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads
+                        ->with(['card_metagames' => function($query) use($latestDateForCardMetagame) { // https://laravel.com/docs/5.2/eloquent-relationships#constraining-eager-loads
 
-                            $query->where('date', $latestDate);
+                            $query->where('date', $latestDateForCardMetagame);
                         }])
                         ->leftJoin('card_tags', function($join) {
       
                             $join->on('card_tags.card_id', '=', 'cards.id');
+                        })
+                        ->leftJoin('card_prices', function($join) {
+      
+                            $join->on('card_prices.card_id', '=', 'cards.id');
                         })
                         ->where(function($query) {
 
@@ -49,6 +57,7 @@ class CardsController extends Controller
                                             ->where('card_tags.tag', '!=', 'non-spell-land')
                                             ->orWhereNull('card_tags.tag');
                         })
+                        ->where('card_prices.created_at', $latestDateForCardPrices)
                         ->get();
 
         # ddAll($cards);
@@ -97,7 +106,7 @@ class CardsController extends Controller
             ]            
         ];
 
-        return view('cards.index', compact('titleTag', 'h2Tag', 'latestDate', 'cards', 'fCosts', 'colors'));
+        return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'colors'));
     }
 
     /**
