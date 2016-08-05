@@ -57,40 +57,31 @@
 							<?php 
 								$cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); 
 
-								if ($card->card_metagames->isEmpty()) {
+								if ($card->md_percentage === null) {
 
 									$mdPercentage = NumFormat(0, 2);
-									$sbPercentage = NumFormat(0, 2);
-									$totalPercentage = NumFormat(0, 2);
-									
+
 								} else {
 
-									if (!isset($card->card_metagames[0]->md_percentage)) {
-
-										$mdPercentage = NumFormat(0, 2);
+									$mdPercentage = NumFormat($card->md_percentage, 2);
+								}
 									
-									} else {
+								if ($card->sb_percentage === null) {
 
-										$mdPercentage = $card->card_metagames[0]->md_percentage;
-									}
+									$sbPercentage = NumFormat(0, 2);
 
-									if (!isset($card->card_metagames[0]->sb_percentage)) {
+								} else {
 
-										$sbPercentage = NumFormat(0, 2);
-									
-									} else {
+									$sbPercentage = NumFormat($card->md_percentage, 2);
+								}
 
-										$sbPercentage = $card->card_metagames[0]->sb_percentage;
-									}
+								if ($card->total_percentage === null) {
 
-									if (!isset($card->card_metagames[0]->total_percentage)) {
+									$totalPercentage = NumFormat(0, 2);
 
-										$totalPercentage = NumFormat(0, 2);
-									
-									} else {
+								} else {
 
-										$totalPercentage = $card->card_metagames[0]->total_percentage;
-									}
+									$totalPercentage = NumFormat($card->md_percentage, 2);
 								}
 
 								$manaCost = getManaSymbols($card->mana_cost);
@@ -98,6 +89,8 @@
 								$colorAbbrs = getColorAbbrs($card->mana_cost);
 
 								$tags = createTagsString($card->card_tags);
+
+								
 							?>
 
 							<td>
