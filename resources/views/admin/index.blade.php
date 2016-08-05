@@ -7,6 +7,12 @@
 
 			<hr>
 
+			<h4>Scrapers</h4>
+
+			<ul>
+				<li><a href="/admin/scrapers/mtg_goldfish">MTG Goldfish</a></li>
+			</ul>
+
 			<h4>Parsers</h4>
 
 			<ul>

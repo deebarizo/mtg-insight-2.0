@@ -81,7 +81,15 @@ Route::get('/admin/parsers/mtg_json', ['as' => 'admin.parsers.mtg_json', functio
 
 Route::post('/admin/parsers/mtg_json', 'ParsersController@parseMtgJson');
 
-Route::get('/admin/scrapers/mtg_goldfish', 'ScrapersController@scrapeMtgGoldfish');
+Route::get('/admin/scrapers/mtg_goldfish', ['as' => 'admin.scrapers.mtg_goldfish', function() {
+
+	$titleTag = 'Scrapers - MTG Goldfish';
+    $h2Tag = 'Scrapers - MTG Goldfish';	
+
+	return View::make('admin/scrapers/mtg_goldfish', compact('titleTag', 'h2Tag'));
+}]);
+
+Route::post('/admin/scrapers/mtg_goldfish', 'ScrapersController@scrapeMtgGoldfish');
 
 
 /****************************************************************************************

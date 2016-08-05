@@ -3,6 +3,11 @@ hr {
 	border-top: 1px solid #ddd;
 }
 
+h4 {
+
+	margin-top: 20px;
+}
+
 .table-hover > tbody > tr:hover { /* http://stackoverflow.com/a/30416071/1946525 */
 
 	background-color: #ddd;
@@ -22,12 +27,6 @@ div#spinner-container img {
 
 	display: block;
 	margin: 30px auto 0 auto;
-}
-
-h4 {
-
-	margin-top: 0; 
-	margin-bottom: 20px;
 }
 
 div#color-breakdown i.mi {

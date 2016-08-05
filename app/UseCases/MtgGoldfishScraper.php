@@ -1,9 +1,12 @@
 <?php namespace App\UseCases;
 
+ini_set('max_execution_time', 10800); // 10800 seconds = 3 hours
+
 use App\Models\Card;
 use App\Models\Set;
 use App\Models\SetCard;
 use App\Models\CardTag;
+use App\Models\CardPrice;
 
 use DB;
 
@@ -69,12 +72,22 @@ class MtgGoldfishScraper {
         	
         	$crawler = $client->request('GET', 'https://www.mtggoldfish.com/price/'.$card->set_name.'/'.$card->name.'#online');
 
-        	$price = $crawler->filter('div.price-box.online > div.price-box-price')->eq(0)->text();
-
-        	prf($card->name.' '.$price);
+        	$card->price = $crawler->filter('div.price-box.online > div.price-box-price')->eq(0)->text();
         }
 
-		$this->message = 'Success';		
+        foreach ($cards as $card) {
+          
+            $cardPrice = new CardPrice;
+
+            $cardPrice->card_id = $card->id;
+            $cardPrice->price = $card->price;
+
+            $cardPrice->save();  
+        }
+
+        # ddAll($cards);
+
+		$this->message = 'Success!';		
 
 		return $this;
 	}
