@@ -27,7 +27,8 @@ class CardsTableCreator {
 							  'card_metagames.md_percentage',
 							  'card_metagames.sb_percentage',
 							  'card_metagames.total_percentage',
-							  'sets.id')
+							  'sets.id',
+							  'sets.code')
 						->with('card_tags')
 						->join('sets_cards', function($join) {
 	  
