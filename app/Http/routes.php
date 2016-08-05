@@ -28,7 +28,7 @@ CARDS
 
 Route::resource('cards', 'CardsController');
 
-Route::get('/cards2', 'CardsController@cards2');
+Route::get('/post_rotation_cards', 'CardsController@post_rotation_cards');
 
 
 /****************************************************************************************

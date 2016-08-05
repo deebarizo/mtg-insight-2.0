@@ -51,10 +51,10 @@ class CardsController extends Controller
 		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'colors'));
 	}
 
-	public function cards2()
+	public function post_rotation_cards()
 	{
-		$titleTag = 'Cards2 | ';
-		$h2Tag = 'Cards2';
+		$titleTag = 'Cards (Post Rotation) | ';
+		$h2Tag = 'Cards (Post Rotation)';
 
 		$firstSet = [
 
