@@ -7,6 +7,12 @@
 
 			<hr>
 
+			<h4>Card Metagame</h4>
+
+			<ul>
+				<li><a href="/card_metagame/create">Create</a></li>
+			</ul>
+
 			<h4>Scrapers</h4>
 
 			<ul>

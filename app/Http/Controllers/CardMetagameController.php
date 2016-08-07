@@ -83,7 +83,7 @@ class CardMetagameController extends Controller
 
         $message = $results->message;
 
-        return redirect()->route('card_metagame.index')->with('message', $message);
+        return redirect()->route('cards.index')->with('message', $message);
     }
 
     /**
