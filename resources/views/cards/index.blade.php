@@ -33,6 +33,14 @@
 					</button>
 				@endforeach
 
+				<label>Sets</label>
+				<select class="form-control set-filter" style="width: 10%; margin-left: 20px">
+					<option value="All">All</option>
+				  	@foreach ($sets as $set)
+					  	<option value="{{ $set }}">{{ $set }}</option>
+				  	@endforeach
+				</select>	
+
 			</form>
 
 			<table id="cards" class="table table-striped table-bordered table-hover table-condensed">
@@ -57,40 +65,11 @@
 							<?php 
 								$cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); 
 
-								if ($card->md_percentage === null) {
-
-									$mdPercentage = NumFormat(0, 2);
-
-								} else {
-
-									$mdPercentage = NumFormat($card->md_percentage, 2);
-								}
-									
-								if ($card->sb_percentage === null) {
-
-									$sbPercentage = NumFormat(0, 2);
-
-								} else {
-
-									$sbPercentage = NumFormat($card->md_percentage, 2);
-								}
-
-								if ($card->total_percentage === null) {
-
-									$totalPercentage = NumFormat(0, 2);
-
-								} else {
-
-									$totalPercentage = NumFormat($card->md_percentage, 2);
-								}
-
 								$manaCost = getManaSymbols($card->mana_cost);
 
 								$colorAbbrs = getColorAbbrs($card->mana_cost);
 
 								$tags = createTagsString($card->card_tags);
-
-								
 							?>
 
 							<td>
@@ -107,13 +86,14 @@
 							</td>
 							<td>{{ $card->f_cost }}</td>
 							<td>{!! $manaCost !!}</td>
-							<td>{{ $mdPercentage }}%</td>
-							<td>{{ $sbPercentage }}%</td>
-							<td>{{ $totalPercentage }}%</td>
+							<td>{{ $card->md_percentage }}%</td>
+							<td>{{ $card->sb_percentage }}%</td>
+							<td>{{ $card->total_percentage }}%</td>
 							<td>{{ $tags }}</td> <!-- hidden-->
 							<td>{{ $colorAbbrs }}</td> <!-- hidden-->
 							<td>{{ $card->rating }}</td>
 							<td>{{ $card->price }}</td>
+							<td>{{ $card->code }}</td> <!-- hidden-->
 						</tr>
 					@endforeach
 				</tbody>
@@ -127,7 +107,7 @@
 			
 			"bLengthChange": false,
 			"pageLength": 30,
-			"order": [[4, "desc"]],
+			"order": [[6, "desc"]],
 	        "columnDefs": [ 
 	        	{
 	            	"searchable": false,
@@ -141,7 +121,11 @@
 	        	{
 	            	"visible": false,
 	            	"targets": 8
-	        	},	        	
+	        	},	 
+	        	{
+	            	"visible": false,
+	            	"targets": 11
+	        	}	       	
 	        ],
 	        "aoColumns": [
 	            null,
@@ -154,7 +138,8 @@
 	            null,
 	            null,
 	            { "orderSequence": [ "desc", "asc" ] },
-	            { "orderSequence": [ "desc", "asc" ] }
+	            { "orderSequence": [ "desc", "asc" ] },
+	            null
 	        ]
 		});
 

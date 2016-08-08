@@ -46,9 +46,9 @@ class CardsController extends Controller
 
 		$cardsTableCreator = new CardsTableCreator;
 
-		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
+		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
 
-		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'colors'));
+		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets', 'colors'));
 	}
 
 	public function post_rotation_cards()
@@ -72,9 +72,9 @@ class CardsController extends Controller
 
 		$cardsTableCreator = new CardsTableCreator;
 
-		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
+		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
 
-		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'colors'));
+		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets','colors'));
 	}
 
 	/**

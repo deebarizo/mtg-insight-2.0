@@ -24,12 +24,7 @@ class CardsTableCreator {
 							  'cards.mana_cost',
 							  'cards.rating',
 							  'card_prices.price',
-							  'card_metagames.md_percentage',
-							  'card_metagames.sb_percentage',
-							  'card_metagames.total_percentage',
-							  'sets.id',
 							  'sets.code')
-						->with('card_tags')
 						->join('sets_cards', function($join) {
 	  
 							$join->on('sets_cards.card_id', '=', 'cards.id');
@@ -55,11 +50,6 @@ class CardsTableCreator {
 							return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
 											->orWhereNull('card_tags.tag');
 						})
-						->where(function($query) use($latestDateForCardMetagame) {
-
-							return $query->where('card_metagames.date', $latestDateForCardMetagame)
-											->orWhereNull('card_metagames.date');
-						})
 						->where(function($query) use($latestDateForCardPrices) {
 
 							return $query->where('card_prices.created_at', $latestDateForCardPrices)
@@ -69,6 +59,36 @@ class CardsTableCreator {
 						->where('sets.id', '<=', $lastSet['id'])
 						->groupBy('cards.id')
 						->get();
+
+		$cardMetagame = CardMetagame::where('date', $latestDateForCardMetagame)->get();
+
+		# ddAll($cardMetagame);
+
+		foreach ($cards as $card) {
+
+			$cardIsInMetagame = false;
+
+			foreach ($cardMetagame as $metagameCard) {
+				
+				if ($card->id === $metagameCard->card_id) {
+
+					$card->md_percentage = NumFormat($metagameCard->md_percentage, 2);
+					$card->sb_percentage = NumFormat($metagameCard->sb_percentage, 2);
+					$card->total_percentage = NumFormat($metagameCard->total_percentage, 2);
+
+					$cardIsInMetagame = true;
+
+					break;
+				}
+			}
+
+			if (!$cardIsInMetagame) {
+
+				$card->md_percentage = NumFormat(0, 2);
+				$card->sb_percentage = NumFormat(0, 2);
+				$card->total_percentage = NumFormat(0, 2);
+			}
+		}
 
 		# ddAll($cards);
 
@@ -87,6 +107,10 @@ class CardsTableCreator {
 						->orderBy(DB::raw('FIELD(cards.f_cost, "Land", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Variable")'))
 						->pluck('cards.f_cost')
 						->toArray();
+
+		$sets = Set::where('code', '!=', 'LANDS')->orderBy('id', 'desc')->pluck('code')->toArray();
+
+		# ddAll($sets);
 
 		$colors = [
 
@@ -116,7 +140,7 @@ class CardsTableCreator {
 			]            
 		];
 
-		return array($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $colors);
+		return array($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors);
 	}
 
 }

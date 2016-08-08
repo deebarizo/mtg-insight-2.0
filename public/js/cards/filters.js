@@ -16,17 +16,14 @@ $(document).ready(function() {
 
 		// https://datatables.net/reference/api/column().search()
 
-		if (this.type === 'Functional Cost') {
+		if (this.value !== 'All') {
 
-			if (this.value !== 'All') {
+			cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
+		}
 
-				cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
-			}
+		if (this.value === 'All') {
 
-			if (this.value === 'All') {
-
-				cardsTable.column(this.columnIndex).search('.*', true, false, false); 
-			}
+			cardsTable.column(this.columnIndex).search('.*', true, false, false); 
 		}
 
 		cardsTable.draw();
@@ -41,6 +38,20 @@ $(document).ready(function() {
 		var value = $('select.f-cost-filter').val();
 
 		var filter = new Filter('Functional Cost', 2, value, null);
+
+		filter.execute();
+	});
+
+
+	/****************************************************************************************
+	SET FILTER
+	****************************************************************************************/
+
+	$('select.set-filter').on('change', function() {
+
+		var value = $('select.set-filter').val();
+
+		var filter = new Filter('Set', 11, value, null);
 
 		filter.execute();
 	});
