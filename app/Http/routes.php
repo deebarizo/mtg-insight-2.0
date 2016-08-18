@@ -107,7 +107,6 @@ TEST
 ****************************************************************************************/
 
 // use App\Models\Card;
-// use App\Models\CardTag;
 
 Route::get('/one_time_process', function() {
 

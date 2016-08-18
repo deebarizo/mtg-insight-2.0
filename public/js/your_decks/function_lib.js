@@ -6,8 +6,6 @@ var updateDecklist = function() {
 
 	decklist = new Decklist();
 
-	console.log(decklist.totals.mana);
-
 	$('span.total-md-cards').text(decklist.totals.md);
 	$('span.total-nonlands').text(decklist.totals.nonlands);
 	$('span.total-lands').text(decklist.totals.lands);
@@ -231,6 +229,14 @@ var getInsertSpotForCopyRow = function(card, role) {
 
 			insertSpot.howToInsert = 'before';
 			insertSpot.spot = $(this);	
+
+			return false;
+		}
+
+		if (fCost === 'Variable') {
+
+			insertSpot.howToInsert = 'before';
+			insertSpot.spot = $(this);
 
 			return false;
 		}
