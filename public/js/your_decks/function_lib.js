@@ -199,7 +199,7 @@ var getInsertSpotForCopyRow = function(card, role) {
 		return insertSpot;
 	}
 
-	if (card.fCost === 'Land') {
+	if (card.fCost == 'Land') {
 
 		insertSpot.howToInsert = 'after';
 		insertSpot.spot = copyRows.last();
@@ -207,9 +207,19 @@ var getInsertSpotForCopyRow = function(card, role) {
 		return insertSpot;
 	}
 
+	if (card.fCost == 'Variable') {
+
+		card.fCost = 150;
+	}
+
 	copyRows.each(function(index) {
 
 		var fCost = $(this).attr('data-copy-f-cost');
+
+		if (fCost == 'Variable') {
+
+			fCost = 150;
+		}
 
 		if (card.fCost > fCost) {
 
@@ -217,7 +227,7 @@ var getInsertSpotForCopyRow = function(card, role) {
 			insertSpot.spot = $(this);			
 		}
 
-		if (fCost == card.fCost) {
+		if (card.fCost == fCost) {
 
 			insertSpot.howToInsert = 'after';
 			insertSpot.spot = $(this);		
@@ -230,28 +240,7 @@ var getInsertSpotForCopyRow = function(card, role) {
 
 			return false;
 		}
-
-		if (fCost === 'Variable') {
-
-			insertSpot.howToInsert = 'before';
-			insertSpot.spot = $(this);
-
-			return false;
-		}
-
-		if (fCost === 'Land') {
-
-			insertSpot.howToInsert = 'before';
-			insertSpot.spot = $(this);		
-
-			return false;				
-		}
 	});
-
-	if (card.fCost === 'Variable' && insertSpot.spot === null)  {
-
-		insertSpot.howToInsert = 'append';
-	}
 
 	return insertSpot;
 }
