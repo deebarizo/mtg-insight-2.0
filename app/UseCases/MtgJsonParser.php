@@ -90,10 +90,12 @@ class MtgJsonParser {
 		if (isset($card['manaCost'])) {
 
 			$eCard->mana_cost = $card['manaCost'];
+			$eCard->f_mana_cost = $card['manaCost'];
 		
 		} else {
 
 			$eCard->mana_cost = null;
+			$eCard->f_mana_cost = null;
 		}
 
 		if (isset($card['cmc'])) {

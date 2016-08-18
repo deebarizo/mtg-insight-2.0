@@ -20,7 +20,7 @@ use App\Models\CardType;
 
 class MtgJsonParserTest extends TestCase {
 
-    use DatabaseTransactions;
+    use DatabaseTransactions;  
 
     private $files = [
 
@@ -113,6 +113,7 @@ class MtgJsonParserTest extends TestCase {
         $card = Card::where('name', 'Dragonlord Ojutai')->first();
 
         $this->assertContains($card->mana_cost, '{3}{W}{U}');
+        $this->assertContains($card->f_mana_cost, '{3}{W}{U}');
         $this->assertContains((string)$card->cmc, '5');
         $this->assertContains($card->middle_text, 'Legendary Creature — Elder Dragon');
         $this->assertContains($card->rules_text, "Flying\nDragonlord Ojutai has hexproof as long as it's untapped.\nWhenever Dragonlord Ojutai deals combat damage to a player, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.");
@@ -342,6 +343,7 @@ class MtgJsonParserTest extends TestCase {
         $card = Card::where('name', 'Dragonlord Ojutai')->first();
 
         $this->assertContains($card->mana_cost, '{3}{W}{U}');
+        $this->assertContains($card->f_mana_cost, '{3}{W}{U}');
         $this->assertContains((string)$card->cmc, '5');
         $this->assertContains($card->middle_text, 'Legendary Creature — Elder Dragon');
         $this->assertContains($card->rules_text, "Flying\nDragonlord Ojutai has hexproof as long as it's untapped.\nWhenever Dragonlord Ojutai deals combat damage to a player, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.");
