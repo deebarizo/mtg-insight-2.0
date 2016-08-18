@@ -110,5 +110,13 @@ TEST
 
 Route::get('/one_time_process', function() {
 
+	$date = date('Y-m-d h:i:sa');
+
+	$time = strtotime($date);
+
+	prf($date);
+
+	prf($time);
+
 	ddAll('Success!');
 });
