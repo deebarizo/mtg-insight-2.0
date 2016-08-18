@@ -9,7 +9,7 @@
 
 		<div id="content-container" class="col-lg-12" style="margin-bottom: 150px">
 
-			<p>Latest Card Metagame Date: {{ $latestDateForCardMetagame }} | Latest Card Prices Date: {{ $latestDateForCardPrices }}</p>
+			<p><a href="/cards/create">Create Card</a> | Latest Card Metagame Date: {{ $latestDateForCardMetagame }} | Latest Card Prices Date: {{ $latestDateForCardPrices }}</p>
 
 			<form class="form-inline" style="margin: 0 0 0 0">
 

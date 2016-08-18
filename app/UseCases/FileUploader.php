@@ -6,6 +6,18 @@ use Illuminate\Support\Facades\Input;
 
 class FileUploader {
 
+	public function uploadCardImage($request) {
+
+		$fileDirectory = 'files/card_images/'.$request->input('set-code').'/';
+
+		$cardName = preg_replace('/\'/', '', $request->input('name')); 
+
+		$fileName = $cardName.'.png';
+		$file = $fileDirectory . $fileName;
+
+		Input::file('png')->move($fileDirectory, $fileName);   
+	}
+
     public function uploadMtgJson($request) {
 
 		$fileDirectory = 'files/mtg_json/';
