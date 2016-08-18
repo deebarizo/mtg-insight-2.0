@@ -155,7 +155,7 @@ var getDecklistTotals = function() {
 						decklistTotals.drops[index] += quantity;
 					}
 
-					var manaSymbols = copyRow.attr('data-copy-mana-cost');
+					var manaSymbols = copyRow.attr('data-copy-f-mana-cost');
 
 					for (var n = 0; n < colors.length; n++) {
 

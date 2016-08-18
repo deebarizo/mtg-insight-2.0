@@ -43,6 +43,7 @@ class YourDecksController extends Controller
                               'cards.name', 
                               'cards.f_cost', 
                               'cards.mana_cost',
+                              'cards.f_mana_cost', 
                               'cards.mana_sources')
                         ->with('sets_cards.set')
                         ->with('card_tags')

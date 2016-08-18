@@ -28,6 +28,7 @@
 						<tr class="card-row"
 							data-card-id="{{ $card->id }}"
 							data-card-mana-cost="{{ $card->mana_cost }}"
+							data-card-f-mana-cost="{{ $card->f_mana_cost }}"
 							data-card-mana-cost-html='{!! $manaCostHtml !!}'
 							data-card-mana-sources="{{ $card->mana_sources }}"
 							data-card-name="{{ $card->name }}"

@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 		var card = new Card(cardRow.data('card-id'), 
 							cardRow.data('card-name'),
-							cardRow.data('card-mana-cost'),
+							cardRow.data('card-f-mana-cost'),
 							cardRow.data('card-mana-cost-html'),
 							cardRow.data('card-mana-sources'),
 							cardRow.data('card-f-cost'),
