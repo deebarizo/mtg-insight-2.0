@@ -221,8 +221,6 @@ var getInsertSpotForCopyRow = function(card, role) {
 
 			insertSpot.howToInsert = 'after';
 			insertSpot.spot = $(this);		
-
-			return false;	
 		}
 
 		if (card.fCost < fCost) {
