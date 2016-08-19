@@ -73,7 +73,7 @@
 					<input class="form-control inline"  style="width: 15%" name="latest-set-code" type="text" value="{{ $latestSetCode }}" id="latest-set-code">
 				</div>
 
-				<input class="form-control inline btn btn-primary" style="margin-top: 20px" type="submit" value="Submit">	
+				<button style="width: 128px; margin-top: 20px" class="form-control inline btn btn-primary submit-decklist">Submit</button>
 			</form>					
 
 			<p>Maindeck Cards: <span class="total-md-cards">0</span> | Nonlands: <span class="total-nonlands">0</span> | Lands: <span class="total-lands">0</span></p>
@@ -149,6 +149,10 @@
 	</script>
 
 	<script type="text/javascript">
+
+		/****************************************************************************************
+		GLOBAL VARIABLES
+		****************************************************************************************/	
 		
 		var manaCurve = [null, null, null, null, null, null, null, null];
 
@@ -166,9 +170,11 @@
 
 	<script src="/js/your_decks/function_lib_single_cards.js"></script>
 
-	<script src="/js/your_decks/function_lib.js"></script>
+	<script src="/js/your_decks/function_lib_update_decklist.js"></script>
 
-	<script src="/js/your_decks/create_and_edit.js"></script>
+	<script src="/js/your_decks/function_lib_store_decklist.js"></script>
+
+	<script src="/js/your_decks/create.js"></script>
 
 	<script src="/js/decks/charts/mana_curve.js"></script>
 

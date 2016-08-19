@@ -139,4 +139,15 @@ $(document).ready(function() {
 
 		updateDecklist();
 	});
+
+	/****************************************************************************************
+	SUBMIT DECKLIST
+	****************************************************************************************/
+
+	$('button.submit-decklist').on('click', function(e) {
+
+		e.preventDefault();
+
+		storeDecklist(); 
+	});
 });
