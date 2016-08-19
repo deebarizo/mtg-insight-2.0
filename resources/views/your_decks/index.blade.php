@@ -9,6 +9,22 @@
 
 			<p><a href="/your_decks/create">Create Deck</a></p>
 
+			<table class="table table-striped table-bordered table-hover table-condensed">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Last Updated</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($yourDecks as $yourDeck)
+						<tr>
+							<td><a href="/your_decks/{{ $yourDeck->id }}">{{ $yourDeck->name }}</a></td>
+							<td>{{ $yourDeck->saved_at }}</td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
 		</div>
 	</div>
 

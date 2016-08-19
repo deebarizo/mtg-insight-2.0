@@ -29,7 +29,17 @@ class YourDecksController extends Controller
         $titleTag = 'Your Decks | ';
         $h2Tag = 'Your Decks';
 
-        return view('your_decks.index', compact('titleTag', 'h2Tag'));
+        // http://www.xaprb.com/blog/2006/12/07/how-to-select-the-firstleastmax-row-per-group-in-sql/
+
+        $yourDecks = DB::select(DB::raw('SELECT f.id, f.name, f.saved_at 
+                                         FROM (
+                                            SELECT name, MAX(unix_saved_at) as max_unix_saved_at
+                                            from your_decks group by name
+                                         ) AS x INNER JOIN your_decks as f on f.name = x.name and f.unix_saved_at = x.max_unix_saved_at'));
+
+        # ddAll($yourDecks);
+
+        return view('your_decks.index', compact('titleTag', 'h2Tag', 'yourDecks'));
     }
 
     /**
