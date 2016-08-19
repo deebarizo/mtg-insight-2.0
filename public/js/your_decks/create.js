@@ -146,8 +146,6 @@ $(document).ready(function() {
 
 	$('button.submit-decklist').on('click', function(e) {
 
-		e.preventDefault();
-
 		storeDecklist(); 
 	});
 });

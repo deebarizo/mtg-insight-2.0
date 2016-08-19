@@ -66,15 +66,17 @@
 			<form class="form-inline" role="form" style="margin-bottom: 20px">
 
 				<div class="form-group inline">
-					<label for="deck-name">Name:</label>
-					<input class="form-control inline"  style="width: 50%" name="deck-name" type="text" value="" id="deck-name">
+					<label for="decklist-name">Name:</label>
+					<input class="form-control inline"  style="width: 50%" name="decklist-name" type="text" value="" id="decklist-name">
 
-						<label for="latest-set-code">Set:</label>
+					<label for="latest-set-code">Set:</label>
 					<input class="form-control inline"  style="width: 15%" name="latest-set-code" type="text" value="{{ $latestSetCode }}" id="latest-set-code">
-				</div>
 
-				<button style="width: 128px; margin-top: 20px" class="form-control inline btn btn-primary submit-decklist">Submit</button>
-			</form>					
+					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				</div>
+			</form>	
+
+			<button style="width: 128px; margin-bottom: 20px" class="btn btn-primary submit-decklist">Submit</button>
 
 			<p>Maindeck Cards: <span class="total-md-cards">0</span> | Nonlands: <span class="total-nonlands">0</span> | Lands: <span class="total-lands">0</span></p>
 
