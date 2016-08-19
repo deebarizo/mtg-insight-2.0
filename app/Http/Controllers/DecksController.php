@@ -14,6 +14,8 @@ use App\Models\Card;
 
 use DB;
 
+use App\UseCases\ManaProcessor;
+
 class DecksController extends Controller
 {
 	/**
@@ -300,6 +302,8 @@ class DecksController extends Controller
 			'sources' => [0, 0, 0, 0, 0, 0]
 		];
 
+		$manaProcessor = new ManaProcessor;
+
 		foreach ($colorStats as $key => &$colorStat) {
 
 			foreach ($copies['md'] as $copy) {
@@ -307,11 +311,11 @@ class DecksController extends Controller
 				switch ($key) {
 
 					case 'symbols':
-						$colorStat = $this->getManaSymbols($copy->quantity, $copy->mana_cost, $colorStat);
+						$colorStat = $manaProcessor->getManaSymbols($copy->quantity, $copy->mana_cost, $colorStat);
 						break;
 					
 					case 'sources':
-						$colorStat = $this->getManaSources($copy->quantity, $copy->mana_sources, $colorStat, $copy->name, $id);
+						$colorStat = $manaProcessor->getManaSources($copy->quantity, $copy->mana_sources, $colorStat, $copy->name, 'Event Deck', $id);
 						break;
 				}
 			}
@@ -386,79 +390,6 @@ class DecksController extends Controller
 	public function destroy($id)
 	{
 		//
-	}
-
-	private function getManaSymbols($quantity, $manaCost, $numManaSymbols) {
-
-		$manaSymbols = ['{W}', '{U}', '{B}', '{R}', '{G}', '{C}'];
-
-		foreach ($manaSymbols as $key => $manaSymbol) {
-			
-			$numManaSymbols[$key] += $quantity * substr_count($manaCost, $manaSymbol);
-		}
-
-		return $numManaSymbols;
-	}
-
-	private function getManaSources($quantity, $manaSources, $numManaSources, $cardName, $eventDeckId) {
-
-		if ($cardName === 'Evolving Wilds') {
-
-			$lands = EventDeckCopy::join('cards', function($join) {
-		  
-										$join->on('cards.id', '=', 'event_deck_copies.card_id');
-									})	
-									->where('event_deck_id', $eventDeckId)
-									->where('role', 'md')
-									->where('cards.f_cost', 'Land')
-									->get();
-
-			$manaSources = $this->getEvolvingWildsManaSources($lands);
-		}
-
-		$numManaSources = $this->getManaSymbols($quantity, $manaSources, $numManaSources);
-
-		return $numManaSources;
-	}
-
-	private function getEvolvingWildsManaSources($lands) {
-
-		$manaSources = '';
-
-		foreach ($lands as $land) {
-			
-			switch ($land->name) {
-				
-				case 'Plains':
-					$manaSources .= '{W}';
-					break;
-
-				case 'Island':
-					$manaSources .= '{U}';
-					break;
-
-				case 'Swamp':
-					$manaSources .= '{B}';
-					break;
-
-				case 'Mountain':
-					$manaSources .= '{R}';
-					break;
-
-				case 'Forest':
-					$manaSources .= '{G}';
-					break;
-
-				case 'Wastes':
-					$manaSources .= '{C}';
-					break;
-				
-				default:
-					break;
-			}
-		}
-
-		return $manaSources;
 	}
 	
 }
