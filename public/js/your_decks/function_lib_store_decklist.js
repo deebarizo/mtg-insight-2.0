@@ -66,7 +66,7 @@ var storeDecklist = function() {
         
         success: function() {
 
-        	alert('Deck saved.');
+        	$('button.submit-decklist').html('Submit');	
         }
     }); 
 }

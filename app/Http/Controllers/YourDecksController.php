@@ -12,6 +12,9 @@ use App\Models\CardTag;
 use App\Models\Set;
 use App\Models\SetCard;
 
+use App\Models\YourDeck;
+use App\Models\YourDeckCopy;
+
 use DB;
 
 class YourDecksController extends Controller
@@ -73,7 +76,18 @@ class YourDecksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request['decklist'];
+
+        $yourDeck = new YourDeck;
+
+        $yourDeck->latest_set_id = Set::where('code', $input['latestSetCode'])->pluck('id')[0];
+        $yourDeck->name = $input['name'];
+        $yourDeck->md_count = $input['mdCount'];
+        $yourDeck->sb_count = $input['sbCount'];
+        $yourDeck->saved_at = date('Y-m-d h:i:sa');
+        $yourDeck->unix_saved_at = strtotime(date('Y-m-d h:i:sa'));
+
+        $yourDeck->save();
     }
 
     /**

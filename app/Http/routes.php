@@ -49,6 +49,7 @@ Route::resource('decks', 'DecksController');
 YOUR DECKS
 ****************************************************************************************/
 
+Route::post('/your_decks/store', 'YourDecksController@store'); // this is needed because i'm using ajax
 Route::resource('your_decks', 'YourDecksController');
 
 
