@@ -87,7 +87,19 @@ class YourDecksController extends Controller
         $yourDeck->saved_at = date('Y-m-d h:i:sa');
         $yourDeck->unix_saved_at = strtotime(date('Y-m-d h:i:sa'));
 
-        $yourDeck->save();
+        $yourDeck->save();  
+
+        foreach ($input['copies'] as $copy) {
+
+            $yourDeckCopy = new YourDeckCopy;
+
+            $yourDeckCopy->your_deck_id = $yourDeck->id;
+            $yourDeckCopy->quantity = $copy['quantity'];
+            $yourDeckCopy->card_id = $copy['cardId'];
+            $yourDeckCopy->role = $copy['role'];
+
+            $yourDeckCopy->save();
+        }
     }
 
     /**
