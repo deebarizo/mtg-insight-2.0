@@ -65,12 +65,15 @@
 
 			<form class="form-inline" role="form" style="margin-bottom: 20px">
 
-				<div class="form-group">
+				<div class="form-group inline">
 					<label for="deck-name">Name:</label>
-					<input class="form-control inline"  style="width: 75%" name="deck-name" type="text" value="" id="deck-name">
+					<input class="form-control inline"  style="width: 50%" name="deck-name" type="text" value="" id="deck-name">
+
+						<label for="latest-set-code">Set:</label>
+					<input class="form-control inline"  style="width: 15%" name="latest-set-code" type="text" value="{{ $latestSetCode }}" id="latest-set-code">
 				</div>
 
-				<input class="form-control inline btn btn-primary" type="submit" value="Submit">	
+				<input class="form-control inline btn btn-primary" style="margin-top: 20px" type="submit" value="Submit">	
 			</form>					
 
 			<p>Maindeck Cards: <span class="total-md-cards">0</span> | Nonlands: <span class="total-nonlands">0</span> | Lands: <span class="total-lands">0</span></p>

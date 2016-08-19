@@ -39,6 +39,8 @@ class YourDecksController extends Controller
         $titleTag = 'Create Deck | ';
         $h2Tag = 'Create Deck';
 
+        $latestSetCode = Set::orderBy('id', 'desc')->take(1)->pluck('code')[0];
+
         $cards = Card::select('cards.id', 
                               'cards.name', 
                               'cards.f_cost', 
@@ -60,7 +62,7 @@ class YourDecksController extends Controller
 
         # ddAll($cards);
 
-        return view('your_decks.create', compact('titleTag', 'h2Tag', 'cards'));
+        return view('your_decks.create', compact('titleTag', 'h2Tag', 'cards', 'latestSetCode'));
     }
 
     /**
