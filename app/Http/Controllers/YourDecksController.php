@@ -54,24 +54,7 @@ class YourDecksController extends Controller
 
         $latestSetCode = Set::orderBy('id', 'desc')->take(1)->pluck('code')[0];
 
-        $cards = Card::select('cards.id', 
-                              'cards.name', 
-                              'cards.f_cost', 
-                              'cards.mana_cost',
-                              'cards.f_mana_cost', 
-                              'cards.mana_sources')
-                        ->with('sets_cards.set')
-                        ->with('card_tags')
-                        ->leftJoin('card_tags', function($join) {
-      
-                            $join->on('card_tags.card_id', '=', 'cards.id');
-                        })
-                        ->where(function($query) {
-
-                            return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
-                                            ->orWhereNull('card_tags.tag');
-                        })
-                        ->get();
+        $cards = $this->createCardsTable();
 
         # ddAll($cards);
 
@@ -120,7 +103,24 @@ class YourDecksController extends Controller
      */
     public function show($id)
     {
+        $yourDeck = YourDeck::where('id', $id)->first();
 
+        $titleTag = $yourDeck->name.' | ';
+        $h2Tag = $yourDeck->name;
+
+        $cards = $this->createCardsTable();
+
+        $latestSetCode = Set::where('id', $yourDeck->latest_set_id)->pluck('code')[0];
+
+        $copies = [
+
+            'md' => $this->getCopies($id, 'md'),
+            'sb' => $this->getCopies($id, 'sb')
+        ];
+
+        ddAll($copies);
+
+        return view('your_decks.create', compact('titleTag', 'h2Tag', 'cards', 'latestSetCode', 'yourDeck', 'copies'));
     }
 
     /**
@@ -155,6 +155,61 @@ class YourDecksController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /****************************************************************************************
+    HELPERS
+    ****************************************************************************************/
+
+    private function getCopies($yourDeckId, $role) {
+
+        return YourDeckCopy::select('your_deck_copies.role',
+                                    'cards.name',
+                                    'your_deck_copies.quantity',
+                                    'your_deck_copies.card_id',
+                                    'cards.f_mana_cost',
+                                    'cards.f_cost',
+                                    'cards.mana_sources',
+                                    )
+                            ->join('cards', function($join) {
+          
+                                $join->on('cards.id', '=', 'your_deck_copies.card_id');
+                            })
+                            ->join('sets_cards', function($join) {
+          
+                                $join->on('sets_cards.card_id', '=', 'cards.id');
+                            })
+                            ->join('sets', function($join) {
+          
+                                $join->on('sets.id', '=', 'sets_cards.set_id');
+                            })
+                            ->groupBy('your_deck_copies.card_id')
+                            ->where('your_deck_copies.your_deck_id', $yourDeckId)
+                            ->where('your_deck_copies.role', $role)
+                            ->get();
+    }
+
+    private function createCardsTable() {
+
+        return Card::select('cards.id', 
+                              'cards.name', 
+                              'cards.f_cost', 
+                              'cards.mana_cost',
+                              'cards.f_mana_cost', 
+                              'cards.mana_sources')
+                        ->with('sets_cards.set')
+                        ->with('card_tags')
+                        ->leftJoin('card_tags', function($join) {
+      
+                            $join->on('card_tags.card_id', '=', 'cards.id');
+                        })
+                        ->where(function($query) {
+
+                            return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
+                                            ->orWhereNull('card_tags.tag');
+                        })
+                        ->get();       
     }
 
     private function getManaSymbols($quantity, $manaCost, $numManaSymbols) {
