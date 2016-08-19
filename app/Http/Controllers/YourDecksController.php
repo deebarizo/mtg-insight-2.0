@@ -118,9 +118,9 @@ class YourDecksController extends Controller
             'sb' => $this->getCopies($id, 'sb')
         ];
 
-        ddAll($copies);
+        # ddAll($copies);
 
-        return view('your_decks.create', compact('titleTag', 'h2Tag', 'cards', 'latestSetCode', 'yourDeck', 'copies'));
+        return view('your_decks.show', compact('titleTag', 'h2Tag', 'cards', 'latestSetCode', 'yourDeck', 'copies'));
     }
 
     /**
@@ -171,7 +171,7 @@ class YourDecksController extends Controller
                                     'cards.f_mana_cost',
                                     'cards.f_cost',
                                     'cards.mana_sources',
-                                    )
+                                    'sets.code')
                             ->join('cards', function($join) {
           
                                 $join->on('cards.id', '=', 'your_deck_copies.card_id');
