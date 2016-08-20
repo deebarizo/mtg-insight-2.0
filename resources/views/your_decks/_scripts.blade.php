@@ -36,6 +36,8 @@
 		sources: [null, null, null, null, null, null]
 	};
 
+	var baseUrl = '<?php echo url("/"); ?>';
+
 </script>
 
 <script src="/js/decks/tooltips.js"></script>

@@ -28,6 +28,8 @@ var storeDecklist = function() {
 		copies: []
 	};
 
+	decklist.slug =	decklist.name.replace(/\s/g, '_');
+
 	$('tr.copy-row').each(function() {
 
 		var copy = {
@@ -66,7 +68,7 @@ var storeDecklist = function() {
         
         success: function() {
 
-        	$('button.submit-decklist').html('Submit');	
+        	window.location.href = baseUrl+'/your_decks/'+decklist.latestSetCode+'/'+decklist.slug;
         }
     }); 
 }
