@@ -17,7 +17,7 @@ var storeDecklist = function() {
 
 		id: null, 
 
-		latestSetCode: $('#latest-set-code').val(),
+		latestSetCode: $('input#latest-set-code').val(),
 		
 		name: $('input#decklist-name').val(),
 

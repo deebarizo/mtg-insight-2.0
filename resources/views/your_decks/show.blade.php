@@ -11,6 +11,10 @@
 			<h4>Decklist</h4>
 
 			<form role="form">
+				<input name="decklist-name" type="hidden" value="{{ $yourDeck->name }}" id="decklist-name">
+
+				<input name="latest-set-code" type="hidden" value="{{ $latestSetCode }}" id="latest-set-code">
+
 				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 			</form>	
 
