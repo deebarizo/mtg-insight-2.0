@@ -98,7 +98,7 @@ class YourDecksController extends Controller
             $yourDeckCopy->role = $copy['role'];
 
             $yourDeckCopy->save();
-        }
+        }  
     }
 
     /**
