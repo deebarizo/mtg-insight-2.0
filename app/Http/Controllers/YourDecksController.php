@@ -38,7 +38,7 @@ class YourDecksController extends Controller
                                          ) AS x INNER JOIN your_decks as f on f.name = x.name and f.unix_saved_at = x.max_unix_saved_at
                                          JOIN sets ON sets.id = f.latest_set_id'));
 
-        ddAll($yourDecks);
+        # ddAll($yourDecks);
 
         return view('your_decks.index', compact('titleTag', 'h2Tag', 'yourDecks'));
     }
@@ -76,6 +76,7 @@ class YourDecksController extends Controller
 
         $yourDeck->latest_set_id = Set::where('code', $input['latestSetCode'])->pluck('id')[0];
         $yourDeck->name = $input['name'];
+        $yourDeck->slug = preg_replace('/\s/', '_', $input['name']);
         $yourDeck->md_count = $input['mdCount'];
         $yourDeck->sb_count = $input['sbCount'];
         $yourDeck->saved_at = date('Y-m-d h:i:sa');
@@ -102,21 +103,19 @@ class YourDecksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($setCode, $nameSlug)
+    public function show($latestSetCode, $slug)
     {
-        $yourDeck = YourDeck::where('id', $id)->first();
+        $yourDeck = YourDeck::where('slug', $slug)->orderBy('unix_saved_at', 'desc')->first();
 
         $titleTag = $yourDeck->name.' | ';
         $h2Tag = $yourDeck->name;
 
         $cards = $this->createCardsTable();
 
-        $latestSetCode = Set::where('id', $yourDeck->latest_set_id)->pluck('code')[0];
-
         $copies = [
 
-            'md' => $this->getCopies($id, 'md'),
-            'sb' => $this->getCopies($id, 'sb')
+            'md' => $this->getCopies($yourDeck->id, 'md'),
+            'sb' => $this->getCopies($yourDeck->id, 'sb')
         ];
 
         # ddAll($copies);
