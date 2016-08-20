@@ -19,7 +19,7 @@
 				<tbody>
 					@foreach ($yourDecks as $yourDeck)
 						<tr>
-							<td><a href="/your_decks/{{ $yourDeck->id }}">{{ $yourDeck->name }}</a></td>
+							<td><a href="/your_decks/{{ $yourDeck->set_code }}/{{ $yourDeck->slug }}">{{ $yourDeck->name }}</a></td>
 							<td>{{ $yourDeck->saved_at }}</td>
 						</tr>
 					@endforeach
