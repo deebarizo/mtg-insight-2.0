@@ -57,6 +57,8 @@
 						<th>Color Abbrs</th> <!-- hidden-->
 						<th>Rating</th>
 						<th>Price</th>
+						<th>Code</th> <!-- hidden-->
+						<th>F MC</th> <!-- hidden-->
 					</tr>
 				</thead>
 				<tbody>
@@ -67,7 +69,9 @@
 
 								$manaCost = getManaSymbols($card->mana_cost);
 
-								$colorAbbrs = getColorAbbrs($card->mana_cost);
+								$fManaCost = getManaSymbols($card->f_mana_cost);
+
+								$colorAbbrs = getColorAbbrs($card->f_mana_cost);
 
 								$tags = createTagsString($card->card_tags);
 							?>
@@ -94,6 +98,7 @@
 							<td>{{ $card->rating }}</td>
 							<td>{{ $card->price }}</td>
 							<td>{{ $card->code }}</td> <!-- hidden-->
+							<td>{{ $fManaCost }}</td> <!-- hidden-->
 						</tr>
 					@endforeach
 				</tbody>
@@ -125,7 +130,11 @@
 	        	{
 	            	"visible": false,
 	            	"targets": 11
-	        	}	       	
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": 12
+	        	}	        	       	
 	        ],
 	        "aoColumns": [
 	            null,
