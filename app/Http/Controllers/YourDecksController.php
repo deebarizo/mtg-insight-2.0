@@ -19,6 +19,9 @@ use DB;
 
 class YourDecksController extends Controller
 {
+    private $firstSetCode = 'BFZ';
+    private $latestSetCode = 'KLD';
+
     /**
      * Display a listing of the resource.
      *
@@ -53,9 +56,10 @@ class YourDecksController extends Controller
         $titleTag = 'Create Deck | ';
         $h2Tag = 'Create Deck';
 
-        $latestSetCode = Set::orderBy('id', 'desc')->take(1)->pluck('code')[0];
+        $firstSetCode = $this->firstSetCode;
+        $latestSetCode = $this->latestSetCode;
 
-        $cards = $this->createCardsTable();
+        $cards = $this->createCardsTable($firstSetCode, $latestSetCode);
 
         # ddAll($cards);
 
@@ -110,7 +114,10 @@ class YourDecksController extends Controller
         $titleTag = $yourDeck->name.' | ';
         $h2Tag = $yourDeck->name;
 
-        $cards = $this->createCardsTable();
+        $firstSetCode = $this->firstSetCode;
+        $latestSetCode = $this->latestSetCode;
+
+        $cards = $this->createCardsTable($firstSetCode, $latestSetCode);
 
         $copies = [
 
@@ -192,7 +199,10 @@ class YourDecksController extends Controller
                             ->get();
     }
 
-    private function createCardsTable() {
+    private function createCardsTable($firstSetCode, $latestSetCode) {
+
+        $firstSetId = Set::where('code', $firstSetCode)->pluck('id')[0];
+        $latestSetId = Set::where('code', $latestSetCode)->pluck('id')[0];
 
         return Card::select('cards.id', 
                               'cards.name', 
@@ -202,6 +212,14 @@ class YourDecksController extends Controller
                               'cards.mana_sources')
                         ->with('sets_cards.set')
                         ->with('card_tags')
+                        ->join('sets_cards', function($join) {
+      
+                            $join->on('sets_cards.card_id', '=', 'cards.id');
+                        })
+                        ->join('sets', function($join) {
+      
+                            $join->on('sets.id', '=', 'sets_cards.set_id');
+                        })
                         ->leftJoin('card_tags', function($join) {
       
                             $join->on('card_tags.card_id', '=', 'cards.id');
@@ -211,6 +229,12 @@ class YourDecksController extends Controller
                             return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
                                             ->orWhereNull('card_tags.tag');
                         })
+                        ->where(function($query) use($firstSetId, $latestSetId) {
+
+                            return $query->where('sets.id', '>=', $firstSetId)
+                                            ->where('sets.id', '<=', $latestSetId)
+                                            ->orWhere('sets.id', 1); // LANDS (basic lands)
+                        })                        
                         ->get();       
     }
 
