@@ -73,4 +73,10 @@
 
 	@include('your_decks._scripts')
 
+	<script type="text/javascript">
+		
+		updateDecklist();
+
+	</script>
+
 @stop
