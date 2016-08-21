@@ -18,49 +18,105 @@ class CardsTableCreator {
 
 		$latestDateForCardPrices = CardPrice::orderBy('created_at', 'desc')->take(1)->pluck('created_at')[0];
 
-		$cards = Card::select('cards.id', 
-							  'cards.name', 
-							  'cards.f_cost', 
-							  'cards.mana_cost',
-							  'cards.f_mana_cost',
-							  'cards.rating',
-							  'card_prices.price',
-							  'sets.code')
-						->with('sets_cards.set')
-						->join('sets_cards', function($join) {
-	  
-							$join->on('sets_cards.card_id', '=', 'cards.id');
-						})
-						->join('sets', function($join) {
-	  
-							$join->on('sets.id', '=', 'sets_cards.set_id');
-						})
-						->leftJoin('card_tags', function($join) {
-	  
-							$join->on('card_tags.card_id', '=', 'cards.id');
-						})
-						->leftJoin('card_prices', function($join) {
-	  
-							$join->on('card_prices.card_id', '=', 'cards.id');
-						})
-						->leftJoin('card_metagames', function($join) {
-	  
-							$join->on('card_metagames.card_id', '=', 'cards.id');
-						})
-						->where(function($query) {
+		if ($type === 'not rotating cards') {
 
-							return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
-											->orWhereNull('card_tags.tag');
-						})
-						->where(function($query) use($latestDateForCardPrices) {
+			$cards = Card::select('cards.id', 
+								  'cards.name', 
+								  'cards.f_cost', 
+								  'cards.mana_cost',
+								  'cards.f_mana_cost',
+								  'cards.rating',
+								  'card_prices.price',
+								  'sets.code')
+							->with('sets_cards.set')
+							->join('sets_cards', function($join) {
+		  
+								$join->on('sets_cards.card_id', '=', 'cards.id');
+							})
+							->join('sets', function($join) {
+		  
+								$join->on('sets.id', '=', 'sets_cards.set_id');
+							})
+							->leftJoin('card_tags', function($join) {
+		  
+								$join->on('card_tags.card_id', '=', 'cards.id');
+							})
+							->leftJoin('card_prices', function($join) {
+		  
+								$join->on('card_prices.card_id', '=', 'cards.id');
+							})
+							->leftJoin('card_metagames', function($join) {
+		  
+								$join->on('card_metagames.card_id', '=', 'cards.id');
+							})
+							->where(function($query) {
 
-							return $query->where('card_prices.created_at', $latestDateForCardPrices)
-											->orWhereNull('card_prices.created_at');
-						})
-						->where('sets.id', '>=', $firstSet['id'])
-						->where('sets.id', '<=', $lastSet['id'])
-						->groupBy('cards.id')
-						->get();
+								return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
+												->orWhereNull('card_tags.tag');
+							})
+							->where(function($query) use($latestDateForCardPrices) {
+
+								return $query->where('card_prices.created_at', $latestDateForCardPrices)
+												->orWhereNull('card_prices.created_at');
+							})
+							->where('sets.id', '>=', $firstSet['id'])
+							->where('sets.id', '<=', $lastSet['id'])
+							->groupBy('cards.id')
+							->get();
+		}
+
+		if ($type === 'rotating cards') {
+
+			$cards = Card::select('cards.id', 
+								  'cards.name', 
+								  'cards.f_cost', 
+								  'cards.mana_cost',
+								  'cards.f_mana_cost',
+								  'cards.rating',
+								  'card_prices.price',
+								  'sets.code')
+							->with('sets_cards.set')
+							->join('sets_cards', function($join) {
+		  
+								$join->on('sets_cards.card_id', '=', 'cards.id');
+							})
+							->join('sets', function($join) {
+		  
+								$join->on('sets.id', '=', 'sets_cards.set_id');
+							})
+							->leftJoin('card_tags', function($join) {
+		  
+								$join->on('card_tags.card_id', '=', 'cards.id');
+							})
+							->leftJoin('card_prices', function($join) {
+		  
+								$join->on('card_prices.card_id', '=', 'cards.id');
+							})
+							->leftJoin('card_metagames', function($join) {
+		  
+								$join->on('card_metagames.card_id', '=', 'cards.id');
+							})
+							->where(function($query) {
+
+								return $query->where('card_tags.tag', '!=', 'back-of-double-faced-card')
+												->orWhereNull('card_tags.tag');
+							})
+							->where(function($query) use($latestDateForCardPrices) {
+
+								return $query->where('card_prices.created_at', $latestDateForCardPrices)
+												->orWhereNull('card_prices.created_at');
+							})
+							->where('sets.id', '>=', $firstSet['id'])
+							->where('sets.id', '<=', $lastSet['id'])
+							->where('cards.name', '!=', 'Evolving Wilds')
+							->where('cards.name', '!=', 'Plummet')
+							->where('cards.name', '!=', 'Anticipate')
+							->where('cards.name', '!=', 'Negate')
+							->where('cards.name', '!=', 'Tormenting Voice')
+							->groupBy('cards.id')
+							->get();
+		}
+	
 
 		$cardMetagame = CardMetagame::where('date', $latestDateForCardMetagame)->get();
 
