@@ -29,6 +29,7 @@ CARDS
 Route::resource('cards', 'CardsController');
 
 Route::get('/post_rotation_cards', 'CardsController@post_rotation_cards');
+Route::get('/rotating_cards', 'CardsController@rotating_cards');
 
 
 /****************************************************************************************

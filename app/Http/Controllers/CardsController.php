@@ -49,7 +49,7 @@ class CardsController extends Controller
 
 		$cardsTableCreator = new CardsTableCreator;
 
-		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
+		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet, 'not rotating cards');
 
 		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets', 'colors'));
 	}
@@ -75,7 +75,33 @@ class CardsController extends Controller
 
 		$cardsTableCreator = new CardsTableCreator;
 
-		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet);
+		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet, 'not rotating cards');
+
+		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets','colors'));
+	}
+
+	public function rotating_cards()
+	{
+		$titleTag = 'Rotating Cards | ';
+		$h2Tag = 'Rotating Cards';
+
+		$firstSet = [
+
+			'code' => 'DTK'
+		];
+
+		$firstSet['id'] = Set::where('code', $firstSet['code'])->pluck('id')[0];
+
+		$lastSet = [
+
+			'code' => 'ORI'
+		];
+
+		$lastSet['id'] = Set::where('code', $lastSet['code'])->pluck('id')[0];
+
+		$cardsTableCreator = new CardsTableCreator;
+
+		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet, 'rotating cards');
 
 		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets','colors'));
 	}

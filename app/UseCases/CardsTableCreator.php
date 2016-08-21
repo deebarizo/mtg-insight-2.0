@@ -12,7 +12,7 @@ use DB;
 
 class CardsTableCreator {
 
-	public function createCardsTable($firstSet, $lastSet) {
+	public function createCardsTable($firstSet, $lastSet, $type = 'not rotating cards') {
 
 		$latestDateForCardMetagame = CardMetagame::orderBy('date', 'desc')->take(1)->pluck('date')[0];
 
@@ -26,6 +26,7 @@ class CardsTableCreator {
 							  'cards.rating',
 							  'card_prices.price',
 							  'sets.code')
+						->with('sets_cards.set')
 						->join('sets_cards', function($join) {
 	  
 							$join->on('sets_cards.card_id', '=', 'cards.id');
