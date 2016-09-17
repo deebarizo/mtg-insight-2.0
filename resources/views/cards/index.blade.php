@@ -16,25 +16,27 @@
 				<label>FCs</label>
 				<select class="form-control f-cost-filter" style="width: 10%; margin-right: 20px">
 					<option value="All">All</option>
+					<option value="Nonland">Nonland</option>
 				  	@foreach ($fCosts as $fCost)
 					  	<option value="{{ $fCost }}">{{ $fCost }}</option>
 				  	@endforeach
 				</select>	
 
 				<label>Colors</label>
-				@foreach ($colors as $color)
+				@foreach ($colors as $key => $color)
 					<button type="button" 
 							class="btn btn-default color active live"
 							data-color-abbr="{{ $color['abbr'] }}"
 							data-toggle="button" 
 							aria-pressed="true" 
-							autocomplete="off">
+							autocomplete="off"
+							<?php echo ($key === 5 ? 'style="margin-right: 20px"': ''); ?>>
 								<i class="mi mi-mana mi-shadow mi-{{ $color['abbr'] }}"></i>
 					</button>
 				@endforeach
 
 				<label>Sets</label>
-				<select class="form-control set-filter" style="width: 10%; margin-left: 20px">
+				<select class="form-control set-filter" style="width: 10%">
 					<option value="All">All</option>
 				  	@foreach ($sets as $set)
 					  	<option value="{{ $set }}">{{ $set }}</option>

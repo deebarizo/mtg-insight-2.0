@@ -18,7 +18,16 @@ $(document).ready(function() {
 
 		if (this.value !== 'All') {
 
-			cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
+			if (this.value !== 'Nonland') {
+
+				cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
+			}
+
+			if (this.value === 'Nonland') {
+
+				// http://stackoverflow.com/questions/1538512/how-can-i-invert-a-regular-expression-in-javascript
+				cardsTable.column(this.columnIndex).search('^(?!.*Land)', true, false, false); 
+			}
 		}
 
 		if (this.value === 'All') {
