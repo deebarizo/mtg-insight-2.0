@@ -152,7 +152,7 @@ class CardMetagameCreator {
 
 		$difference = abs($totalSbPercentage - $targetSbPercentage);
 
-		if ($difference > 1) {
+		if ($difference > 1 && $totalSbPercentage > $targetSbPercentage) {
 
 			$this->message = 'Total sideboard percentage is '.$totalSbPercentage.'. It should be '.$targetSbPercentage.'.';
 
@@ -270,7 +270,7 @@ class CardMetagameCreator {
 
 		$difference = abs($totalSbPercentage - $targetSbPercentage);
 
-		if ($difference > 1) {
+		if ($difference > 1 && $totalSbPercentage > $targetSbPercentage) {
 
 			$this->message = 'Total sideboard percentage is '.$totalSbPercentage.'. It should be '.$targetSbPercentage.'.';
 

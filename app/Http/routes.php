@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Set;
-
-
 /****************************************************************************************
 HOME
 ****************************************************************************************/
@@ -74,6 +71,8 @@ Route::get('/admin', function() {
 	return View::make('admin/index', compact('titleTag'));
 });
 
+use App\Models\Set;
+
 Route::get('/admin/parsers/cockatrice_xml', function() {
 
 	$titleTag = 'Parsers - Cockatrice XML';
@@ -106,20 +105,12 @@ Route::post('/admin/scrapers/mtg_goldfish', 'ScrapersController@scrapeMtgGoldfis
 
 
 /****************************************************************************************
-TEST
+ONE TIME PROCESS
 ****************************************************************************************/
 
 // use App\Models\Card;
 
 Route::get('/one_time_process', function() {
-
-	$date = date('Y-m-d h:i:sa');
-
-	$time = strtotime($date);
-
-	prf($date);
-
-	prf($time);
 
 	ddAll('Success!');
 });
