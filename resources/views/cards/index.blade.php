@@ -61,6 +61,10 @@
 						<th>F MC</th> <!-- hidden-->
 					</tr>
 				</thead>
+
+				<?php $cardImagesSetting = Cache::get('card_images', 'Hide'); ?>
+
+
 				<tbody>
 					@foreach ($cards as $card)
 						<tr>
@@ -77,10 +81,14 @@
 							?>
 
 							<td>
-								<a class="card-name" target="_blank" href="/cards/{{ $card->id }}">{{ $card->name }}</a>
-								<div style="display: none" class="tool-tip-card-image">
+								@if ($cardImagesSetting === 'Hide')
+									<a class="card-name" target="_blank" href="/cards/{{ $card->id }}">{{ $card->name }}</a>
+									<div style="display: none" class="tool-tip-card-image">
+										<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
+									</div>
+								@elseif ($cardImagesSetting === 'Show') 
 									<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
-								</div>
+								@endif
 							</td>
 							<td>
 								<a class="card-edit" href="/cards/{{ $card->id }}/edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
@@ -111,7 +119,7 @@
 		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
 			
 			"bLengthChange": false,
-			"pageLength": 30,
+			"pageLength": <?php echo ($cardImagesSetting === 'Hide' ? '30' : '10'); ?>,
 			"order": [[6, "desc"]],
 	        "columnDefs": [ 
 	        	{
