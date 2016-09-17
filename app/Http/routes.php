@@ -75,7 +75,7 @@ use App\Models\Set;
 
 Route::get('/admin/parsers/cockatrice_xml', function() {
 
-	$titleTag = 'Parsers - Cockatrice XML';
+	$titleTag = 'Parsers - Cockatrice XML | ';
     $h2Tag = 'Parsers - Cockatrice XML';	
 
     $sets = Set::orderBy('id', 'desc')->get();
@@ -85,7 +85,7 @@ Route::get('/admin/parsers/cockatrice_xml', function() {
 
 Route::get('/admin/parsers/mtg_json', ['as' => 'admin.parsers.mtg_json', function() {
 
-	$titleTag = 'Parsers - MTG JSON';
+	$titleTag = 'Parsers - MTG JSON | ';
     $h2Tag = 'Parsers - MTG JSON';	
 
 	return View::make('admin/parsers/mtg_json', compact('titleTag', 'h2Tag', 'sets'));
@@ -95,13 +95,23 @@ Route::post('/admin/parsers/mtg_json', 'ParsersController@parseMtgJson');
 
 Route::get('/admin/scrapers/mtg_goldfish', ['as' => 'admin.scrapers.mtg_goldfish', function() {
 
-	$titleTag = 'Scrapers - MTG Goldfish';
+	$titleTag = 'Scrapers - MTG Goldfish | ';
     $h2Tag = 'Scrapers - MTG Goldfish';	
 
 	return View::make('admin/scrapers/mtg_goldfish', compact('titleTag', 'h2Tag'));
 }]);
 
 Route::post('/admin/scrapers/mtg_goldfish', 'ScrapersController@scrapeMtgGoldfish');
+
+Route::get('/admin/settings', ['as' => 'admin.settings', function() {
+
+	$titleTag = 'Settings | ';
+    $h2Tag = 'Settings';	
+
+	return View::make('admin/settings/index', compact('titleTag', 'h2Tag'));
+}]);
+
+Route::post('/admin/settings', 'SettingsController@saveSettings');
 
 
 /****************************************************************************************

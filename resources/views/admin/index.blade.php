@@ -25,6 +25,12 @@
 				<li><a href="/admin/parsers/mtg_json">MTG JSON</a></li>
 				<li><a href="/admin/parsers/cockatrice_xml">Cockatrice XML</a></li>
 			</ul>
+
+			<h4>Settings</h4>
+
+			<ul>
+				<li><a href="/admin/settings">Settings</a></li>
+			</ul>
 		</div>
 	</div>
 @stop
