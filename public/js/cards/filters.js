@@ -38,6 +38,7 @@ $(document).ready(function() {
 		cardsTable.draw();
 	}
 
+
 	/****************************************************************************************
 	FUNCTIONAL COST FILTER
 	****************************************************************************************/
@@ -45,6 +46,8 @@ $(document).ready(function() {
 	$('select.f-cost-filter').on('change', function() {
 
 		var value = $('select.f-cost-filter').val();
+
+		localStorage.setItem('fCostFilter', value);
 
 		var filter = new Filter('Functional Cost', 2, value, null);
 
@@ -105,5 +108,21 @@ $(document).ready(function() {
 
 		cardsTable.draw();
 	});
+
+
+	/****************************************************************************************
+	CACHED FILTERS
+	****************************************************************************************/
+
+	var fCostFilter = localStorage.getItem('fCostFilter');
+
+	if (fCostFilter !== null) {
+
+		$('select.f-cost-filter').val(fCostFilter);
+
+		var filter = new Filter('Functional Cost', 2, fCostFilter, null);
+
+		filter.execute();
+	}
 
 });
