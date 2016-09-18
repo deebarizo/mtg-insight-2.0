@@ -140,18 +140,39 @@ $(document).ready(function() {
 
 
 	/****************************************************************************************
-	CACHED FILTERS
+	CACHED FUNCTIONAL COST FILTER
 	****************************************************************************************/
 
 	var fCostFilter = localStorage.getItem('fCostFilter');
 
-	if (fCostFilter !== null) {
+	if (fCostFilter === null) {
 
-		$('select.f-cost-filter').val(fCostFilter);
-
-		var filter = new Filter('Functional Cost', 2, fCostFilter, null);
-
-		filter.execute();
+		localStorage.setItem('fCostFilter', 'All');
 	}
+
+
+	$('select.f-cost-filter').val(fCostFilter);
+
+	var filter = new Filter('Functional Cost', 2, fCostFilter, null);
+
+	filter.execute();
+
+
+	/****************************************************************************************
+	CACHED RATING FILTER
+	****************************************************************************************/
+	
+	var ratingFilter = localStorage.getItem('ratingFilter');
+
+	if (ratingFilter === null) {
+
+		localStorage.setItem('ratingFilter', 'All');
+	}
+
+	$('select.rating-filter').val(ratingFilter);
+
+	var filter = new Filter('Rating', 9, ratingFilter, null);
+
+	filter.execute();
 
 });
