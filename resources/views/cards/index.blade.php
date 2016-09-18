@@ -121,7 +121,7 @@
 			
 			"bLengthChange": false,
 			"pageLength": <?php echo ($cardImagesSetting === 'Hide' ? '30' : '10'); ?>,
-			"order": [[6, "desc"]],
+			"order": [[9, "desc"]],
 	        "columnDefs": [ 
 	        	{
 	            	"searchable": false,
