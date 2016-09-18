@@ -35,6 +35,13 @@
 					</button>
 				@endforeach
 
+				<label>Ratings</label>
+				<select class="form-control rating-filter" style="width: 10%">
+					<option value="All">All</option>
+					<option value="0">0</option>
+					<option value="1+">1+</option>
+				</select>	
+
 			</form>
 
 			<table id="cards" class="table table-striped table-bordered table-hover table-condensed">

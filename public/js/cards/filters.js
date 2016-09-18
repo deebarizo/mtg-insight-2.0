@@ -16,24 +16,42 @@ $(document).ready(function() {
 
 		// https://datatables.net/reference/api/column().search()
 
-		if (this.value !== 'All') {
+		switch(this.type) {
 
-			if (this.value !== 'Nonland') {
+			case 'Functional Cost':
 
-				cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
-			}
+				if (this.value !== 'All') {
 
-			if (this.value === 'Nonland') {
+					if (this.value !== 'Nonland') {
 
-				// http://stackoverflow.com/questions/1538512/how-can-i-invert-a-regular-expression-in-javascript
-				cardsTable.column(this.columnIndex).search('^(?!.*Land)', true, false, false); 
-			}
+						cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
+					}
+
+					if (this.value === 'Nonland') {
+
+						// http://stackoverflow.com/questions/1538512/how-can-i-invert-a-regular-expression-in-javascript
+						cardsTable.column(this.columnIndex).search('^(?!.*Land)', true, false, false); 
+					}
+				}
+
+				if (this.value === 'All') {
+
+					cardsTable.column(this.columnIndex).search('.*', true, false, false); 
+				}
+
+				break;
+
+			case 'Rating':
+
+				if (this.value === 'All') {
+
+					cardsTable.column(this.columnIndex).search('.*', true, false, false); 
+				}				
+
+				break;
 		}
 
-		if (this.value === 'All') {
 
-			cardsTable.column(this.columnIndex).search('.*', true, false, false); 
-		}
 
 		cardsTable.draw();
 	}
@@ -50,6 +68,22 @@ $(document).ready(function() {
 		localStorage.setItem('fCostFilter', value);
 
 		var filter = new Filter('Functional Cost', 2, value, null);
+
+		filter.execute();
+	});
+
+
+	/****************************************************************************************
+	RATING FILTER
+	****************************************************************************************/
+
+	$('select.rating-filter').on('change', function() {
+
+		var value = $('select.rating-filter').val();
+
+		localStorage.setItem('ratingFilter', value);
+
+		var filter = new Filter('Rating', 9, value, null);
 
 		filter.execute();
 	});
