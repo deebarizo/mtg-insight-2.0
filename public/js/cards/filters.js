@@ -46,12 +46,21 @@ $(document).ready(function() {
 				if (this.value === 'All') {
 
 					cardsTable.column(this.columnIndex).search('.*', true, false, false); 
-				}				
+				}
+
+				if (this.value === '0') {
+
+					cardsTable.column(this.columnIndex).search('^'+this.value+'$', true, false, false); 
+				}		
+
+				if (this.value === '1+') {
+
+					// http://stackoverflow.com/questions/1538512/how-can-i-invert-a-regular-expression-in-javascript
+					cardsTable.column(this.columnIndex).search('^(?!.*0)', true, false, false); 
+				}		
 
 				break;
 		}
-
-
 
 		cardsTable.draw();
 	}
