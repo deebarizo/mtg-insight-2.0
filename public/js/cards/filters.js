@@ -70,7 +70,7 @@ $(document).ready(function() {
 	FUNCTIONAL COST FILTER
 	****************************************************************************************/
 
-	$('select.f-cost-filter').on('change', function() {
+	function runFunctionalCostFilter() {
 
 		var value = $('select.f-cost-filter').val();
 
@@ -78,15 +78,35 @@ $(document).ready(function() {
 
 		var filter = new Filter('Functional Cost', 2, value, null);
 
-		filter.execute();
+		filter.execute();		
+	}
+
+	// CHANGE TRIGGER
+
+	$('select.f-cost-filter').on('change', function() {
+
+		runFunctionalCostFilter();
 	});
+
+	// ON PAGE LOAD
+
+	var fCostFilter = localStorage.getItem('fCostFilter');
+
+	if (fCostFilter === null) {
+
+		localStorage.setItem('fCostFilter', 'All');
+	}
+
+	$('select.f-cost-filter').val(fCostFilter);
+
+	runFunctionalCostFilter();
 
 
 	/****************************************************************************************
 	RATING FILTER
 	****************************************************************************************/
 
-	$('select.rating-filter').on('change', function() {
+	function runRatingFilter() {
 
 		var value = $('select.rating-filter').val();
 
@@ -94,8 +114,28 @@ $(document).ready(function() {
 
 		var filter = new Filter('Rating', 9, value, null);
 
-		filter.execute();
+		filter.execute();		
+	}
+
+	// CHANGE TRIGGER
+
+	$('select.rating-filter').on('change', function() {
+
+		runRatingFilter();
 	});
+
+	// ON PAGE LOAD
+
+	var ratingFilter = localStorage.getItem('ratingFilter');
+
+	if (ratingFilter === null) {
+
+		localStorage.setItem('ratingFilter', 'All');
+	}
+
+	$('select.rating-filter').val(ratingFilter);
+
+	runRatingFilter();
 
 
 	/****************************************************************************************
@@ -137,25 +177,6 @@ $(document).ready(function() {
 
 		cardsTable.draw();
 	});
-
-
-	/****************************************************************************************
-	CACHED FUNCTIONAL COST FILTER
-	****************************************************************************************/
-
-	var fCostFilter = localStorage.getItem('fCostFilter');
-
-	if (fCostFilter === null) {
-
-		localStorage.setItem('fCostFilter', 'All');
-	}
-
-
-	$('select.f-cost-filter').val(fCostFilter);
-
-	var filter = new Filter('Functional Cost', 2, fCostFilter, null);
-
-	filter.execute();
 
 
 	/****************************************************************************************
