@@ -14,7 +14,7 @@ class MakeRatingColumnInCardsTableNOTNullable extends Migration
     {
         Schema::table('cards', function ($table) {
             
-            $table->integer('rating')->change();
+            $table->integer('rating')->nullable(false)->change();
         });
     }
 
