@@ -35,14 +35,6 @@
 					</button>
 				@endforeach
 
-				<label>Sets</label>
-				<select class="form-control set-filter" style="width: 10%">
-					<option value="All">All</option>
-				  	@foreach ($sets as $set)
-					  	<option value="{{ $set }}">{{ $set }}</option>
-				  	@endforeach
-				</select>	
-
 			</form>
 
 			<table id="cards" class="table table-striped table-bordered table-hover table-condensed">
