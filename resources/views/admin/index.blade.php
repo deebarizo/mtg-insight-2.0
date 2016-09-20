@@ -23,6 +23,7 @@
 
 			<ul>
 				<li><a href="/admin/parsers/mtg_json">MTG JSON</a></li>
+					<ul><li><a href="/admin/parsers/fix_mana_costs">Fix Mana Costs and Functional Mana Costs</a></li></ul>
 				<li><a href="/admin/parsers/cockatrice_xml">Cockatrice XML</a></li>
 			</ul>
 

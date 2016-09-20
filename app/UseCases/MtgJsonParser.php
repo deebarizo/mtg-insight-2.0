@@ -163,33 +163,39 @@ class MtgJsonParser {
 			$eCard->note = null;
 		}
 
-		$eCard->layout = $card['layout'];
+		if (!isset($card['layout'])) {
+
+			$eCard->layout = 'normal';
+
+		} else {
+
+			$eCard->layout = $card['layout'];
+		}
 
 		$eCard->save();
 
 		$setCard = SetCard::where('set_id', $setId)->where('card_id', $eCard->id)->first();
 
+		if (!isset($card['multiverseid'])) {
+
+			$multiverseId = 777;
+
+		} else {
+
+			$multiverseId = $card['multiverseid'];
+		}
+
 		if (!$setCard) {
 
 			$setCard = new SetCard;
-
-			$setCard->set_id = $setId;
-			$setCard->card_id = $eCard->id;
-			$setCard->rarity = $card['rarity'];
-			$setCard->multiverseid = $card['multiverseid'];
-
-			$setCard->save();
 		}
 
-		if ($setCard) {
+		$setCard->set_id = $setId;
+		$setCard->card_id = $eCard->id;
+		$setCard->rarity = $card['rarity'];
+		$setCard->multiverseid = $multiverseId;
 
-			$setCard->set_id = $setId;
-			$setCard->card_id = $eCard->id;
-			$setCard->rarity = $card['rarity'];
-			$setCard->multiverseid = $card['multiverseid'];
-
-			$setCard->save();	
-		}
+		$setCard->save();
 	}
 
 	private function storeInOtherTables($eCard, $card) {

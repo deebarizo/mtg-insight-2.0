@@ -93,6 +93,16 @@ Route::get('/admin/parsers/mtg_json', ['as' => 'admin.parsers.mtg_json', functio
 
 Route::post('/admin/parsers/mtg_json', 'ParsersController@parseMtgJson');
 
+Route::get('/admin/parsers/fix_mana_costs', ['as' => 'admin.parsers.fix_mana_costs', function() {
+
+	$titleTag = 'Parsers - Fix Mana Costs | ';
+    $h2Tag = 'Parsers - Fix Mana Costs';	
+
+	return View::make('admin/parsers/fix_mana_costs', compact('titleTag', 'h2Tag'));
+}]);
+
+Route::post('/admin/parsers/fix_mana_costs', 'ParsersController@fixManaCosts');
+
 Route::get('/admin/scrapers/mtg_goldfish', ['as' => 'admin.scrapers.mtg_goldfish', function() {
 
 	$titleTag = 'Scrapers - MTG Goldfish | ';
