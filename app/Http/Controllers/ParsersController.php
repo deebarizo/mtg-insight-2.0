@@ -26,19 +26,28 @@ class ParsersController extends Controller {
 		return redirect()->route('admin.parsers.mtg_json')->with('message', $message);
 	}
 
-	public function fixManaCosts() { // this doesn't work
+	public function fixManaCosts() { 
 
-		$cards = Card::join('sets_cards', function($join) {
+		$cards = Card::select('cards.id', 
+								'cards.name',
+								'cards.mana_cost', 
+								'cards.f_mana_cost')
+						->join('sets_cards', function($join) {
 		  
 							$join->on('sets_cards.card_id', '=', 'cards.id');
 						})
 						->where('sets_cards.set_id', 9)
-						->get();
+						->get()
+						->toArray();
 
-		foreach ($cards as $card) {
+		# ddAll($cards);
+
+		foreach ($cards as $key => $card) {
 			
-			$card->mana_cost = preg_replace("/(\S)/", "{\$1}", $card->mana_cost);
-			$card->f_mana_cost = preg_replace("/(\S)/", "{\$1}", $card->f_mana_cost);
+			$card = Card::where('id', $card['id'])->first();
+
+			$card->mana_cost = preg_replace("/(\S)/", "{\$1}", $card['mana_cost']);
+			$card->f_mana_cost = preg_replace("/(\S)/", "{\$1}", $card['f_mana_cost']);
 
 			$card->save();
 		}
