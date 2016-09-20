@@ -92,7 +92,7 @@
 								@endif
 							</td>
 							<td>
-								<a class="card-edit" href="/cards/{{ $card->id }}/edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+								<a target="_blank" class="card-edit" href="/cards/{{ $card->id }}/edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 								<div style="display: none" class="tool-tip-card-image">
 									<img width="223" height="311" src="/files/card_images/{{ $card->code }}/{{ $cardNameNoApostrophe }}.png">
 								</div>

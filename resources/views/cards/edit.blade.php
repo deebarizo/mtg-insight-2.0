@@ -36,6 +36,11 @@
 						{!! Form::text('mana-sources', $card->mana_sources, ['class' => 'form-control', 'style' => 'width: 15%']) !!}
 				</div>
 
+				<div class="form-group">
+					{!! Form::label('note', 'Note:') !!}
+						{!! Form::textarea('note', $card->note, ['class' => 'form-control']) !!}
+				</div>
+
 				{!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 
 			{!! Form::close() !!}

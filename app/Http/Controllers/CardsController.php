@@ -199,7 +199,8 @@ class CardsController extends Controller
 							 'cards.f_cost',
 							 'sets.code',
 							 'cards.rating',
-							 'cards.mana_sources')
+							 'cards.mana_sources',
+							 'cards.note')
 					->join('sets_cards', 'sets_cards.card_id', '=', 'cards.id')
 					->join('sets', 'sets.id', '=', 'sets_cards.set_id')
 					->where('cards.id', $id)
@@ -228,7 +229,8 @@ class CardsController extends Controller
 			
 			'rating' => 'required|integer|min:0',
 			'tags' => 'string',
-			'mana-sources' => 'string'
+			'mana-sources' => 'string',
+			'note' => 'string'
 		]);
 
 		$fCost = trim($request->input('f-cost'));
@@ -269,6 +271,15 @@ class CardsController extends Controller
 		$card->f_cost = $fCost;
 		$card->rating = trim($request->input('rating'));
 		$card->mana_sources = trim($request->input('mana-sources'));
+		if (trim($request->input('note')) === '') {
+
+			$card->note = null;
+		
+		} else {
+
+
+			$card->note = trim($request->input('note'));
+		}
 
 		$card->save();
 
