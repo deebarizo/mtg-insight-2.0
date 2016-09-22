@@ -240,6 +240,14 @@ var getInsertSpotForCopyRow = function(card, role) {
 
 			return false;
 		}
+
+		if (fCost === 'Land') {
+
+			insertSpot.howToInsert = 'before';
+			insertSpot.spot = $(this);	
+
+			return false;
+		}
 	});
 
 	return insertSpot;

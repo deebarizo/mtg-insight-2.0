@@ -37,9 +37,10 @@ class YourDecksController extends Controller
         $yourDecks = DB::select(DB::raw('SELECT f.id, f.name, f.slug, f.saved_at, sets.code as set_code
                                          FROM (
                                             SELECT name, MAX(unix_saved_at) as max_unix_saved_at
-                                            from your_decks group by name
+                                            from your_decks group by name                                            
                                          ) AS x INNER JOIN your_decks as f on f.name = x.name and f.unix_saved_at = x.max_unix_saved_at
-                                         JOIN sets ON sets.id = f.latest_set_id'));
+                                         JOIN sets ON sets.id = f.latest_set_id
+                                         ORDER BY unix_saved_at desc'));
 
         # ddAll($yourDecks);
 
