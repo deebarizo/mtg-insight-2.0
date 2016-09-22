@@ -6,7 +6,7 @@
 
 	@include('your_decks._cards_table')
 
-		<div class="col-lg-5 decklist">
+		<div class="col-lg-5 decklist" style="margin-bottom: 150px">
 
 			<h4>Decklist</h4>
 
