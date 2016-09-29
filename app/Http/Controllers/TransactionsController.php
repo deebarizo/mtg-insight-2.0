@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Models\Transaction;
 use App\Models\Card;
 use App\Models\CardPrice;
 
@@ -48,44 +49,61 @@ class TransactionsController extends Controller
 		$this->validate($request, [
 			
 			'type' => 'required|string',
-			'set-code' => 'required',
-			'f-cost' => 'required',
 			'tix' => 'required|integer|min:0',
 		]);
 
-		$card = new Card;
+		$type = trim($request->input('type'));
+		$quantity = trim($request->input('quantity'));
+		$cardName = trim($request->input('card'));
+		$tix = trim($request->input('tix'));
 
-		$card->name = $request->input('name');
-		$card->mana_cost = ($request->input('mana-cost') != '') ? $request->input('mana-cost') : null;
-		$card->f_mana_cost = ($request->input('f-mana-cost') != '') ? $request->input('f-mana-cost') : null;
-		$card->mana_sources = ($request->input('mana-sources') != '') ? $request->input('mana-sources') : null;
-		$card->f_cost = $request->input('f-cost');
-		$card->rating = $request->input('rating');
+		if ($type === 'Buy' || $type === 'Sell') {
 
-		$card->save();
+			if ($quantity === '') {
 
-		//////////////////////////////////////////////////
+				$message = 'The '.$type.' type transaction requires a quantity.';
 
-		$setCard = new SetCard;
+				return redirect()->route('transactions.create')->with('message', $message);
+			}
 
-		$setCard->set_id = Set::where('code', $request->input('set-code'))->pluck('id')[0];
-		$setCard->card_id = $card->id;
-		$setCard->rarity = $request->input('rarity');
-		$setCard->multiverseid = 111;
+			if ($cardName === '') {
 
-		$setCard->save(); 
+				$message = 'The '.$type.' type transaction requires a card.';
 
-		//////////////////////////////////////////////////
+				return redirect()->route('transactions.create')->with('message', $message);
+			}		
 
-		$fileUploader = new FileUploader;
+			$card = Card::where('name', $cardName)->first();
 
-		$fileUploader->uploadCardImage($request);
+			if ($card === null) {
 
-		//////////////////////////////////////////////////		
+				$message = 'The card, '.$cardName.', does not exist in the database.';
+
+				return redirect()->route('transactions.create')->with('message', $message);			
+			}	
+
+			$cardId = $card->id;
+		}
+
+		$transaction = new Transaction;
+
+		if ($type === 'Deposit' || $type === 'Withdraw') {
+
+			$quantity = 0;
+			$cardId = 1;
+		
+		}
+		
+		$transaction->type = $type;
+		$transaction->quantity = $quantity;
+		$transaction->card_id = $cardId;
+		$transaction->tix = $tix;
+
+		$transaction->save();
 
 		$message = 'Success!';
 
-		return redirect()->route('cards.create')->with('message', $message);
+		return redirect()->route('transactions.create')->with('message', $message);
 	}
 
 	/**
