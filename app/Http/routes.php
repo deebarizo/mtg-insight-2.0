@@ -16,13 +16,7 @@ Route::get('/', function() {
 TRANSACTIONS
 ****************************************************************************************/
 
-Route::get('/transactions', function() {
-
-	$titleTag = 'Transactions | ';
-	$h2Tag = 'Transactions';
-	
-	return View::make('transactions/index', compact('titleTag', 'h2Tag'));
-});
+Route::resource('transactions', 'TransactionsController');
 
 
 /****************************************************************************************

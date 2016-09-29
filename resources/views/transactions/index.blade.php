@@ -5,41 +5,10 @@
 	@include('_form_heading')
 
 	<div class="row">
+		<div class="col-lg-12">
 
-		{!! Form::open(array('url' => 'transactions')) !!}
+			<p><a href="/transactions/create">Create Transaction</a></p>
 
-			<div class="col-lg-2"> 
-				<div class="form-group">
-
-					{!! Form::label('type', 'Type:') !!}
-					<select name='type' class="form-control">
-						<option value="Buy">Buy</option>
-						<option value="Sell">Sell</option>
-						<option value="Deposit">Deposit</option>
-						<option value="Withdraw">Withdraw</option>
-					</select>	
-				</div>
-			</div>
-
-			<div class="col-lg-3"> 
-				<div class="form-group">
-					{!! Form::label('card', 'Card (Optional):') !!}
-					{!! Form::text('card', '', ['class' => 'form-control']) !!}
-				</div>
-			</div>
-
-			<div class="col-lg-1"> 
-				<div class="form-group">
-					{!! Form::label('tix', 'Tix:') !!}
-					{!! Form::text('tix', '', ['class' => 'form-control']) !!}
-				</div>
-			</div>
-
-			<div class="col-lg-12" style="margin-top: 15px"> 
-				{!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-			</div>
-
-		{!!	Form::close() !!}
-
-	</div>
+		</div>
+	</div
 @stop
