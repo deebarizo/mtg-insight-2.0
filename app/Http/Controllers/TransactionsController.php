@@ -45,7 +45,47 @@ class TransactionsController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		$this->validate($request, [
+			
+			'type' => 'required|string',
+			'set-code' => 'required',
+			'f-cost' => 'required',
+			'tix' => 'required|integer|min:0',
+		]);
 
+		$card = new Card;
+
+		$card->name = $request->input('name');
+		$card->mana_cost = ($request->input('mana-cost') != '') ? $request->input('mana-cost') : null;
+		$card->f_mana_cost = ($request->input('f-mana-cost') != '') ? $request->input('f-mana-cost') : null;
+		$card->mana_sources = ($request->input('mana-sources') != '') ? $request->input('mana-sources') : null;
+		$card->f_cost = $request->input('f-cost');
+		$card->rating = $request->input('rating');
+
+		$card->save();
+
+		//////////////////////////////////////////////////
+
+		$setCard = new SetCard;
+
+		$setCard->set_id = Set::where('code', $request->input('set-code'))->pluck('id')[0];
+		$setCard->card_id = $card->id;
+		$setCard->rarity = $request->input('rarity');
+		$setCard->multiverseid = 111;
+
+		$setCard->save(); 
+
+		//////////////////////////////////////////////////
+
+		$fileUploader = new FileUploader;
+
+		$fileUploader->uploadCardImage($request);
+
+		//////////////////////////////////////////////////		
+
+		$message = 'Success!';
+
+		return redirect()->route('cards.create')->with('message', $message);
 	}
 
 	/**

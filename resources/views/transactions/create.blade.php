@@ -21,14 +21,21 @@
 				</div>
 			</div>
 
-			<div class="col-lg-3"> 
+			<div class="col-lg-2"> 
+				<div class="form-group">
+					{!! Form::label('quantity', 'Quantity (Optional):') !!}
+					{!! Form::text('quantity', '', ['class' => 'form-control']) !!}
+				</div>
+			</div>
+
+			<div class="col-lg-4"> 
 				<div class="form-group">
 					{!! Form::label('card', 'Card (Optional):') !!}
 					{!! Form::text('card', '', ['class' => 'form-control']) !!}
 				</div>
 			</div>
 
-			<div class="col-lg-1"> 
+			<div class="col-lg-2"> 
 				<div class="form-group">
 					{!! Form::label('tix', 'Tix:') !!}
 					{!! Form::text('tix', '', ['class' => 'form-control']) !!}
