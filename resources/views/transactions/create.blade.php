@@ -42,6 +42,14 @@
 				</div>
 			</div>
 
+
+			<div class="col-lg-6"> 
+				<div class="form-group">
+					{!! Form::label('note', 'Note (Optional):') !!}
+					{!! Form::text('note', '', ['class' => 'form-control']) !!}
+				</div>
+			</div>
+
 			<div class="col-lg-12" style="margin-top: 15px"> 
 				{!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 			</div>

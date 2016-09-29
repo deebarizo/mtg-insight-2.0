@@ -56,17 +56,23 @@ class TransactionsController extends Controller
 		$quantity = trim($request->input('quantity'));
 		$cardName = trim($request->input('card'));
 		$tix = trim($request->input('tix'));
+		$note = trim($request->input('note'));
+
+		if ($note == '') {
+
+			$note = null;
+		}
 
 		if ($type === 'Buy' || $type === 'Sell') {
 
-			if ($quantity === '') {
+			if ($quantity == '') {
 
 				$message = 'The '.$type.' type transaction requires a quantity.';
 
 				return redirect()->route('transactions.create')->with('message', $message);
 			}
 
-			if ($cardName === '') {
+			if ($cardName == '') {
 
 				$message = 'The '.$type.' type transaction requires a card.';
 
@@ -98,6 +104,7 @@ class TransactionsController extends Controller
 		$transaction->quantity = $quantity;
 		$transaction->card_id = $cardId;
 		$transaction->tix = $tix;
+		$transaction->note = $note;
 
 		$transaction->save();
 
