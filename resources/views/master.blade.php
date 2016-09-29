@@ -32,9 +32,10 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li class="{!! setActive('transactions*') !!}"><a href="/transactions">Transactions</a></li>
+						<li class="{!! setActive('post_rotation_cards*') !!}"><a href="/post_rotation_cards">Post Rotation Cards</a></li>
 						<li class="{!! setActive('cards*') !!}"><a href="/cards">Cards</a></li>
 						<li class="{!! setActive('rotating_cards*') !!}"><a href="/rotating_cards">Rotating Cards</a></li>
-						<li class="{!! setActive('post_rotation_cards*') !!}"><a href="/post_rotation_cards">Post Rotation Cards</a></li>
 						<li class="{!! setActive('events*') !!}"><a href="/events">Events</a></li>
 						<li class="{!! setActive('decks*') !!}"><a href="/decks">Decks</a></li>
 						<li class="{!! setActive('your_decks*') !!}"><a href="/your_decks">Your Decks</a></li>
