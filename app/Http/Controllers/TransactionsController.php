@@ -10,6 +10,8 @@ use App\Models\Transaction;
 use App\Models\Card;
 use App\Models\CardPrice;
 
+use App\UseCases\TransactionsProcessor;
+
 class TransactionsController extends Controller
 {
 	/**
@@ -21,6 +23,10 @@ class TransactionsController extends Controller
 	{
 		$titleTag = 'Transactions | ';
 		$h2Tag = 'Transactions';
+
+		$transactionsProcessor = new TransactionsProcessor;
+
+		$overview = $transactionsProcessor->calculateOverview();
 		
 		return view('transactions/index', compact('titleTag', 'h2Tag'));
 	}
