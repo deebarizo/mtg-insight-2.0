@@ -49,7 +49,7 @@ class TransactionsController extends Controller
 		$this->validate($request, [
 			
 			'type' => 'required|string',
-			'tix' => 'required|integer|min:0',
+			'tix' => 'required',
 		]);
 
 		$type = trim($request->input('type'));
