@@ -40,24 +40,31 @@
 
 					<?php 
 
-						$urlGoldfishCardName = $card['name'];
+						$urlCardName = $card['name'];
 
-			        	if (strpos($urlGoldfishCardName, "'") !== false) {
+			        	
+			        	if (strpos($urlCardName, "'") !== false) {
 
-			        		$urlGoldfishCardName = preg_replace("/'/", '', $urlGoldfishCardName);
+			        		$urlCardName = preg_replace("/'/", '', $urlCardName);
 			        	}
 
-			        	if (strpos($urlGoldfishCardName, ",") !== false) {
+			        	if (strpos($urlCardName, ",") !== false) {
 
-			        		$urlGoldfishCardName = preg_replace("/,/", '', $urlGoldfishCardName);
+			        		$urlCardName = preg_replace("/,/", '', $urlCardName);
 			        	}
+
+			        	$urlGoldfishCardName = $urlCardName;
 			        	
 			        	$goldfishLink = 'https://www.mtggoldfish.com/price/'.$card['set_name'].'/'.$urlGoldfishCardName.'#online';
+
+			        	$urlWikipriceCardName = preg_replace("/\s/", '_', $urlCardName);
+			        	
+			        	$wikiPriceLink = 'https://www.mtgowikiprice.com/card/'.$card['set_code'].'/'.$card['wikiprice_card_number'].'/'.$urlWikipriceCardName;
 					?>
 						<tr>
 							<td>{{ $card['name'] }}</td>
 							<td>{{ $card['quantity'] }}</td>
-							<td><a target="_blank" href="{{ $goldfishLink }}">G</a> | <a target="_blank" href="#">W</a></td>
+							<td><a target="_blank" href="{{ $goldfishLink }}">G</a> | <a target="_blank" href="{{ $wikiPriceLink }}">W</a></td>
 							<td>{{ numFormat($card['price_per_copy'], 2) }}</td>
 							<td>{{ numFormat($card['mtg_goldfish_price'], 2) }}</td>
 							<td>{{ numFormat($card['tix'], 2) }}</td>

@@ -74,7 +74,7 @@ class TransactionsProcessor {
 				'ownership_percentage' => 0,
 				'set_name' => null,
 				'set_code' => null,
-				'wikiprice_card_number' => 0
+				'wikiprice_card_number' => Card::where('id', $cardId)->pluck('wikiprice_card_number')[0]
 			];
 
 			foreach ($transactions as $transaction) {
@@ -117,8 +117,6 @@ class TransactionsProcessor {
 				                        }) 
 				                        ->where('cards.id', $cardId)
 				                        ->pluck('sets.code')[0];
-
-			$card['wikiprice_card_number'] = 0;
 
 			array_push($cards, $card);
 
