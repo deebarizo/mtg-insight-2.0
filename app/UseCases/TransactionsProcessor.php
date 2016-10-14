@@ -4,6 +4,10 @@ use App\Models\Transaction;
 
 use App\Models\CardPrice;
 
+use App\Models\Card;
+use App\Models\Set;
+use App\Models\SetCard;
+
 class TransactionsProcessor {
 
 	public function calculateOverview() {
@@ -67,7 +71,10 @@ class TransactionsProcessor {
 				'current_total_price' => 0,
 				'profit' => 0,
 				'profit_percentage' => 0,
-				'ownership_percentage' => 0
+				'ownership_percentage' => 0,
+				'set_name' => null,
+				'set_code' => null,
+				'wikiprice_card_number' => 0
 			];
 
 			foreach ($transactions as $transaction) {
@@ -88,6 +95,30 @@ class TransactionsProcessor {
 			$card['profit_percentage'] = $card['profit'] / $card['tix'] * 100;
 
 			$card['ownership_percentage'] = $card['tix'] / $tixInCards * 100;
+
+			$card['set_name'] = Card::join('sets_cards', function($join) {
+      
+	                    					$join->on('sets_cards.card_id', '=', 'cards.id');
+				                        })
+				                        ->join('sets', function($join) {
+				      
+				                            $join->on('sets_cards.set_id', '=', 'sets.id');
+				                        }) 
+				                        ->where('cards.id', $cardId)
+				                        ->pluck('sets.name')[0];
+
+			$card['set_code'] = Card::join('sets_cards', function($join) {
+      
+	                    					$join->on('sets_cards.card_id', '=', 'cards.id');
+				                        })
+				                        ->join('sets', function($join) {
+				      
+				                            $join->on('sets_cards.set_id', '=', 'sets.id');
+				                        }) 
+				                        ->where('cards.id', $cardId)
+				                        ->pluck('sets.code')[0];
+
+			$card['wikiprice_card_number'] = 0;
 
 			array_push($cards, $card);
 

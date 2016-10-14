@@ -25,6 +25,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Quantity</th>
+						<th>Links</th>
 						<th>Avg Price</th>
 						<th>Current Avg Price</th>
 						<th>Total</th>
@@ -36,9 +37,27 @@
 				</thead>
 				<tbody>
 					@foreach ($overview['cards'] as $card)
+
+					<?php 
+
+						$urlGoldfishCardName = $card['name'];
+
+			        	if (strpos($urlGoldfishCardName, "'") !== false) {
+
+			        		$urlGoldfishCardName = preg_replace("/'/", '', $urlGoldfishCardName);
+			        	}
+
+			        	if (strpos($urlGoldfishCardName, ",") !== false) {
+
+			        		$urlGoldfishCardName = preg_replace("/,/", '', $urlGoldfishCardName);
+			        	}
+			        	
+			        	$goldfishLink = 'https://www.mtggoldfish.com/price/'.$card['set_name'].'/'.$urlGoldfishCardName.'#online';
+					?>
 						<tr>
 							<td>{{ $card['name'] }}</td>
 							<td>{{ $card['quantity'] }}</td>
+							<td><a target="_blank" href="{{ $goldfishLink }}">G</a> | <a target="_blank" href="#">W</a></td>
 							<td>{{ numFormat($card['price_per_copy'], 2) }}</td>
 							<td>{{ numFormat($card['mtg_goldfish_price'], 2) }}</td>
 							<td>{{ numFormat($card['tix'], 2) }}</td>
@@ -60,7 +79,7 @@
 		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
 			
 			"bLengthChange": false,
-			"order": [[4, "desc"]]
+			"order": [[5, "desc"]]
 		});
 
 		$('#cards_filter').hide();
