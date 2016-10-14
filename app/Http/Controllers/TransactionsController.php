@@ -24,9 +24,9 @@ class TransactionsController extends Controller
 		$titleTag = 'Transactions | ';
 		$h2Tag = 'Transactions';
 
-		# $transactionsProcessor = new TransactionsProcessor;
+		$transactionsProcessor = new TransactionsProcessor;
 
-		# $overview = $transactionsProcessor->calculateOverview();
+		$overview = $transactionsProcessor->calculateOverview();
 		
 		return view('transactions/index', compact('titleTag', 'h2Tag'));
 	}

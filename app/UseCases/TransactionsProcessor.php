@@ -14,6 +14,7 @@ class TransactionsProcessor {
 										'transactions.quantity',
 									 	'transactions.card_id',
 									 	'transactions.tix',
+									 	'transactions.price_per_copy',
 									 	'cards.name',
 									 	'card_prices.price')
 							->join('cards', function($join) {
