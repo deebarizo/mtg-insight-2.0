@@ -28,7 +28,7 @@ class TransactionsController extends Controller
 
 		$overview = $transactionsProcessor->calculateOverview();
 		
-		return view('transactions/index', compact('titleTag', 'h2Tag'));
+		return view('transactions/index', compact('titleTag', 'h2Tag', 'overview'));
 	}
 
 	/**
