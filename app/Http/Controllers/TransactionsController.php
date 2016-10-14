@@ -24,9 +24,9 @@ class TransactionsController extends Controller
 		$titleTag = 'Transactions | ';
 		$h2Tag = 'Transactions';
 
-		$transactionsProcessor = new TransactionsProcessor;
+		# $transactionsProcessor = new TransactionsProcessor;
 
-		$overview = $transactionsProcessor->calculateOverview();
+		# $overview = $transactionsProcessor->calculateOverview();
 		
 		return view('transactions/index', compact('titleTag', 'h2Tag'));
 	}
@@ -110,6 +110,7 @@ class TransactionsController extends Controller
 		$transaction->quantity = $quantity;
 		$transaction->card_id = $cardId;
 		$transaction->tix = $tix;
+		$transaction->price_per_copy = numFormat($tix / $quantity, 2);
 		$transaction->note = $note;
 
 		$transaction->save();
