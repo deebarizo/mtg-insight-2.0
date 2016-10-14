@@ -7,8 +7,63 @@
 	<div class="row">
 		<div class="col-lg-12">
 
-			<p><a href="/transactions/create">Create Transaction</a></p>
+			<p><a href="/transactions/create">Create Transaction</a> | Latest Card Prices Date: {{ $overview['latestDateForCardPrices'] }}</p>
+
+			<p><strong>Tix Available: </strong> {{ numFormat($overview['tixAvailable'], 0) }}</p>
+
+			<p><strong>Tix in Cards: </strong> {{ numFormat($overview['tixInCards'], 0) }}</p>
+
+			<p><strong>Total Revenue: </strong> {{ numFormat($overview['totalRevenue'], 2) }}</p>
+
+			<p><strong>Total Profit: </strong> {{ numFormat($overview['totalProfit'], 2) }}</p>
+
+			<p><strong>Total Profit Percentage: </strong> {{ numFormat($overview['totalProfitPercentage'], 2) }}%</p>
+
+			<table id="cards" class="table table-striped table-bordered table-hover table-condensed">
+
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Quantity</th>
+						<th>Avg Price</th>
+						<th>Current Avg Price</th>
+						<th>Total</th>
+						<th>Current Total</th>
+						<th>Profit</th>
+						<th>Profit %</th>
+						<th>Own %</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($overview['cards'] as $card)
+						<tr>
+							<td>{{ $card['name'] }}</td>
+							<td>{{ $card['quantity'] }}</td>
+							<td>{{ numFormat($card['price_per_copy'], 2) }}</td>
+							<td>{{ numFormat($card['mtg_goldfish_price'], 2) }}</td>
+							<td>{{ numFormat($card['tix'], 2) }}</td>
+							<td>{{ numFormat($card['current_total_price'], 2) }}</td>
+							<td>{{ numFormat($card['profit'], 2) }}</td>
+							<td>{{ numFormat($card['profit_percentage'], 2) }}</td>
+							<td>{{ numFormat($card['ownership_percentage'], 2) }}</td>
+						</tr>
+					@endforeach
+				</tbody>
+
+			</table>
 
 		</div>
-	</div
+	</div>
+
+	<script type="text/javascript">
+
+		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
+			
+			"bLengthChange": false,
+			"order": [[4, "desc"]]
+		});
+
+		$('#cards_filter').hide();
+
+	</script>
 @stop

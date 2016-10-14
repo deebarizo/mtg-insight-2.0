@@ -32,6 +32,8 @@ class TransactionsProcessor {
 
 		$tixInCards = $totalTix['buy'] - $totalTix['sell'];
 
+		$totalRevenue = 0;
+
 		$cards = [];
 
 		foreach ($cardIds as $cardId) {
@@ -62,6 +64,7 @@ class TransactionsProcessor {
 				'price_per_copy' => 0,
 				'name' => $transactions[0]->name,
 				'mtg_goldfish_price' => $transactions[0]->price,
+				'current_total_price' => 0,
 				'profit' => 0,
 				'profit_percentage' => 0,
 				'ownership_percentage' => 0
@@ -76,22 +79,33 @@ class TransactionsProcessor {
 				}
 			}
 
-			$card['price_per_copy'] = numFormat($card['tix'] / $card['quantity'], 2);
+			$card['price_per_copy'] = $card['tix'] / $card['quantity'];
 
-			$profit = ($card['mtg_goldfish_price'] * $card['quantity']) - ($card['tix']);
-			$card['profit'] = numFormat($profit, 2);
+			$card['current_total_price'] = $card['mtg_goldfish_price'] * $card['quantity'];
 
-			$card['profit_percentage'] = numFormat($card['profit'] / $card['tix'] * 100, 2);
+			$card['profit'] = ($card['mtg_goldfish_price'] * $card['quantity']) - ($card['tix']);
 
-			$card['ownership_percentage'] = numFormat($card['tix'] / $tixInCards * 100, 2);
+			$card['profit_percentage'] = $card['profit'] / $card['tix'] * 100;
+
+			$card['ownership_percentage'] = $card['tix'] / $tixInCards * 100;
 
 			array_push($cards, $card);
+
+			$totalRevenue += $card['current_total_price'];
 		}
+
+		$totalProfit = $totalRevenue - $tixInCards;
+
+		$totalProfitPercentage = $totalProfit / $tixInCards * 100;
 
 		$overview = [
 
+			'latestDateForCardPrices' => $latestDateForCardPrices,
 			'tixAvailable' => $tixAvailable,
 			'tixInCards' => $tixInCards,
+			'totalRevenue' => $totalRevenue,
+			'totalProfit' => $totalProfit,
+			'totalProfitPercentage' => $totalProfitPercentage,
 			'cards' => $cards
 		];
 
