@@ -84,43 +84,56 @@ class TransactionsProcessor {
 					$card['quantity'] += $transaction->quantity;
 					$card['tix'] += $transaction->tix;
 				}
+
+				if ($transaction->type === 'Sell') {
+
+					$card['quantity'] -= $transaction->quantity;
+					$card['tix'] -= $transaction->tix;
+				}				
 			}
 
-			$card['price_per_copy'] = $card['tix'] / $card['quantity'];
+	
 
-			$card['current_total_price'] = $card['mtg_goldfish_price'] * $card['quantity'];
+			if ($card['quantity'] > 0) {
 
-			$card['profit'] = ($card['mtg_goldfish_price'] * $card['quantity']) - ($card['tix']);
+				$card['price_per_copy'] = $card['tix'] / $card['quantity'];
 
-			$card['profit_percentage'] = $card['profit'] / $card['tix'] * 100;
+				$card['current_total_price'] = $card['mtg_goldfish_price'] * $card['quantity'];
 
-			$card['ownership_percentage'] = $card['tix'] / $tixInCards * 100;
+				$card['profit'] = ($card['mtg_goldfish_price'] * $card['quantity']) - ($card['tix']);
 
-			$card['set_name'] = Card::join('sets_cards', function($join) {
-      
-	                    					$join->on('sets_cards.card_id', '=', 'cards.id');
-				                        })
-				                        ->join('sets', function($join) {
-				      
-				                            $join->on('sets_cards.set_id', '=', 'sets.id');
-				                        }) 
-				                        ->where('cards.id', $cardId)
-				                        ->pluck('sets.name')[0];
+				$card['profit_percentage'] = $card['profit'] / $card['tix'] * 100;
 
-			$card['set_code'] = Card::join('sets_cards', function($join) {
-      
-	                    					$join->on('sets_cards.card_id', '=', 'cards.id');
-				                        })
-				                        ->join('sets', function($join) {
-				      
-				                            $join->on('sets_cards.set_id', '=', 'sets.id');
-				                        }) 
-				                        ->where('cards.id', $cardId)
-				                        ->pluck('sets.code')[0];
+				$card['ownership_percentage'] = $card['tix'] / $tixInCards * 100;
 
-			array_push($cards, $card);
+				$card['set_name'] = Card::join('sets_cards', function($join) {
+	      
+		                    					$join->on('sets_cards.card_id', '=', 'cards.id');
+					                        })
+					                        ->join('sets', function($join) {
+					      
+					                            $join->on('sets_cards.set_id', '=', 'sets.id');
+					                        }) 
+					                        ->where('cards.id', $cardId)
+					                        ->pluck('sets.name')[0];
 
-			$totalRevenue += $card['current_total_price'];
+				$card['set_code'] = Card::join('sets_cards', function($join) {
+	      
+		                    					$join->on('sets_cards.card_id', '=', 'cards.id');
+					                        })
+					                        ->join('sets', function($join) {
+					      
+					                            $join->on('sets_cards.set_id', '=', 'sets.id');
+					                        }) 
+					                        ->where('cards.id', $cardId)
+					                        ->pluck('sets.code')[0];
+
+				array_push($cards, $card);
+
+				$totalRevenue += $card['current_total_price'];
+			}
+
+			
 		}
 
 		$totalProfit = $totalRevenue - $tixInCards;

@@ -9,9 +9,9 @@
 
 			<p><a href="/transactions/create">Create Transaction</a> | Latest Card Prices Date: {{ $overview['latestDateForCardPrices'] }}</p>
 
-			<p><strong>Tix Available: </strong> {{ numFormat($overview['tixAvailable'], 0) }}</p>
+			<p><strong>Tix Available: </strong> {{ numFormat($overview['tixAvailable'], 0) }} ({{ $overview['tixAvailable'] }})</p>
 
-			<p><strong>Tix in Cards: </strong> {{ numFormat($overview['tixInCards'], 0) }}</p>
+			<p><strong>Tix in Cards: </strong> {{ numFormat($overview['tixInCards'], 0) }} ({{ $overview['tixInCards'] }})</p>
 
 			<p><strong>Total Revenue: </strong> {{ numFormat($overview['totalRevenue'], 2) }}</p>
 
@@ -85,7 +85,7 @@
 
 		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
 			
-			"bLengthChange": false,
+			"paging": false,
 			"order": [[5, "desc"]]
 		});
 
