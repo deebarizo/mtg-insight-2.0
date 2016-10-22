@@ -110,7 +110,11 @@ class TransactionsController extends Controller
 		$transaction->quantity = $quantity;
 		$transaction->card_id = $cardId;
 		$transaction->tix = $tix;
-		$transaction->price_per_copy = numFormat($tix / $quantity, 2);
+		if ($quantity > 0) {
+
+			$transaction->price_per_copy = numFormat($tix / $quantity, 2);
+		
+		}		
 		$transaction->note = $note;
 
 		$transaction->save();
