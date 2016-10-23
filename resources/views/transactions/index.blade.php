@@ -11,7 +11,7 @@
 
 			<p><strong>Tix Available: </strong> {{ numFormat($overview['tixAvailable'], 0) }} ({{ $overview['tixAvailable'] }})</p>
 
-			<p><strong>Tix in Cards: </strong> {{ numFormat($overview['tixInCards'], 0) }} ({{ $overview['tixInCards'] }})</p>
+			<p><strong>Total Cost: </strong> {{ numFormat($overview['totalCost'], 0) }} ({{ $overview['totalCost'] }})</p>
 
 			<p><strong>Total Revenue: </strong> {{ numFormat($overview['totalRevenue'], 2) }}</p>
 
@@ -60,6 +60,8 @@
 			        	$urlWikipriceCardName = preg_replace("/\s/", '_', $urlCardName);
 			        	
 			        	$wikiPriceLink = 'https://www.mtgowikiprice.com/card/'.$card['set_code'].'/'.$card['wikiprice_card_number'].'/'.$urlWikipriceCardName;
+
+			        	$ownershipPercentage = $card['tix'] / $overview['totalCost'] * 100;
 					?>
 						<tr>
 							<td>{{ $card['name'] }}</td>
@@ -71,7 +73,7 @@
 							<td>{{ numFormat($card['current_total_price'], 2) }}</td>
 							<td>{{ numFormat($card['profit'], 2) }}</td>
 							<td>{{ numFormat($card['profit_percentage'], 2) }}</td>
-							<td>{{ numFormat($card['ownership_percentage'], 2) }}</td>
+							<td>{{ numFormat($ownershipPercentage, 2) }}</td>
 						</tr>
 					@endforeach
 				</tbody>
