@@ -8,6 +8,8 @@ use App\Models\Card;
 use App\Models\Set;
 use App\Models\SetCard;
 
+use DB;
+
 class TransactionsProcessor {
 
 	public function calculateOverview() {
@@ -33,6 +35,12 @@ class TransactionsProcessor {
 		];
 
 		$tixAvailable = $totalTix['deposit'] - $totalTix['withdraw'] - $totalTix['buy'] + $totalTix['sell'];
+
+		$leagueRevenue = Transaction::select(DB::raw('sum(tix)'))->where('note', 'League')->where('type', 'Deposit')->pluck('sum(tix)')[0];
+
+		$leagueExpense = Transaction::select(DB::raw('sum(tix)'))->where('note', 'League')->where('type', 'Withdraw')->pluck('sum(tix)')[0];
+
+		$leagueProfit = $leagueRevenue - $leagueExpense;
 
 		$totalCost = 0;
 
@@ -109,43 +117,46 @@ class TransactionsProcessor {
 
 			$card['quantity'] = $quantity['buy'] - $quantity['sell'];
 
-			$card['tix'] = $tix;
+			if ($card['quantity'] > 0) {
 
-			$card['price_per_copy'] = $card['tix'] / $card['quantity'];
+				$card['tix'] = $tix;
 
-			$card['current_total_price'] = $card['mtg_goldfish_price'] * $card['quantity'];
+				$card['price_per_copy'] = $card['tix'] / $card['quantity'];
 
-			$card['profit'] = ($card['mtg_goldfish_price'] * $card['quantity']) - $card['tix'];
+				$card['current_total_price'] = $card['mtg_goldfish_price'] * $card['quantity'];
 
-			$card['profit_percentage'] = $card['profit'] / $card['tix'] * 100;
+				$card['profit'] = ($card['mtg_goldfish_price'] * $card['quantity']) - $card['tix'];
 
-			$card['set_name'] = Card::join('sets_cards', function($join) {
-      
-						                    					$join->on('sets_cards.card_id', '=', 'cards.id');
-									                        })
-									                        ->join('sets', function($join) {
-									      
-									                            $join->on('sets_cards.set_id', '=', 'sets.id');
-									                        }) 
-									                        ->where('cards.id', $cardId)
-									                        ->pluck('sets.name')[0];
+				$card['profit_percentage'] = $card['profit'] / $card['tix'] * 100;
 
-			$card['set_code'] = Card::join('sets_cards', function($join) {
-      
-						                    					$join->on('sets_cards.card_id', '=', 'cards.id');
-									                        })
-									                        ->join('sets', function($join) {
-									      
-									                            $join->on('sets_cards.set_id', '=', 'sets.id');
-									                        }) 
-									                        ->where('cards.id', $cardId)
-									                        ->pluck('sets.code')[0];
+				$card['set_name'] = Card::join('sets_cards', function($join) {
+	      
+							                    					$join->on('sets_cards.card_id', '=', 'cards.id');
+										                        })
+										                        ->join('sets', function($join) {
+										      
+										                            $join->on('sets_cards.set_id', '=', 'sets.id');
+										                        }) 
+										                        ->where('cards.id', $cardId)
+										                        ->pluck('sets.name')[0];
 
-			array_push($cards, $card);
+				$card['set_code'] = Card::join('sets_cards', function($join) {
+	      
+							                    					$join->on('sets_cards.card_id', '=', 'cards.id');
+										                        })
+										                        ->join('sets', function($join) {
+										      
+										                            $join->on('sets_cards.set_id', '=', 'sets.id');
+										                        }) 
+										                        ->where('cards.id', $cardId)
+										                        ->pluck('sets.code')[0];
 
-			$totalCost += $card['tix'];
+				array_push($cards, $card);
 
-			$totalRevenue += $card['current_total_price'];
+				$totalCost += $card['tix'];
+
+				$totalRevenue += $card['current_total_price'];		
+			}
 		}
 
 		$totalProfit = $totalRevenue - $totalCost;
@@ -160,7 +171,8 @@ class TransactionsProcessor {
 			'totalRevenue' => $totalRevenue,
 			'totalProfit' => $totalProfit,
 			'totalProfitPercentage' => $totalProfitPercentage,
-			'cards' => $cards
+			'cards' => $cards,
+			'leagueProfit' => $leagueProfit
 		];
 
 		# ddAll($overview);

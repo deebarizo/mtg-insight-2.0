@@ -11,6 +11,8 @@
 
 			<p><strong>Tix Available: </strong> {{ numFormat($overview['tixAvailable'], 0) }} ({{ $overview['tixAvailable'] }})</p>
 
+			<p><strong>League Profit: </strong> {{ numFormat($overview['leagueProfit'], 0) }}</p>
+
 			<p><strong>Total Cost: </strong> {{ numFormat($overview['totalCost'], 0) }} ({{ $overview['totalCost'] }})</p>
 
 			<p><strong>Total Revenue: </strong> {{ numFormat($overview['totalRevenue'], 2) }}</p>
