@@ -48,6 +48,8 @@ class TransactionsProcessor {
 
 		$cards = [];
 
+		$cardsWithRealizedProfits = [];
+
 		foreach ($cardIds as $cardId) {
 
 			$transactions = Transaction::select('transactions.type',
@@ -93,6 +95,19 @@ class TransactionsProcessor {
 
 			$tix = 0;
 
+			$realizedProfits = [
+
+				'card_id' => $cardId,
+				'name' => $transactions[0]->name,
+				'quantity' => 0,
+				'tixBought' => 0,
+				'tixSold' => 0,
+				'buyPrice' => 0,
+				'soldPrice' => 0,
+				'profit' => 0,
+				'profitPercentage' => 0
+			];
+
 			foreach ($transactions as $transaction) {
 
 				if ($transaction->type === 'Buy') {
@@ -100,6 +115,9 @@ class TransactionsProcessor {
 					$quantity['buy'] += $transaction->quantity;
 
 					$tix += $transaction->tix;
+
+					$realizedProfits['quantity'] += $quantity['buy'];
+					$realizedProfits['tixBought'] += $transaction->tix;
 				}
 
 				if ($transaction->type === 'Sell') {
@@ -107,12 +125,47 @@ class TransactionsProcessor {
 					$quantity['sell'] += $transaction->quantity;
 
 					$tix -= $transaction->tix;
+
+					$realizedProfits['tixSold'] += $transaction->tix;
 				}	
 
 				if ($quantity['buy'] === $quantity['sell']) {
 
 					$tix = 0;
+
+					$realizedProfits['buyPrice'] = $realizedProfits['tixBought'] / $realizedProfits['quantity'];
+					$realizedProfits['soldPrice'] = $realizedProfits['tixSold'] / $realizedProfits['quantity'];
+					$realizedProfits['profit'] = $realizedProfits['tixSold'] - $realizedProfits['tixBought'];
+					$realizedProfits['profitPercentage'] = $realizedProfits['profit'] / $realizedProfits['tixBought'] * 100;
+
+					$cardsWithRealizedProfits[] = $realizedProfits;
+
+					$realizedProfits = [
+
+						'card_id' => $cardId,
+						'name' => $transactions[0]->name,
+						'quantity' => 0,
+						'tixBought' => 0,
+						'tixSold' => 0,
+						'buyPrice' => 0,
+						'soldPrice' => 0,
+						'profit' => 0,
+						'profitPercentage' => 0
+					];
 				}
+			}
+
+			if ($quantity['buy'] > $quantity['sell'] && $realizedProfits['tixSold'] > 0) {
+
+				$realizedProfits['buyPrice'] = $realizedProfits['tixBought'] / $realizedProfits['quantity'];
+				$realizedProfits['quantity'] = $quantity['sell'];
+				$realizedProfits['soldPrice'] = $realizedProfits['tixSold'] / $realizedProfits['quantity'];
+				$realizedProfits['profit'] = ($realizedProfits['quantity'] * $realizedProfits['soldPrice']) - ($realizedProfits['quantity'] * $realizedProfits['buyPrice']);
+				$realizedProfits['profitPercentage'] = $realizedProfits['profit'] / ($realizedProfits['quantity'] * $realizedProfits['buyPrice']) * 100;
+				$realizedProfits['tixBought'] = $realizedProfits['quantity'] * $realizedProfits['buyPrice'];
+				$realizedProfits['tixSold'] = $realizedProfits['quantity'] * $realizedProfits['soldPrice'];
+
+				$cardsWithRealizedProfits[] = $realizedProfits;
 			}
 
 			$card['quantity'] = $quantity['buy'] - $quantity['sell'];
@@ -159,9 +212,30 @@ class TransactionsProcessor {
 			}
 		}
 
+		# ddAll($cardsWithRealizedProfits);
+
 		$totalProfit = $totalRevenue - $totalCost;
 
 		$totalProfitPercentage = $totalProfit / $totalCost * 100;
+
+		$totalRealizedData = [
+
+			'cost' => 0,
+			'revenue' => 0,
+			'profit' => 0,
+			'profitPercentage' => 0
+		];
+
+		foreach ($cardsWithRealizedProfits as $card) {
+			
+			$totalRealizedData['cost'] += $card['tixBought'];
+			$totalRealizedData['revenue'] += $card['tixSold'];
+		}
+
+		$totalRealizedData['profit'] = $totalRealizedData['revenue'] - $totalRealizedData['cost'];
+		$totalRealizedData['profitPercentage'] = $totalRealizedData['profit'] / $totalRealizedData['cost'] * 100;
+
+		$totalProfitIncludingLeague = $totalRealizedData['profit'] + $leagueProfit;
 
 		$overview = [
 
@@ -172,7 +246,10 @@ class TransactionsProcessor {
 			'totalProfit' => $totalProfit,
 			'totalProfitPercentage' => $totalProfitPercentage,
 			'cards' => $cards,
-			'leagueProfit' => $leagueProfit
+			'leagueProfit' => $leagueProfit,
+			'cardsWithRealizedProfits' => $cardsWithRealizedProfits,
+			'totalRealizedData' => $totalRealizedData,
+			'totalProfitIncludingLeague' => $totalProfitIncludingLeague
 		];
 
 		# ddAll($overview);
