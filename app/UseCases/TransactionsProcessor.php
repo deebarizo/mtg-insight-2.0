@@ -166,6 +166,8 @@ class TransactionsProcessor {
 				$realizedProfits['tixSold'] = $realizedProfits['quantity'] * $realizedProfits['soldPrice'];
 
 				$cardsWithRealizedProfits[] = $realizedProfits;
+
+				$tix += $realizedProfits['profit'];
 			}
 
 			$card['quantity'] = $quantity['buy'] - $quantity['sell'];
@@ -209,6 +211,12 @@ class TransactionsProcessor {
 				$totalCost += $card['tix'];
 
 				$totalRevenue += $card['current_total_price'];		
+			}
+
+			if ($card['name'] === 'Ulamog, the Ceaseless Hunger') {
+
+				# prf($realizedProfits);
+				# ddAll($card);
 			}
 		}
 
