@@ -152,6 +152,9 @@ class TransactionsProcessor {
 						'profit' => 0,
 						'profitPercentage' => 0
 					];
+
+					$quantity['buy'] = 0;
+					$quantity['sell'] = 0;
 				}
 			}
 
