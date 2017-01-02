@@ -22,6 +22,11 @@
 				</div>
 
 				<div class="form-group">
+					{!! Form::label('f-mana-cost', 'Functional Mana Cost:') !!}
+						{!! Form::text('f-mana-cost', $card->f_mana_cost, ['class' => 'form-control', 'style' => 'width: 25%']) !!}
+				</div>
+
+				<div class="form-group">
 					{!! Form::label('tags', 'Tags:') !!}
 						{!! Form::text('tags', $tags, ['class' => 'form-control', 'style' => 'width: 50%']) !!}
 				</div>

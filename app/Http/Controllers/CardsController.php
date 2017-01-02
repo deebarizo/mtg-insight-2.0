@@ -35,14 +35,14 @@ class CardsController extends Controller
 
 		$firstSet = [
 
-			'code' => 'DTK'
+			'code' => 'BFZ'
 		];
 
 		$firstSet['id'] = Set::where('code', $firstSet['code'])->pluck('id')[0];
 
 		$lastSet = [
 
-			'code' => 'EMN'
+			'code' => 'KLD'
 		];
 
 		$lastSet['id'] = Set::where('code', $lastSet['code'])->pluck('id')[0];
@@ -77,7 +77,7 @@ class CardsController extends Controller
 
 		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet, 'not rotating cards');
 
-		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets','colors'));
+		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets', 'colors'));
 	}
 
 	public function rotating_cards()
@@ -200,7 +200,8 @@ class CardsController extends Controller
 							 'sets.code',
 							 'cards.rating',
 							 'cards.mana_sources',
-							 'cards.note')
+							 'cards.note',
+							 'cards.f_mana_cost')
 					->join('sets_cards', 'sets_cards.card_id', '=', 'cards.id')
 					->join('sets', 'sets.id', '=', 'sets_cards.set_id')
 					->where('cards.id', $id)
@@ -269,6 +270,7 @@ class CardsController extends Controller
 		$card = Card::find($id);
 
 		$card->f_cost = $fCost;
+		$card->f_mana_cost = trim($request->input('f-mana-cost'));
 		$card->rating = trim($request->input('rating'));
 		$card->mana_sources = trim($request->input('mana-sources'));
 		if (trim($request->input('note')) === '') {
