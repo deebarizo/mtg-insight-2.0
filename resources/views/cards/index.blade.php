@@ -104,7 +104,7 @@
 							<td>{{ $card->total_percentage }}%</td>
 							<td>{{ $tags }}</td> <!-- hidden-->
 							<td>{{ $colorAbbrs }}</td> <!-- hidden-->
-							<td>{{ $card->rating }}</td>
+							<td class="stars">{!! $card->stars_html !!}</td>
 							<td>{{ $card->price }}</td>
 							<td>{{ $card->code }}</td> <!-- hidden-->
 							<td>{{ $fManaCost }}</td> <!-- hidden-->

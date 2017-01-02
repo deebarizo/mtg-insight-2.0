@@ -146,6 +146,8 @@ class CardsTableCreator {
 				$card->sb_percentage = NumFormat(0, 2);
 				$card->total_percentage = NumFormat(0, 2);
 			}
+
+			$card->stars_html = $this->createHtmlForStars($card->rating);
 		}
 
 		# ddAll($cards);
@@ -199,6 +201,29 @@ class CardsTableCreator {
 		];
 
 		return array($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors);
+	}
+
+	private function createHtmlForStars($numOfStars) {
+
+		$html = '<span class="num-of-stars" style="display:none">'.$numOfStars.'</span>';
+
+		$maxNumOfStars = 10;
+
+		for ($i = 0; $i < $numOfStars ; $i++) { 
+			
+			$html .= '<span style="cursor: pointer" class="glyphicon glyphicon-star star" data-star="'.$i.'" aria-hidden="true"></span>';
+		}
+
+		for ($i = $numOfStars; $i < $maxNumOfStars; $i++) { 
+			
+			$html .= '<span style="cursor: pointer" class="glyphicon glyphicon-star-empty star" data-star="'.$i.'" aria-hidden="true"></span>';
+		}
+
+		$html .= ' '.$numOfStars;
+
+		# dd($html);
+
+		return $html;
 	}
 
 }
