@@ -54,10 +54,10 @@
 						<th>MD%</th>
 						<th>SB%</th>
 						<th>Total%</th>
-						<th>Tags</th> <!-- hidden-->
-						<th>Color Abbrs</th> <!-- hidden-->
 						<th>Rating</th>
 						<th>Price</th>
+						<th>Tags</th> <!-- hidden-->
+						<th>Color Abbrs</th> <!-- hidden-->
 						<th>Code</th> <!-- hidden-->
 						<th>F MC</th> <!-- hidden-->
 					</tr>
