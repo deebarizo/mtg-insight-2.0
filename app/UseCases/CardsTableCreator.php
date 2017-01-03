@@ -205,7 +205,7 @@ class CardsTableCreator {
 
 	private function createHtmlForStars($numOfStars) {
 
-		$html = '<span class="num-of-stars" style="display:none">'.$numOfStars.'</span>';
+		$html = '';
 
 		$maxNumOfStars = 10;
 
@@ -219,7 +219,7 @@ class CardsTableCreator {
 			$html .= '<span style="cursor: pointer" class="glyphicon glyphicon-star-empty star" data-star="'.$i.'" aria-hidden="true"></span>';
 		}
 
-		$html .= ' '.$numOfStars;
+		$html .= ' <span class="num-of-stars">'.$numOfStars.'</span>';
 
 		# dd($html);
 

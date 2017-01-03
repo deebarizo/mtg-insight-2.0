@@ -277,6 +277,8 @@
 							star.removeClass('glyphicon-star-empty').addClass('glyphicon-star');
 						}
 					}
+
+					stars.find('span.num-of-stars').text(numOfActiveStarsAfterClick);
 	            }
 	        });
 		});
