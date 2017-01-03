@@ -51,6 +51,8 @@ class CardsController extends Controller
 
 		list($latestDateForCardMetagame, $latestDateForCardPrices, $cards, $fCosts, $sets, $colors) = $cardsTableCreator->createCardsTable($firstSet, $lastSet, 'not rotating cards');
 
+		# ddAll($cards);
+
 		return view('cards.index', compact('titleTag', 'h2Tag', 'latestDateForCardMetagame', 'latestDateForCardPrices', 'cards', 'fCosts', 'sets', 'colors'));
 	}
 
@@ -325,6 +327,18 @@ class CardsController extends Controller
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function updateStars(Request $request) {
+
+		$numOfActiveStarsAfterClick = $request->input('numOfActiveStarsAfterClick');
+		$cardId = $request->input('cardId');
+
+		$card = Card::find($cardId);
+
+		$card->rating = $numOfActiveStarsAfterClick;
+
+		$card->save();
 	}
 
 }

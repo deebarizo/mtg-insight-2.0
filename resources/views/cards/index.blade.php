@@ -11,7 +11,7 @@
 
 			<p><a href="/cards/create">Create Card</a> | Latest Card Metagame Date: {{ $latestDateForCardMetagame }} | Latest Card Prices Date: {{ $latestDateForCardPrices }}</p>
 
-			<form class="form-inline" style="margin: 0 0 0 0">
+			{!! Form::open(array('url' => '/cards/update_stars', 'class' => 'form-inline', 'style' => 'margin: 0 0 0 0' )) !!}
 
 				<label>FCs</label>
 				<select class="form-control f-cost-filter" style="width: 10%; margin-right: 20px">
@@ -42,7 +42,7 @@
 					<option value="1+">1+</option>
 				</select>	
 
-			</form>
+			{!!	Form::close() !!}
 
 			<table id="cards" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
@@ -65,10 +65,9 @@
 
 				<?php $cardImagesSetting = Cache::get('card_images', 'Hide'); ?>
 
-
 				<tbody>
 					@foreach ($cards as $card)
-						<tr>
+						<tr data-card-id="{{ $card->id }}">
 							<?php 
 								$cardNameNoApostrophe = preg_replace('/\'/', '', $card->name); 
 
@@ -102,10 +101,10 @@
 							<td>{{ $card->md_percentage }}%</td>
 							<td>{{ $card->sb_percentage }}%</td>
 							<td>{{ $card->total_percentage }}%</td>
-							<td>{{ $tags }}</td> <!-- hidden-->
-							<td>{{ $colorAbbrs }}</td> <!-- hidden-->
 							<td class="stars">{!! $card->stars_html !!}</td>
 							<td>{{ $card->price }}</td>
+							<td>{{ $tags }}</td> <!-- hidden-->
+							<td>{{ $colorAbbrs }}</td> <!-- hidden-->
 							<td>{{ $card->code }}</td> <!-- hidden-->
 							<td>{{ $fManaCost }}</td> <!-- hidden-->
 						</tr>
@@ -117,47 +116,64 @@
 
 	<script type="text/javascript">
 
+		/****************************************************************************************
+		GLOBAL VARIABLES
+		****************************************************************************************/
+
+		var baseUrl = '<?php echo url('/'); ?>';
+
+		var columnIndexes = {
+
+			editLink: 1,
+			rating: 7,
+			tags: 9,
+			colorAbbrs: 10,
+			setCode: 11,
+			fManaCost: 12
+		};
+
 		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
 			
 			"bLengthChange": false,
 			"pageLength": <?php echo ($cardImagesSetting === 'Hide' ? '30' : '10'); ?>,
-			"order": [[9, "desc"]],
+			"order": [[columnIndexes.rating, "desc"]],
 	        "columnDefs": [ 
 	        	{
 	            	"searchable": false,
 	            	"orderable": false,
-	            	"targets": 1
+	            	"targets": columnIndexes.editLink
 	        	},
 	        	{
 	            	"visible": false,
-	            	"targets": 7
+	            	"targets": columnIndexes.tags
 	        	},
 	        	{
 	            	"visible": false,
-	            	"targets": 8
+	            	"targets": columnIndexes.colorAbbrs
 	        	},	 
 	        	{
 	            	"visible": false,
-	            	"targets": 11
+	            	"targets": columnIndexes.setCode
 	        	},
 	        	{
 	            	"visible": false,
-	            	"targets": 12
+	            	"targets": columnIndexes.fManaCost
 	        	}	        	       	
 	        ],
 	        "aoColumns": [
-	            null,
-	            null,
-	            null,
-	            null,
-	            { "orderSequence": [ "desc", "asc" ] },
-	            { "orderSequence": [ "desc", "asc" ] },
-	            { "orderSequence": [ "desc", "asc" ] },
-	            null,
-	            null,
-	            { "orderSequence": [ "desc", "asc" ] },
-	            { "orderSequence": [ "desc", "asc" ] },
-	            null
+	            null, // 0
+	            null, // 1
+	            { "orderSequence": [ "desc", "asc" ] }, // 2
+	            null, // 3
+	            { "orderSequence": [ "desc", "asc" ] }, // 4
+	            { "orderSequence": [ "desc", "asc" ] }, // 5
+	            { "orderSequence": [ "desc", "asc" ] }, // 6
+	            { "orderSequence": [ "desc", "asc" ] }, // 7
+	            { "orderSequence": [ "desc", "asc" ] }, // 8
+	            { "orderSequence": [ "desc", "asc" ] }, // 9
+	            { "orderSequence": [ "desc", "asc" ] }, // 10
+	            null, // 11
+	            null // 12
 	        ]
 		});
 
@@ -178,6 +194,91 @@
 			$("#spinner-container").hide();
 
 			$("#content-container").css('visibility', 'visible');
+		});
+
+
+		/****************************************************************************************
+		AJAX SETUP
+		****************************************************************************************/
+
+		$.ajaxSetup({ // http://stackoverflow.com/a/37663496/1946525
+		    
+		    headers: {
+		        
+		        'X-CSRF-Token': $('input[name="_token"]').val()
+		    }
+		});
+
+
+		/****************************************************************************************
+		STARS
+		****************************************************************************************/
+
+		var maxNumOfStars = 10;
+
+		$('span.star').on('click', function(e) {
+
+			e.preventDefault();
+
+			var clickNumber = $(this).data('star');
+
+			var stars = $(this).closest('td.stars');
+			var tableRow = stars.closest('tr');
+
+			var cardId = tableRow.data('card-id');
+
+			var numOfActiveStarsOnClick = stars.find('span.star.glyphicon-star').length;
+
+			if ($(this).hasClass('glyphicon-star')) {
+
+				var userClickedActiveStar = true;
+
+			} else if ($(this).hasClass('glyphicon-star-empty')) {
+
+				var userClickedActiveStar = false;
+			}
+
+			if (userClickedActiveStar) {
+
+				var numOfActiveStarsAfterClick = numOfActiveStarsOnClick - (numOfActiveStarsOnClick - clickNumber);
+			}
+
+			if (!userClickedActiveStar) {
+
+				var numOfActiveStarsAfterClick = numOfActiveStarsOnClick + (clickNumber - numOfActiveStarsOnClick + 1);
+			}
+
+			$.ajax({
+
+	            url: baseUrl+'/cards/update_stars',
+	           	type: 'POST',
+	           	data: { 
+	           	
+	           		numOfActiveStarsAfterClick: numOfActiveStarsAfterClick,
+	           		cardId: cardId
+	           	},
+	            success: function() {
+	            
+					if (userClickedActiveStar) {
+
+						for (var n = clickNumber; n < numOfActiveStarsOnClick; n++) {
+
+							var star = stars.find('span.star').eq(n);
+
+							star.removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+						}
+					
+					} else if (!userClickedActiveStar) {
+
+						for (var n = 0; n < clickNumber + 1; n++) {
+
+							var star = stars.find('span.star').eq(n);
+
+							star.removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+						}
+					}
+	            }
+	        });
 		});
 
 	</script>
