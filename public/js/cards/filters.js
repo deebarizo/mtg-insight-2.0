@@ -160,7 +160,7 @@ $(document).ready(function() {
 			}
 		})
 
-		var columnIndex = 8;
+		var columnIndex = columnIndexes.colorAbbrs;
 
 		if (colorAbbrsToExclude == '') {
 
