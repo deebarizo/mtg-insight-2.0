@@ -132,70 +132,6 @@
 			fManaCost: 12
 		};
 
-		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
-			
-			"bLengthChange": false,
-			"pageLength": <?php echo ($cardImagesSetting === 'Hide' ? '30' : '10'); ?>,
-			"order": [[columnIndexes.rating, "desc"]],
-	        "columnDefs": [ 
-	        	{
-	            	"searchable": false,
-	            	"orderable": false,
-	            	"targets": columnIndexes.editLink
-	        	},
-	        	{
-	            	"visible": false,
-	            	"targets": columnIndexes.tags
-	        	},
-	        	{
-	            	"visible": false,
-	            	"targets": columnIndexes.colorAbbrs
-	        	},	 
-	        	{
-	            	"visible": false,
-	            	"targets": columnIndexes.setCode
-	        	},
-	        	{
-	            	"visible": false,
-	            	"targets": columnIndexes.fManaCost
-	        	}	        	       	
-	        ],
-	        "aoColumns": [
-	            null, // 0
-	            null, // 1
-	            { "orderSequence": [ "desc", "asc" ] }, // 2
-	            null, // 3
-	            { "orderSequence": [ "desc", "asc" ] }, // 4
-	            { "orderSequence": [ "desc", "asc" ] }, // 5
-	            { "orderSequence": [ "desc", "asc" ] }, // 6
-	            { "orderSequence": [ "desc", "asc" ] }, // 7
-	            { "orderSequence": [ "desc", "asc" ] }, // 8
-	            { "orderSequence": [ "desc", "asc" ] }, // 9
-	            { "orderSequence": [ "desc", "asc" ] }, // 10
-	            null, // 11
-	            null // 12
-	        ]
-		});
-
-		cardsTable.draw();
-
-		$('.btn').on('mouseup', function() { // http://stackoverflow.com/a/30119360/1946525
-
-			$(this).blur();
-		});	 
-
-		$('select.f-cost-filter').on('change', function() {
-
-			$(this).blur();
-		});
-
-		$(document).ready(function() {
-
-			$("#spinner-container").hide();
-
-			$("#content-container").css('visibility', 'visible');
-		});
-
 
 		/****************************************************************************************
 		AJAX SETUP
@@ -281,6 +217,75 @@
 					stars.find('span.num-of-stars').text(numOfActiveStarsAfterClick);
 	            }
 	        });
+		});
+
+
+		/****************************************************************************************
+		TABLE
+		****************************************************************************************/
+
+		var cardsTable = $('#cards').DataTable({ // https://datatables.net/examples/api/counter_columns.html#
+			
+			"bLengthChange": false,
+			"pageLength": <?php echo ($cardImagesSetting === 'Hide' ? '30' : '10'); ?>,
+			"order": [[columnIndexes.rating, "desc"]],
+	        "columnDefs": [ 
+	        	{
+	            	"searchable": false,
+	            	"orderable": false,
+	            	"targets": columnIndexes.editLink
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": columnIndexes.tags
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": columnIndexes.colorAbbrs
+	        	},	 
+	        	{
+	            	"visible": false,
+	            	"targets": columnIndexes.setCode
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": columnIndexes.fManaCost
+	        	}	        	       	
+	        ],
+	        "aoColumns": [
+	            null, // 0
+	            null, // 1
+	            { "orderSequence": [ "desc", "asc" ] }, // 2
+	            null, // 3
+	            { "orderSequence": [ "desc", "asc" ] }, // 4
+	            { "orderSequence": [ "desc", "asc" ] }, // 5
+	            { "orderSequence": [ "desc", "asc" ] }, // 6
+	            { "orderSequence": [ "desc", "asc" ] }, // 7
+	            { "orderSequence": [ "desc", "asc" ] }, // 8
+	            { "orderSequence": [ "desc", "asc" ] }, // 9
+	            { "orderSequence": [ "desc", "asc" ] }, // 10
+	            null, // 11
+	            null // 12
+	        ]
+		});
+
+		cardsTable.draw();
+
+		$('.btn').on('mouseup', function() { // http://stackoverflow.com/a/30119360/1946525
+
+			$(this).blur();
+		});	 
+
+		$('select.f-cost-filter').on('change', function() {
+
+			$(this).blur();
+		});
+
+		$(document).ready(function() {
+
+			$("#spinner-container").hide();
+
+			$("#content-container").css('visibility', 'visible');
 		});
 
 	</script>
