@@ -168,6 +168,8 @@ class CardsTableCreator {
 						->pluck('cards.f_cost')
 						->toArray();
 
+		# ddAll($fCosts);
+
 		$sets = Set::where('code', '!=', 'LANDS')->orderBy('id', 'desc')->pluck('code')->toArray();
 
 		# ddAll($sets);

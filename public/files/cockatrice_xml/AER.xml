@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <cockatrice_carddatabase version="3">
     <sets>
         <set>
@@ -1065,8 +1066,8 @@ Hexproof</text>
 	<name>Lifecraft Awakening</name>
     <set picURL="http://mythicspoiler.com/aer/cards/lifecraftawakening.jpg">AER</set>
     <color></color>
-    <manacost></manacost>
-    <cmc></cmc>
+    <manacost>XG</manacost>
+    <cmc>1</cmc>
     <type>Instant</type> 
     <pt></pt>
     <tablerow>3</tablerow>
@@ -1803,8 +1804,8 @@ Creatures you control get +1/+1 for each unity counter on Call for Unity.</text>
 	<name>Walking Ballista</name>
     <set picURL="http://mythicspoiler.com/aer/cards/walkingballista.jpg">AER</set>
     <color></color>
-    <manacost></manacost>
-    <cmc></cmc>
+    <manacost>XX</manacost>
+    <cmc>0</cmc>
     <type>Artifact Creature - Construct</type> 
     <pt></pt>
     <tablerow>2</tablerow>
@@ -1898,8 +1899,8 @@ Whenever Skyship Plunderer deals combat damage to a player, for each kind of cou
 	<name>Indomitable Creativity</name>
     <set picURL="http://mythicspoiler.com/aer/cards/indomitablecreativity.jpg">AER</set>
     <color></color>
-    <manacost></manacost>
-    <cmc></cmc>
+    <manacost>XRRR</manacost>
+    <cmc>3</cmc>
     <type>Sorcery</type> 
     <pt></pt>
     <tablerow>3</tablerow>
@@ -2150,8 +2151,8 @@ Pay {e}: Aetherwind Basker gets +1/+1 until end of turn.</text>
 	<name>Release the Gremlins</name>
     <set picURL="http://mythicspoiler.com/aer/cards/releasethegremlins.jpg">AER</set>
     <color></color>
-    <manacost></manacost>
-    <cmc></cmc>
+    <manacost>XXR</manacost>
+    <cmc>1</cmc>
     <type>Sorcery</type> 
     <pt></pt>
     <tablerow>3</tablerow>
@@ -2511,8 +2512,8 @@ Pay {e}: Shipwreck Moray gets +2/-2 until end of turn.</text>
 	<name>Whir of Invention</name>
     <set picURL="http://mythicspoiler.com/aer/cards/whirofinvention.jpg">AER</set>
     <color></color>
-    <manacost></manacost>
-    <cmc></cmc>
+    <manacost>XUUU</manacost>
+    <cmc>3</cmc>
     <type>Instant</type> 
     <pt></pt>
     <tablerow>3</tablerow>
@@ -2639,8 +2640,8 @@ When you cast a Bolas planeswalker spell, exile Dark Intimations from your grave
 	<name>Battle at the Bridge</name>
     <set picURL="http://mythicspoiler.com/aer/cards/battleatthebridge.jpg">AER</set>
     <color></color>
-    <manacost></manacost>
-    <cmc></cmc>
+    <manacost>XB</manacost>
+    <cmc>1</cmc>
     <type>Sorcery</type> 
     <pt></pt>
     <tablerow>3</tablerow>

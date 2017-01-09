@@ -42,7 +42,7 @@ class CardsController extends Controller
 
 		$lastSet = [
 
-			'code' => 'KLD'
+			'code' => 'AER'
 		];
 
 		$lastSet['id'] = Set::where('code', $lastSet['code'])->pluck('id')[0];
