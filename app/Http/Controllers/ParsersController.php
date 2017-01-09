@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\UseCases\FileUploader;
 use App\UseCases\MtgJsonParser;
+use App\UseCases\CockatriceXmlParser;
 
 use App\Models\Card;
 
@@ -24,6 +25,21 @@ class ParsersController extends Controller {
         $message = $results->message;
 
 		return redirect()->route('admin.parsers.mtg_json')->with('message', $message);
+	}
+
+	public function parseCockatriceXml(Request $request) {
+
+		$fileUploader = new FileUploader;
+
+		$xmlFile = $fileUploader->uploadCockatriceXml($request);
+
+		$cockatriceXmlParser = new CockatriceXmlParser;
+
+        $results = $cockatriceXmlParser->parseXml($xmlFile);
+
+        $message = $results->message;
+
+		return redirect()->route('admin.parsers.cockatrice_xml')->with('message', $message);
 	}
 
 	public function fixManaCosts() { 

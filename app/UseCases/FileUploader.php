@@ -29,4 +29,15 @@ class FileUploader {
         return $file;   
     }
 
+    public function uploadCockatriceXml($request) {
+
+		$fileDirectory = 'files/cockatrice_xml/';
+		$fileName = Input::file('xml')->getClientOriginalName();
+		$file = $fileDirectory . $fileName;
+
+       	Input::file('xml')->move($fileDirectory, $fileName);    
+
+        return $file;     	
+    }
+
 }

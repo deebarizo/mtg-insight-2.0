@@ -1,0 +1,2797 @@
+<cockatrice_carddatabase version="3">
+    <sets>
+        <set>
+            <name>AER</name>
+            <longname>Aether Revolt</longname>
+            <settype>Custom</settype>
+            <releasedate></releasedate>
+        </set>
+    </sets>
+    <cards>
+    
+
+<card>
+	<name>Filigree Crawler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/filigreecrawler.jpg">AER</set>
+    <color></color>
+    <manacost>4</manacost>
+    <cmc>4</cmc>
+    <type>Artifact Creature - Insect</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>When Filigree Crawler dies, create a 1/1 colorless Thopter artifact creature token with flying.</text>
+        
+</card>
+
+<card>
+	<name>Daredevil Dragster</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/daredevildragster.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>At the end of combat, if Daredevil Dragster attacked or blocked this combat, put a velocity counter on it. Then if it has two or more velocity counters on it, sacrifice it an draw two cards.
+
+Crew 2 &lt;i&gt;(Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Crackdown Construct</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/crackdownconstruct.jpg">AER</set>
+    <color></color>
+    <manacost>4</manacost>
+    <cmc>4</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Whenever you activate an ability of an artifact or creature that isn&#x27;t a mana ability, Crackdown Construct gets +1/+1 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Consulate Turret</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/consulateturret.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{t}: You get {e} &lt;i&gt;(an energy counter).
+{t}: Pay {e}{e}{e}: Consulate Turret deals 2 damage to target player.</text>
+        
+</card>
+
+<card>
+	<name>Irontread Crusher</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/irontreadcrusher.jpg">AER</set>
+    <color></color>
+    <manacost>4</manacost>
+    <cmc>4</cmc>
+    <type>Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Crew 3 (&lt;i&gt;Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.&lt;/i&gt;)</text>
+        
+</card>
+
+<card>
+	<name>Barricade Breaker</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/barricadebreaker.jpg">AER</set>
+    <color></color>
+    <manacost>7</manacost>
+    <cmc>7</cmc>
+    <type>Artifact Creature - Juggernaut</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Barricade Breaker attacks each combat if able.</text>
+        
+</card>
+
+<card>
+	<name>Mobile Garrison</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/mobilegarrison.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Whenever Mobile Garrison attacks, untap another target artifact or creature you control.
+Crew 2(&lt;i&gt;Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.&lt;/i&gt;)</text>
+        
+</card>
+
+<card>
+	<name>Sly Requisitioner</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/slyrequisitioner.jpg">AER</set>
+    <color>B</color>
+    <manacost>4B</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.&lt;/i&gt;
+Whenever a nontoken artifact you control is put into a graveyard from the battlefield, create a colorless 1/1 Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Night Market Guard</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/nightmarketguard.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Night Market Guard can block an additional creature each combat.</text>
+        
+</card>
+
+<card>
+	<name>Augmenting Automaton</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/augmentingautomaton.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{1}{B}: Augmenting Automaton gets +1/+1 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Resourceful Return</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/resourcefulreturn.jpg">AER</set>
+    <color>B</color>
+    <manacost>1B</manacost>
+    <cmc>2</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Return target creature card from your graveyard to your hand. If you control an artifact, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Prizefighter Construct</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/prizefighterconstruct.jpg">AER</set>
+    <color></color>
+    <manacost>5</manacost>
+    <cmc>5</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text></text>
+        
+</card>
+
+<card>
+	<name>Renegade&#x27;s Getaway</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/renegadesgetaway.jpg">AER</set>
+    <color>B</color>
+    <manacost>2B</manacost>
+    <cmc>3</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Target permanent gains indestructible until end of turn. Create a 1/1 colorless Servo artifact creature token. &lt;i&gt;(Effects that say &quot;destroy&quot; don&#x27;t destroy a permanent with indestructible, and if it&#x27;s a creature, it can&#x27;t be destroyed by damage.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Reservoir Walker</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/reservoirwalker.jpg">AER</set>
+    <color></color>
+    <manacost>5</manacost>
+    <cmc>5</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>When Reservoir Walker enters the battlefield, you gain 3 life and get {e}{e}{e} (&lt;i&gt;three energy counters&lt;/i&gt;).</text>
+        
+</card>
+
+<card>
+	<name>Perilous Predicament</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/perilouspredicament.jpg">AER</set>
+    <color>B</color>
+    <manacost>4B</manacost>
+    <cmc>5</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Each opponent sacrifices an artifact creature and a nonartifact creature.</text>
+        
+</card>
+
+<card>
+	<name>Servo Schematic</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/servoschematic.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>When Servo Schematic enters the battlefield or is put into a graveyard from the battlefield, create a 1/1 colorless Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Ironclad Revolutionary</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ironcladrevolutionary.jpg">AER</set>
+    <color>B</color>
+    <manacost>4BB</manacost>
+    <cmc>6</cmc>
+    <type>Creature - Aetherborn Artificer</type> 
+    <pt>4/4</pt>
+    <tablerow>2</tablerow>
+    <text>When Ironclad Revolutionary enters the battlefield, you may sacrifice an artifact. If you do, put two +1/+1 counters on Ironclad Revolutionary and each opponent loses 2 life.</text>
+        
+</card>
+
+<card>
+	<name>Aegis Automation</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aegisautomation.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{4}{W}: Return another target creature you control to its owner&#x27;s hand.</text>
+        
+</card>
+
+<card>
+	<name>Verdant Automaton</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/verdantautomaton.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{3}{g}: Put a +1/+1 counter on Verdant Automaton.</text>
+        
+</card>
+
+<card>
+	<name>Gonti&#x27;s Machinations</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/gontismachinations.jpg">AER</set>
+    <color>B</color>
+    <manacost>B</manacost>
+    <cmc>1</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Whenever you lose life for the first time each turn, you get {E}. &lt;i&gt;(You get an energy counter. Damage causes loss of life.)&lt;/i&gt;
+Pay {E}{E}, Sacrifice Gonti&#x27;s Machinations: Each opponent loses 3 life. You gain life equal to the life lost this way.</text>
+        
+</card>
+
+<card>
+	<name>Watchful Automaton</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/watchfulautomaton.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{2}{u}: Scry 1. (&lt;i&gt;Look at the top card of your library. You may put that card on the bottom of your library.&lt;/i&gt;)</text>
+        
+</card>
+
+<card>
+	<name>Fourth Bridge Prowler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/fourthbridgeprowler.jpg">AER</set>
+    <color>B</color>
+    <manacost>B</manacost>
+    <cmc>1</cmc>
+    <type>Creature - Human Rogue</type> 
+    <pt>1/1</pt>
+    <tablerow>2</tablerow>
+    <text>When Fourth Bridge Prowler enters the battlefield, you may have target creature get -1/-1 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Welder Automaton</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/welderautomaton.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{3}{r}: Welder Automaton deals 1 damage to each opponent.</text>
+        
+</card>
+
+<card>
+	<name>Foundry Hornet</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/foundryhornet.jpg">AER</set>
+    <color>B</color>
+    <manacost>3B</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Insect</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+When Foundry Hornet enters the battlefield, if you control a creature with a +1/+1 counter on it, creatures your opponents control get -1/-1 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Fen Hauler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/fenhauler.jpg">AER</set>
+    <color>B</color>
+    <manacost>6B</manacost>
+    <cmc>7</cmc>
+    <type>Creature - Insect</type> 
+    <pt>5/5</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}).&lt;/i&gt;
+Fen Hauler can&#x27;t be blocked by artifact creatures.</text>
+        
+</card>
+
+<card>
+	<name>Wrangle</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/wrangle.jpg">AER</set>
+    <color>R</color>
+    <manacost>1R</manacost>
+    <cmc>2</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Gain control of target creature with power 4 or less until end of turn. Untap that creature. It gains haste until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Scrapper Champion</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/scrapperchampion.jpg">AER</set>
+    <color>R</color>
+    <manacost>3R</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Human Warrior</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Double Strike
+
+When Scrapper Champion enters the battlefield, you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+
+Whenever Scrapper Champion attackes you may pay {ee}. If you do, put a +1/61 counter on it.</text>
+        
+</card>
+
+<card>
+	<name>Reckless Racer</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/recklessracer.jpg">AER</set>
+    <color>R</color>
+    <manacost>2R</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Human Pilot</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>First Strike
+
+Whenever Reckless Racer becomes tapped, you may discard a card. If you do, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Precise Strike</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/precisestrike.jpg">AER</set>
+    <color>R</color>
+    <manacost>R</manacost>
+    <cmc>1</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Target Creature gets +1/+0 and gains first strike until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Lathnu Sailback</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/lathnusailback.jpg">AER</set>
+    <color>R</color>
+    <manacost>4R</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Lizard</type> 
+    <pt>5/4</pt>
+    <tablerow>2</tablerow>
+    <text></text>
+        
+</card>
+
+<card>
+	<name>Invigorated Rampage</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/invigoratedrampage.jpg">AER</set>
+    <color>R</color>
+    <manacost>1R</manacost>
+    <cmc>2</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Choose one -- 
+• Target creature gets +4/+0 and gains trample until end of turn.
+• Two target creatures each get +2/+0 and gain trample until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Gremlin Infestation</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/gremlininfestation.jpg">AER</set>
+    <color>R</color>
+    <manacost>3R</manacost>
+    <cmc>4</cmc>
+    <type>Enchantment - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant Artifact
+
+At the beginning of your end step, Gremlin Infestation deals 2 damage to enchanted artifact&#x27;s controller.
+When enchanted artifact is put into a graveyard, create a 2.2 red Gremlin creature token.</text>
+        
+</card>
+
+<card>
+	<name>Frontline Rebel</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/frontlinerebel.jpg">AER</set>
+    <color>R</color>
+    <manacost>2R</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Human Warrior</type> 
+    <pt>3/3</pt>
+    <tablerow>2</tablerow>
+    <text>Frontline Rebel attacks each turn if able.</text>
+        
+</card>
+
+<card>
+	<name>Enraged Giant</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/enragedgiant.jpg">AER</set>
+    <color>R</color>
+    <manacost>5R</manacost>
+    <cmc>6</cmc>
+    <type>Creature - Giant</type> 
+    <pt>4/4</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Trample, haste</text>
+        
+</card>
+
+<card>
+	<name>Embraal Gear Smasher</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/embraalgearsmasher.jpg">AER</set>
+    <color>R</color>
+    <manacost>2R</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Human Warrior</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>{t}, Sacrifice an artifact: Embraal Gear-Smasher deals 2 damage to each opponent.</text>
+        
+</card>
+
+<card>
+	<name>Destructive Tampering</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/destructivetampering.jpg">AER</set>
+    <color>R</color>
+    <manacost>2R</manacost>
+    <cmc>3</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Choose one--
+• Destroy target artifact.
+• Creatures without flying can&#x27;t block this turn.</text>
+        
+</card>
+
+<card>
+	<name>Chandra&#x27;s Revolution</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/chandrasrevolution.jpg">AER</set>
+    <color>R</color>
+    <manacost>3R</manacost>
+    <cmc>4</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Chandra&#x27;s Revolution deals 4 damage to target creature. Tap target land. That land doesn&#x27;t untap during it&#x27;s controller&#x27;s next untap step.</text>
+        
+</card>
+
+<card>
+	<name>Thopter Arrest</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/thopterarrest.jpg">AER</set>
+    <color>W</color>
+    <manacost>2W</manacost>
+    <cmc>3</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>When Thopter Arrest enters the battlefield, exile target artifact or creature an opponent controls until Thopter Arrest leaves the battlefield.</text>
+        
+</card>
+
+<card>
+	<name>Restoration Specialist</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/restorationspecialist.jpg">AER</set>
+    <color>W</color>
+    <manacost>1W</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Dwarf Artificer</type> 
+    <pt>2/1</pt>
+    <tablerow>2</tablerow>
+    <text>{w}, Sacrifice Restoration Specialist: Return up to one target artifact card and up to one target enchantment card from your graveyard to your hand.</text>
+        
+</card>
+
+<card>
+	<name>Ghirapur Osprey</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ghirapurosprey.jpg">AER</set>
+    <color>W</color>
+    <manacost>2W</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Bird</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Flying</text>
+        
+</card>
+
+<card>
+	<name>Felidar Guardian</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/felidarguardian.jpg">AER</set>
+    <color>W</color>
+    <manacost>3W</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Cat Beast</type> 
+    <pt>1/4</pt>
+    <tablerow>2</tablerow>
+    <text>When Felidar Guardian enters the battlefield, you may exile another target permanent you control, then return that card to the battlefield under it&#x27;s owner&#x27;s control.</text>
+        
+</card>
+
+<card>
+	<name>Defiant Salvager</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/defiantsalvager.jpg">AER</set>
+    <color>B</color>
+    <manacost>2B</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Aetherborn Artificer</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Sacrifice an artifact or creature: Put a +1/+1 counter on Defiant Salvager. Activate this ability only any time you could cast a sorcery.</text>
+        
+</card>
+
+<card>
+	<name>Deft Dismissal</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/deftdismissal.jpg">AER</set>
+    <color>W</color>
+    <manacost>3W</manacost>
+    <cmc>4</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Deft Dismissal deals 3 damage divided as you choose among one, two, or three attacking or blocking creatures.</text>
+        
+</card>
+
+<card>
+	<name>Daring Demolition</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/daringdemolition.jpg">AER</set>
+    <color>B</color>
+    <manacost>2BB</manacost>
+    <cmc>4</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Destroy target creature or Vehicle.</text>
+        
+</card>
+
+<card>
+	<name>Cruel Finality</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/cruelfinality.jpg">AER</set>
+    <color>B</color>
+    <manacost>3B</manacost>
+    <cmc>4</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Target creature gets -2/-2 until end of turn. Scry 1. (&lt;i&gt;Look at the top card of your library. You may put that card on the bottom of your library.&lt;/i&gt;)</text>
+        
+</card>
+
+<card>
+	<name>Deadeye Harpooner</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/deadeyeharpooner.jpg">AER</set>
+    <color>W</color>
+    <manacost>2W</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Dwarf Warrior</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt;--When Deadeye Harpooner enters the battlefield, if a permanent you controlled left the battlefield this turn, destroy target tapped creature an opponent controls.</text>
+        
+</card>
+
+<card>
+	<name>Alley Stranger</name>
+    <set picURL="">AER</set>
+    <color>B</color>
+    <manacost>2B</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Aetherborn Rogue</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>Menace</text>
+        
+</card>
+
+<card>
+	<name>Dawnfeather Eagle</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/dawnfeathereagle.jpg">AER</set>
+    <color>W</color>
+    <manacost>4W</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Bird</type> 
+    <pt>3/3</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+When Dawnfeather Eagle enters the battlefield, creatures you control get +1/+1 and gain vigilance until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Unbridled Growth</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/unbridledgrowth.jpg">AER</set>
+    <color>G</color>
+    <manacost>G</manacost>
+    <cmc>1</cmc>
+    <type>Enchantment - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant Land
+Enchanted land has &quot;{t}: Add one mana of any color to your mana pool.&quot;
+Sacrifice Unbridled Growth: Draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Conviction</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/conviction.jpg">AER</set>
+    <color>W</color>
+    <manacost>1W</manacost>
+    <cmc>2</cmc>
+    <type>Enchantment - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant creature
+
+Enchanted creature gets +1/+3.
+
+{w}: Return Conviction to it&#x27;s owner&#x27;s hand</text>
+        
+</card>
+
+<card>
+	<name>Wind-Kin Raiders</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/windkinraiders.jpg">AER</set>
+    <color>U</color>
+    <manacost>4UU</manacost>
+    <cmc>6</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>4/3</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise
+
+Flying</text>
+        
+</card>
+
+<card>
+	<name>Scrounging Bandar</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/scroungingbandar.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Cat Monkey</type> 
+    <pt>0/0</pt>
+    <tablerow>2</tablerow>
+    <text>Scrounging Bandar enters the battlefield with two +1/+1 counters on it.
+At the beginning of your upkeep, you may move any number of +1/+1 counters from Scrounging Bandar onto another target creature.</text>
+        
+</card>
+
+<card>
+	<name>Take Into Custody</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/takeintocustody.jpg">AER</set>
+    <color>U</color>
+    <manacost>U</manacost>
+    <cmc>1</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Tap target creature. It doesn&#x27;t untap during its controller&#x27;s next untap step.</text>
+        
+</card>
+
+<card>
+	<name>Caught in the Brights</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/caughtinthebrights.jpg">AER</set>
+    <color>W</color>
+    <manacost>2W</manacost>
+    <cmc>3</cmc>
+    <type>Enchantment - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant Creature
+
+Enchanted Creature can&#x27;t attack or block.
+
+When a Vehicle you control attacks, exile enchanted creature.</text>
+        
+</card>
+
+<card>
+	<name>Ridgescale Tusker</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ridgescaletusker.jpg">AER</set>
+    <color>G</color>
+    <manacost>3GG</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Beast</type> 
+    <pt>5/5</pt>
+    <tablerow>2</tablerow>
+    <text>When Ridgescale Tusker enters the battlefield, put a +1/+1 counter on each other creature you control.</text>
+        
+</card>
+
+<card>
+	<name>Shielded Aether Thief</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/shieldedaetherthief.jpg">AER</set>
+    <color>U</color>
+    <manacost>1U</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Vedalken Rogue</type> 
+    <pt>0/4</pt>
+    <tablerow>2</tablerow>
+    <text>Flash
+
+Whenever Shielded Aether Thief blocks, you get {e}.
+
+{t}, Pay {e}{e}{e}: Draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Prey Upon</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/preyupon.jpg">AER</set>
+    <color>G</color>
+    <manacost>G</manacost>
+    <cmc>1</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Target creature you control fights target creature you don&#x27;t control. (&lt;i&gt;Each deals damage equal to its power to the other.&lt;/i&gt;)</text>
+        
+</card>
+
+<card>
+	<name>Peema Aether-Seer</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/peemaaetherseer.jpg">AER</set>
+    <color>G</color>
+    <manacost>3G</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Elf Druid</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>When Peema Aether-Seer enters the battlefield, you get an amount of {e} (&lt;i&gt;energy counters&lt;/i&gt;) equal to the greatest power among creatures you control.
+Pay {e}{e}{e}: Target creature blocks this turn if able.</text>
+        
+</card>
+
+<card>
+	<name>Salvage Scuttler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/salvagescuttler.jpg">AER</set>
+    <color>U</color>
+    <manacost>4U</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Crab</type> 
+    <pt>4/4</pt>
+    <tablerow>2</tablerow>
+    <text>Whenever Salvage Scuttler attacks, return an artifact you control to its owner&#x27;s hand.</text>
+        
+</card>
+
+<card>
+	<name>Bastion Enforcer</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/bastionenforcer.jpg">AER</set>
+    <color>W</color>
+    <manacost>2W</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Dwarf Soldier</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text></text>
+        
+</card>
+
+<card>
+	<name>Negate</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/negate.jpg">AER</set>
+    <color>U</color>
+    <manacost>1U</manacost>
+    <cmc>2</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Counter target noncreature spell.</text>
+        
+</card>
+
+<card>
+	<name>Natural Obsolescence</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/naturalobsolescence.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Put target artifact on the bottom of its owner&#x27;s library.</text>
+        
+</card>
+
+<card>
+	<name>Leave in the Dust</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/leaveinthedust.jpg">AER</set>
+    <color>U</color>
+    <manacost>3U</manacost>
+    <cmc>4</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Return target nonland permanent to its owner&#x27;s hand.
+
+Draw a card.
+</text>
+        
+</card>
+
+<card>
+	<name>Audacious Infiltrator</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/audaciousinfiltrator.jpg">AER</set>
+    <color>W</color>
+    <manacost>1W</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Dwarf Rogue</type> 
+    <pt>3/1</pt>
+    <tablerow>2</tablerow>
+    <text>Audacious Infiltrator can&#x27;t be blocked by artifact creatures.</text>
+        
+</card>
+
+<card>
+	<name>Narnam Renegade</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/narnamrenegade.jpg">AER</set>
+    <color>G</color>
+    <manacost>G</manacost>
+    <cmc>1</cmc>
+    <type>Creature - Elf Warrior</type> 
+    <pt>1/2</pt>
+    <tablerow>2</tablerow>
+    <text>Deathtouch
+&lt;i&gt;Revolt&lt;/i&gt; — Narnam Renegade enters the battlefield with a +1/+1 counter on it if a permanent you control left the battlefield this turn.</text>
+        
+</card>
+
+<card>
+	<name>Illusionist&#x27;s Stratagem</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/illusionistsstratagem.jpg">AER</set>
+    <color>U</color>
+    <manacost>3U</manacost>
+    <cmc>4</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Exile up to two target creatures you contorl, then return those cards to the battlefield under their owner&#x27;s control.
+
+Draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Ice Over</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/iceover.jpg">AER</set>
+    <color>U</color>
+    <manacost>1U</manacost>
+    <cmc>2</cmc>
+    <type>Enchantment - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant artifact or creature
+
+Enchanted permanent doesn&#x27;t untap during its controller&#x27;s untap step.</text>
+        
+</card>
+
+<card>
+	<name>Monstrous Onslaught</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/monstrousonslaught.jpg">AER</set>
+    <color>G</color>
+    <manacost>3GG</manacost>
+    <cmc>5</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Monstrous Onslaught deals X damage divided as you choose among any number of target creatures, where X is the greatest power among creatures you control as you cast Monstrous Onslaught.</text>
+        
+</card>
+
+<card>
+	<name>Alley Evasion</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/alleyevasion.jpg">AER</set>
+    <color>W</color>
+    <manacost>W</manacost>
+    <cmc>1</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Choose one -- 
+•Target creature you control gets, +1/+2 until end of turn.
+•Return target creature you control to it&#x27;s owner&#x27;s hand.
+
+</text>
+        
+</card>
+
+<card>
+	<name>Hinterland Drake</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/hinterlanddrake.jpg">AER</set>
+    <color>U</color>
+    <manacost>2U</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Drake</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+
+Hinterland Drake can&#x27;t block artifact creatures.</text>
+        
+</card>
+
+<card>
+	<name>Maulfist Revolutionary</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/maulfistrevolutionary.jpg">AER</set>
+    <color>G</color>
+    <manacost>1GG</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Human Warrior</type> 
+    <pt>3/3</pt>
+    <tablerow>2</tablerow>
+    <text>Trample
+When Maulfist Revolutionary enters the battlefield or dies, for each kind of counter on target permanent or player, give that permanent or player another counter of that kind.</text>
+        
+</card>
+
+<card>
+	<name>Dispersal Technician</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/dispersaltechnician.jpg">AER</set>
+    <color>U</color>
+    <manacost>4U</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Vedalken Artificer</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>When Dispersal Technician enters the battlefield, you may return target artifact to its owner&#x27;s hand.</text>
+        
+</card>
+
+<card>
+	<name>Lifecrafter&#x27;s Gift</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/lifecraftersgift.jpg">AER</set>
+    <color>G</color>
+    <manacost>3G</manacost>
+    <cmc>4</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Put a +1/+1 counter on target creature, then put a +1/+1 counter on each creature you control with a +1/+1 counter on it.</text>
+        
+</card>
+
+<card>
+	<name>Bastion Inventor</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/bastioninventor.jpg">AER</set>
+    <color>U</color>
+    <manacost>5U</manacost>
+    <cmc>6</cmc>
+    <type>Creature - Vedalken Artificer</type> 
+    <pt>4/4</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise
+
+Hexproof</text>
+        
+</card>
+
+<card>
+	<name>Lifecraft Cavalry</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/lifecraftcavalry.jpg">AER</set>
+    <color>G</color>
+    <manacost>4G</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Elf Warrior</type> 
+    <pt>4/4</pt>
+    <tablerow>2</tablerow>
+    <text>Trample
+&lt;i&gt;Revolt&lt;/i&gt; — Lifecraft Cavalry enters the battlefield with two +1/+1 counters on it if a permanent you control left the battlefield this turn.</text>
+        
+</card>
+
+<card>
+	<name>Airdrop Aeronauts</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/airdropaeronauts.jpg">AER</set>
+    <color>W</color>
+    <manacost>3WW</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Dwarf Scout</type> 
+    <pt>4/3</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+&lt;i&gt;Revolt&lt;/i&gt;--When Airdrop Aeronauts enters the battlefield, if a permanent you controlled left the battlefield this turn, you gain 5 life.</text>
+        
+</card>
+
+<card>
+	<name>Lifecraft Awakening</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/lifecraftawakening.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Put X +1/+1 counters on target artifact you control. If it isn&#x27;t a creature or Vehicle, it becomes a 0/0 Construct artifact creature.</text>
+        
+</card>
+
+<card>
+	<name>Highspire Infusion</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/highspireinfusion.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Target creature gets +3/+3 until end of turn. You get {e}{e} (&lt;i&gt;two energy counters&lt;/i&gt;).</text>
+        
+</card>
+
+<card>
+	<name>Aerial Modification</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aerialmodification.jpg">AER</set>
+    <color>W</color>
+    <manacost>4W</manacost>
+    <cmc>5</cmc>
+    <type>Enchantment - aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant creature or Vehicle
+As long as enchanted permanent is a vehicle, it&#x27;s a creature in addition to its other types.
+Enchanted creature gets +2/+2 and flying</text>
+        
+</card>
+
+<card>
+	<name>Aetherstream Leopard</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aetherstreamleopard.jpg">AER</set>
+    <color>G</color>
+    <manacost>2G</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Cat</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>Trample
+When Aetherstream Leopard enters the battlefield, you get {e} (&lt;i&gt;an energy counter&lt;/i&gt;).
+Whenever Aetherstream Leopard attacks, you may pay {e}. if you do, it gets +2/+0 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Midnight Entourage</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/midnightentourage.jpg">AER</set>
+    <color>B</color>
+    <manacost>2BB</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Aetherborn Rogue</type> 
+    <pt>3/3</pt>
+    <tablerow>2</tablerow>
+    <text>Other Aetherborn you control get +1/+1.
+
+Whenever Midnight Entourage or another Aetherborn you contorl dies, you draw a card and you lose 1 life.</text>
+        
+</card>
+
+<card>
+	<name>Aether Herder</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aetherherder.jpg">AER</set>
+    <color>G</color>
+    <manacost>3G</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Elf Artificer Druid</type> 
+    <pt>3/3</pt>
+    <tablerow>2</tablerow>
+    <text>When Aether Herder enters the battlefield, you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+
+Whenever Aether Herder attacks, you may pay {ee}. If you do create a 1/1 colorless Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Aether Chaser</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aetherchaser.jpg">AER</set>
+    <color>R</color>
+    <manacost>1R</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>2/1</pt>
+    <tablerow>2</tablerow>
+    <text>When Aether Chaser enters the battlefield, you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+
+Whenever Aether Chaser attacks, you may pay {ee}. If you do create a 1/1 colorless Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Aether Poisoner</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aetherpoisoner.jpg">AER</set>
+    <color>B</color>
+    <manacost>1B</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>1/1</pt>
+    <tablerow>2</tablerow>
+    <text>Deathtouch
+
+When Aether Poisoner enters the battlefield, you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+
+Whenever Aether Poisoner attacks, you may pay {ee}. If you do create a 1/1 colorless Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Kari Zev&#x27;s Expertise</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/karizevsexpertise.jpg">AER</set>
+    <color>R</color>
+    <manacost>1RR</manacost>
+    <cmc>3</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Gain control of target creature or Vehicle until end of turn. Untap it. It gains haste until end of turn.
+
+You may cast a card with converted mana cost 2 or less from your hand without paying its mana cost.</text>
+        
+</card>
+
+<card>
+	<name>Kari Zev, Skyship Raider</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/karizevskyshipraider.jpg">AER</set>
+    <color>R</color>
+    <manacost>1R</manacost>
+    <cmc>2</cmc>
+    <type>Legendary Creature - Human Pirate</type> 
+    <pt>1/3</pt>
+    <tablerow>2</tablerow>
+    <text>First Strike, Menace
+
+Whenever Kari Zev, Skyship Raider attacks, create a legendary 2/1 red Monkey creature token named Ragavan that&#x27;s tapped and attacking. Exile that token at end of combat.</text>
+        
+</card>
+
+<card>
+	<name>Aether Swooper</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aetherswooper.jpg">AER</set>
+    <color>U</color>
+    <manacost>1U</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Veldalken Artificer</type> 
+    <pt>1/2</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+
+When Aether Swooper enters the battlefield, you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+
+Whenever Aether Swooper attacks, you may pay {ee}. If you do create a 1/1 colorless Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Aether Inspector</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aetherinspector.jpg">AER</set>
+    <color>W</color>
+    <manacost>3W</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Dwarf Artificer</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>Vigilance 
+
+When Aether Inspector enters the battlefield, you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+
+Whenever Aether Inspector attacks, you may pay {ee}. If you do create a 1/1 colorless Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Herald of Anguish</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/heraldofanguish.jpg">AER</set>
+    <color>B</color>
+    <manacost>5BB</manacost>
+    <cmc>7</cmc>
+    <type>Creature - Demon</type> 
+    <pt>5/5</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Flying
+
+At the beginning of your end step, each opponent discards a card.
+
+{1b}, Sacrifice an artifact: Target Creature gets -2.-2 until end of turn.
+</text>
+        
+</card>
+
+<card>
+	<name>Universal Solvent</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/universalsolvent.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{7}, {t}, Sacrifice Universal Solvent. Destroy target permanent. </text>
+        
+</card>
+
+<card>
+	<name>Efficient Construction</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/efficientconstruction.jpg">AER</set>
+    <color>U</color>
+    <manacost>3U</manacost>
+    <cmc>4</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Whenever you cast an artifact spell, create a 1/1 colorless Thopter artifact creature token with flying.</text>
+        
+</card>
+
+<card>
+	<name>Maverick Thopterist</name>
+    <set picURL="">AER</set>
+    <color>UR</color>
+    <manacost>3UR</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Human Artificier</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise&lt;i&gt; (Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+When Maverick Thopterist enters the battlefield, create two colorless 1/1 Thopter artifact creature tokens with flying .</text>
+        
+</card>
+
+<card>
+	<name>Insurgent Thopterist</name>
+    <set picURL="">AER</set>
+    <color>UR</color>
+    <manacost>3UR</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+When Insurgent Thopterist enters the battlefield, create two colorless 1/1 Thopter tokens with flying.</text>
+        
+</card>
+
+<card>
+	<name>it</name>
+    <set picURL="">AER</set>
+    <color>UR</color>
+    <manacost>3UR</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+When ~ enters the battlefield, create two colorless 1/1 Thopter tokens with flying .</text>
+        
+</card>
+
+<card>
+	<name>Ravenous Intruder</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ravenousintruder.jpg">AER</set>
+    <color>R</color>
+    <manacost>1R</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Gremlin</type> 
+    <pt>1/2</pt>
+    <tablerow>2</tablerow>
+    <text>Sacrifice an artifact: Ravenous intruder gets +2/+2</text>
+        
+</card>
+
+<card>
+	<name>Metallic Rebuke</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/metallicrebuke.jpg">AER</set>
+    <color>U</color>
+    <manacost>2U</manacost>
+    <cmc>3</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana bilities pays for {1}.)&lt;/i&gt;
+Counter target spell unless its controller pays {3}.</text>
+        
+</card>
+
+<card>
+	<name>Submerged Boneyard</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/submergedboneyard.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Land</type> 
+    <pt></pt>
+    <tablerow>0</tablerow>
+    <text>Submerged Boneyard enters the battlefield tapped.
+
+{t}: Add {u} or {b} to your mana pool.</text>
+        
+</card>
+
+<card>
+	<name>Pendulum of Patterns</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/pendulumofpatterns.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>When Pendulum of Patterns enters the battlefield, you gain 3 life.
+
+{5}, {t}, Sacrifice Pendulum of Patters: Draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Tezzeret&#x27;s Simulacrum</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/tezzeretssimulacrum.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact Creature - Golem</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{t}: Target opponent loses 1 life. If you control a Tezzeret planeswalker, that player loses 3 life instead.</text>
+        
+</card>
+
+<card>
+	<name>Tezzeret&#x27;s Betrayal</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/tezzeretsbetrayal.jpg">AER</set>
+    <color>UB</color>
+    <manacost>3UB</manacost>
+    <cmc>5</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Destroy Target Creature. You may search your library and/or graveyard for a card named Tezzeret, Master of Metal, reveal it, and put it into your hand. If you search your library this way, shuffle it.</text>
+        
+</card>
+
+<card>
+	<name>Tranquil Expanse</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/tranquilexpanse.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Land</type> 
+    <pt></pt>
+    <tablerow>0</tablerow>
+    <text>Tranquil Expanse enters the battlefield tapped.
+{T} &quot; Add {G} or {W} to your mana pool.</text>
+        
+</card>
+
+<card>
+	<name>Inspiring Roar</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/inspiringroar.jpg">AER</set>
+    <color>W</color>
+    <manacost>3W</manacost>
+    <cmc>4</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Put a +1/+1 counter on each creature you control.</text>
+        
+</card>
+
+<card>
+	<name>Ajani&#x27;s Comrade</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ajaniscomrade.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Elf Soldier</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Trample
+At the beginning of combat on your turn, if you control an Ajani planeswalker, put a +1/+1 counter on Ajani&#x27;s Comrade.</text>
+        
+</card>
+
+<card>
+	<name>Ajani&#x27;s Aid</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ajanisaid.jpg">AER</set>
+    <color>WG</color>
+    <manacost>2GW</manacost>
+    <cmc>4</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>When Ajani&#x27;s Aid enters the battlefield, you may search your library and/or graveyard for a card named Ajani, Valiant Protector, reveal it, and put it into your hand. If you search your library this way, shuffle it.
+Sacrifice Ajani&#x27;s Aid: Prevent all combat damage a creature of your choice would deal this turn.</text>
+        
+</card>
+
+<card>
+	<name>Aethersphere Harvester</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aethersphereharvester.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Flying
+When Aethersphere Harvester enters the battlefield, you get {e}{e} &lt;i&gt;(two energy counters.)&lt;/i&gt;
+Pay {e}: Aethersphere Harvester gains lifelink until end of turn.
+Crew 1 &lt;i&gt;(Tap any number of creatures you control with total power 1 or more: This vehicle becomes an artifact creature until end of turn.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Heroic Intervention</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/heroicintervention.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Permanents you control gain indestructible and hexproof until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Hope of Ghirapur</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/hopeofghirapur.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Legendary Artifact Creature - Thopter</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Flying 
+
+Sacrifice Hope of Ghirapur: Until your next turn, target player who was dealt combat damage by Hope of Ghirapur this turn can&#x27;t cast noncreature spells.</text>
+        
+</card>
+
+<card>
+	<name>Lifecrafter&#x27;s Bestiary</name>
+    <set picURL="">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>At the beginning of your upkeep, scry 1. 
+Whenever you cast a creature spell, you may pay {G}. If you do, draw a card</text>
+        
+</card>
+
+<card>
+	<name>Treasure Keeper</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/treasurekeeper.jpg">AER</set>
+    <color></color>
+    <manacost>4</manacost>
+    <cmc>4</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>When Treasure Keeper dies, reveal cards from the top of your library until you reveal a nonland card with converted mana cost 3 or less. You may cast that card without paying its mana cost. Put all cards not cast this way on the bottom of your library in a random order.</text>
+        
+</card>
+
+<card>
+	<name>Hidden Herbalists</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/hiddenherbalists.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Human Druid</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — When hidden Herbalists enters the battlefield, if a permanent you controlled left the battlefield this turn, add {gg} to your mana pool.</text>
+        
+</card>
+
+<card>
+	<name>Gifted Aetherborn</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/giftedaetherborn.jpg">AER</set>
+    <color>B</color>
+    <manacost>BB</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Aetherborn Vampire</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>Deathtouch, lifelink</text>
+        
+</card>
+
+<card>
+	<name>Spire Patrol</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/spirepatrol.jpg">AER</set>
+    <color>WU</color>
+    <manacost>2WU</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Human Soldier</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+
+When Spire Patrol enters the battlefield, tap target creature an opponent controls. That creature doesn&#x27;t untap during its controller&#x27;s next untap step.
+</text>
+        
+</card>
+
+<card>
+	<name>Renegade Wheelsmith</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/renegadewheelsmith.jpg">AER</set>
+    <color>WR</color>
+    <manacost>1RW</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Dwarf Pilot</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>Whenever Renegade Wheelsmith becomes tapped, target creature can&#x27;t block this turn.</text>
+        
+</card>
+
+<card>
+	<name>Cogwork Assembler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/cogworkassembler.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact Creature - Assembly-Worker</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{7}: Create a token that&#x27;s a copy of target artifact. That token gains haste. Exile it at the beginning of the next end step.</text>
+        
+</card>
+
+<card>
+	<name>Exquisite Archangel</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/exquisitearchangel.jpg">AER</set>
+    <color>W</color>
+    <manacost>5WW</manacost>
+    <cmc>7</cmc>
+    <type>Creature - Angel</type> 
+    <pt>5/5</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+
+If you would lose the game, instead exile Exquisite Archangel and your life total becomes equal to your starting life total.</text>
+        
+</card>
+
+<card>
+	<name>Solemn Recruit</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/solemnrecruit.jpg">AER</set>
+    <color>W</color>
+    <manacost>1WW</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Dwarf Soldier</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Double strike
+
+&lt;i&gt;Revolt&lt;/i&gt; — At the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a +1/+1 counter on Solemn Recruit. </text>
+        
+</card>
+
+<card>
+	<name>Hidden Stocks</name>
+    <set picURL="">AER</set>
+    <color>WB</color>
+    <manacost>WB</manacost>
+    <cmc>2</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — At the beginning of your end step, if a permanent you controlled left the battlefield this turn, create a 1/1 colorless Servo artifact creature token.
+
+{1}, Sacrifice a creature: Scry 1.</text>
+        
+</card>
+
+<card>
+	<name>Implement of Examination</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/implementofexamination.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{U}, Sacrifice Implement of Examination: Draw a card.
+When Implement of improvement is put into a graveyard from the battlefield, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Implement of Malice</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/implementofmalice.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{b}, Sacrifice Implement of Malice: Target player discards a card. Activate this ability only any time you could cast a sorcery.
+When Implement of Malice is put into a graveyard from the battlefield, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Baral, Chief of Compliance</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/baralchiefofcompliance.jpg">AER</set>
+    <color>U</color>
+    <manacost>1U</manacost>
+    <cmc>2</cmc>
+    <type>Legendary Creature - Human Wizard</type> 
+    <pt>1/3</pt>
+    <tablerow>2</tablerow>
+    <text>Instants and sorcery spells you cast cost {1} less to cast.
+Whenever a spell or ability you control counters a spell, you may draw a card. If you do, discard a card.</text>
+        
+</card>
+
+<card>
+	<name>Implement of Combustion</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/implementofcombustion.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{R}, Sacrifice Implement of Combustion: It deals 1 damage to target player.
+When Implement of Combustion is put into a graveyard from the battlefield, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Baral&#x27;s Expertise</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/baralsexpertise.jpg">AER</set>
+    <color>U</color>
+    <manacost>3UU</manacost>
+    <cmc>5</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Return up to three target artifacts and/or creatures to their owner&#x27;s hands.
+You may cast a card with a converted mana cost of 4 or less from your hand without paying it&#x27;s mana cost.</text>
+        
+</card>
+
+<card>
+	<name>Implement of Ferocity</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/implementofferocity.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{g}, Sacrifice Implement of Ferocity: Put a +1/+1 counter on target creature. Activate this ability only any time you could cast a sorcery.
+When Implement of Ferocity is put into a graveyard from the battlefield, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Implement of Improvement</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/implementofimprovement.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{w}, Sacrifice Implement of Improvement: You gain 2 life.
+When Implement of improvement is put into a graveyard from the battlefield, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Aethertide Whale</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aethertidewhale.jpg">AER</set>
+    <color>U</color>
+    <manacost>4UU</manacost>
+    <cmc>6</cmc>
+    <type>Creature - Whale</type> 
+    <pt>6/4</pt>
+    <tablerow>2</tablerow>
+    <text>When Aethertide Whale enters the battlefield, you get {E}{E}{E}{E}{E}{E} &lt;i&gt;(six energy counters)&lt;/i&gt;.
+Pay {E}{E}{E}{E}: Return Aethertide Whale to its owner&#x27;s hand.
+
+
+</text>
+        
+</card>
+
+<card>
+	<name>Aetherborn Warrior</name>
+    <set picURL="">AER</set>
+    <color>B</color>
+    <manacost>2B</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Aetherborn Warrior</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — When Vengeful Rebel enters the battlefield, if a permanent you controlled left the battlefield this turn, target creature gets -3/-3 until the end of turn.
+</text>
+        
+</card>
+
+<card>
+	<name>Call for Unity</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/callforunity.jpg">AER</set>
+    <color>W</color>
+    <manacost>3WW</manacost>
+    <cmc>5</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — At the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a unity counter on Call for Unity.
+Creatures you control get +1/+1 for each unity counter on Call for Unity.</text>
+        
+</card>
+
+<card>
+	<name>Walking Ballista</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/walkingballista.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Walking Ballista enters the battlefield with X +1/+1 counters.
+{4}: Put a +1/+1 counter on Walking Ballista.
+Remove a +1/+1 counter from Walking Ballista: Walking Ballista deals 1 damage to target creature or player.</text>
+        
+</card>
+
+<card>
+	<name>Weldfast Engineer</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/weldfastengineer.jpg">AER</set>
+    <color>BR</color>
+    <manacost>1BR</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>3/3</pt>
+    <tablerow>2</tablerow>
+    <text>At the beginning of combat on your turn, target artifact creature you control gets +2/+0 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Outland Boar</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/outlandboar.jpg">AER</set>
+    <color>RG</color>
+    <manacost>2RG</manacost>
+    <cmc>4</cmc>
+    <type>Creatuer - Boar</type> 
+    <pt>4/4</pt>
+    <tablerow>XXX</tablerow>
+    <text>Outland Boar can&#x27;t be blocked by creatures with power 2 or less.</text>
+        
+</card>
+
+<card>
+	<name>Lightning Runner</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/lightningrunner.jpg">AER</set>
+    <color>R</color>
+    <manacost>3RR</manacost>
+    <cmc>5</cmc>
+    <type>Creature - Human Warrior</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Double strike, haste
+When Lightning Runner attacks, gain {E}{E} &lt;i&gt;(two energy counters)&lt;/i&gt;, then you may pay {E}{E}{E}{E}{E}{E}{E}{E}. If you do, untap all creatures you control and there is an additional combat phase after this one.</text>
+        
+</card>
+
+<card>
+	<name>Skyship Pirate</name>
+    <set picURL="">AER</set>
+    <color>U</color>
+    <manacost>1U</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Human Rogue</type> 
+    <pt>2/1</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+Whenever Skyship Plunderer deals combat damage to a player, for each kind of counter on target permanent or player, give permanent or player another counter of that kind.</text>
+        
+</card>
+
+<card>
+	<name>Secret Salvage</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/secretsalvage.jpg">AER</set>
+    <color>B</color>
+    <manacost>3BB</manacost>
+    <cmc>5</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Exile target nonland card from your graveyard. Search your library for any number of cards with the same name as that card, reveal them, and put them into your hand. Then shuffle your library.</text>
+        
+</card>
+
+<card>
+	<name>Shock</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/shock.jpg">AER</set>
+    <color>R</color>
+    <manacost>R</manacost>
+    <cmc>1</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Shock deals 2 damage to target creature or player.</text>
+        
+</card>
+
+<card>
+	<name>Indomitable Creativity</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/indomitablecreativity.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Destroy X target artifacts and/or creatures.  For each permanent destroyed this way, its controller reveals cards from the top of his or her library until an artifact or creature card is revealed and exiles that card.  Those players put the exiled cards onto the battlefield, then shuffle their libraries.</text>
+        
+</card>
+
+<card>
+	<name>Renegade Rallier</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/renegaderallier.jpg">AER</set>
+    <color>WG</color>
+    <manacost>1GW</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Human Warrior</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — When Renegade Rallier enters the battlefield, if a permanent you controlled left the battlefield this turn, return target permanent card with converted mana cost 2 or less to the battlefield.</text>
+        
+</card>
+
+<card>
+	<name>Rogue Refiner</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/roguerefiner.jpg">AER</set>
+    <color>UG</color>
+    <manacost>1GU</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Human Rogue</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>When Rogue Refiner enters the battlefield, draw a card and you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;
+</text>
+        
+</card>
+
+<card>
+	<name>Tezzeret&#x27;s Touch</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/tezzeretstouch.jpg">AER</set>
+    <color>UB</color>
+    <manacost>1UB</manacost>
+    <cmc>3</cmc>
+    <type>Enchantment  - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant artifact
+Enchanted artifact is a creature with base power and toughness 5/5 in addition to its other types.
+When enchanted artifact is put into a graveyard, return that card to it&#x27;s owner&#x27;s hand.</text>
+        
+</card>
+
+<card>
+	<name>Reverse Engineer</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/reverseengineer.jpg">AER</set>
+    <color>U</color>
+    <manacost>3UU</manacost>
+    <cmc>5</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Draw three cards.</text>
+        
+</card>
+
+<card>
+	<name>Yahenni, Undying Partisan</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/yahenniundyingpartisan.jpg">AER</set>
+    <color>B</color>
+    <manacost>2B</manacost>
+    <cmc>3</cmc>
+    <type>Legendary Creature - Aetherborn Vampire</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Haste
+Whenever a creature an opponent controls dies, put a +1/+1 counter on Yahenni, Undying Partisan.
+Sacrifice another creature: Yahenni gains indestructible until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Glint-Sleeve Siphoner</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/glintsleevesiphoner.jpg">AER</set>
+    <color>B</color>
+    <manacost>1B</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Human Rogue</type> 
+    <pt>2/1</pt>
+    <tablerow>2</tablerow>
+    <text>Menace
+Whenever Glint-Sleeve Siphoner enters the battlefield or attacks, you get {e} &lt;i&gt;(an energy counter)&lt;/i&gt;.
+At the beginning of your upkeep, you may pay {ee}. If you do, you draw a card and lose 1 life.</text>
+        
+</card>
+
+<card>
+	<name>Mechanized Production</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/mechanizedproduction.jpg">AER</set>
+    <color>U</color>
+    <manacost>2UU</manacost>
+    <cmc>4</cmc>
+    <type>Enchantment - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant artifact you control
+At the beginning of your upkeep, create a token that&#x27;s a copy of enchanted artifact. Then if you control eight or more artifacts with the same name as one another, you win the game.</text>
+        
+</card>
+
+<card>
+	<name>Renegade Map</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/renegademap.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Renegade Map enters the battlefield tapped.
+{T}, Sacrifice Renegade Map: Search your library for a basic land card, reveal it, put it into your hand, then shuffle your library.</text>
+        
+</card>
+
+<card>
+	<name>Countless Gears Renegade</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/countlessgearsrenegade.jpg">AER</set>
+    <color>W</color>
+    <manacost>1W</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Dwarf Artificer</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — When Countless Gears Renegade enters the battlefield, if a permanent you control left the battlefield this turn, create a 1/1 colorless Servo artifact creature token.</text>
+        
+</card>
+
+<card>
+	<name>Aethergeode Miner</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aethergeodeminer.jpg">AER</set>
+    <color>W</color>
+    <manacost>1W</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Dwarf Scout</type> 
+    <pt>3/1</pt>
+    <tablerow>2</tablerow>
+    <text>Whenever Aethergeode Miner attacks, you get {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+Pay {ee}: Exile Aethergeode Miner, then return it to the battlefield under its owner&#x27;s control.</text>
+        
+</card>
+
+<card>
+	<name>Aid from the Cowl</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aidfromthecowl.jpg">AER</set>
+    <color>G</color>
+    <manacost>3GG</manacost>
+    <cmc>5</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — At the beginning of your end step, if a permanent you controlled left the battlefield this turn, reveal the top card of your library. If it&#x27;s a permanent card, you may put it onto the battlefield. Otherwise, you may put it on the bottom of your library.</text>
+        
+</card>
+
+<card>
+	<name>Druid of the Cowl</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/druidofthecowl.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Elf Druid</type> 
+    <pt>1/3</pt>
+    <tablerow>2</tablerow>
+    <text>{T}: Add {G} to your mana pool.</text>
+        
+</card>
+
+<card>
+	<name>Aegis Automation</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aegisautomation.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{4w}: Return another target creature you control to its owner&#x27;s hand.</text>
+        
+</card>
+
+<card>
+	<name>Rishkar&#x27;s Expertise</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/rishkarsexpertise.jpg">AER</set>
+    <color>G</color>
+    <manacost>4GG</manacost>
+    <cmc>6</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Draw cards equal to the greatest power among creatures you control.
+
+You may cast a card with converted mana cost 5 or less from your hand without paying its mana cost.</text>
+        
+</card>
+
+<card>
+	<name>Spire of Industry</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/spireofindustry.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Land</type> 
+    <pt></pt>
+    <tablerow>0</tablerow>
+    <text>{t}: Add {c} to your mana pool.
+{T}, Pay 1 life: Add one mana of any color to your mana pool. Activate this ability only if you control an artifact.</text>
+        
+</card>
+
+<card>
+	<name>Inspiring Statuary</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/inspiringstatuary.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Nonartifact spells you cast have improvise.  &lt;i&gt;(Your artifacts can help cast those spells.  Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Aetherwind Basker</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aetherwindbasker.jpg">AER</set>
+    <color>G</color>
+    <manacost>4GGG</manacost>
+    <cmc>7</cmc>
+    <type>Creature - Lizard</type> 
+    <pt>7/7</pt>
+    <tablerow>2</tablerow>
+    <text>Trample
+Whenever Aetherwind Basker enters the battlefield or attacks, you get {e} &lt;i&gt;(an energy counter)&lt;/i&gt; for each creature you control.
+
+Pay {e}: Aetherwind Basker gets +1/+1 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Release the Gremlins</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/releasethegremlins.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Destroy X target artifacts.  Create X 2/2 red Gremlin creature tokens.</text>
+        
+</card>
+
+<card>
+	<name>Rishkar, Peema Renegade</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/rishkarpeemarenegade.jpg">AER</set>
+    <color>G</color>
+    <manacost>2G</manacost>
+    <cmc>3</cmc>
+    <type>Legendary Creature - Elf Druid</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>When Rishkar, Peema Renegade enters the battlefield, put a +1/+1 counter on each of up to two target creatures.
+
+Each creature you control with a counter on it has &quot;{T}: Add {G} to your mana pool.&quot;</text>
+        
+</card>
+
+<card>
+	<name>Hungry Flames</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/hungryflames.jpg">AER</set>
+    <color>R</color>
+    <manacost>2R</manacost>
+    <cmc>3</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Hungry Flames deals 3 damage to target creature and 2 damage to target player.</text>
+        
+</card>
+
+<card>
+	<name>Ornithopter</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ornithopter1.jpg">AER</set>
+    <color></color>
+    <manacost>0</manacost>
+    <cmc>0</cmc>
+    <type>Artifact Creature - Thopter</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Flying</text>
+        
+</card>
+
+<card>
+	<name>Merchant&#x27;s Dockhand</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/merchantsdockhand.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>{3}{U}, {T}, Tap X untapped artifacts you control: Look at the top X cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.</text>
+        
+</card>
+
+<card>
+	<name>Pacification Array</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/pacificationarray.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{2}, {t}: Tap target artifact or creature.</text>
+        
+</card>
+
+<card>
+	<name>Freejam Regent</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/freejamregent.jpg">AER</set>
+    <color>R</color>
+    <manacost>4RR</manacost>
+    <cmc>6</cmc>
+    <type>Creature - Dragon</type> 
+    <pt>4/4</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Flying
+
+{1r}: Freejam Regent gets +2/+0 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Untethered Express</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/untetheredexpress.jpg">AER</set>
+    <color></color>
+    <manacost>4</manacost>
+    <cmc>4</cmc>
+    <type>Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Trample
+
+Whenever Untethered Express attacks, put a +1/+1 counter on it.
+
+Crew 1 &lt;i&gt;(Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)&lt;/i&gt;
+</text>
+        
+</card>
+
+<card>
+	<name>Siege Modification</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/siegemodification.jpg">AER</set>
+    <color>R</color>
+    <manacost>1RR</manacost>
+    <cmc>3</cmc>
+    <type>Enchantment - Aura</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Enchant creature or Vehicle
+
+As long as enchanted permanent is a Vehicle, it&#x27;s a creature in addition to its other types.
+
+Enchanted creature gets +3/+0 and has first strike.</text>
+        
+</card>
+
+<card>
+	<name>Winding Constrictor</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/windingconstrictor1.jpg">AER</set>
+    <color>BG</color>
+    <manacost>BG</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Snake</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>If one or more counters would be placed on an artifact or creature you control, that many of those counters plus one are placed on that permanent instead.
+
+If you would get one or more counters, you get that many of those counters plus one instead.</text>
+        
+</card>
+
+<card>
+	<name>Aeronaut Admiral</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/aeronautadmiral.jpg">AER</set>
+    <color>W</color>
+    <manacost>3W</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Human Pilot</type> 
+    <pt>3/1</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+Vehicles you control have flying.</text>
+        
+</card>
+
+<card>
+	<name>Metallic Mimic</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/metallicmimic.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Artifact Creature - Shapeshifter</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>As Metallic Mimic enters the battlefield, choose a creature type.
+Metallic Mimic is the chosen type in addition to it&#x27;s other types.
+Each other creature you control of the chosen type enters the battlefield with an additional +1/+1 counter on it.</text>
+        
+</card>
+
+<card>
+	<name>Greenwheel Liberator</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/greenwheelliberator.jpg">AER</set>
+    <color>G</color>
+    <manacost>1G</manacost>
+    <cmc>2</cmc>
+    <type>Creature - Elf Warrior</type> 
+    <pt>2/1</pt>
+    <tablerow>2</tablerow>
+    <text>&lt;i&gt;Revolt&lt;/i&gt; — Greenbelt Liberator enters the battlefield with two +1/+1 counters on it if a permanent you controlled left the battlefield this turn.</text>
+        
+</card>
+
+<card>
+	<name>Greenbelt Rampager</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/greenbeltrampager.jpg">AER</set>
+    <color>G</color>
+    <manacost>G</manacost>
+    <cmc>1</cmc>
+    <type>Creature - Elephant</type> 
+    <pt>3/4</pt>
+    <tablerow>2</tablerow>
+    <text>When Greenbelt Rampager enters the battlefield, pay {ee} &lt;i&gt;(two energy counters)&lt;/i&gt;. If you can&#x27;t, return Greenbelt Rampager to its owner&#x27;s hand and you get {e}.</text>
+        
+</card>
+
+<card>
+	<name>Fatal Push</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/fatalpush.jpg">AER</set>
+    <color>B</color>
+    <manacost>B</manacost>
+    <cmc>1</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Destroy target creature if it has converted mana cost 2 or less.
+
+&lt;i&gt;Revolt&lt;/i&gt; — Destroy that creature if it has converted mana cost 4 or less instead if a permanent you controlled left the battlefield this turn.</text>
+        
+</card>
+
+<card>
+	<name>Gonti&#x27;s Aether Heart</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/gontisaetherheart.jpg">AER</set>
+    <color></color>
+    <manacost>6</manacost>
+    <cmc>6</cmc>
+    <type>Legendary Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Whenever Gonti&#x27;s Aether Heart or another artifact enters the battlefield under your control, you get {E}{E} &lt;i&gt;(two energy counters)&lt;/i&gt;.
+
+Pay {E}{E}{E}{E}{E}{E}{E}{E}, Exile Gonti&#x27;s Aether Heart: Take an extra turn after this one.</text>
+        
+</card>
+
+<card>
+	<name>Sram&#x27;s Expertise</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/sramsexpertise.jpg">AER</set>
+    <color>W</color>
+    <manacost>2WW</manacost>
+    <cmc>4</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Create three 1/1 colorless Servo artifact creature tokens.
+
+You may cast a card with converted mana cost 3 or less from your hand without paying its mana cost.</text>
+        
+</card>
+
+<card>
+	<name>Sram, Senior Edificer</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/sramsenioredificer.jpg">AER</set>
+    <color>W</color>
+    <manacost>1W</manacost>
+    <cmc>2</cmc>
+    <type>Legendary Creature - Dwarf Advisor</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Whenever you cast an Aura, Equipment, or Vehicle spell, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Consulate Dreadnought</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/consulatedreadnought.jpg">AER</set>
+    <color></color>
+    <manacost>1</manacost>
+    <cmc>1</cmc>
+    <type>Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Crew 6&lt;i&gt; (Tap any number of creatures you control with total power 6 or more: This Vehicle becomes an artifact creature until end of turn.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Foundry Assembler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/foundryassembler.jpg">AER</set>
+    <color></color>
+    <manacost>5</manacost>
+    <cmc>5</cmc>
+    <type>Artifact Creature  - Assembly-Worker</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Sweatworks Brawler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/sweatworksbrawler.jpg">AER</set>
+    <color>R</color>
+    <manacost>3R</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>3/3</pt>
+    <tablerow>2</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Menace</text>
+        
+</card>
+
+<card>
+	<name>Shipwreck Moray</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/shipwreckmoray.jpg">AER</set>
+    <color>U</color>
+    <manacost>3U</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Fish</type> 
+    <pt>0/5</pt>
+    <tablerow>2</tablerow>
+    <text>When Shipwreck Moray enters the battlefield, you get {e}{e}{e}{e} &lt;i&gt;(four energy counters)&lt;/i&gt;.
+
+Pay {e}: Shipwreck Moray gets +2/-2 until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Silkweaver Elite</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/silkweaverelite.jpg">AER</set>
+    <color>G</color>
+    <manacost>2G</manacost>
+    <cmc>3</cmc>
+    <type>Creature - Elf Archer</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Reach &lt;I&gt;(This creature can block creatures with flying.)&lt;/i&gt;
+
+&lt;i&gt;Revolt&lt;/i&gt; — When Silkweaver Elite enters the battlefield, if a permanent you controlled left the battlefield this turn, draw a card.</text>
+        
+</card>
+
+<card>
+	<name>Night Market Aeronaut</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/nightmarketaeronaut.jpg">AER</set>
+    <color>B</color>
+    <manacost>3B</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Aetherborn Warrior</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>Flying
+
+&lt;i&gt;Revolt&lt;/i&gt; — Night Market Aeronaut enters the battlefield with a +1/+1 counter on it if a permanent you controlled left the battlefield this turn.</text>
+        
+</card>
+
+<card>
+	<name>Decommission</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/decommission.jpg">AER</set>
+    <color>W</color>
+    <manacost>2W</manacost>
+    <cmc>3</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Destroy target aritfact or enchantment.
+
+&lt;i&gt;Revolt&lt;/i&gt; — If a permanent you controlled left the battlefield this turn, you gain 3 life.</text>
+        
+</card>
+
+<card>
+	<name>Whir of Invention</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/whirofinvention.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Search your library for an artifact card with converted mana cost X or less, put it onto the battlefield, then shuffle your library.</text>
+        
+</card>
+
+<card>
+	<name>Peacewalker Colossus</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/peacewalkercolossus.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{1}{W}: Another target Vehicle you control becomes an artifact creature until end of turn.
+Crew 4 &lt;i&gt;(Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Planar Bridge</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/planarbridge.jpg">AER</set>
+    <color></color>
+    <manacost>6</manacost>
+    <cmc>6</cmc>
+    <type>Legendary Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>{8}, {t}:Search your library for a permanent card, put it onto the battlefield, then shuffle your library.</text>
+        
+</card>
+
+<card>
+	<name>Paradox Engine</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/paradoxengine.jpg">AER</set>
+    <color></color>
+    <manacost>5</manacost>
+    <cmc>5</cmc>
+    <type>Legendary Artifact</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Whenever you cast a spell, untap all nonland permanents you control.</text>
+        
+</card>
+
+<card>
+	<name>Quicksmith Spy</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/quicksmithspy.jpg">AER</set>
+    <color>U</color>
+    <manacost>3U</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>2/3</pt>
+    <tablerow>2</tablerow>
+    <text>When Quicksmith Spy enters the battlefield, target artifact you control gains &quot;{t}: Draw a card&quot; for as long as you control Quicksmith Spy.</text>
+        
+</card>
+
+<card>
+	<name>Tezzeret the Schemer</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/tezzerettheschemer.jpg">AER</set>
+    <color>UB</color>
+    <manacost>2UB</manacost>
+    <cmc>4</cmc>
+    <type>Planeswalker - Tezzeret</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>+1: Create a colorless artifact token named Etherium Cell which has &quot;{t}, Sacrifice this artifact: Add one mana of any color to your mana pool.&quot;
+
+-2: Target creature gets +X/-X until end of turn, where X is the number of artifacts you control.
+
+-7: You get an emblem with &quot;At the beginning of combat on your turn, target artifact you control becomes an artifact creature with base power and toughness 5/5.&quot;</text>
+        
+</card>
+
+<card>
+	<name>Oath of Ajani</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/oathofajani.jpg">AER</set>
+    <color>WG</color>
+    <manacost>GW</manacost>
+    <cmc>2</cmc>
+    <type>Legendary Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>When Oath of Ajani enters the battlefield, put a +1/+1 counter on each creature you control.
+
+Planeswalker spells you cast cost {1} less to cast.</text>
+        
+</card>
+
+<card>
+	<name>Consulate Crackdown</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/consulatecrackdown.jpg">AER</set>
+    <color>W</color>
+    <manacost>3WW</manacost>
+    <cmc>5</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>When Consulate Crackdown enters the battlefield, exile all artifacts your opponents control until Consulate Crackdown leaves the battlefield.</text>
+        
+</card>
+
+<card>
+	<name>Dark Intimations</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/darkintimations.jpg">AER</set>
+    <color>UBR</color>
+    <manacost>2UBR</manacost>
+    <cmc>5</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Each opponent sacrifices a creature or planeswalker, then discards a card. You return a creature or planeswalker card from your graveyard to your hand, then draw a card.
+
+When you cast a Bolas planeswalker spell, exile Dark Intimations from your graveyard. That planeswalker enters the battlefield with an additional loyalty counter on it.</text>
+        
+</card>
+
+<card>
+	<name>Battle at the Bridge</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/battleatthebridge.jpg">AER</set>
+    <color></color>
+    <manacost></manacost>
+    <cmc></cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
+
+Target creature gets -X/-X until end of turn. You gain X life.</text>
+        
+</card>
+
+<card>
+	<name>Disallow</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/disallow.jpg">AER</set>
+    <color>U</color>
+    <manacost>1UU</manacost>
+    <cmc>3</cmc>
+    <type>Instant</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>Counter target spell, activated ability, or triggered ability. &lt;i&gt;(Mana abilities can&#x27;t be targeted.)&lt;/i&gt;</text>
+        
+</card>
+
+<card>
+	<name>Pia&#x27;s Revolution</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/piasrevolution.jpg">AER</set>
+    <color>R</color>
+    <manacost>2R</manacost>
+    <cmc>3</cmc>
+    <type>Enchantment</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Whenever a nontoken artifact is put into your graveyard from the battlefield, return that card to your hand unless target opponent has Pia&#x27;s Revolution deal 3 damage to him or her.</text>
+        
+</card>
+
+<card>
+	<name>Heart of Kiran</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/heartofkiran.jpg">AER</set>
+    <color></color>
+    <manacost>2</manacost>
+    <cmc>2</cmc>
+    <type>Legendary Artifact - Vehicle</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>Flying, vigilance
+Crew 3 &lt;i&gt;(Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)&lt;/i&gt;
+You may remove a loyalty counter from a planeswalker you control rather than pay Heart of Kiran&#x27;s crew cost.</text>
+        
+</card>
+
+<card>
+	<name>Tezzeret, Master of Metal</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/tezzeretmasterofmetal.jpg">AER</set>
+    <color>UB</color>
+    <manacost>4UB</manacost>
+    <cmc>6</cmc>
+    <type>Planeswalker  - Tezzeret</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>+1: Reveal cards from the top of your library until you reveal an artifact card. Put that card into your hand and the rest on the bottom of your library in a random order.
+
+-3: Target opponent loses life equal to the number of artifacts you control.
+
+-8: Gain control of all artifacts and creatures target opponent controls.</text>
+        
+</card>
+
+<card>
+	<name>Ajani, Valiant Protector</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ajanivaliantprotector.jpg">AER</set>
+    <color>WG</color>
+    <manacost>4GW</manacost>
+    <cmc>6</cmc>
+    <type>Planeswalker - Ajani</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>+2: Put two +1/+1 counters on up to one target creature.
+
++1: Reveal cards from the top of your library until you reveal a creature card. Put that card into your hand and the rest on the bottom of your library in a random order.
+
+-11: Put X +1/+1 counters on target creature, where X is your life total. That creature gains trample until end of turn.</text>
+        
+</card>
+
+<card>
+	<name>Ajani Unyielding</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/ajaniunyielding.jpg">AER</set>
+    <color>WG</color>
+    <manacost>4GW</manacost>
+    <cmc>6</cmc>
+    <type>Planeswalker - Ajani</type> 
+    <pt></pt>
+    <tablerow>1</tablerow>
+    <text>+2: Reveal the top three cards of your library. Put all nonland permanent cards revealed this way into your hand and the rest on the bottom of your library in any order.
+-2: Exile target creature. Its controller gains life equal to its power.
+-9: Put five +1/+1 counters on each creature you control and five loyalty counters on each other planeswalker you control.</text>
+        
+</card>
+
+<card>
+	<name>Quicksmith Rebel</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/quicksmithrebel1.jpg">AER</set>
+    <color>R</color>
+    <manacost>3R</manacost>
+    <cmc>4</cmc>
+    <type>Creature - Human Artificer</type> 
+    <pt>3/2</pt>
+    <tablerow>2</tablerow>
+    <text>When Quicksmith Rebel enters the battlefield, target artifact you control gains &quot;{t}: This artifact deals 2 damage to target creature or player&quot; for as long as you control Quicksmith Rebel.</text>
+        
+</card>
+
+<card>
+	<name>Scrap Trawler</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/scraptrawler1.jpg">AER</set>
+    <color></color>
+    <manacost>3</manacost>
+    <cmc>3</cmc>
+    <type>Artifact Creature - Construct</type> 
+    <pt></pt>
+    <tablerow>2</tablerow>
+    <text>Whenever Scrap Trawler or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser converted mana cost.</text>
+        
+</card>
+
+<card>
+	<name>Trophy Mage</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/trophymage1.jpg">AER</set>
+    <color>U</color>
+    <manacost>2U</manacost>
+    <cmc>3</cmc>
+    <type>Creature  - Human Wizard</type> 
+    <pt>2/2</pt>
+    <tablerow>2</tablerow>
+    <text>When Trophy Mage enters the battlefield, you may search your library for an artifact card with converted mana cost 3, reveal it, put it into your hand, then shuffle your library.</text>
+        
+</card>
+
+<card>
+	<name>Yahenni&#x27;s Expertise</name>
+    <set picURL="http://mythicspoiler.com/aer/cards/yahennisexpertise1.jpg">AER</set>
+    <color>B</color>
+    <manacost>2BB</manacost>
+    <cmc>4</cmc>
+    <type>Sorcery</type> 
+    <pt></pt>
+    <tablerow>3</tablerow>
+    <text>All creatures get -3/-3 until end of turn.
+You may cast a card with converted mana cost 3 or less from your hand without paying its mana cost.</text>
+        
+</card>
+</cards>
+    </cockatrice_carddatabase>
+    

@@ -82,7 +82,7 @@ Route::get('/admin', function() {
 
 use App\Models\Set;
 
-Route::get('/admin/parsers/cockatrice_xml', function() {
+Route::get('/admin/parsers/cockatrice_xml', ['as' => 'admin.parsers.cockatrice_xml', function() {
 
 	$titleTag = 'Parsers - Cockatrice XML | ';
     $h2Tag = 'Parsers - Cockatrice XML';	
@@ -90,7 +90,9 @@ Route::get('/admin/parsers/cockatrice_xml', function() {
     $sets = Set::orderBy('id', 'desc')->get();
 
 	return View::make('admin/parsers/cockatrice_xml', compact('titleTag', 'h2Tag', 'sets'));
-});
+}]);
+
+Route::post('/admin/parsers/cockatrice_xml', 'ParsersController@parseCockatriceXml');
 
 Route::get('/admin/parsers/mtg_json', ['as' => 'admin.parsers.mtg_json', function() {
 
