@@ -20,7 +20,7 @@ use DB;
 class YourDecksController extends Controller
 {
     private $firstSetCode = 'BFZ';
-    private $latestSetCode = 'KLD';
+    private $latestSetCode = 'AER';
 
     /**
      * Display a listing of the resource.

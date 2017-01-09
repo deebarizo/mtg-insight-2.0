@@ -1306,36 +1306,6 @@ When Maverick Thopterist enters the battlefield, create two colorless 1/1 Thopte
 </card>
 
 <card>
-	<name>Insurgent Thopterist</name>
-    <set picURL="">AER</set>
-    <color>UR</color>
-    <manacost>3UR</manacost>
-    <cmc>5</cmc>
-    <type>Creature - Human Artificer</type> 
-    <pt>2/2</pt>
-    <tablerow>2</tablerow>
-    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
-
-When Insurgent Thopterist enters the battlefield, create two colorless 1/1 Thopter tokens with flying.</text>
-        
-</card>
-
-<card>
-	<name>it</name>
-    <set picURL="">AER</set>
-    <color>UR</color>
-    <manacost>3UR</manacost>
-    <cmc>5</cmc>
-    <type>Creature - Human Artificer</type> 
-    <pt>2/2</pt>
-    <tablerow>2</tablerow>
-    <text>Improvise &lt;i&gt;(Your artifacts can help cast this spell. Each artifact you tap after you&#x27;re done activating mana abilities pays for {1}.)&lt;/i&gt;
-
-When ~ enters the battlefield, create two colorless 1/1 Thopter tokens with flying .</text>
-        
-</card>
-
-<card>
 	<name>Ravenous Intruder</name>
     <set picURL="http://mythicspoiler.com/aer/cards/ravenousintruder.jpg">AER</set>
     <color>R</color>
