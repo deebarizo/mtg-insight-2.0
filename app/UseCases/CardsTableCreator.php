@@ -27,7 +27,9 @@ class CardsTableCreator {
 								  'cards.f_mana_cost',
 								  'cards.rating',
 								  'card_prices.price',
-								  'sets.code')
+								  'sets.code',
+								  'cards.rules_text', 
+								  'cards.middle_text')
 							->with('sets_cards.set')
 							->join('sets_cards', function($join) {
 		  
@@ -74,7 +76,9 @@ class CardsTableCreator {
 								  'cards.f_mana_cost',
 								  'cards.rating',
 								  'card_prices.price',
-								  'sets.code')
+								  'sets.code',
+								  'cards.rules_text', 
+								  'cards.middle_text')
 							->with('sets_cards.set')
 							->join('sets_cards', function($join) {
 		  

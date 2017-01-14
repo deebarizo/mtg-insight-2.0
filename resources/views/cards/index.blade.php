@@ -60,6 +60,8 @@
 						<th>Color Abbrs</th> <!-- hidden-->
 						<th>Code</th> <!-- hidden-->
 						<th>F MC</th> <!-- hidden-->
+						<th>Middle Text</th> <!-- hidden-->
+						<th>Rules Text</th> <!-- hidden-->
 					</tr>
 				</thead>
 
@@ -107,6 +109,8 @@
 							<td>{{ $colorAbbrs }}</td> <!-- hidden-->
 							<td>{{ $card->code }}</td> <!-- hidden-->
 							<td>{{ $fManaCost }}</td> <!-- hidden-->
+							<td>{{ $card->middle_text }}</td> <!-- hidden-->
+							<td>{{ $card->rules_text }}</td> <!-- hidden-->
 						</tr>
 					@endforeach
 				</tbody>
@@ -129,7 +133,9 @@
 			tags: 9,
 			colorAbbrs: 10,
 			setCode: 11,
-			fManaCost: 12
+			fManaCost: 12,
+			middleText: 13,
+			rulesText: 14
 		};
 
 
@@ -237,7 +243,8 @@
 	        	},
 	        	{
 	            	"visible": false,
-	            	"targets": columnIndexes.tags
+	            	"targets": columnIndexes.tags,
+	            	"searchable": true
 	        	},
 	        	{
 	            	"visible": false,
@@ -250,6 +257,16 @@
 	        	{
 	            	"visible": false,
 	            	"targets": columnIndexes.fManaCost
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": columnIndexes.middleText,
+	            	"searchable": true
+	        	},
+	        	{
+	            	"visible": false,
+	            	"targets": columnIndexes.rulesText,
+	            	"searchable": true
 	        	}	        	       	
 	        ],
 	        "aoColumns": [
@@ -265,7 +282,9 @@
 	            { "orderSequence": [ "desc", "asc" ] }, // 9
 	            { "orderSequence": [ "desc", "asc" ] }, // 10
 	            null, // 11
-	            null // 12
+	            null, // 12
+	            null, // 13
+	            null // 14
 	        ]
 		});
 
