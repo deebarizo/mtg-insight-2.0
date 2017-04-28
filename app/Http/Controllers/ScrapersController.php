@@ -18,7 +18,7 @@ class ScrapersController extends Controller {
 		$setCodes = [
 
 			'first' => 'BFZ',
-			'last' => 'KLD'
+			'last' => 'AKH'
 		];
 
 		$mtgGoldfishScraper = new MtgGoldfishScraper;

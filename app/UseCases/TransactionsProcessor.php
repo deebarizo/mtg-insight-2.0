@@ -72,6 +72,9 @@ class TransactionsProcessor {
 								->orderBy('transactions.id', 'asc')
 								->get(); 
 
+			# prf('Card ID: '.$cardId);
+			# prf($transactions);
+
 			$card = [
 
 				'quantity' => 0,
@@ -214,12 +217,6 @@ class TransactionsProcessor {
 				$totalCost += $card['tix'];
 
 				$totalRevenue += $card['current_total_price'];		
-			}
-
-			if ($card['name'] === 'Ulamog, the Ceaseless Hunger') {
-
-				# prf($realizedProfits);
-				# ddAll($card);
 			}
 		}
 

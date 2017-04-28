@@ -69,6 +69,13 @@ class MtgGoldfishScraper {
 
         		$card->name = preg_replace("/,/", '', $card->name);
         	}
+
+            if (strpos($card->name, "//") !== false) {
+
+                $card->name = preg_replace("/ \/\//", '', $card->name);
+            }
+
+            prf($card->name);
         	
         	$crawler = $client->request('GET', 'https://www.mtggoldfish.com/price/'.$card->set_name.'/'.$card->name.'#online');
 
@@ -84,8 +91,6 @@ class MtgGoldfishScraper {
 
             $cardPrice->save();  
         }
-
-        # ddAll($cards);
 
 		$this->message = 'Success!';		
 
