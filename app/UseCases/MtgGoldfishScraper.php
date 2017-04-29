@@ -54,6 +54,10 @@ class MtgGoldfishScraper {
                         ->orderBy('cards.name')
                         ->get();
 
+        $card = Card::where('name', 'Fatal Push')->first();
+
+        $cards[] = $card;
+
         # ddAll($cards);
 
         $client = new Client();
@@ -75,7 +79,7 @@ class MtgGoldfishScraper {
                 $card->name = preg_replace("/ \/\//", '', $card->name);
             }
 
-            prf($card->name);
+            # prf($card->name);
         	
         	$crawler = $client->request('GET', 'https://www.mtggoldfish.com/price/'.$card->set_name.'/'.$card->name.'#online');
 
