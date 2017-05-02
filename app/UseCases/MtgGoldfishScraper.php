@@ -54,7 +54,9 @@ class MtgGoldfishScraper {
                         ->orderBy('cards.name')
                         ->get();
 
-        $card = Card::where('name', 'Fatal Push')->first();
+        $card = Card::with('sets_cards.set')->where('name', 'Fatal Push')->first();
+        $card->set_name = $card->sets_cards[0]->set->name;
+        # ddAll($card);
 
         $cards[] = $card;
 
@@ -85,6 +87,8 @@ class MtgGoldfishScraper {
 
         	$card->price = $crawler->filter('div.price-box.online > div.price-box-price')->eq(0)->text();
         }
+
+        # dd('die');
 
         foreach ($cards as $card) {
           
