@@ -8,9 +8,9 @@ var calculateSourcesForEvolvingWilds = function() {
 
 	$('tr.md td.copy-card-name').each(function() {
 		
-		var cardName = $(this).text();
+		var cardName = $(this).text().trim();
 
-		if (cardName === 'Plains') {
+		if (cardName == 'Plains') {
 
 			manaSources += 'W';
 		}

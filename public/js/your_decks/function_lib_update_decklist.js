@@ -110,11 +110,8 @@ var getDecklistTotals = function() {
 					decklistTotals.lands += quantity;
 
 					if (copyRow.attr('data-copy-card-id') == 253) { // Evolving Wilds
-
 						var manaSources = calculateSourcesForEvolvingWilds();
-
 					} else {
-
 						var manaSources = copyRow.attr('data-copy-mana-sources');
 					}
 
